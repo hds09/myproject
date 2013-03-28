@@ -22,7 +22,7 @@
    <param-value>/WEB-INF/classes/applicationContext.xml</param-value>
  </context-param>
 <welcome-file-list>
-<welcome-file>/user/welcome.jsp</welcome-file>
+<welcome-file>/user/index.jsp</welcome-file>
 </welcome-file-list>
 
 </web-app>

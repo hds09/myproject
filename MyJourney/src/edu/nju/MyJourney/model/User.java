@@ -24,6 +24,8 @@ import org.hibernate.annotations.Cascade;
 @Entity
 @Table(name="user")
 public class User {
+	public static final int MAN = 1;
+	public static final int WOMAN =0;
 	private long uid;
 	private String email;
 	private String pwd;
@@ -129,7 +131,7 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@OrderBy(value="id ASC")
 	public List<Journey> getJourney() {
 		return journey;
@@ -137,7 +139,7 @@ public class User {
 	public void setJourney(List<Journey> journey) {
 		this.journey = journey;
 	}
-	@ManyToMany(fetch = FetchType.EAGER)   
+	@ManyToMany(fetch = FetchType.LAZY)   
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@JoinTable(name="users_Team", joinColumns={@JoinColumn(name="uid")},  
 	 inverseJoinColumns={@JoinColumn(name="tid")})   
@@ -147,7 +149,7 @@ public class User {
 	public void setTeam(List<Team> team) {
 		this.team = team;
 	}
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@OrderBy(value="id ASC")
 	public List<Replay> getMeassage() {
 		return meassage;

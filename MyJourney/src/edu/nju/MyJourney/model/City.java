@@ -46,7 +46,7 @@ public void setCountry(String country) {
 	this.country = country;
 }
 
-@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 @OrderBy(value="id ASC")
 public List<Attraction> getAttractions() {
 	return attractions;
@@ -55,7 +55,7 @@ public List<Attraction> getAttractions() {
 public void setAttractions(List<Attraction> attractions) {
 	this.attractions = attractions;
 }
-@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 @OrderBy(value="id ASC")
 public List<Hotel> getHotels() {
 	return hotels;
@@ -64,7 +64,7 @@ public List<Hotel> getHotels() {
 public void setHotels(List<Hotel> hotels) {
 	this.hotels = hotels;
 }
-@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 @OrderBy(value="id ASC")
 public List<Restaurant> getRestaurants() {
 	return restaurants;

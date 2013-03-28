@@ -3,22 +3,21 @@ package edu.nju.MyJourney.dao;
 import edu.nju.MyJourney.model.User;
 
 public interface UserDao {
-	/*
-	 * ÏñÊı¾İ¿âÖĞ²åÈëÒ»Ìõuser¼ÇÂ¼
-	 */
-	public void save(User user);
-	
-	
-	/*
-	 * ¸ù¾İ²ÎÊıÁĞÃûºÍÕâ¸öÁĞÉÏµÄÖµ²éÕÒuser¶ÔÏó,Èç¹ûÕÒµ½Ôò·µ»ØÕâ¸ö¶ÔÏó,·ñÔò·µ»Ønull
-	 * column ÁĞÃû
-	 * value ÁĞÖµ
-	 */
-	public User find(String column,String value);
-	
-	
-	/*
-	 * ¸ù¾İid¸üĞÂuser±íµÄÒ»Ìõ¼ÇÂ¼
-	 */
-	public void updateByUserid(User user);
+
+	public User login(String account,String password);
+//	public void save(User user);
+//	
+//	
+//	/*
+//	 * ï¿½ï¿½İ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½Öµï¿½ï¿½ï¿½ï¿½userï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ò·µ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ò·µ»ï¿½null
+//	 * column ï¿½ï¿½ï¿½ï¿½
+//	 * value ï¿½ï¿½Öµ
+//	 */
+//	public User find(String column,String value);
+//	
+//	
+//	/*
+//	 * ï¿½ï¿½ï¿½idï¿½ï¿½ï¿½ï¿½userï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
+//	 */
+//	public void updateByUserid(User user);
 }

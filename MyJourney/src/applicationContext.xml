@@ -14,18 +14,18 @@
 <!--  配置sessionFactory 
   --> 
 
-	
 	<bean id="UserDao" class="edu.nju.MyJourney.dao.impl.UserDaoImpl">
-
 	</bean>
 	<bean id="UserService" class="edu.nju.MyJourney.service.impl.UserServiceImpl">
 		<property name="UserDao">
 			<ref bean="UserDao"/>
 		</property>
 	</bean>		
-		<bean id="UserAction" class="edu.nju.MyJourney.action.UserAction">
+	<bean id="LoginAction" class="edu.nju.MyJourney.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService"/>
 		</property>
 	</bean>	
+	
+	
 </beans>
