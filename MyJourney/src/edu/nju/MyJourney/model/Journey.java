@@ -18,6 +18,7 @@ import edu.nju.MyJourney.DTO.Place;
 public class Journey {
 private long id;
 private User user;
+private String journeyname;
 private boolean state;
 private List<Place> places;
 @Id
@@ -53,6 +54,14 @@ public List<Place> getPlaces() {
 
 public void setPlaces(List<Place> places) {
 	this.places = places;
+}
+
+public String getJourneyname() {
+	return journeyname;
+}
+
+public void setJourneyname(String journeyname) {
+	this.journeyname = journeyname;
 }
 
 }

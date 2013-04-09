@@ -3,6 +3,7 @@ package edu.nju.MyJourney.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,11 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import edu.nju.MyJourney.DTO.Place;
+
 @Entity
 @Table(name="team")
 public class Team {
 private long tid;
-
+private List<Place> places;
 //private List<Long> journeyid;
 private List<User> users;
 @Id
@@ -38,6 +41,14 @@ public List<User> getUsers() {
 
 public void setUsers(List<User> users) {
 	this.users = users;
+}
+@ElementCollection
+public List<Place> getPlaces() {
+	return places;
+}
+
+public void setPlaces(List<Place> places) {
+	this.places = places;
 }
 
 //public List<Long> getJourneyid() {

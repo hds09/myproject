@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+#index_a{
+	font-size: 10px;
+	font-weight:15;
+	color:white;
+	margin-left:10px;
+	text-decoration:none;
+	font-family: sans-serif;
+}
+#index_a:hover{
+	cursor:pointer;
+	
+	text-decoration: underline;
+	color:#E63F00 ;
+}
+#index_b{
+	font-size: 10px;
+	font-weight:15;
+	color:#EE7700 ;
+	margin-left:10px;
+	text-decoration:none;
+	font-family: sans-serif;
+}
+#index_b:hover{
+	cursor:pointer;
+	
+	text-decoration: underline;
+	color:#E63F00 ;
+}

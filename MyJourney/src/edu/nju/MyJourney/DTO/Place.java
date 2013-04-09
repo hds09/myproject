@@ -2,6 +2,7 @@ package edu.nju.MyJourney.DTO;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import edu.nju.MyJourney.model.Attraction;
 import edu.nju.MyJourney.model.Hotel;
@@ -12,7 +13,9 @@ private Date time;
 private Hotel hotel;
 private Restaurant restaurant;
 private Attraction attraction;
+private List<String> images;
 private String traffic;
+private int halfday;
 public Date getTime() {
 	return time;
 }
@@ -51,5 +54,21 @@ public String getTraffic() {
 
 public void setTraffic(String traffic) {
 	this.traffic = traffic;
+}
+
+public int getHalfday() {
+	return halfday;
+}
+
+public void setHalfday(int halfday) {
+	this.halfday = halfday;
+}
+
+public List<String> getImages() {
+	return images;
+}
+
+public void setImages(List<String> images) {
+	this.images = images;
 }
 }

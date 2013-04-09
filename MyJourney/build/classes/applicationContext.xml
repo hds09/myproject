@@ -26,6 +26,13 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>	
-	
-	
+	<bean id="IndexAction" class="edu.nju.MyJourney.action.IndexAction">
+		
+	</bean>	
+	<bean id="MakeRouteAction" class="edu.nju.MyJourney.action.MakeRouteAction">
+		
+	</bean>	
+	<bean id="ManagerIndexAction" class="edu.nju.MyJourney.action.ManagerIndexAction">
+		
+	</bean>	
 </beans>

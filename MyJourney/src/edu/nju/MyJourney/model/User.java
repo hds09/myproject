@@ -34,10 +34,10 @@ public class User {
 	private int sex;
 	private String city;
 	private String phone;
-	private List<Attraction> attention;
+	private List<User> attention;
 	private String account;
-	private String image;
-	private List<Attraction> concerned;
+	private String image;//头像
+	private List<User> concerned;
 	private List<Journey> journey;
 	private List<Team> team;
 	private List<Replay> meassage;
@@ -111,20 +111,7 @@ public class User {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	@ElementCollection
-	public List<Attraction> getAttention() {
-		return attention;
-	}
-	public void setAttention(List<Attraction> attention) {
-		this.attention = attention;
-	}
-	@ElementCollection
-	public List<Attraction> getConcerned() {
-		return concerned;
-	}
-	public void setConcerned(List<Attraction> concerned) {
-		this.concerned = concerned;
-	}
+
 	public String getImage() {
 		return image;
 	}
@@ -156,6 +143,20 @@ public class User {
 	}
 	public void setMeassage(List<Replay> meassage) {
 		this.meassage = meassage;
+	}
+	@ElementCollection
+	public List<User> getAttention() {
+		return attention;
+	}
+	public void setAttention(List<User> attention) {
+		this.attention = attention;
+	}
+	@ElementCollection
+	public List<User> getConcerned() {
+		return concerned;
+	}
+	public void setConcerned(List<User> concerned) {
+		this.concerned = concerned;
 	}
 	
 }

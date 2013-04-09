@@ -1,0 +1,526 @@
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+
+/* Makeshift CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Tell the browser to render HTML 5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+}
+
+body {
+	margin: 0 auto;
+	padding: 22px 0;
+	width: 940px;
+	font: 13px/22px Helvetica, Arial, sans-serif;
+	background: #F0F0F0;
+}
+
+h1, h2 {
+	font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 11px 0;
+}
+
+p {
+	padding-bottom: 22px;
+}
+
+
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+
+nav {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background: url("../images/nav_background.png");
+}
+
+	nav ul {
+		margin: 0 auto;
+		width: 940px;
+		list-style: none;
+	}
+
+		nav ul li {
+			float: left;
+		}
+		
+			nav ul li a {
+				display: block;
+				margin-right: 20px;
+				width: 120px;
+				font-size: 20px;
+				line-height: 44px;
+				text-align: center;
+				text-decoration: none;
+				color: #777;
+			}
+			
+				nav ul li a:hover {
+					color: #fff;
+				}
+			
+			nav ul li.selected a {
+				color: #fff;
+			}
+			
+			nav ul li.subscribe a {
+				margin-left: 22px;
+				padding-left: 33px;
+				text-align: left;
+				background: url("../images/rss.png") left center no-repeat;
+			}
+
+
+
+/*------------------------------
+=INTRODUCTION
+------------------------------*/
+#kong{
+	height:30px;
+	width:570px;
+}
+#rect{
+	width: 550px;
+   height: 320px;
+   padding-left:20px;
+border: 1px solid #C9C9C9;
+background-color: #C9C9C9;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+background:-webkit-gradient(linear, left top, left bottom, from(#EAEAEA), to(#C9C9C9));
+opacity:0.7;
+}
+#map{
+	width: 550px;
+   height: 565px;
+border: 1px solid #888888;
+background-color: #ffffff;
+
+
+}
+#over{
+	width:90px;
+	height:110px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+	border: 2px solid #888888;
+}
+#image{
+	height:60px;
+	width:80px;
+	margin-left:5px;
+	margin-top:10px;
+	cursor:pointer;
+	background: url("../images/BeiJing.PNG") no-repeat;
+}
+#head{
+	height:60px;
+	margin-left:20px;
+	padding-bottom:20px;
+}
+#mapcontainer{
+	width: 550px;
+   height: 650px;
+   margin-top:0px;
+border: 2px solid #C9C9C9;
+background-color: #FFAA33;
+border-top-right-radius: 18px;
+border-top-left-radius: 18px;
+background:-webkit-gradient(linear, left top, left bottom, from(#666666), to(#000000));
+}
+#mapouter{
+margin-top:43px;
+}
+#plan{
+	width: 300px;
+   height: 200px;
+border: 1px solid #C9C9C9;
+background-color: #FFDDAA;
+margin-left:0px;
+margin-top:-10px;
+background:-webkit-gradient(linear, left top, left bottom, from(#EAEAEA), to(#C9C9C9));
+opacity:0.7;
+}
+#planfoot{
+	border-top: 1px solid #666666;
+	margin-left:0px;
+    margin-top:10px;
+	height:5px;
+	width:300px;
+}
+#cancel{
+		width: 100px;
+   height: 40px;
+border: 2px solid #C9C9C9;
+margin-left:30px;
+color:white;
+  margin-top:10px;
+  cursor:pointer;
+background-color: #FFAA33;
+border-radius: 10px;
+border-radius: 10px;
+background:-webkit-gradient(linear, left top, left bottom, from(#666666), to(#000000));
+}
+#submit{
+		width: 100px;
+   height: 40px;
+   margin-left:40px;
+     margin-top:10px;
+border: 2px solid #C9C9C9;
+  cursor:pointer;
+background-color: #FFAA33;
+color:white;
+border-radius: 10px;
+border-radius: 10px;
+background:-webkit-gradient(linear, left top, left bottom, from(#FF6633), to(#FF0033));
+}
+#plancontainer{
+	width: 300px;
+   height: 280px;
+border: 1px solid #C9C9C9;
+background-color: #FFDDAA;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+background:-webkit-gradient(linear, left top, left bottom, from(#666666), to(#000000));
+opacity:0.7;
+}
+#pioneer{
+	width: 300px;
+   height: 770px;
+    padding-left:20px;
+border: 1px solid #C9C9C9;
+background-color: #C9C9C9;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+background:-webkit-gradient(linear, left top, left bottom, from(#EAEAEA), to(#C9C9C9));
+opacity:0.7;
+}
+#login{
+	width: 300px;
+   height: 180px;
+border: 1px solid #000000;
+background-color: #000000;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+opacity:0.7;
+}
+#register{
+	margin-top:400px;
+	margin-left:500px;
+	width:  300px;
+   height: 180px;
+border: 1px solid #888800;
+background-color: #888800;
+border-radius: 18px;
+-moz-border-radius: 18px;
+-webkit-border-radius: 18px;
+opacity:1;
+}
+#intro {
+	position: relative;
+	margin-top: 66px;
+	padding: 44px;
+	background: #8B795E url("images/intro_background.png") repeat-x;
+	
+	/* Background-size not implemented yet */
+	-webkit-background-size: 100%;
+	-o-background-size: 100%;
+	-khtml-background-size: 100%;
+
+	
+	/* Border-radius not implemented yet */
+	-moz-border-radius: 22px;
+	-webkit-border-radius: 22px;
+}
+
+	#intro h2, #intro p {
+		position: relative;
+		z-index: 9999;
+		width: 336px;
+	}
+	
+	#intro h2 {
+		padding: 0 0 22px 0;
+		font-weight: normal;
+		color: #fff;
+	}
+	
+	#intro p {
+		padding: 0;
+		color: #d9f499;
+	}
+	
+	#intro img {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 653px;
+		height: 100%;
+	
+		/* Border-radius not implemented yet */
+		-moz-border-radius: 22px;
+		-webkit-border-radius: 22px;
+	}
+
+
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+#content {
+	display: table;
+}
+
+	#mainContent {
+		display: table-cell;
+		width: 620px;
+		padding-right: 22px;
+	}
+	
+	aside {
+		display: table-cell;
+		width: 300px;
+		padding-bottom: 300px;
+	}
+
+
+
+/*------------------------------
+=BLOG POST
+------------------------------*/
+.blogPost header p, .blogPost header p a {
+		font-size: 14px;
+		font-style: italic;
+		color: #777;
+	}
+	
+		.blogPost header p a:hover {
+			text-decoration: none;
+			color: #000;
+		}
+
+.blogPost div {
+	/* Column-count not implemented yet */
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+	
+	/* Column-gap not implemented yet */
+	-moz-column-gap: 22px;
+	-webkit-column-gap: 22px;
+}
+	
+.blogPost img {
+	margin: 22px 0;
+	-webkit-box-shadow: 3px 3px 7px #777;
+}
+
+
+
+/*------------------------------
+=COMMENTS
+------------------------------*/
+
+@-webkit-keyframes greenPulse {
+from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
+to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+#button {
+	border-radius: 10px;
+	margin-left:100px;
+	cursor:pointer;
+	width:100px;
+	height:25px;
+	background:#749a02;
+-webkit-animation-name: greenPulse;
+-webkit-animation-duration: 2s;
+-webkit-animation-iteration-count: infinite;
+}
+#left{
+	width:80px;
+	border: 1px solid #000000;
+}
+#center{
+	width:80px;
+	border: 1px solid #000000;
+}
+#right{
+	width:80px;
+	border: 1px solid #000000;
+}
+#comments {
+	margin-top: 21px;
+	padding-top: 22px;
+	border-top: 1px solid #d7d7d7;
+}
+
+	#comments article {
+		display: table;
+		padding: 22px;
+	}
+	
+	#comments article:nth-child(odd) {
+		padding: 21px;
+		background: #E3E3E3;
+		border: 1px solid #d7d7d7;
+		-moz-border-radius: 11px;
+		-webkit-border-radius: 11px;
+	}
+	
+		#comments article header {
+			display: table-cell;
+			width: 220px;
+			padding-right: 22px;
+		}
+		
+			#comments article header a {
+				display: block;
+				font-weight: bold;
+				color: #000;
+			}
+			
+				#comments article header a:hover {
+					text-decoration: none;
+				}
+		
+		#comments article p {
+			padding: 0;
+		}
+
+
+
+/*------------------------------
+=COMMENT FORM
+------------------------------*/
+
+		
+
+
+
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+aside section {
+	margin: 22px 0 0 22px;
+	padding: -20px 22px;
+
+	/* Border-radius not implemented yet */
+
+}
+
+	aside section ul {
+		margin: 0 0 0 22px;
+		list-style: none;
+	}
+	
+		aside section ul li a {
+			display: block;
+			text-decoration: none;
+			color: #000;
+		}
+		
+			aside section ul li a:hover {
+				text-decoration: underline;
+			}
+#a_css{
+	font-size: 10px;
+	font-weight:15;
+	color:black;
+	margin-left:70px;
+	text-decoration:none;
+	font-family: sans-serif;
+}
+#a_css:hover{
+	cursor:pointer;
+	
+	text-decoration: underline;
+	color:#E63F00 ;
+}
+#a_css_pre{
+	font-size: 10px;
+	font-weight:15;
+	color:black;
+	margin-left:10px;
+	margin-right:70px;
+	text-decoration:none;
+	font-family: sans-serif;
+}
+#a_css_pre:hover{
+	cursor:pointer;
+	
+	text-decoration: underline;
+	color:#E63F00 ;
+}
+/*------------------------------
+=FOOTER
+------------------------------*/
+footer {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background: #222;
+}
+
+	footer div {
+		display: table;
+		margin: 0 auto;
+		padding: 44px 0;
+		width: 940px;
+		color: #777;
+	}
+	
+		footer div section {
+			display: table-cell;
+			width: 300px;
+		}
+		
+		footer div #about, footer div #blogroll {
+			padding-right: 20px;
+		}
+		
+	footer h3 {
+		color: #FFF;
+	}
+	
+	footer a {
+		color: #999;
+	}
+	
+		footer a:hover {
+			color: #FFF;
+			text-decoration: none;
+		}
+	
+	footer ul {
+		margin: 0 0 0 40px;
+		list-style: square;
+		color: #565656;
+	}
+	
+		footer ul li a {
+			display: block;
+		}

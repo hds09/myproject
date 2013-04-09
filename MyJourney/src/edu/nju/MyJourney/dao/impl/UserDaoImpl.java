@@ -32,11 +32,9 @@ public class UserDaoImpl implements UserDao
 		try {
 			
 			Transaction tx=session.beginTransaction();	
-             
 			String hql = "from User a  where a.account="
 					+ "'"+account+"' and "+"a.password="+"'"+password+"'";
-			Query query = session.createQuery(hql);
-			
+			Query query = session.createQuery(hql);	
 			List list = query.list();
            if(list.size()!=0){
         	
