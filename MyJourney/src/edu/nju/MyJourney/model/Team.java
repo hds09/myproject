@@ -19,6 +19,7 @@ import edu.nju.MyJourney.DTO.Place;
 @Table(name="team")
 public class Team {
 private long tid;
+private String teamJourneyName;
 private List<Place> places;
 //private List<Long> journeyid;
 private List<User> users;
@@ -51,12 +52,16 @@ public void setPlaces(List<Place> places) {
 	this.places = places;
 }
 
-//public List<Long> getJourneyid() {
-//	return journeyid;
-//}
-//
-//public void setJourneyid(List<Long> journeyid) {
-//	this.journeyid = journeyid;
-//}
+public String getTeamJourneyName() {
+	return teamJourneyName;
+}
+
+public void setTeamJourneyName(String teamJourneyName) {
+	this.teamJourneyName = teamJourneyName;
+}
+
+
+
+
 
 }
