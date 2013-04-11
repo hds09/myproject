@@ -56,7 +56,17 @@ public List<Comment> getComments() {
 public void setComments(List<Comment> comments) {
 	this.comments = comments;
 }
+public void addComments(Comment f){
+	if(! this.comments.contains(f)){
+	this.comments.add(f);
+	f.setAttraction(this);
+	}
+}
 
+public void removeComments(Comment f){
+	f.setAttraction(null);
+	this.comments.remove(f);
+}
 public boolean isDislike() {
 	return dislike;
 }
@@ -115,5 +125,15 @@ public List<Place> getPlaces() {
 public void setPlaces(List<Place> places) {
 	this.places = places;
 }
+public void addPlace(Place f){
+	if(! this.places.contains(f)){
+	this.places.add(f);
+	f.setAttraction(this);
+	}
+}
 
+public void removePlace(Place f){
+	f.setAttraction(null);
+	this.places.remove(f);
+}
 }

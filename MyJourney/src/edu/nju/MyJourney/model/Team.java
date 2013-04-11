@@ -43,6 +43,7 @@ public List<User> getUsers() {
 public void setUsers(List<User> users) {
 	this.users = users;
 }
+
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "Jid")
 public Journey getJourney() {
@@ -53,6 +54,14 @@ public void setJourney(Journey journey) {
 	this.journey = journey;
 }
 
+public void addJourney(Journey f){
+	this.journey = f;
+	journey.setTeam(this);
+}
+public void removeJourney(Journey f){
+	f.setTeam(null);
+	this.setJourney(null);
+}
 
 
 

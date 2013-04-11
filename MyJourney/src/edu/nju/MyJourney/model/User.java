@@ -176,6 +176,17 @@ public class User {
 	public void setConcerned(List<User> concerned) {
 		this.concerned = concerned;
 	}
+	public void addAtterntion(User p){
+		if(!this.attention.contains(p)){
+			this.attention.add(p);
+			p.concerned.add(this);
+		}
+	}
+	public void removeAtterntion(User p){
+		p.concerned.remove(this);
+		this.attention.remove(p);
+		
+	}
 	
 	public void addJourney(Journey f){
 		if(! this.journey.contains(f)){
@@ -206,5 +217,16 @@ public class User {
 	}
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+	public void addComments(Comment f){
+		if(! this.comments.contains(f)){
+		this.comments.add(f);
+		f.setUser(this);
+		}
+	}
+
+	public void removeComments(Comment f){
+		f.setUser(null);
+		this.comments.remove(f);
 	}
 }

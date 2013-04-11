@@ -96,6 +96,17 @@ public List<Comment> getComments() {
 public void setComments(List<Comment> comments) {
 	this.comments = comments;
 }
+public void addComments(Comment f){
+	if(! this.comments.contains(f)){
+	this.comments.add(f);
+	f.setRestaurant(this);
+	}
+}
+
+public void removeComments(Comment f){
+	f.setRestaurant(null);
+	this.comments.remove(f);
+}
 @OneToMany(mappedBy="restaurant", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {
@@ -105,5 +116,15 @@ public List<Place> getPlaces() {
 public void setPlaces(List<Place> places) {
 	this.places = places;
 }
+public void addPlace(Place f){
+	if(! this.places.contains(f)){
+	this.places.add(f);
+	f.setRestaurant(this);
+	}
+}
 
+public void removePlace(Place f){
+	f.setRestaurant(null);
+	this.places.remove(f);
+}
 }
