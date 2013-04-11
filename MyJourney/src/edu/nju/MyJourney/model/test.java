@@ -1,3 +1,4 @@
+
 package edu.nju.MyJourney.model;
 
 import org.hibernate.cfg.AnnotationConfiguration;

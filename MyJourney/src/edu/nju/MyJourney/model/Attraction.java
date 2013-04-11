@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionId;
@@ -23,7 +25,6 @@ import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.ContainedIn;
 import org.hibernate.search.annotations.IndexedEmbedded;
 
-import edu.nju.MyJourney.DTO.Comment;
 
 @Entity
 @Table(name="attraction" )
@@ -35,7 +36,7 @@ private String address;
 private float price = 0.0f;
 private boolean favor;
 private boolean dislike;
-
+private List<Place> places;
 private List<Comment> comments;
 @Id
 @GeneratedValue
@@ -46,7 +47,8 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
-@ElementCollection 
+@OneToMany(mappedBy="attraction", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OrderBy(value="id ASC")
 public List<Comment> getComments() {
 	return comments;
 }
@@ -103,6 +105,15 @@ public String getName() {
 
 public void setName(String name) {
 	this.name = name;
+}
+@OneToMany(mappedBy="attraction", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OrderBy(value="id ASC")
+public List<Place> getPlaces() {
+	return places;
+}
+
+public void setPlaces(List<Place> places) {
+	this.places = places;
 }
 
 }

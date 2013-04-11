@@ -8,20 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import edu.nju.MyJourney.DTO.Place;
 
 @Entity
 @Table(name="team")
 public class Team {
 private long tid;
-private String teamJourneyName;
-private List<Place> places;
-//private List<Long> journeyid;
+
+private Journey journey;
 private List<User> users;
 @Id
 @GeneratedValue
@@ -43,21 +43,14 @@ public List<User> getUsers() {
 public void setUsers(List<User> users) {
 	this.users = users;
 }
-@ElementCollection
-public List<Place> getPlaces() {
-	return places;
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "Jid")
+public Journey getJourney() {
+	return journey;
 }
 
-public void setPlaces(List<Place> places) {
-	this.places = places;
-}
-
-public String getTeamJourneyName() {
-	return teamJourneyName;
-}
-
-public void setTeamJourneyName(String teamJourneyName) {
-	this.teamJourneyName = teamJourneyName;
+public void setJourney(Journey journey) {
+	this.journey = journey;
 }
 
 

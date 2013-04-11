@@ -97,6 +97,7 @@
 	
 <script type="text/javascript">
 //自定义覆盖物
+var currentIndex=1;
 function SquareOverlay(center, length, color,imagename,placename) {
     this._center = center;
     this._length = length;
@@ -117,12 +118,18 @@ SquareOverlay.prototype.initialize = function (map) {
     div.style.width = this._length-30 + "px";
     div.style.height = this._length + "px";
     div.style.background = this._color;
-    div.innerHTML="<div id='image'></div><h3 style='text-align:center'>"+this._placename+"</h3>";
+    div.innerHTML="<div id='"+this._imagename+"'></div><h3 style='text-align:center'>"+this._placename+"</h3>";
     // 将div添加到覆盖物容器中  
    
     map.getPanes().markerPane.appendChild(div);
     // 保存div实例  
-     var imagediv=document.getElementById("image");
+     var imagediv=document.getElementById(this._imagename);
+    imagediv.style.height="60px";
+    imagediv.style.width="80px";
+    imagediv.style.marginLeft="5px";
+    imagediv.style.marginTop="10px";
+    imagediv.style.cursor="pointer";
+    div.style.zIndex=currentIndex;
    imagediv.style.background="url('../images/"+this._imagename+".PNG') no-repeat";
     this._div = div;
     // 需要将div元素作为方法的返回值，当调用该覆盖物的show、  
@@ -142,32 +149,61 @@ SquareOverlay.prototype.show = function () {
         this._div.style.display = "";
     }
 }
+SquareOverlay.prototype.up=function(){
+	
+	currentIndex++;
+	this._div.style.zIndex=currentIndex;
+}
 // 实现隐藏方法  
 SquareOverlay.prototype.hide = function () {
     if (this._div) {
-        this._div.style.display = "none";
+        this._div.style.display = "";
     }
 }
 
 SquareOverlay.prototype.addEventListener = function(event,fun){  
 	this._div['on'+event] = fun;  
+	
 	} 
 //自定义结束
 
 
 var map = new BMap.Map("map");          // 创建地图实例
-var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
+//var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
 var totalldays=1;
 var day=1;
 var morningList = new Array();
 var afternoonList = new Array();
 //控件
-map.centerAndZoom(point, 5);   
+var beijingPoint=new BMap.Point(116.404, 39.915);
+var chengduPoint=new BMap.Point(104.06,30.67);
+var xiamenPoint =new BMap.Point(118.1,24.46);
+var xianggangPoint=new BMap.Point(114.1,22.2);
+var hangzhouPoint=new BMap.Point(120.19,30.26);
+create(map,beijingPoint,"BeiJing","北京");
+create(map,chengduPoint,"ChengDu","成都");
+create(map,xiamenPoint,"XiaMen","厦门");
+create(map,xianggangPoint,"XiangGang","香港");
+create(map,hangzhouPoint,"Hangzhou","杭州");
+
+map.centerAndZoom(beijingPoint, 5);   
 map.addControl(new BMap.NavigationControl());  //平移缩放
 map.addControl(new BMap.ScaleControl());  //比例尺
 //map.addControl(new BMap.OverviewMapControl());  //缩略图
-    map.enableScrollWheelZoom();    
+ map.enableScrollWheelZoom();   
+
 //标注
+
+//addMarker(point);
+//创建北京
+
+ //var marker = new BMap.Marker(point);        // 创建标注  
+//map.addOverlay(marker);      
+//var over=new SquareOverlay(map.getCenter(),120,"#ffffff","BeiJing","北京");
+//over.show();
+//map.addOverlay(over);
+//创建
+
 function addMarker(point){  
 	// 创建图标对象  
 	var myIcon = new BMap.Icon("../images/marker.jpg", new BMap.Size(10,10), {   
@@ -181,16 +217,30 @@ function addMarker(point){
 	 var marker = new BMap.Marker(point, {icon: myIcon});  
 	 map.addOverlay(marker);  
 	}  
-//addMarker(point);
-//创建北京
- var marker = new BMap.Marker(point);        // 创建标注  
-map.addOverlay(marker);      
-var over=new SquareOverlay(map.getCenter(),120,"#ffffff","BeiJing","北京");
-over.show();
-map.addOverlay(over);
-//创建
+function create(map,centerpoint,imagename,placename){
+	var marker = new BMap.Marker(centerpoint);        // 创建标注  
+	map.addOverlay(marker);      
+	var over=new SquareOverlay(centerpoint,120,"#ffffff",imagename,placename);
+	over.show();
+	map.addOverlay(over);
+   
+	over.addEventListener('click',function(){
+	 	 var morning=document.getElementById("morning");
+	   	var afternoon=document.getElementById("afternoon");
+	   	 if(morning.value==""){
+	   	morning.value=centerpoint.lng+","+centerpoint.lat;
+	   	}else if(afternoon.value==""){
+	   		afternoon.value=centerpoint.lng+","+centerpoint.lat;
+	   	}else{
+	   		alert("您已经添加完当日的行程");
+	   		}
+	}); 
+	over.addEventListener('mouseover',function(){
+		over.up();
+		
+	});
+}
 
-over.addEventListener('click',function1); 
 function reset(){
 	 var morning=document.getElementById("morning");
 	 var afternoon=document.getElementById("afternoon");
@@ -258,17 +308,6 @@ function otherDay(){
 	 morning.value=morningList[tmp2];
 	 afternoon.value=afternoonList[tmp2];
 }
-function  function1(){
-  	 var morning=document.getElementById("morning");
-  	var afternoon=document.getElementById("afternoon");
-  	 if(morning.value==""){
-  	morning.value=point.lng+","+point.lat;
-  	}else if(afternoon.value==""){
-  		afternoon.value=point.lng+","+point.lat;
-  	}else{
-  		alert("您已经添加完当日的行程");
-  		}
-   } 
 /*  var html = '<div class="tck_title" id="message">'
                         +'<div id="mc" class="title_zi">天安门</div>'
                           +'<div class="tck_neirong">'

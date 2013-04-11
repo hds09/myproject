@@ -21,6 +21,8 @@ import org.hibernate.annotations.Cascade;
 
 
 
+
+
 @Entity
 @Table(name="user")
 public class User {
@@ -40,7 +42,8 @@ public class User {
 	private List<User> concerned;
 	private List<Journey> journey;
 	private List<Team> team;
-	private List<Replay> meassage;
+	private List<Replay> message;
+	private List<Comment> comments;
 	
 	public String getAccount() {
 		return account;
@@ -136,22 +139,37 @@ public class User {
 	public void setTeam(List<Team> team) {
 		this.team = team;
 	}
+	public void addTeam(Team p){
+		if(!this.team.contains(p)){
+			this.team.add(p);
+			p.getUsers().add(this);
+		}
+	}
+	public void removeTeam(Team p){
+		p.getUsers().remove(this);
+		this.team.remove(p);
+		
+	}
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@OrderBy(value="id ASC")
 	public List<Replay> getMeassage() {
-		return meassage;
+		return message;
 	}
 	public void setMeassage(List<Replay> meassage) {
-		this.meassage = meassage;
+		this.message = meassage;
 	}
-	@ElementCollection
+	@ManyToMany(fetch = FetchType.LAZY)   
+	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
+	@JoinTable(name="attention_concerned", joinColumns={@JoinColumn(name="attention_uid")},  
+	 inverseJoinColumns={@JoinColumn(name="concern_uid")})  
 	public List<User> getAttention() {
 		return attention;
 	}
 	public void setAttention(List<User> attention) {
 		this.attention = attention;
 	}
-	@ElementCollection
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE },  
+			fetch = FetchType.LAZY, mappedBy="attention")  
 	public List<User> getConcerned() {
 		return concerned;
 	}
@@ -159,4 +177,34 @@ public class User {
 		this.concerned = concerned;
 	}
 	
+	public void addJourney(Journey f){
+		if(! this.journey.contains(f)){
+		this.journey.add(f);
+		f.setUser(this);
+		}
+	}
+
+	public void removeJourney(Journey f){
+		f.setUser(null);
+		this.journey.remove(f);
+	}
+	public void addMessage(Replay f){
+		if(! this.message.contains(f)){
+		this.message.add(f);
+		f.setUser(this);
+		}
+	}
+
+	public void removeMessage(Replay f){
+		f.setUser(null);
+		this.message.remove(f);
+	}
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OrderBy(value="id ASC")
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 }

@@ -5,13 +5,15 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import edu.nju.MyJourney.DTO.Comment;
 
 @Entity
 @Table(name="restaurant")
@@ -24,6 +26,7 @@ private String phone;
 private boolean favor;
 private boolean dislike;
 private List<Comment> comments;
+private List<Place> places;
 @Id
 @GeneratedValue
 
@@ -84,13 +87,23 @@ public boolean isDislike() {
 public void setDislike(boolean dislike) {
 	this.dislike = dislike;
 }
-@ElementCollection 
+@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OrderBy(value="id ASC")
 public List<Comment> getComments() {
 	return comments;
 }
 
 public void setComments(List<Comment> comments) {
 	this.comments = comments;
+}
+@OneToMany(mappedBy="restaurant", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OrderBy(value="id ASC")
+public List<Place> getPlaces() {
+	return places;
+}
+
+public void setPlaces(List<Place> places) {
+	this.places = places;
 }
 
 }
