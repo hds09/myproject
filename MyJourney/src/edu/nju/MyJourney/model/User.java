@@ -151,9 +151,9 @@ public class User {
 	public void removeTeam(Team p){
 		p.getUsers().remove(this);
 		this.team.remove(p);
-		
 	}
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="user",  fetch=FetchType.LAZY)
+	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@OrderBy(value="id ASC")
 	public List<Replay> getMeassage() {
 		return message;

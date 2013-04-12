@@ -1,5 +1,7 @@
 package edu.nju.MyJourney.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,7 +30,8 @@ public void deleteTeam(Team team){
 	 Session session=sessionFactory.openSession();
 		try {	
 			Transaction tx=session.beginTransaction();	
-			
+			List<User> users=team.getUsers();
+		
 			session.delete(team);
 	       tx.commit();
 		} catch (Exception e) {

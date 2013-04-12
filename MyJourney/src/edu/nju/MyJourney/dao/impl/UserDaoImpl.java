@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao
 		System.out.println(account+"登录"+user.getAccount());
 		return user;
 	}
-	public void upodate(User user){
+	public void update(User user){
 		 Session session=sessionFactory.openSession();
 			try {	
 				Transaction tx=session.beginTransaction();	
@@ -70,7 +70,31 @@ public class UserDaoImpl implements UserDao
 			}
 			session.close();
 	}
-public void deleteUser(User user){
+	public void removeTeam(User user,Team team){
+		 Session session=sessionFactory.openSession();
+			try {	
+				Transaction tx=session.beginTransaction();	
+				user.removeTeam(team);
+				session.update(user);
+		       tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.close();
+	}
+	public void removeJourney(User user,Journey journey){
+		 Session session=sessionFactory.openSession();
+			try {	
+				Transaction tx=session.beginTransaction();	
+				user.removeJourney(journey);
+				session.update(user);
+		       tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.close();
+	}
+    public void deleteUser(User user){
 	 Session session=sessionFactory.openSession();
 		try {	
 			Transaction tx=session.beginTransaction();	

@@ -1,5 +1,8 @@
 package edu.nju.MyJourney.dao;
 
-public interface TeamDao {
+import edu.nju.MyJourney.model.Team;
 
+public interface TeamDao {
+	public void deleteTeam(Team team);
+	public void insertTeam(Team team);
 }

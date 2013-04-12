@@ -43,7 +43,13 @@ public static void main(String args[]){
 	TeamDaoImpl dao2=new TeamDaoImpl();
 	dao2.insertTeam(team);
 	user.addTeam(team);
-	dao.upodate(user);
-	dao.deleteUser(user);
+	dao.update(user);
+	int length=team.getUsers().size();
+	for(int i=0;i<length;i++){
+		
+		dao.removeTeam(team.getUsers().get(i), team);
+	}
+	dao2.deleteTeam(team);
+	//dao.deleteUser(user);
 }
 }
