@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -134,14 +135,16 @@ public class User {
 	@JoinTable(name="users_Team", joinColumns={@JoinColumn(name="uid")},  
 	 inverseJoinColumns={@JoinColumn(name="tid")})   
 	public List<Team> getTeam() {
+		if(team==null)
+			return new ArrayList<Team>();
 		return team;
 	}
 	public void setTeam(List<Team> team) {
 		this.team = team;
 	}
 	public void addTeam(Team p){
-		if(!this.team.contains(p)){
-			this.team.add(p);
+		if(!this.getTeam().contains(p)){
+			this.getTeam().add(p);
 			p.getUsers().add(this);
 		}
 	}

@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,12 +16,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 
 @Entity
 @Table(name="team")
 public class Team {
 private long tid;
-
+private String TeamName;
 private Journey journey;
 private List<User> users;
 @Id
@@ -34,13 +37,17 @@ public void setTid(long id) {
 }
 
 
-@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE },  
-fetch = FetchType.LAZY, mappedBy="team")     
+@ManyToMany(fetch = FetchType.LAZY, mappedBy="team")  
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 public List<User> getUsers() {
+	if(this.users==null){
+		return new ArrayList<User>();
+	}
 	return users;
 }
 
 public void setUsers(List<User> users) {
+
 	this.users = users;
 }
 
@@ -61,6 +68,14 @@ public void addJourney(Journey f){
 public void removeJourney(Journey f){
 	f.setTeam(null);
 	this.setJourney(null);
+}
+
+public String getTeamName() {
+	return TeamName;
+}
+
+public void setTeamName(String teamName) {
+	TeamName = teamName;
 }
 
 

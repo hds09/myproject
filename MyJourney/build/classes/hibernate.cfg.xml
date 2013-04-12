@@ -25,5 +25,6 @@
          <mapping class="edu.nju.MyJourney.model.Journey"/>   
          <mapping class="edu.nju.MyJourney.model.Place"/>
           <mapping class="edu.nju.MyJourney.model.Comment"/>
+            <mapping class="edu.nju.MyJourney.model.Picture"/>
 </session-factory>
 </hibernate-configuration>

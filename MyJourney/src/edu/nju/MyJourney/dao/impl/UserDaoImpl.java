@@ -48,6 +48,37 @@ public class UserDaoImpl implements UserDao
 		System.out.println(account+"登录"+user.getAccount());
 		return user;
 	}
-	
-
+	public void upodate(User user){
+		 Session session=sessionFactory.openSession();
+			try {	
+				Transaction tx=session.beginTransaction();	
+				session.update(user);
+		       tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.close();
+	}
+	public void insertUser(User user){
+		 Session session=sessionFactory.openSession();
+			try {	
+				Transaction tx=session.beginTransaction();	
+				session.save(user);
+		       tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.close();
+	}
+public void deleteUser(User user){
+	 Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			session.delete(user);
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+}
 }
