@@ -1,0 +1,317 @@
+@CHARSET "UTF-8";
+/*------------------------------
+=BASIC SETUP
+------------------------------*/
+
+/* Makeshift CSS Reset */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Tell the browser to render HTML 5 elements as block */
+header, footer, section, aside, nav, article {
+	display: block;
+}
+
+body {
+	margin: 0 auto;
+	padding: 22px 0;
+	width:1260px;
+	font: 13px/22px Helvetica, Arial, sans-serif;
+	background: #F0F0F0;
+
+}
+
+h1, h2 {
+	font-size: 28px;
+	line-height: 44px;
+	padding: 22px 0;
+}
+
+h3 {
+	font-size: 18px;
+	line-height: 22px;
+	padding: 11px 0;
+}
+
+p {
+	padding-bottom: 22px;
+}
+
+
+
+/*------------------------------
+=NAVIGATION
+------------------------------*/
+
+nav {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background: url("../images/nav_background.png");
+}
+
+	nav ul {
+		margin: 0 auto;
+		width: 940px;
+		list-style: none;
+	}
+
+		nav ul li {
+			float: left;
+		}
+		
+			nav ul li a {
+				display: block;
+				margin-right: 20px;
+				width: 120px;
+				font-size: 20px;
+				line-height: 44px;
+				text-align: center;
+				text-decoration: none;
+				color: #777;
+			}
+			
+				nav ul li a:hover {
+					color: #fff;
+				}
+			
+			nav ul li.selected a {
+				color: #fff;
+			}
+			
+			nav ul li.subscribe a {
+				margin-left: 22px;
+				padding-left: 33px;
+				text-align: left;
+				background: url("../images/rss.png") left center no-repeat;
+			}
+
+
+
+/*------------------------------
+=INTRODUCTION
+------------------------------*/
+#kong{
+	height:30px;
+	width:570px;
+}
+
+
+
+#intro {
+	position: relative;
+	margin-top: 66px;
+	padding: 44px;
+	background: #8B795E url("images/intro_background.png") repeat-x;
+	
+	/* Background-size not implemented yet */
+	-webkit-background-size: 100%;
+	-o-background-size: 100%;
+	-khtml-background-size: 100%;
+
+	
+	/* Border-radius not implemented yet */
+	-moz-border-radius: 22px;
+	-webkit-border-radius: 22px;
+}
+
+	#intro h2, #intro p {
+		position: relative;
+		z-index: 9999;
+		width: 336px;
+	}
+	
+	#intro h2 {
+		padding: 0 0 22px 0;
+		font-weight: normal;
+		color: #fff;
+	}
+	
+	#intro p {
+		padding: 0;
+		color: #d9f499;
+	}
+	
+	#intro img {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 653px;
+		height: 100%;
+	
+		/* Border-radius not implemented yet */
+		-moz-border-radius: 22px;
+		-webkit-border-radius: 22px;
+	}
+
+
+
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+#outerContent{
+	margin-top:40px;
+	width:1260px;
+	height:620px;
+	background:url("../images/background.jpg") no-repeat;
+	padding-top: 0px;
+}
+#content {
+	width:900px;
+	margin-left:180px;
+	height:580px;
+	border:0px solid #000000;
+	display: table;
+	background:#ffffff;
+}
+#left{
+	width:200px;
+	height:580px;
+	border-right: 1px dashed #D26900;
+	padding: 20px;
+}
+#head{
+	
+	wdith:200px;
+	height:70px;
+	border-bottom: 1px dashed #D26900;
+}
+#headright{
+	width:60px;
+	float:left;
+	
+}
+#menuitem{
+	padding-left:50px;
+	width:150px;
+	height:50px;
+	border-bottom: 1px dashed #D26900;
+	font-size: 20px;
+	vertical-align: middle;
+}
+.menuitem{
+	padding-left:50px;
+	width:150px;
+	height:50px;
+	border-bottom: 1px dashed #D26900;
+	font-size: 20px;
+	vertical-align: middle;
+}
+#menuitem1{
+	 background:#C4E1FF;
+	
+	color:#D26900;
+}
+.menuitem:hover{
+	cursor: pointer;
+	/*  background:#C4E1FF;
+	
+	color:#D26900;*/
+}
+#headimage{
+	float:left;
+	margin:10px;
+	width:50px;
+	height:50px;
+	background:url("../images/head.PNG") no-repeat;
+	
+}
+#right{
+	
+}
+	#mainContent {
+		display: table-cell;
+		width: 620px;
+		padding-right: 22px;
+	}
+	
+	aside {
+		display: table-cell;
+		width:700px;
+		padding-left: 20px;
+		padding-top:100px;
+	
+	}
+
+
+#a_css{
+	font-size: 10px;
+	font-weight:15;
+	color:black;
+	margin-left:70px;
+	text-decoration:none;
+	font-family: sans-serif;
+}
+#a_css:hover{
+	cursor:pointer;
+	
+	text-decoration: underline;
+	color:#E63F00 ;
+}
+#a_css_pre{
+	font-size: 10px;
+	font-weight:15;
+	color:black;
+	margin-left:10px;
+	margin-right:70px;
+	text-decoration:none;
+	font-family: sans-serif;
+}
+#a_css_pre:hover{
+	cursor:pointer;
+	
+	text-decoration: underline;
+	color:#E63F00 ;
+}
+/*------------------------------
+=FOOTER
+------------------------------*/
+footer {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background: #222;
+}
+
+	footer div {
+		display: table;
+		margin: 0 auto;
+		padding: 44px 0;
+		width: 940px;
+		color: #777;
+	}
+	
+		footer div section {
+			display: table-cell;
+			width: 300px;
+		}
+		
+		footer div #about, footer div #blogroll {
+			padding-right: 20px;
+		}
+		
+	footer h3 {
+		color: #FFF;
+	}
+	
+	footer a {
+		color: #999;
+	}
+	
+		footer a:hover {
+			color: #FFF;
+			text-decoration: none;
+		}
+	
+	footer ul {
+		margin: 0 0 0 40px;
+		list-style: square;
+		color: #565656;
+	}
+	
+		footer ul li a {
+			display: block;
+		}
