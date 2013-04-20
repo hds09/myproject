@@ -3,6 +3,7 @@ package edu.nju.MyJourney.dao.impl;
 //import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -48,6 +49,33 @@ public class UserDaoImpl implements UserDao
 		System.out.println(account+"登录"+user.getAccount());
 		return user;
 	}
+	public boolean haveuser(String account,String pwd) {
+		System.out.println(account+" and "+pwd);
+		Session session = sessionFactory.openSession();
+		// TODO Auto-generated method stub
+		boolean result=false;
+		try {
+			
+			Transaction tx=session.beginTransaction();	
+             
+			String hql = "from User a  where a.account="
+					+ "'"+account+"' and "+"a.pwd="+"'"+pwd+"'";
+			Query query = session.createQuery(hql);
+			
+			List list = query.list();
+           if(list.size()==0){
+        	   result=false;
+           }else{
+        	   result=true;
+           }
+           tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		System.out.println(result);
+		return result;
+	}
 	public void update(User user){
 		 Session session=sessionFactory.openSession();
 			try {	
@@ -59,16 +87,19 @@ public class UserDaoImpl implements UserDao
 			}
 			session.close();
 	}
-	public void insertUser(User user){
+	public boolean insertUser(User user){
+		boolean result=false;
 		 Session session=sessionFactory.openSession();
 			try {	
 				Transaction tx=session.beginTransaction();	
 				session.save(user);
+				result=true;
 		       tx.commit();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			session.close();
+			return result;
 	}
 	public void removeTeam(User user,Team team){
 		 Session session=sessionFactory.openSession();
@@ -105,4 +136,64 @@ public class UserDaoImpl implements UserDao
 		}
 		session.close();
 }
+	@Override
+	public void deleteUserByAccount(String account) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		User user=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from User a  where a.account="
+					+ "'"+account+"'";
+			Query query = session.createQuery(hql);	
+			List list = query.list();
+           if(list.size()!=0){	
+        	   user=(User) list.get(0);
+           }
+			session.delete(user);
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+	}
+	@Override
+	public User getUserByAccount(String account) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		User user=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from User a  where a.account="
+					+ "'"+account+"'";
+			Query query = session.createQuery(hql);	
+			List list = query.list();
+           if(list.size()!=0){	
+        	   user=(User) list.get(0);
+        	  Hibernate.initialize(user.getJourney());
+           }
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return user;
+	}
+	
+	@Override
+	public User getUserById(long id) {
+		Session session=sessionFactory.openSession();
+		User user=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			
+		user= (User)session.load(User.class,id);
+	//	Hibernate.initialize(user);
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return user;
+	}
 }

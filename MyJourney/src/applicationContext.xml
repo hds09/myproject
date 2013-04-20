@@ -16,11 +16,37 @@
 
 	<bean id="UserDao" class="edu.nju.MyJourney.dao.impl.UserDaoImpl">
 	</bean>
+	<bean id="CityDao" class="edu.nju.MyJourney.dao.impl.CityDaoImpl">
+	</bean>
+	<bean id="AttractionDao" class="edu.nju.MyJourney.dao.impl.AttractionDaoImpl">
+	</bean>
+	<bean id="HotelDao" class="edu.nju.MyJourney.dao.impl.HotelDaoImpl">
+	</bean>
+	<bean id="JourneyDao" class="edu.nju.MyJourney.dao.impl.JourneyDaoImpl">
+	</bean>
+	<bean id="PlaceDao" class="edu.nju.MyJourney.dao.impl.PlaceDaoImpl">
+	</bean>
+	<!-- <bean id="ReplayDao" class="edu.nju.MyJourney.dao.impl.ReplayDaoImpl">
+	</bean> -->
+	<bean id="RestaurantDao" class="edu.nju.MyJourney.dao.impl.RestaurantDaoImpl">
+	</bean>
+	<bean id="TeamDao" class="edu.nju.MyJourney.dao.impl.TeamDaoImpl">
+	</bean>
 	<bean id="UserService" class="edu.nju.MyJourney.service.impl.UserServiceImpl">
 		<property name="UserDao">
 			<ref bean="UserDao"/>
 		</property>
 	</bean>		
+	<bean id="CityService" class="edu.nju.MyJourney.service.impl.CityServiceImpl">
+		<property name="CityDao">
+			<ref bean="CityDao"/>
+		</property>
+	</bean>	
+	<bean id="JourneyService" class="edu.nju.MyJourney.service.impl.JourneyServiceImpl">
+		<property name="JourneyDao">
+			<ref bean="JourneyDao"/>
+		</property>
+	</bean>	
 	<bean id="LoginAction" class="edu.nju.MyJourney.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService"/>
@@ -32,7 +58,26 @@
 	<bean id="MakeRouteAction" class="edu.nju.MyJourney.action.MakeRouteAction">
 		
 	</bean>	
+	<bean id="SubmitRouteAction" class="edu.nju.MyJourney.action.SubmitRouteAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+		<property name="CityService">
+			<ref bean="CityService"/>
+		</property>
+		<property name="JourneyService">
+			<ref bean="JourneyService"/>
+		</property>
+	</bean>	
 	<bean id="ManagerIndexAction" class="edu.nju.MyJourney.action.ManagerIndexAction">
+		
+	</bean>	
+	<bean id="RegisterAction" class="edu.nju.MyJourney.action.RegisterAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>	
+	<bean id="PersonCenterAction" class="edu.nju.MyJourney.action.PersonCenterAction">
 		
 	</bean>	
 </beans>

@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name="place")
 public class Place{
 private long id;
-private Date time;
+private String time;
 private Hotel hotel;
 private Restaurant restaurant;
 private Attraction attraction;
@@ -29,13 +29,7 @@ private List<Picture> images;
 private Journey journey;
 private String traffic;
 private int halfday;
-public Date getTime() {
-	return time;
-}
 
-public void setTime(Date time) {
-	this.time = time;
-}
 @ManyToOne(cascade=CascadeType.ALL, optional=true)
 @JoinColumn(name="place_hotel")
 public Hotel getHotel() {
@@ -126,5 +120,13 @@ public void addImages(Picture f){
 public void removeImages(Picture f){
 	f.setPlace(null);
 	this.images.remove(f);
+}
+
+public String getTime() {
+	return time;
+}
+
+public void setTime(String time) {
+	this.time = time;
 }
 }

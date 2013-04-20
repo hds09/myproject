@@ -15,16 +15,26 @@
       <!-- 建立一般会员的package-->
        <package name="user" namespace="/user"  extends="struts-default">
           <action name="index" class="IndexAction" >
-              <result name="success">/user/index.jsp</result>
+              <result name="success">index.jsp</result>
           </action>
-      
+          <action name="register" class="RegisterAction" >
+              <result name="success">/user/warning/registerSuccess.jsp</result>
+              <result name="failure">/user/warning/registerFailure.jsp</result>
+          </action>
           <action name="login" class="LoginAction" >
               <result name="success">index.jsp</result>
-              <result name="input">index.jsp</result>
-              <result name="failure">index.jsp</result>
+              <result name="failure">/user/warning/loginFailure.jsp</result>
           </action>
           <action name="makeRoute" class="MakeRouteAction" >
               <result name="success">makeRoute.jsp</result>
+          </action> 
+           <action name="submitRoute" class="SubmitRouteAction" >
+              <result name="success">/user/warning/addRouteSuccess.jsp</result>
+               <result name="failure">/user/warning/addRouteFailure.jsp</result>
+          </action> 
+           <action name="personCenter" class="PersonCenterAction" >
+              <result name="success">userInfo.jsp</result>
+               <result name="failure">/user/warning/unlogined.jsp</result>
           </action> 
       </package>
       

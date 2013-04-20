@@ -30,6 +30,21 @@ public class UserServiceImpl implements UserService
 		return userDao.login(account, password);
 	}
 
+
+	@Override
+	public boolean insertUser(User user) {
+		
+		// TODO Auto-generated method stub
+		return userDao.insertUser(user);
+	}
+
+	@Override
+	public User getUserByAccount(String account) {
+		// TODO Auto-generated method stub
+		
+		return userDao.getUserByAccount(account);
+	}
+
 	@Override
 	public UserDao getUserDao() {
 		// TODO Auto-generated method stub
@@ -39,6 +54,19 @@ public class UserServiceImpl implements UserService
 		this.userDao = userDao;
 	}
 
-	
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.update(user);
+	}
+
+
+	@Override
+	public boolean haveuser(String account, String pwd) {
+		// TODO Auto-generated method stub
+		return userDao.haveuser(account, pwd);
+	}
+
 
 }

@@ -46,7 +46,7 @@ public class User {
 	private List<Replay> message;
 	private List<Comment> comments;
 	
-	public String getAccount() {
+	public String getAccount() { 
 		return account;
 	}
 	public void setAccount(String account) {
@@ -122,9 +122,13 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="user",  fetch=FetchType.LAZY)
+	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@OrderBy(value="id ASC")
 	public List<Journey> getJourney() {
+		if(this.journey==null){
+			journey=new ArrayList<Journey>();
+		}
 		return journey;
 	}
 	public void setJourney(List<Journey> journey) {
@@ -156,6 +160,9 @@ public class User {
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@OrderBy(value="id ASC")
 	public List<Replay> getMeassage() {
+		if(this.message==null){
+			this.message=new ArrayList<Replay>();
+		}
 		return message;
 	}
 	public void setMeassage(List<Replay> meassage) {
@@ -192,15 +199,15 @@ public class User {
 	}
 	
 	public void addJourney(Journey f){
-		if(! this.journey.contains(f)){
-		this.journey.add(f);
+		if(! this.getJourney().contains(f)){
+		this.getJourney().add(f);
 		f.setUser(this);
 		}
 	}
 
 	public void removeJourney(Journey f){
 		f.setUser(null);
-		this.journey.remove(f);
+		this.getJourney().remove(f);
 	}
 	public void addMessage(Replay f){
 		if(! this.message.contains(f)){

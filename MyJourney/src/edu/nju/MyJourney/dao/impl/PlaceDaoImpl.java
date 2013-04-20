@@ -55,7 +55,17 @@ public class PlaceDaoImpl implements PlaceDao {
 	@Override
 	public void updatePlace(Place place) {
 		// TODO Auto-generated method stub
-		
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			session.update(place);
+           tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
 	}
+
+
 
 }

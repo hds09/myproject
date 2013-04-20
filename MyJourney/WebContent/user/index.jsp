@@ -38,7 +38,7 @@ document.getElementById(bg_div).style.display='none';
 			<li><a href="#">饭店</a></li>
 			<li><a href="makeRoute">旅程</a></li>
 			<li><a href="#">旅图</a></li>
-			<li><a href="#">个人中心</a></li>
+			<li><a href="personCenter">个人中心</a></li>
 			<li class="subscribe"><a href="#"></a></li>
 		</ul>
 	</nav>
@@ -64,7 +64,9 @@ document.getElementById(bg_div).style.display='none';
 					</header>	
 			</section>
 		<aside>
+		
 			<section id="login">
+			<s:if test="islogined==false" >
 				<form name="form1" action="login" method="post">
 				<h3><font color="white">嘻嘻，顺便登陆一下呗！</font></h3>
 				<p>
@@ -77,27 +79,64 @@ document.getElementById(bg_div).style.display='none';
 				</p>
 				<p> <input  id="button"  value="登陆" type="submit"  /><a id="index_a" onclick="ShowDiv('MyDiv','fade')">注册</a></p>
 			</form>
-			
+			</s:if>
+			<s:else>
+			  <h3><font color="white">嘻嘻，O(∩_∩)O欢迎你,</font><font color="red">${account}</font></h3>
+				<p>
+					<label for="name"><font color="white"></font></label>
+				
+				</p>
+				
+			</s:else>
 			</section>
+			
+			
 			<section id="fade" class="black_overlay">
             </section>
             <section id="MyDiv" class="white_content">
             <div style="text-align: right; cursor: default; height: 0px;">
             <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('MyDiv','fade')">关闭</a>
             </div>
-             <form name="form1" style="margin-bottom: 50px;" action="/MyJourney/register" method="post">
+             <form name="form1" style="margin-bottom: 50px;" action="register" method="post">
 				<h3><font color="#EE7700 ">欢迎加入我们的大家庭！</font></h3>
 				<p>
-					<label for="name"><font color="black">姓名:</font></label>
-					<input name="account" id="name" type="text" style="width:150px"/>
+					<label for="account"><font color="black">账号:</font></label>
+					<input name="user.account" id="name" type="text" style="width:150px"/>
 				</p>
 				<p>
 					<label for="password"><font color="black">密码:</font></label>
-					<input name="password" id="password" type="password" style="width:150px" />
+					<input name="user.pwd" id="password" type="password" style="width:150px" />
 				</p>
 				<p>
 					<label for="password"><font color="black">重复密码:</font></label>
 					<input name="password" id="password" type="password" style="width:150px" />
+				</p>
+				    <table>
+				    <tr>
+				    <td style="width:125px;">
+					<label for="sex"><font color="black">性别:</font></label>
+					</td>
+					<td>
+					<input name="user.sex" id="sex" type="radio" value="1" style="width:30px;" checked="checked">男
+					<input name="user.sex" id="sex" type="radio" value="0" style="width:30px;margin-left:0px" >女
+				   </td>
+				   </tr>
+				    </table>
+				<p>
+					<label for="name"><font color="black">姓名:</font></label>
+					<input name="user.name" id="name" type="text" style="width:150px" />
+				</p>
+				<p>
+					<label for="age"><font color="black">age:</font></label>
+					<input name="user.age" id="age" type="number" style="width:150px" />
+				</p>
+				<p>
+					<label for="phone"><font color="black">电话:</font></label>
+					<input name="user.phone" id="phone" type="tel" style="width:150px" />
+				</p>
+				<p>
+					<label for="email"><font color="black">email:</font></label>
+					<input name="user.email" id="email" type="email" style="width:150px" />
 				</p>
 				<p> <input  id="button"  value="注册" type="submit"  style="margin-left:200px"/></p>
 			</form>

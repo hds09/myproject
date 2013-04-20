@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,16 +16,30 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 
 @Entity
 @Table(name="journey")
 public class Journey {
+private static final int UNSTART=1;
+private static final int UNDERWAY=1;
+private static final int ENDED=1;
 private long id;
 private User user;
 private String journeyName;
 private Team team;
-private boolean state;
+private int state;
+public int getState() {
+	return state;
+}
+
+public void setState(int state) {
+	this.state = state;
+}
+
 private List<Place> places;
+
 @Id
 @GeneratedValue
 public long getId() {
@@ -34,7 +49,8 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
-@ManyToOne(cascade=CascadeType.ALL, optional=false)
+@ManyToOne( optional=true)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="journeyOwner")
 public User getUser() {
 	return user;
@@ -44,16 +60,13 @@ public void setUser(User user) {
 	this.user = user;
 }
 
-public boolean isState() {
-	return state;
-}
-
-public void setState(boolean state) {
-	this.state = state;
-}
-@OneToMany(mappedBy="journey", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OneToMany(mappedBy="journey",  fetch=FetchType.LAZY)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {
+	if(places==null){
+		places=new ArrayList<Place>();
+	}
 	return places;
 }
 
@@ -62,8 +75,8 @@ public void setPlaces(List<Place> places) {
 }
 
 public void addPlace(Place f){
-	if(! this.places.contains(f)){
-	this.places.add(f);
+	if(! this.getPlaces().contains(f)){
+	this.getPlaces().add(f);
 	f.setJourney(this);
 	}
 }

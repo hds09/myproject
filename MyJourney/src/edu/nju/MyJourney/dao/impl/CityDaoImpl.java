@@ -75,4 +75,26 @@ public class CityDaoImpl implements CityDao {
 		
 	}
 
+	@Override
+	public City getCityByPoint(String point) {
+		// TODO Auto-generated method stub
+		String tmp[]=point.split(",");
+		Session session=sessionFactory.openSession();
+		City city=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from City c where c.lat='"+tmp[0]+"' and c.lng='"+tmp[1]+"'";
+			Query query = session.createQuery(hql);	
+			 List list = query.list();
+			 if(list.size()!=0){
+				 city=(City)list.get(0);
+			 }
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return city;
+	}
+
 }

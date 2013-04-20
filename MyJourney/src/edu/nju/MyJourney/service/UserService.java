@@ -13,4 +13,8 @@ public interface UserService {
 	
 	public UserDao getUserDao();
 	public User Login(String account,String password);
+	public boolean insertUser(User user);
+	public User getUserByAccount(String account);
+	public void updateUser(User user);
+	 public boolean haveuser(String account,String pwd);
 }

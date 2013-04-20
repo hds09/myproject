@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="city")
@@ -22,6 +25,7 @@ private String country;
 private List<Attraction> attractions;
 private List<Hotel> hotels;
 private List<Restaurant> restaurants;
+private List<Place> places;
 @Id
 @GeneratedValue
 public int getCid() {
@@ -48,7 +52,8 @@ public void setCountry(String country) {
 	this.country = country;
 }
 
-@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OneToMany(mappedBy="city",fetch=FetchType.LAZY)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Attraction> getAttractions() {
 	return attractions;
@@ -68,7 +73,8 @@ public void removeAttraction(Attraction f){
 	f.setCity(null);
 	this.attractions.remove(f);
 }
-@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OneToMany(mappedBy="city",fetch=FetchType.LAZY)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Hotel> getHotels() {
 	return hotels;
@@ -88,7 +94,8 @@ public void removeHotel(Hotel f){
 	f.setCity(null);
 	this.hotels.remove(f);
 }
-@OneToMany(mappedBy="city", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OneToMany(mappedBy="city",fetch=FetchType.LAZY)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Restaurant> getRestaurants() {
 	return restaurants;
@@ -123,5 +130,28 @@ public String getLat() {
 public void setLat(String lat) {
 	this.lat = lat;
 }
+@OneToMany(mappedBy="city", fetch=FetchType.EAGER)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
+@OrderBy(value="id ASC")
+public List<Place> getPlaces() {
+	if(this.places==null){
+		this.places=new ArrayList<Place>();
+	}
+	return places;
+}
 
+public void setPlaces(List<Place> places) {
+	this.places = places;
+}
+public void addPlace(Place f){
+	if(! this.getPlaces().contains(f)){
+	this.getPlaces().add(f);
+	f.setCity(this);
+	}
+}
+
+public void removePlace(Place f){
+	f.setCity(null);
+	this.getPlaces().remove(f);
+}
 }

@@ -1,24 +1,34 @@
 package edu.nju.MyJourney.action;
 
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
+
 import edu.nju.MyJourney.model.User;
 import edu.nju.MyJourney.service.UserService;
 
 public class LoginAction extends BaseAction{
 	private UserService userService;
+	private boolean islogined;
+
 	private String account;
 	private String password;
 	private User user;
 	@Override
 	public String execute() throws Exception {
-		System.out.println("I am in");
+		
 //		user = userService.Login(account, password);
-		String result = INPUT;
-		if(user == null){
-			result = "failure";
-			addActionMessage("登陆失败");
+		String result = SUCCESS;
+		System.out.println(account+" and "+password);
+		if(!userService.haveuser(account, password)){
+			result="failure";
 		}else{
-			addActionMessage("登陆成功");
-			result = SUCCESS;
+			 ActionContext actionContext = ActionContext.getContext();  
+			  Map session = actionContext.getSession();	
+			  this.islogined=true;
+			 session.put("islogined",this.islogined);
+			 session.put("account",this.account);
+			 
 		}
 		return result;
 	}
@@ -47,5 +57,10 @@ public class LoginAction extends BaseAction{
 	public void setUser(User user) {
 		this.user = user;
 	}
-   
+	public boolean isIslogined() {
+		return islogined;
+	}
+	public void setIslogined(boolean islogined) {
+		this.islogined = islogined;
+	}
 }
