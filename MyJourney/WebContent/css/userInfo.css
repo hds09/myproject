@@ -200,11 +200,7 @@ nav {
 	font-size: 20px;
 	vertical-align: middle;
 }
-#menuitem1{
-	 background:#C4E1FF;
-	
-	color:#D26900;
-}
+
 .menuitem:hover{
 	cursor: pointer;
 	/*  background:#C4E1FF;
@@ -219,8 +215,13 @@ nav {
 	background:url("../images/head.PNG") no-repeat;
 	
 }
-#right{
+a{  
+	color:#D26900;
+	text-decoration: none;
 	
+}
+a:hover{
+	cursor: pointer;
 }
 	#mainContent {
 		display: table-cell;

@@ -10,7 +10,11 @@
 	<script src="../js/jquery.js" type="text/javascript"></script>
 </head>
 <body>
-
+<s:iterator value="citylist" var="city">
+<input type="hidden" value="<s:property value='#city.lat'/>,<s:property value='#city.lng'/>" name="cityPointList" />
+<input type="hidden" value="<s:property value='#city.name'/>" name="cityNameList" />
+<input type="hidden" value="<s:property value='#city.picture'/>" name="cityPictureList" />
+</s:iterator>
 
 	<header>
 		<h1>Where You Will Go</h1>
@@ -22,7 +26,7 @@
 			<li><a href="#">饭店</a></li>
 			<li class="selected"><a href="makeRoute">旅程</a></li>
 			<li><a href="#">旅图</a></li>
-			<li><a href="personCenter">个人中心</a></li>
+			<li><a href="personCenterSelect1">个人中心</a></li>
 			<li class="subscribe"><a href="#"></a></li>
 		</ul>
 	</nav>
@@ -41,11 +45,13 @@
 		<aside>
 	     <header>
 		<section id="plancontainer">
-			<h1>&nbsp&nbsp您的行程计划：</h1>
+			<h2>&nbsp&nbsp您的行程计划：</h2>
 			<form name="form" action="submitRoute" method="post">
 			<section  id="plan">
                <div id="planhead">
-               <h3>起始日期<input name="Date" id="startDate" type="date"  onblur="setchange()"></h3>
+               <h3>行程名称:<input type="text" value="" name="routeName" id="routeName" width="100px"/></h3>
+               <h3>行程性质:<input type="radio" value="0" name="state" id="state" checked="checked"/>个人<input type="radio" value="1" name="state" id="state" />组队</h3>
+               <h3>起始日期:<input name="Date" id="startDate" type="date"  onblur="setchange()"></h3>
 		        <h3 style="margin-left:119px;font-size: 20px;font-family: monospace;">第<font color="red">1</font>天<a id="a_css" onclick="addDay()">加一天</a></h3>
                 </div>
               <div id="plancontait">
@@ -179,8 +185,21 @@ var day=1;
 var morningList = new Array();
 var afternoonList = new Array();
 var date;
-//控件
 var beijingPoint=new BMap.Point(116.404, 39.915);
+var cityPointList=document.getElementsByName("cityPointList");
+var cityNameList=document.getElementsByName("cityNameList");
+var cityPictureList=document.getElementsByName("cityPictureList");
+var citylength=cityPointList.length;
+for(var i=0;i<citylength;i++){
+	var tmpString=cityPointList[i].value;
+	var Stringlist=new Array();
+	Stringlist=tmpString.split(",");
+	var point=new BMap.Point(Stringlist[0],Stringlist[1]);
+	//create(map,new BMap.Point(116.404,39.915),cityPictureList[i].value,cityNameList[i].value);
+	create(map,point,cityPictureList[i].value,cityNameList[i].value);
+}  
+//控件
+/* var beijingPoint=new BMap.Point(116.404, 39.915);
 var chengduPoint=new BMap.Point(104.06,30.67);
 var xiamenPoint =new BMap.Point(118.1,24.46);
 var xianggangPoint=new BMap.Point(114.1,22.2);
@@ -189,7 +208,7 @@ create(map,beijingPoint,"BeiJing","北京");
 create(map,chengduPoint,"ChengDu","成都");
 create(map,xiamenPoint,"XiaMen","厦门");
 create(map,xianggangPoint,"XiangGang","香港");
-create(map,hangzhouPoint,"Hangzhou","杭州");
+create(map,hangzhouPoint,"HangZhou","杭州"); */
 initDate();
 map.centerAndZoom(beijingPoint, 5);   
 map.addControl(new BMap.NavigationControl());  //平移缩放
@@ -233,9 +252,9 @@ function create(map,centerpoint,imagename,placename){
 	 	 var morning=document.getElementById("morning");
 	   	var afternoon=document.getElementById("afternoon");
 	   	 if(morning.value==""){
-	   	morning.value=centerpoint.lng+","+centerpoint.lat;
+	   	morning.value=placename;
 	   	}else if(afternoon.value==""){
-	   		afternoon.value=centerpoint.lng+","+centerpoint.lat;
+	   		afternoon.value=placename;
 	   	}else{
 	   		alert("您已经添加完当日的行程");
 	   		}
@@ -247,7 +266,7 @@ function create(map,centerpoint,imagename,placename){
 }
 
 function f1(){
-	alert("ok");
+
 	 var morning=document.getElementById("morning");
 	 var afternoon=document.getElementById("afternoon");
 	 morningList.push(morning.value);
@@ -276,7 +295,7 @@ function f1(){
 	input.setAttribute("type","hidden");
 	input.setAttribute("name","startDate");
 	input.setAttribute("value",dateToString);
-	alert("submit:"+dateToString);
+
 
 	div.appendChild(input);
 	
@@ -287,7 +306,7 @@ function f1(){
 	 var afternoonString=document.getElementById("afternoonString");
 	 var tmpmorning=morningList[0];
 	 var tmpafternoon=afternoonList[0];
-	 
+	 													
 	 var length=morningList.length;
 	 for(var i=1;i<length;i++){
 		 tmpmorning=tmpmorning+"/"+morningList[i];
@@ -359,12 +378,12 @@ function reset(){
 	 var length=morningList.length;
 	morningList.splice(0,length);
 	afternoonList.s.splice(0,length);
-	 planhead.innerHTML="<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()' ></h3><h3 style='margin-left:1190px;font-size: 20px;font-family: monospace;'>第<font color='red'>1</font>天<a id='a_css' onclick='addDay()'>加一天</a></h3>"
+	 planhead.innerHTML="<h3>行程名称:<input type='text' value='' name='routeName' id='routeName' /></h3><h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3><h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()' ></h3><h3 style='margin-left:1190px;font-size: 20px;font-family: monospace;'>第<font color='red'>1</font>天<a id='a_css' onclick='addDay()'>加一天</a></h3>"
 }
 function addDay(){
 	if(day==1){
 		date=new Date(document.getElementById("startDate").value);
-		alert("addday:"+date.toLocaleDateString());
+	
 	}
 	 var dateId=document.getElementById("startDate");
 	 var tmp=new Date(dateId.value);
@@ -376,12 +395,20 @@ function addDay(){
 	 var morning=document.getElementById("morning");
 	 var afternoon=document.getElementById("afternoon");
 	 var planhead=document.getElementById("planhead");
+	 var routeName=document.getElementById("routeName");
+	 var state=document.getElementById("state");
+	 var statehtml="";
+	 if(state.value==1){
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state' checked='checked'/>组队</h3>";
+	 }else{
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3>";
+	 }
 	// var plancontait=document.getElementById("plancontait");
 	
 	 morningList.push(morning.value);
 	 afternoonList.push(afternoon.value);
 	 var tmp=morningList[0];
-     planhead.innerHTML="<h3>起始日期<input name='Date' id='startDate' type='date'onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='addDay()'>加一天</a></h3>";
+     planhead.innerHTML="<h3>行程名称:<input type='text' value='"+routeName.value+"' name='routeName' id='routeName' /></h3>"+statehtml+"<h3>起始日期<input name='Date' id='startDate' type='date'onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='addDay()'>加一天</a></h3>";
     // document.getElementById("a_css_pre").onclick = (function(morningList){
     //	 return preDay(morningList);
    //  })(morningList);
@@ -397,16 +424,23 @@ function preDay(){
 	var afternoon=document.getElementById("afternoon");
 	 var planhead=document.getElementById("planhead");
 	 var dateId=document.getElementById("startDate");
+	 var routeName=document.getElementById("routeName");
 	 var tmp=new Date(dateId.value);
 	 var yester=DateMinusDay(tmp);
 	 var tmpString=changeDateFormat(yester.getFullYear(),yester.getMonth()+1,yester.getDate());
-	
+	 var state=document.getElementById("state");
+	 var statehtml="";
+	 if(state.value==1){
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state' checked='checked'/>组队</h3>";
+	 }else{
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3>";
+	 }
 	morningList[day]=morning.value;
 	afternoonList[day]=afternoon.value;
 	if(day==1){
-		planhead.innerHTML="<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:119px;font-size: 20px;font-family: monospace;'>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='otherDay()'>后一天</a></h3>";
+		planhead.innerHTML="<h3>行程名称:<input type='text' value='"+routeName.value+"' name='routeName' id='routeName' /></h3>"+statehtml+"<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:119px;font-size: 20px;font-family: monospace;'>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='otherDay()'>后一天</a></h3>";
 	}else{
-		planhead.innerHTML="<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='otherDay()'>后一天</a></h3>";
+		planhead.innerHTML="<h3>行程名称:<input type='text' value='"+routeName.value+"' name='routeName' id='routeName' /></h3>"+statehtml+"<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='otherDay()'>后一天</a></h3>";
 	}
 	var tmp2=day-1;
 	morning.value=morningList[tmp2];
@@ -416,23 +450,32 @@ function preDay(){
 function otherDay(){
 	if(day==1){
 		date=new Date(document.getElementById("startDate").value);
-		alert("otherday:"+date.toLocaleDateString());
+	
 	}
 	 var dateId=document.getElementById("startDate");
 	 var tmp=new Date(dateId.value);
 	 var tomo=DateAddDay(tmp);
+	 
 	 var tmpString=changeDateFormat(tomo.getFullYear(),tomo.getMonth()+1,tomo.getDate());
 	var morning=document.getElementById("morning");
 	var afternoon=document.getElementById("afternoon");
 	 var planhead=document.getElementById("planhead");
+	 var routeName=document.getElementById("routeName");
+	 var state=document.getElementById("state");
+	 var statehtml="";
+	 if(state.value==1){
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state' checked='checked'/>组队</h3>";
+	 }else{
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3>";
+	 }
 	 var tmp=day-1;
 	 morningList[tmp]=morning.value;
 	 afternoonList[tmp]=afternoon.value;
 	 day=day+1;
 	 if(day==totalldays){
-		 planhead.innerHTML="<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='addDay()'>加一天</a></h3>";
+		 planhead.innerHTML="<h3>行程名称:<input type='text' value='"+routeName.value+"' name='routeName' id='routeName' /></h3>"+statehtml+"<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='addDay()'>加一天</a></h3>";
 	 }else{
-		 planhead.innerHTML="<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='otherDay()'>后一天</a></h3>";
+		 planhead.innerHTML="<h3>行程名称:<input type='text' value='"+routeName.value+"' name='routeName' id='routeName' /></h3>"+statehtml+"<h3>起始日期<input name='Date' id='startDate' type='date' onblur='setchange()'></h3><h3 style='margin-left:0px;font-size: 20px;font-family: monospace;'><a id='a_css_pre' onclick='preDay()'>前一天</a>第<font color='red'>"+day+"</font>天<a id='a_css' onclick='otherDay()'>后一天</a></h3>";
 	 }
 	 var tmp2=day-1;
 	 morning.value=morningList[tmp2];

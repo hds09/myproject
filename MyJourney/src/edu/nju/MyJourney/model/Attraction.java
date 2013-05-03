@@ -34,8 +34,8 @@ private String name;
 private City city;
 private String address;
 private float price = 0.0f;
-private boolean favor;
-private boolean dislike;
+private int favor;
+private int dislike;
 private List<Place> places;
 private List<Comment> comments;
 @Id
@@ -67,21 +67,7 @@ public void removeComments(Comment f){
 	f.setAttraction(null);
 	this.comments.remove(f);
 }
-public boolean isDislike() {
-	return dislike;
-}
 
-public void setDislike(boolean dislike) {
-	this.dislike = dislike;
-}
-
-public boolean isFavor() {
-	return favor;
-}
-
-public void setFavor(boolean favor) {
-	this.favor = favor;
-}
 
 public float getPrice() {
 	return price;
@@ -135,5 +121,21 @@ public void addPlace(Place f){
 public void removePlace(Place f){
 	f.setAttraction(null);
 	this.places.remove(f);
+}
+
+public int getFavor() {
+	return favor;
+}
+
+public void setFavor(int favor) {
+	this.favor = favor;
+}
+
+public int getDislike() {
+	return dislike;
+}
+
+public void setDislike(int dislike) {
+	this.dislike = dislike;
 }
 }

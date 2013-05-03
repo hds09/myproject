@@ -24,6 +24,7 @@ public class TeamDaoImpl implements TeamDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		
 			session.close();
 	}
 public void deleteTeam(Team team){
@@ -37,6 +38,7 @@ public void deleteTeam(Team team){
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		session.close();
 }
 }

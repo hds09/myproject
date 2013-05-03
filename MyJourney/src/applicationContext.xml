@@ -47,6 +47,26 @@
 			<ref bean="JourneyDao"/>
 		</property>
 	</bean>	
+	<bean id="RestaurantService" class="edu.nju.MyJourney.service.impl.RestaurantServiceImpl">
+		<property name="RestaurantDao">
+			<ref bean="RestaurantDao"/>
+		</property>
+	</bean>	
+	<bean id="PlaceService" class="edu.nju.MyJourney.service.impl.PlaceServiceImpl">
+		<property name="PlaceDao">
+			<ref bean="PlaceDao"/>
+		</property>
+	</bean>	
+	<bean id="HotelService" class="edu.nju.MyJourney.service.impl.HotelServiceImpl">
+		<property name="HotelDao">
+			<ref bean="HotelDao"/>
+		</property>
+	</bean>	
+	<bean id="AttractionService" class="edu.nju.MyJourney.service.impl.AttractionServiceImpl">
+		<property name="AttractionDao">
+			<ref bean="AttractionDao"/>
+		</property>
+	</bean>	
 	<bean id="LoginAction" class="edu.nju.MyJourney.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService"/>
@@ -56,7 +76,9 @@
 		
 	</bean>	
 	<bean id="MakeRouteAction" class="edu.nju.MyJourney.action.MakeRouteAction">
-		
+		<property name="CityService">
+			<ref bean="CityService"/>
+		</property>
 	</bean>	
 	<bean id="SubmitRouteAction" class="edu.nju.MyJourney.action.SubmitRouteAction">
 		<property name="UserService">
@@ -68,6 +90,9 @@
 		<property name="JourneyService">
 			<ref bean="JourneyService"/>
 		</property>
+		<property name="PlaceService">
+			<ref bean="PlaceService"/>
+		</property>
 	</bean>	
 	<bean id="ManagerIndexAction" class="edu.nju.MyJourney.action.ManagerIndexAction">
 		
@@ -78,6 +103,25 @@
 		</property>
 	</bean>	
 	<bean id="PersonCenterAction" class="edu.nju.MyJourney.action.PersonCenterAction">
-		
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>	
+	<bean id="EditRouteAction" class="edu.nju.MyJourney.action.EditRouteAction">
+		<property name="JourneyService">
+			<ref bean="JourneyService"/>
+		</property>
+		<property name="HotelService">
+			<ref bean="HotelService"/>
+		</property>
+		<property name="RestaurantService">
+			<ref bean="RestaurantService"/>
+		</property>
+		<property name="AttractionService">
+			<ref bean="AttractionService"/>
+		</property>
+		<property name="PlaceService">
+			<ref bean="PlaceService"/>
+		</property>
 	</bean>	
 </beans>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -60,10 +61,11 @@ public class User {
 		this.email = email;
 	}
 	@Id
-	@GeneratedValue
+	@GeneratedValue	
 	public long getUid() {
 		return uid;
 	}
+	
 	public void setUid(long id) {
 		this.uid = id;
 	}
@@ -199,7 +201,7 @@ public class User {
 	}
 	
 	public void addJourney(Journey f){
-		if(! this.getJourney().contains(f)){
+		if(!this.getJourney().contains(f)){
 		this.getJourney().add(f);
 		f.setUser(this);
 		}

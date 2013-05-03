@@ -23,6 +23,7 @@ private String name;
 private City city;
 private String address;
 private String phone;
+private float price = 0.0f;
 private boolean favor;
 private boolean dislike;
 private List<Comment> comments;
@@ -126,5 +127,13 @@ public void addPlace(Place f){
 public void removePlace(Place f){
 	f.setHotel(null);
 	this.places.remove(f);
+}
+
+public float getPrice() {
+	return price;
+}
+
+public void setPrice(float price) {
+	this.price = price;
 }
 }

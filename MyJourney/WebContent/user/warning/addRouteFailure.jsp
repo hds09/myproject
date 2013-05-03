@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script>alert("行程添加失败");
+location.href="/MyJourney/user/makeRoute";</script>
 </body>
 </html>

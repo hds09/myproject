@@ -42,18 +42,28 @@ public static void main(String args[]){
 	dao2.insertTeam(team);
 	user.addTeam(team);
 	dao.update(user);*///如果两个表都有记录  怎么加关联
-	UserDao userdao=new UserDaoImpl();
+	/*UserDao userdao=new UserDaoImpl();
+	User user=userdao.getUserByAccount("hds10");
 	JourneyDao journeydao=new JourneyDaoImpl();
-	Journey journey=new Journey();
-	journey.setJourneyName("探险者");
-	journeydao.insertJoueney(journey);
-	User user=userdao.getUserByAccount("hds");
+	*/
+	//List<Journey> journeylist=journeydao.getJourneyByPage(1, 4);
+	//System.out.println(journeylist.size())
+	/*User user=new User();
+	user.setAccount("hds10");
+	userdao.insertUser(user);
+	System.out.println(user.getUid());*/
+	//Journey journey=journeydao.getJourneyByUserObj(user);
+	//System.out.println(journey.getJourneyName());
+	//Journey journey=new Journey();
+	//journey.setJourneyName("探险者");
+	//journeydao.insertJoueney(journey);
+	//User user=userdao.getUserByAccount("hds");
 	//User user=userdao.getUserById(1);
-	System.out.println(user.getAccount());
+	//System.out.println(user.getAccount());
 	//user.setAccount("hds");
 	//userdao.insertUser(user);
-	user.addJourney(journey);
-	userdao.update(user);
+//	user.addJourney(journey);
+	//userdao.update(user);
 	//int length=team.getUsers().size();
 	/*for(int i=0;i<length;i++){
 	dao.removeTeam(team.getUsers().get(i), team);
@@ -61,60 +71,69 @@ public static void main(String args[]){
 	//dao2.deleteTeam(team);
 	//dao.deleteUserByAccount("hds");
 	
-	/*City beijing=new City();
+	City beijing=new City();
 	CityDao citydao=new CityDaoImpl();
 	beijing.setCountry("中国");
 	beijing.setLat("116.404");
 	beijing.setLng("39.915");
 	beijing.setName("北京");
+	beijing.setPicture("BeiJing");
 	
 	City chengdu =new City();
 	chengdu.setCountry("中国");
 	chengdu.setLat("104.06");
 	chengdu.setLng("30.67");
 	chengdu.setName("成都");
+	chengdu.setPicture("ChengDu");
 	
 	City hangzhou =new City();
 	hangzhou.setCountry("中国");
 	hangzhou.setLat("120.19");
 	hangzhou.setLng("30.26");
 	hangzhou.setName("杭州");
+	hangzhou.setPicture("HangZhou");
 	
 	City lijiang=new City();
 	lijiang.setCountry("中国");
 	lijiang.setLat("100.25");
 	lijiang.setLng("26.86");
 	lijiang.setName("丽江");
+	lijiang.setPicture("LiJiang");
 	
 	City shanghai=new City();
 	shanghai.setCountry("中国");
 	shanghai.setLat("121.29");
 	shanghai.setLng("31.14");
 	shanghai.setName("上海");
+	shanghai.setPicture("ShangHai");
 	
 	City xiamen=new City();
 	xiamen.setCountry("中国");
 	xiamen.setLat("118.1");
 	xiamen.setLng("24.46");
 	xiamen.setName("厦门");
+	xiamen.setPicture("XiaMen");
 	
 	City xianggang=new City();
 	xianggang.setCountry("中国");
 	xianggang.setLat("114.1");
 	xianggang.setLng("22.2");
 	xianggang.setName("香港");
+	xianggang.setPicture("XiangGang");
 	
 	City taibei=new City();
 	taibei.setCountry("中国");
 	taibei.setLat("121.30");
 	taibei.setLng("25.03");
 	taibei.setName("台北");
+	taibei.setPicture("TaiBei");
 	
 	City sanya=new City();
 	sanya.setCountry("中国");
 	sanya.setLat("109.31");
 	sanya.setLng("18.14");
 	sanya.setName("三亚");
+	sanya.setPicture("SanYa");
 	citydao.insertCity(sanya);
 	citydao.insertCity(taibei);
 	citydao.insertCity(xianggang);
@@ -123,7 +142,7 @@ public static void main(String args[]){
 	citydao.insertCity(lijiang);
 	citydao.insertCity(chengdu);
 	citydao.insertCity(beijing);
-	citydao.insertCity(hangzhou);*/
+	citydao.insertCity(hangzhou);
 	
 	/*User user=new User();
 

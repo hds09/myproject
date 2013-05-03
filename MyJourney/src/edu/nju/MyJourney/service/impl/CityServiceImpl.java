@@ -1,5 +1,7 @@
 package edu.nju.MyJourney.service.impl;
 
+import java.util.List;
+
 import edu.nju.MyJourney.dao.CityDao;
 import edu.nju.MyJourney.dao.PlaceDao;
 import edu.nju.MyJourney.model.City;
@@ -23,6 +25,16 @@ private CityDao cityDao;
 	public void updateCity(City city) {
 		// TODO Auto-generated method stub
 		cityDao.updateCity(city);
+	}
+	@Override
+	public List<City> getCity() {
+		// TODO Auto-generated method stub
+		return cityDao.getAllCity();
+	}
+	@Override
+	public City getCityByName(String name) {
+		// TODO Auto-generated method stub
+		return cityDao.getCityByName(name);
 	}
 
 }

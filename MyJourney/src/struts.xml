@@ -28,13 +28,91 @@
           <action name="makeRoute" class="MakeRouteAction" >
               <result name="success">makeRoute.jsp</result>
           </action> 
+         
            <action name="submitRoute" class="SubmitRouteAction" >
               <result name="success">/user/warning/addRouteSuccess.jsp</result>
-               <result name="failure">/user/warning/addRouteFailure.jsp</result>
+               <result name="error">/user/warning/addRouteFailure.jsp</result>
           </action> 
-           <action name="personCenter" class="PersonCenterAction" >
+           <action name="personCenterSelect1" class="PersonCenterAction" >
               <result name="success">userInfo.jsp</result>
                <result name="failure">/user/warning/unlogined.jsp</result>
+          </action> 
+          <action name="personCenterSelect2" class="PersonCenterAction" method="select2">
+              <result name="success">userInfo.jsp</result>
+               <result name="failure">/user/warning/unlogined.jsp</result>
+          </action> 
+          <action name="personCenterSelect3" class="PersonCenterAction" method="select3">
+              <result name="success">userInfo.jsp</result>
+               <result name="failure">/user/warning/unlogined.jsp</result>
+          </action> 
+          <action name="personCenterSelect4" class="PersonCenterAction" method="select4">
+              <result name="success">userInfo.jsp</result>
+               <result name="failure">/user/warning/unlogined.jsp</result>
+          </action> 
+            <action name="changePwd" class="PersonCenterAction"  method="changePwd">
+              <result name="success">/user/warning/changePwdSuccess.jsp</result>
+              <result name="failure">/user/warning/changePwdFailure.jsp</result>
+          </action> 
+          <action name="changeAge" class="PersonCenterAction"  method="changeAge">
+              <result name="success">/user/warning/changeAgeSuccess.jsp</result>
+              <result name="failure">/user/warning/changeAgeFailure.jsp</result>
+          </action> 
+          <action name="changeSex" class="PersonCenterAction"  method="changeSex">
+              <result name="success">/user/warning/changeSexSuccess.jsp</result>
+              <result name="failure">/user/warning/changeSexFailure.jsp</result>
+          </action> 
+          <action name="changeCity" class="PersonCenterAction"  method="changeCity">
+              <result name="success">/user/warning/changeCitySuccess.jsp</result>
+              <result name="failure">/user/warning/changeCityFailure.jsp</result>
+          </action> 
+          <action name="changePhone" class="PersonCenterAction"  method="changePhone">
+              <result name="success">/user/warning/changePhoneSuccess.jsp</result>
+              <result name="failure">/user/warning/changePhoneFailure.jsp</result>
+          </action> 
+          <action name="changeEmail" class="PersonCenterAction"  method="changeEmail">
+              <result name="success">/user/warning/changeEmailSuccess.jsp</result>
+              <result name="failure">/user/warning/changeEmailFailure.jsp</result>
+          </action> 
+           <action name="editRoute" class="EditRouteAction" >
+              <result name="success">editRoute.jsp</result>
+              <result name="failure"></result>
+          </action> 
+           <action name="editMorningRestaurant" class="EditRouteAction" method="editMorningRestaurant">
+              <result name="success">/user/warning/editMorningRestaurantSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningRestaurantFailure.jsp</result>
+          </action> 
+           <action name="editMorningHotel" class="EditRouteAction" method="editMorningHotel">
+              <result name="success">/user/warning/editMorningHotelSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningHotelFailure.jsp</result>
+          </action> 
+           <action name="editMorningAttraction" class="EditRouteAction" method="editMorningAttraction">
+              <result name="success">/user/warning/editMorningAttractionSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningAttractionFailure.jsp</result>
+          </action> 
+           <action name="editMorningTraffic" class="EditRouteAction" method="editMorningTraffic">
+              <result name="success">/user/warning/editMorningTrafficSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningTrafficFailure.jsp</result>
+          </action> 
+          <!--edit afternoon  -->
+        <action name="editAfternoonRestaurant" class="EditRouteAction" method="editAfternoonRestaurant">
+              <result name="success">/user/warning/editAfternoonRestaurantSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonRestaurantFailure.jsp</result>
+          </action> 
+           <action name="editAfternoonHotel" class="EditRouteAction" method="editAfternoonHotel">
+              <result name="success">/user/warning/editAfternoonHotelSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonHotelFailure.jsp</result>
+          </action> 
+           <action name="editAfternoonAttraction" class="EditRouteAction" method="editAfternoonAttraction">
+              <result name="success">/user/warning/editAfternoonAttractionSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonAttractionFailure.jsp</result>
+          </action> 
+           <action name="editAfternoonTraffic" class="EditRouteAction" method="editAfternoonTraffic">
+              <result name="success">/user/warning/editAfternoonTrafficSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonTrafficFailure.jsp</result>
+          </action> 
+             <action name="test" class="EditRouteAction" method="test">
+              <result name="success">editRoute.jsp</result>
+              <result name="failure"></result>
           </action> 
       </package>
       

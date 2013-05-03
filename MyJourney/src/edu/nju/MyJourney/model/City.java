@@ -22,6 +22,7 @@ private String lng;
 private String lat;
 private String name;
 private String country;
+private String picture;
 private List<Attraction> attractions;
 private List<Hotel> hotels;
 private List<Restaurant> restaurants;
@@ -153,5 +154,13 @@ public void addPlace(Place f){
 public void removePlace(Place f){
 	f.setCity(null);
 	this.getPlaces().remove(f);
+}
+
+public String getPicture() {
+	return picture;
+}
+
+public void setPicture(String picture) {
+	this.picture = picture;
 }
 }

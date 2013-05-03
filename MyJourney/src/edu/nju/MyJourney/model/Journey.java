@@ -30,13 +30,7 @@ private User user;
 private String journeyName;
 private Team team;
 private int state;
-public int getState() {
-	return state;
-}
 
-public void setState(int state) {
-	this.state = state;
-}
 
 private List<Place> places;
 
@@ -50,7 +44,7 @@ public void setId(long id) {
 	this.id = id;
 }
 @ManyToOne( optional=true)
-@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
+
 @JoinColumn(name="journeyOwner")
 public User getUser() {
 	return user;
@@ -61,7 +55,6 @@ public void setUser(User user) {
 }
 
 @OneToMany(mappedBy="journey",  fetch=FetchType.LAZY)
-@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {
 	if(places==null){
@@ -81,7 +74,7 @@ public void addPlace(Place f){
 	}
 }
 
-public void removeRestaurant(Attraction f){
+public void removePlace(Place f){
 	f.setCity(null);
 	this.places.remove(f);
 }
@@ -100,6 +93,12 @@ public Team getTeam() {
 public void setTeam(Team team) {
 	this.team = team;
 }
+public int getState() {
+	return state;
+}
 
+public void setState(int state) {
+	this.state = state;
+}
 
 }

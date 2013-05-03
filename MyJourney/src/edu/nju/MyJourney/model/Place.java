@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
 @Entity
 @Table(name="place")
 public class Place{
@@ -30,7 +32,8 @@ private Journey journey;
 private String traffic;
 private int halfday;
 
-@ManyToOne(cascade=CascadeType.ALL, optional=true)
+@ManyToOne( optional=true)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_hotel")
 public Hotel getHotel() {
 	return hotel;
@@ -39,7 +42,8 @@ public Hotel getHotel() {
 public void setHotel(Hotel hotel) {
 	this.hotel = hotel;
 }
-@ManyToOne(cascade=CascadeType.ALL, optional=true)
+@ManyToOne( optional=true)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_restaurant")
 public Restaurant getRestaurant() {
 	return restaurant;
@@ -48,7 +52,8 @@ public Restaurant getRestaurant() {
 public void setRestaurant(Restaurant restaurant) {
 	this.restaurant = restaurant;
 }
-@ManyToOne(cascade=CascadeType.ALL, optional=true)
+@ManyToOne(optional=true)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_Attraction")
 public Attraction getAttraction() {
 	return attraction;
@@ -74,7 +79,8 @@ public void setHalfday(int halfday) {
 	this.halfday = halfday;
 }
 
-@ManyToOne(cascade=CascadeType.ALL, optional=true)
+@ManyToOne( optional=true)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_city")
 public City getCity() {
 	return city;
@@ -92,7 +98,7 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
-@ManyToOne(cascade=CascadeType.ALL, optional=true)
+@ManyToOne( optional=true)
 @JoinColumn(name="place_journey")
 public Journey getJourney() {
 	return journey;
@@ -101,7 +107,8 @@ public Journey getJourney() {
 public void setJourney(Journey journey) {
 	this.journey = journey;
 }
-@OneToMany(mappedBy="place", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@OneToMany(mappedBy="place",  fetch=FetchType.LAZY)
+@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Picture> getImages() {
 	return images;
