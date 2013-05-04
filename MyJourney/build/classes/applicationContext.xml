@@ -32,9 +32,14 @@
 	</bean>
 	<bean id="TeamDao" class="edu.nju.MyJourney.dao.impl.TeamDaoImpl">
 	</bean>
+	<bean id="AdministratorDao" class="edu.nju.MyJourney.dao.impl.AdministratorDaoImpl">
+	</bean>
 	<bean id="UserService" class="edu.nju.MyJourney.service.impl.UserServiceImpl">
 		<property name="UserDao">
 			<ref bean="UserDao"/>
+		</property>
+		<property name="AdministratorDao">
+			<ref bean="AdministratorDao"/>
 		</property>
 	</bean>		
 	<bean id="CityService" class="edu.nju.MyJourney.service.impl.CityServiceImpl">
@@ -72,6 +77,39 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>	
+	<bean id="AdminLoginAction" class="edu.nju.MyJourney.action.AdminLoginAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AdminLogoutAction" class="edu.nju.MyJourney.action.AdminLogoutAction">
+	</bean>
+	<bean id="AdminEditUserAction" class="edu.nju.MyJourney.action.AdminEditUserAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AdminDeleteUserAction" class="edu.nju.MyJourney.action.AdminDeleteUserAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="UserBatchUploadAction" class="edu.nju.MyJourney.action.UserBatchUploadAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AdminSearchUserAction" class="edu.nju.MyJourney.action.AdminSearchUserAction">
+		
+	</bean>
+	<bean id="AdminIndexAction" class="edu.nju.MyJourney.action.AdminIndexAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AdminJourneyAction" class="edu.nju.MyJourney.action.AdminJourneyAction">
+		
+	</bean>
 	<bean id="IndexAction" class="edu.nju.MyJourney.action.IndexAction">
 		
 	</bean>	

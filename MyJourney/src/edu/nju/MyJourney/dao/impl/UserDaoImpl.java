@@ -199,4 +199,22 @@ public class UserDaoImpl implements UserDao
 		session.close();
 		return user;
 	}
+	
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		List<User> users=null;
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from User";
+			Query query = session.createQuery(hql);	
+			users = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return users;
+	}
 }

@@ -1,6 +1,7 @@
 package edu.nju.MyJourney.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,5 +17,7 @@ public interface UserService {
 	public boolean insertUser(User user);
 	public User getUserByAccount(String account);
 	public void updateUser(User user);
-	 public boolean haveuser(String account,String pwd);
+	public boolean haveuser(String account,String pwd);
+	public boolean adminSignin(String email,String pwd);
+	public List<User> getAllUsers();
 }

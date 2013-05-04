@@ -116,6 +116,40 @@
           </action> 
       </package>
       
+      <package name="admin" namespace="/admin" extends="json-default">
+           <action name="adminlogin" class="AdminLoginAction" >
+            	<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action> 
+          <action name="adminlogout" class="AdminLogoutAction" >
+               <result name="success">/admin/signin.jsp</result>
+          </action> 
+ 		  <action name="adminIndex" class="AdminIndexAction" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/index.jsp</result>
+          </action> 
+          <action name="register" class="RegisterAction" >
+              <result name="success">/admin/warning/registerSuccess.jsp</result>
+              <result name="failure">/admin/warning/registerFailure.jsp</result>
+          </action>
+          <action name="userbatchupload" class="UserBatchUploadAction" >
+              <result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action>
+          <action name="adminedituser" class="AdminEditUserAction" >
+          		<result name="success" type="json"></result>
+          </action>
+          <action name="admindeleteuser" class="AdminDeleteUserAction" >
+          		<result name="success">/admin/index.jsp</result>
+          </action>
+          <action name="adminsearchuser" class="AdminSearchUserAction" >
+          		<result name="success">/admin/usersearch.jsp</result>
+          </action>
+           <action name="adminJourneyManagement" class="AdminJourneyAction" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/journey_m.jsp</result>
+          </action>
+      </package>
       <!-- <package name="manager" namespace="/manager" extends="struts-default">
            <action name="index" class="ManagerIndexAction" >
               <result name="success">/manager/index.jsp</result>
