@@ -81,7 +81,7 @@ document.getElementById(bg_div).style.display='none';
 			</form>
 			</s:if>
 			<s:else>
-			  <h3><font color="white">嘻嘻，O(∩_∩)O欢迎你,</font><font color="red">${account}</font></h3>
+			  <h3><font color="white">嘻嘻，O(∩_∩)O欢迎你,</font><font color="red">${account}</font><a href="/MyJourney/user/logout" style="color:yellow">退出</a></h3>
 				<p>
 					<label for="name"><font color="white"></font></label>
 				

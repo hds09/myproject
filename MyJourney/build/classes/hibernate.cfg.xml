@@ -20,7 +20,7 @@
          <mapping class="edu.nju.MyJourney.model.Restaurant"/>  
          <mapping class="edu.nju.MyJourney.model.Hotel"/>  
          <mapping class="edu.nju.MyJourney.model.City"/>  
-         <mapping class="edu.nju.MyJourney.model.Replay"/>  
+         <mapping class="edu.nju.MyJourney.model.Reply"/>  
          <mapping class="edu.nju.MyJourney.model.Team"/>  
          <mapping class="edu.nju.MyJourney.model.Journey"/>   
          <mapping class="edu.nju.MyJourney.model.Place"/>

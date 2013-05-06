@@ -107,6 +107,8 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>	
+	<bean id="LogoutAction" class="edu.nju.MyJourney.action.LogoutAction">	
+	</bean>	
 	<bean id="EditRouteAction" class="edu.nju.MyJourney.action.EditRouteAction">
 		<property name="JourneyService">
 			<ref bean="JourneyService"/>

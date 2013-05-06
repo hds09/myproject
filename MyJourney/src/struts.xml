@@ -25,6 +25,10 @@
               <result name="success">index.jsp</result>
               <result name="failure">/user/warning/loginFailure.jsp</result>
           </action>
+           <action name="logout" class="LogoutAction" >
+              <result name="success">/user/warning/logoutSuccess.jsp</result>
+              <result name="failure">/user/warning/logoutFailure.jsp</result>
+          </action>
           <action name="makeRoute" class="MakeRouteAction" >
               <result name="success">makeRoute.jsp</result>
           </action> 

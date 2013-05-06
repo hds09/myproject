@@ -44,7 +44,7 @@ public class User {
 	private List<User> concerned;
 	private List<Journey> journey;
 	private List<Team> team;
-	private List<Replay> message;
+	private List<Reply> message;
 	private List<Comment> comments;
 	
 	public String getAccount() { 
@@ -161,13 +161,13 @@ public class User {
 	@OneToMany(mappedBy="user",  fetch=FetchType.LAZY)
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@OrderBy(value="id ASC")
-	public List<Replay> getMeassage() {
+	public List<Reply> getMeassage() {
 		if(this.message==null){
-			this.message=new ArrayList<Replay>();
+			this.message=new ArrayList<Reply>();
 		}
 		return message;
 	}
-	public void setMeassage(List<Replay> meassage) {
+	public void setMeassage(List<Reply> meassage) {
 		this.message = meassage;
 	}
 	@ManyToMany(fetch = FetchType.LAZY)   
@@ -211,14 +211,14 @@ public class User {
 		f.setUser(null);
 		this.getJourney().remove(f);
 	}
-	public void addMessage(Replay f){
+	public void addMessage(Reply f){
 		if(! this.message.contains(f)){
 		this.message.add(f);
 		f.setUser(this);
 		}
 	}
 
-	public void removeMessage(Replay f){
+	public void removeMessage(Reply f){
 		f.setUser(null);
 		this.message.remove(f);
 	}
