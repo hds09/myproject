@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+	
+		<meta charset="utf-8">
+	
+		<title>jPaginator - jQuery plugin</title>  
+		<meta name="description" content="">
+	  	<meta name="author" content="">
+	  
+		<script type="text/javascript" src="../script/jquery.js"></script>
+		<script type="text/javascript" src="../script/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="../script/jPaginator-min.js"></script>
+	
+		<style type="text/css" media="all">
+			@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400italic&v2);
+			@import url(jPaginator.css);
+			@import url(custom.css);		
+		</style>
+		
+		<script type="text/javascript">
+		// Initial call
+		$(document).ready(function(){
+			
+			$("#pagination").jPaginator({ 
+				nbPages:64,
+				marginPx:5,
+				length:8, 
+				overBtnLeft:'#over_backward', 
+				overBtnRight:'#over_forward', 
+				maxBtnLeft:'#max_backward', 
+				maxBtnRight:'#max_forward', 
+				onPageClicked: function(a,num) { 
+					$("#page").html("Page "+num); 
+				} 
+			});
+			
+		});
+		 
+		</script>
+	
+	</head>
+	
+	<body>
+	
+		<div id="container">
+		
+			<!--include a div which we'll use to illustrate jPaginator doing its job-->
+			<div id="page"></div>
+	
+			<div id="pagination"> 
+			
+				<!-- optional left control buttons--> 					
+				<a class="control" id="max_backward"></a>
+				
+				<a class="control" id="over_backward"></a> 
+								
+				<div class='paginator_p_wrap'> 
+				
+					<div class='paginator_p_bloc'> 
+					
+						<!--<div class='paginator_p'></div> // page number : dynamically added --> 
+						
+					</div> 
+					
+				</div> 
+				
+				<!-- optional right control buttons--> 
+				<a class="control" id="over_forward"></a>
+				
+				<a class="control" id="max_forward"></a> 
+										
+				<!-- slider --> 
+				<div class='paginator_slider' class='ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all'> 
+					
+					<a class='ui-slider-handle ui-state-default ui-corner-all' href='#'></a> 
+					
+				</div>
+				
+			</div>
+		
+		</div>
+	
+	</body>
+
+</html>
+

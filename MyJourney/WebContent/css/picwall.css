@@ -1,0 +1,5 @@
+@CHARSET "UTF-8";
+.alburn{background-color:#3AE;opacity:0.8;margin: 3px;width: 275px; height: 275px;float: left;border: 1px solid #555;box-shadow:1px 0px 1px #111;}
+.alburn img{width: 275px;height:275px;border:2px solid #555;border-radius:3px; box-shadow:1px #333;}
+.alburn p{margin: 2px;overflow: hidden;}
+.alburn a{text-decoration: none;}

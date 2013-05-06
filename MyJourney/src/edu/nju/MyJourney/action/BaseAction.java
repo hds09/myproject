@@ -32,6 +32,13 @@ public class BaseAction extends ActionSupport{
     public HttpServletResponse response(){
         return ServletActionContext.getResponse();
     }
+    public String path(){
+    	return request().getContextPath(); 
+    }
+    //返回http://localhost:8080/MyJourney/。。。
+    public String basePath(){
+    	return request().getScheme()+"://"+request().getServerName()+":"+request().getServerPort()+path()+"/"; 
+    }
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub

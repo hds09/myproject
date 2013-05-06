@@ -11,6 +11,7 @@
      <constant name="struts.custom.i18n.resources" value="messageResource"/>
      <!-- 上传的全部图片的最大限制-->
      <constant name="struts.multipart.maxSize" value="1024102400"/>
+     <constant name="struts.multipart.saveDir" value="d:/test" />
      
       <!-- 建立一般会员的package-->
        <package name="user" namespace="/user"  extends="struts-default">
@@ -128,7 +129,81 @@
           </action> 
  
       </package> -->
-       
+       <!-- fdp -->
+      <package name="ajax" namespace="/ajax" extends="json-default">
+          <action name="accountValidate" class="AccountValidateAction">
+              <result type="json"></result>
+          </action>
+          <action name="rand" class="edu.nju.MyJourney.action.ajax.RandomAction">
+      		  <result type="stream">
+                  <param name="contentType">image/jpeg</param>
+                  <param name="inputName">inputStream</param>
+       		   </result>
+ 	      </action>
+ 	      <action name="addAttention" class="AddAttentionAction">
+ 	          <result type="json"></result>
+ 	      </action>
+ 	      <action name="picstream" class="PicstreamAction">
+ 	          <result type="json"></result>
+ 	      </action> 
+ 	      <action name="attention" class="UserAttention">
+ 	          <result type="json"></result>
+ 	      </action>
+ 	      <action name="concerned" class="UserConcerned">
+ 	          <result type="json"></result>
+ 	      </action>
+ 	      <action name="message" class="UserMessage">
+ 	          <result type="json"></result>
+ 	      </action>
+      </package>
+      <package name="picture" namespace="/pic" extends="struts-default">
+          <action name="daren" class="DarenAction">
+              <result name="success">/famous/daren.jsp</result>
+          </action>
+          <action name="album" class="AlbumAction">
+              <result name="success">/Album/index.jsp</result>
+          </action>
+ 	      <action name="picwall" class="PicwallAction">
+ 	          <result name="success">/photoWall/picWall.jsp</result>
+ 	      </action>
+ 	      <action name="home" class="HomeAction">
+ 	          <result name="success">/darenHome/darenHome.jsp</result>
+ 	      </action>
+          <action name="upload" class="PictureUploadAction">
+              <interceptor-ref name="fileUpload">
+                  <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg</param>
+                  <param name="maximumSize">1024000</param>
+              </interceptor-ref>
+              <interceptor-ref name="defaultStack" />
+              <result name="success">/user/picturesUpload.jsp</result>
+              <result name="failure">/user/picturesUpload.jsp</result>
+          </action>
+          <action name="userJourney" class="UserJourneyAction">
+              <result name="success">/createAlbum/createAlbum.jsp</result>
+              <result name="failure">/module/notLogin.jsp</result>
+          </action>
+ 	      <action name="createAlbum" class="CreateAlbumAction">
+ 	          <interceptor-ref name="fileUpload">
+                  <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg</param>
+                  <param name="maximumSize">1024000</param>
+              </interceptor-ref>
+              <interceptor-ref name="defaultStack" />
+              <result name="success" type="redirectAction">userJourney？placeId=${placeId}</result>
+              <result name="failure">/createAlbum/createAlbum.jsp</result>
+ 	      </action>
+ 	      <action name="createHeadPhoto" class="CreateHeadPhotoAction">
+ 	          <interceptor-ref name="fileUpload">
+                  <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpg</param>
+                  <param name="maximumSize">1024000</param>
+              </interceptor-ref>
+              <interceptor-ref name="defaultStack" />
+              <result name="success" type="redirectAction">home?darenId=${darenId}</result>
+              <result name="failure"></result>
+ 	      </action>
+ 	      <action name="page" class="edu.nju.MyJourney.action.PageAction">
+ 	          <result name="success">../module/bottomIndex.jsp</result>
+ 	      </action>
+      </package>
    
   </struts>
   

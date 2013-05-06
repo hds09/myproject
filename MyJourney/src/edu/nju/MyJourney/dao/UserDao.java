@@ -1,6 +1,9 @@
 package edu.nju.MyJourney.dao;
 
+import java.util.List;
+
 import edu.nju.MyJourney.model.Journey;
+import edu.nju.MyJourney.model.Picture;
 import edu.nju.MyJourney.model.Team;
 import edu.nju.MyJourney.model.User;
 
@@ -16,6 +19,9 @@ public interface UserDao {
 	public boolean haveuser(String account,String pwd);
 	public User getUserByAccount(String account);
 	public User getUserById(long id);
+	//fdp
+	public User userInfo(long id);
+	public List<Picture> getUserPicture(int page, int pageSize);
 //	public void save(User user);
 //	
 //	
@@ -31,4 +37,5 @@ public interface UserDao {
 //	 * ���id����user���һ����¼
 //	 */
 //	public void updateByUserid(User user);
+	
 }

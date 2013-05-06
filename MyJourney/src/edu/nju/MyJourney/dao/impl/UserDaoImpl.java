@@ -199,4 +199,48 @@ public class UserDaoImpl implements UserDao
 		session.close();
 		return user;
 	}
+	//fdp
+    @Override
+    public User userInfo(long id) {
+    	Session session=sessionFactory.openSession();
+		User user=null;
+		try {
+
+			Transaction tx=session.beginTransaction();	
+			String hql = "from User a  where a.id="	+ "'"+id+"'";
+			Query query = session.createQuery(hql);	
+			List list = query.list();
+           if(list.size()!=0){
+        	   user=(User) list.get(0);
+        	   Hibernate.initialize(user.getAttention());
+        	   Hibernate.initialize(user.getComments());
+        	   Hibernate.initialize(user.getConcerned());
+        	   Hibernate.initialize(user.getJourney());
+        	   Hibernate.initialize(user.getMeassage());
+        	   Hibernate.initialize(user.getTeam());
+        	   
+           }
+           tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return user;
+    }
+    @Override
+    public List<Picture> getUserPicture(int page, int pageSize) {
+    	Session session=sessionFactory.openSession();
+		List<Picture> result = null;
+		try{
+			Transaction tx=session.beginTransaction();
+			//TO DO
+	        tx.commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return result;
+    }
 }
