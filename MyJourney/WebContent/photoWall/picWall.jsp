@@ -9,11 +9,7 @@
 	@IMPORT "../css/banner.css";
 	@IMPORT "../css/picwall.css";
 </style>
-<!-- 
-<script src="./resource/base-2013040215135502.js"></script>
 <script src="../js/h.js"></script></head>
-<script src="../js/base-2013040215135502.js" type="text/javascript"></script>
- -->
 </head>
 <body style="background-color:#111">
 	<jsp:include page="/module/header.jsp"></jsp:include>

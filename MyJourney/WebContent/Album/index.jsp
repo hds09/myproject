@@ -11,7 +11,6 @@
 	@IMPORT "../Album/resource/3.css";
 	@IMPORT "../Album/resource/4.css";
 </style>
-<script src="../js/base-2013040215135502.js" type="text/javascript"></script>
 <script src="../js/h.js"></script>
 </head>
 <body>

@@ -163,7 +163,7 @@
           <action name="album" class="AlbumAction">
               <result name="success">/Album/index.jsp</result>
           </action>
- 	      <action name="picwall" class="PicwallAction">
+ 	      <action name="picwall" class="WallAction">
  	          <result name="success">/photoWall/picWall.jsp</result>
  	      </action>
  	      <action name="home" class="HomeAction">

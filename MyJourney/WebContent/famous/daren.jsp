@@ -10,9 +10,6 @@
 	@IMPORT "../css/banner.css";
 	@import "../famous/resource/2.css";
 </style>
-<script src="../famous/resource/base-2013040215135502.js"></script>
-<script src="../js/base-2013040215135502.js" type="text/javascript"></script>
-
 <script src="../js/h.js"></script></head>
 </head>
 <body>

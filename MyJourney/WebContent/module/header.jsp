@@ -11,18 +11,18 @@
 			    		    <ul>
 			    		     <li><a href="index.jsp" target="_top" hidefocus="on">首页<span class="i"></span></a></li>
 			    		     <li><a href="#" target="_top" hidefocus="on">酒店<span class="i"></span></a></li> 
-			    		     <li><a href="" target="_top" hidefocus="on">饭店<span class="i"></span></a></li> 
+			    		     <li><a href="#" target="_top" hidefocus="on">饭店<span class="i"></span></a></li> 
 			    		     <li><a href="/MyJourney/pic/picwall" target="_top" hidefocus="on">旅图<span class="i"></span></a></li> 
 			    		     <li><a href="/MyJourney/pic/daren" target="_top" hidefocus="on">达人<span class="i"></span></a></li> 
-			    		     <li><a href="makeRoute" target="_top" hidefocus="on">旅程<span class="i"></span></a></li>
+			    		     <li><a href="/MyJourney/user/makeRoute" target="_top" hidefocus="on">旅程<span class="i"></span></a></li>
 			    		    </ul> 
 		    		   </div> 
 		    		   
 		    		   <div class="q_header_tnav">
 			    		    <ul> 
 			    		    	<s:if test="#session.account!=null">
-				    		    	<li id="__loginInfo_u__" class="q_header_username fn-nonehead" ><a href="http://user.qunar.com/index.jsp#basic" hidefocus="on" class="q_header_uname" rel="nofollow">${session.account }</a></li> 
-				    		        <li id="__loginInfo_r__"><a href="logout" hidefocus="on" rel="nofollow">退出</a></li> 
+				    		    	<li id="__loginInfo_u__" class="q_header_username fn-nonehead" ><a href="/MyJourney/pic/home?account=${session.account }" hidefocus="on" class="q_header_uname" rel="nofollow">${session.account }</a></li> 
+				    		        <li id="__loginInfo_r__"><a href="/MyJourney/user/logout" hidefocus="on" rel="nofollow">退出</a></li> 
 			    		    	</s:if>
 			    		    	<s:else>
 			    		    		<li class="q_header_username darkgray666 J-popUp fn-cursor"><a href="javascript:showLogin()" hidefocus="on" rel="nofollow">登录</a></li> 

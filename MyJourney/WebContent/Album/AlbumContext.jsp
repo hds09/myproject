@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<link href="./resource/albumDay-2013040215135502.css" rel="stylesheet" type="text/css">
 <div class="container" style="width:1140px;margin:20px auto;">
 	<div class="travels_title pt20 fn-pr">
     	<!--标题编辑-->

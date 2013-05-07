@@ -10,8 +10,15 @@
 	@IMPORT "../css/common.css";
 	@IMPORT "../css/banner.css";
 	@import "../createAlbum/resource/3.css";
+	
+	.highlight
+	{
+		background-color: rgba(a,3,8,0.8);
+	}
+	
 </style>
 <script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/h.js"></script>
 <script type="text/javascript">
 	function changePlaceId(id){
 		$("#placeId").value = id;
@@ -23,6 +30,9 @@
 		
 		
 	}
+	$("li.pl15").click(function(){
+		$(this).addClass("highlight").end().siblings().removeClass("highlight");
+	});
 </script>
 </head>
 <body>

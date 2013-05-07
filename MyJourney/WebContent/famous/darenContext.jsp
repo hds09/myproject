@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
-<div class="w980 darkgray999 fn-bc mb10"><a href="http://lvtu.qunar.com/">旅图首页</a>  &gt; 达人列表</div>
+<div class="w980 darkgray999 fn-bc mb10"><a href="/MyJourney/user/index">云游首页</a>  &gt; 达人列表</div>
 <div class="w980 fn-bc lvtu_daren_info fn-ohidden border-bs-gray pb10">
 	<div class="lvtu_daren_info_l fn-fl mr10">
 		<img src="../famous/resource/lvtu_daren_ad_1.jpg" width="670" height="260">

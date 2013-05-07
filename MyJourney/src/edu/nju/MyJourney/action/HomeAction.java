@@ -15,9 +15,11 @@ public class HomeAction extends PageAction{
 	private long darenId;
 	private Daren daren;
 	private List<Journey> journeyList;
+	private String account;
 	@Override
 	public String execute() throws Exception {
 		String result = SUCCESS;
+		darenId = homeService.getUserByAccount(account).getUid();
 		daren = homeService.DarenInfo(darenId);
 		if(session().getAttribute("account") !=null){
 			String loginAccount = (String) session().getAttribute("account");
@@ -60,6 +62,12 @@ public class HomeAction extends PageAction{
 	}
 	public void setJourneyList(List<Journey> journeyList) {
 		this.journeyList = journeyList;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	
 }	

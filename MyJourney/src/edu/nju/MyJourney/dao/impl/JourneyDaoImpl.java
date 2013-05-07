@@ -98,6 +98,9 @@ public class JourneyDaoImpl implements JourneyDao{
            if(list.size()!=0){	
         	   result=(Journey) list.get(0);
         	   Hibernate.initialize(result.getPlaces());
+        	   for(Place p:result.getPlaces()){
+        		   Hibernate.initialize(p.getImages());
+        	   }
            }
 	       tx.commit();
 		} catch (Exception e) {
