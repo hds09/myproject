@@ -4,9 +4,9 @@ import java.util.List;
 
 import edu.nju.MyJourney.dao.JourneyDao;
 import edu.nju.MyJourney.helperModel.WallPicture;
-import edu.nju.MyJourney.service.PicwallService;
+import edu.nju.MyJourney.service.WallService;
 
-public class PicwallServiceImpl implements PicwallService {
+public class WallServiceImpl implements WallService {
 	private JourneyDao journeyDao;
 	@Override
 	public List<WallPicture> getWallPictures(int page,int pageSize) {

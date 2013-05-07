@@ -79,7 +79,7 @@
 	        <ref bean="DarenDao"></ref>
 	    </property>
 	</bean>
-	<bean id="PicwallService" class="edu.nju.MyJourney.service.impl.PicwallServiceImpl">
+	<bean id="WallService" class="edu.nju.MyJourney.service.impl.WallServiceImpl">
 	    <property name="JourneyDao">
 	        <ref bean="JourneyDao"></ref>
 	    </property>
@@ -174,9 +174,9 @@
 	        <ref bean="HomeService"></ref>
 	    </property>
 	</bean>
-	<bean id="PicwallAction" class="edu.nju.MyJourney.action.PicwallAction"> 
-		<property name="PicwallService">
-		    <ref bean="PicwallService"></ref>
+	<bean id="WallAction" class="edu.nju.MyJourney.action.WallAction"> 
+		<property name="WallService">
+		    <ref bean="WallService"></ref>
 		</property>
 	</bean>
 	<bean id="UserJourneyAction" class="edu.nju.MyJourney.action.UserJourneyAction">
@@ -195,8 +195,8 @@
 		</property>
 	</bean>
 	<bean id="PicstreamAction" class="edu.nju.MyJourney.action.ajax.PicstreamAction">
-	    <property name="PicwallService">
-		    <ref bean="PicwallService"></ref>
+	    <property name="WallService">
+		    <ref bean="WallService"></ref>
 		</property>
 	</bean>
 	<bean id="UserAttention" class="edu.nju.MyJourney.action.ajax.UserAttention">
