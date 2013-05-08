@@ -3,8 +3,11 @@ package edu.nju.MyJourney.helpflow;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.nju.MyJourney.dao.JourneyDao;
 import edu.nju.MyJourney.dao.UserDao;
+import edu.nju.MyJourney.dao.impl.JourneyDaoImpl;
 import edu.nju.MyJourney.dao.impl.UserDaoImpl;
+import edu.nju.MyJourney.model.Journey;
 import edu.nju.MyJourney.model.User;
 
 public class SearchFlow {
@@ -104,6 +107,43 @@ public class SearchFlow {
 		}
 		return result;
 	}
+	
+	
+	
+	public static ArrayList<Journey> JourneySearch(SearchPrepareStatement sps){
+		ArrayList<Journey> result=new ArrayList<Journey>();
+		String searchType=sps.type;
+		String keyWord=sps.KEYWORD;
+		String j_type=sps.j_type;
+		if(searchType.equals("JourneySearch")){
+			JourneyDao jdao=new JourneyDaoImpl();
+			List<Journey> all=jdao.getAllJourneys();
+			for(int i=0;i<all.size();i++){
+				boolean ismatched=false;
+				if(all.get(i).getJourneyName().contains(keyWord)){
+					ismatched=true;
+				}
+				if(j_type.equals("p")){
+					if(all.get(i).getState()==1){
+						ismatched=false;
+					}
+				}else if(j_type.equals("t")){
+					if(all.get(i).getState()==0){
+						ismatched=false;
+					}
+				}else{
+					
+				}
+				if(ismatched){
+					result.add(all.get(i));
+				}
+			}
+		}
+		return result;
+	}
+	
+	
+	
 	
 	private static ArrayList<User> sortByAge(ArrayList<User> users){
 		ArrayList<User> result=new ArrayList<User>();

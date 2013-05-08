@@ -10,4 +10,5 @@ public interface AttractionDao {
 		public Attraction getAttractionByName(String name);
 		public void updateAttraction(Attraction hotel);
 		public List<Attraction> getAllAttraction();
+		public Attraction getAttractionById(String id);
 }

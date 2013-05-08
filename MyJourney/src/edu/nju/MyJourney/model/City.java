@@ -13,6 +13,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name="city")
@@ -52,8 +54,8 @@ public String getCountry() {
 public void setCountry(String country) {
 	this.country = country;
 }
-
-@OneToMany(mappedBy="city",fetch=FetchType.LAZY)
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="city")
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Attraction> getAttractions() {
@@ -74,7 +76,9 @@ public void removeAttraction(Attraction f){
 	f.setCity(null);
 	this.attractions.remove(f);
 }
-@OneToMany(mappedBy="city",fetch=FetchType.LAZY)
+
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="city")
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Hotel> getHotels() {
@@ -95,7 +99,9 @@ public void removeHotel(Hotel f){
 	f.setCity(null);
 	this.hotels.remove(f);
 }
-@OneToMany(mappedBy="city",fetch=FetchType.LAZY)
+
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="city")
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Restaurant> getRestaurants() {
@@ -131,7 +137,9 @@ public String getLat() {
 public void setLat(String lat) {
 	this.lat = lat;
 }
-@OneToMany(mappedBy="city", fetch=FetchType.EAGER)
+
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="city")
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {

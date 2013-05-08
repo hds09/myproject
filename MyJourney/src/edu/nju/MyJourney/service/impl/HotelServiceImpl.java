@@ -22,5 +22,10 @@ public class HotelServiceImpl implements HotelService {
 		// TODO Auto-generated method stub
 		this.hotelDao.updateHotel(hotel);
 	}
+	@Override
+	public Hotel getHotelById(String id) {
+		// TODO Auto-generated method stub
+		return hotelDao.getHotelById(id);
+	}
 
 }

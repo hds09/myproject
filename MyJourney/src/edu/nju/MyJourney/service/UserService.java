@@ -20,4 +20,6 @@ public interface UserService {
 	public boolean haveuser(String account,String pwd);
 	public boolean adminSignin(String email,String pwd);
 	public List<User> getAllUsers();
+	public User getUserById(String id);
+	public void deleteUserById(String id);
 }

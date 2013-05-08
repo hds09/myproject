@@ -22,5 +22,10 @@ public class AttractionServiceImpl implements AttractionService {
 		// TODO Auto-generated method stub
 		this.attractionDao.updateAttraction(attraction);
 	}
+	@Override
+	public Attraction getAttractionById(String id) {
+		// TODO Auto-generated method stub
+		return attractionDao.getAttractionById(id);
+	}
 
 }

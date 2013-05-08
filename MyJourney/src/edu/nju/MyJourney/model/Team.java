@@ -37,7 +37,7 @@ public void setTid(long id) {
 }
 
 
-@ManyToMany(fetch = FetchType.LAZY, mappedBy="team")  
+@ManyToMany(fetch = FetchType.EAGER, mappedBy="team")  
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 public List<User> getUsers() {
 	if(this.users==null){

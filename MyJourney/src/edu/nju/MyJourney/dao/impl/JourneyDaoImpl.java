@@ -119,6 +119,38 @@ public class JourneyDaoImpl implements JourneyDao{
 		session.close();
 		
 	}
+	@Override
+	public List<Journey> getAllJourneys() {
+		// TODO Auto-generated method stub
+		List<Journey> journeys=null;
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from Journey";
+			Query query = session.createQuery(hql);	
+			journeys = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return journeys;
+	}
+	@Override
+	public void deleteJourneyById(String id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			Journey j=new JourneyDaoImpl().getJourneyById(Integer.parseInt(id));
+			session.delete(j);
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		session.close();
+	}
 	
 
 }

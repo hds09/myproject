@@ -10,4 +10,5 @@ public interface RestaurantDao {
 		public Hotel getRestaurantByName(String name);
 		public void updateRestaurant(Restaurant hotel);
 		public List<Hotel> getAllRestaurant();
+		public Restaurant getRestaurantById(String id);
 }

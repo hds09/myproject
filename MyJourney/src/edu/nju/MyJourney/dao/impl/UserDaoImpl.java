@@ -189,10 +189,16 @@ public class UserDaoImpl implements UserDao
 		User user=null;
 		try {	
 			Transaction tx=session.beginTransaction();	
-		
-		user= (User)session.load(User.class,id);
-	//	Hibernate.initialize(user);
-	       tx.commit();
+			String hql = "from User a  where a.id="
+					+ "'"+id+"'";
+			Query query = session.createQuery(hql);	
+	
+			List list = query.list();
+           if(list.size()!=0){	
+        	   user=(User) list.get(0);
+        	  Hibernate.initialize(user.getJourney());
+           }
+	       tx.commit(); 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -216,5 +222,26 @@ public class UserDaoImpl implements UserDao
 		}
 		session.close();
 		return users;
+	}
+	@Override
+	public void deleteUserById(String id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		User user=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from User a  where a.id="
+					+ "'"+id+"'";
+			Query query = session.createQuery(hql);	
+			List list = query.list();
+           if(list.size()!=0){	
+        	   user=(User) list.get(0);
+           }
+			session.delete(user);
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
 	}
 }

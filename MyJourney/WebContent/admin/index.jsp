@@ -40,23 +40,45 @@
 					input.textContent='edit';
 				}
 			}
-			function deleteUser(ids){
-				$.ajax({
-					type:'post',
-					url:'admindeleteuser.action',
-					data:{ids:ids},
-					dataType:"json",  
-					error : function(XMLHttpRequest, textStatus, errorThrown) {   
-	                     
-		            },  
-				});
-			}
 			function isXML(input){
 				var value = input.value;
 		        var res = value.indexOf('.xml');
 		        if(res==-1){
 		        	alert("wrong file extension");
 		        }
+			}
+			function deleteUsers(){
+				var idList=[];
+				var ids="";
+				$(".row_check").each(function(){
+				    var $this = $(this);
+				    if($this.is(":checked")){
+				    	idList.push($this.attr("id"));
+				    }
+				});
+				for(var i=0;i<idList.length;i++){
+					ids=idList[i]+"+"+ids;
+				}
+				if(ids!=""){
+					$.ajax({
+						type:'post',
+						url:'admindeleteuser.action',
+						data:{ids:ids},
+						dataType:"json",  
+						success: function(data){
+							alert("success");
+							location.href="adminIndex.action";
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown) {   
+		                     
+			            },  
+					});
+					alert("success");
+					location.href="adminIndex.action";
+				}else{
+					alert("illegal!");
+				}
+				
 			}
 		</script>
 		<title>Admin Index</title>
@@ -83,6 +105,8 @@
 				<ul class="navi">
 					<li class="navi_li_selected">User Management</li>
 					<li class="navi_li"><a href="adminJourneyManagement.action" class="other_lnk">Journey Management</a></li>
+					<li class="navi_li"><a href="" class="other_lnk">Cities</a></li>
+					<li class="navi_li"><a href="batchjobs.jsp" class="other_lnk">Batch Jobs</a></li>
 				</ul>
 			</div>
 			<div id="content">
@@ -156,7 +180,7 @@
 						}
 						for(int i=0; i<size;i++){
 							out.print("<tr class='row' id='"+"tr"+users.get(i).getUid()+"'>"+
-							"<td><input type='checkbox' class='row_check'/></td>"+
+							"<td><input type='checkbox' class='row_check' id='"+users.get(i).getUid()+"'/></td>"+
 							"<td class='id"+users.get(i).getUid()+"'>"+users.get(i).getUid()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getAccount()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getAge()+"</td>"+
@@ -167,7 +191,7 @@
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getPhone()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getPwd()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getSex()+"</td>"+
-							"<td><span class='op_text' onclick='editRow("+users.get(i).getUid()+",this)'>edit</span>&nbsp;<span class='op_text' onclick='deleteUser("+users.get(i).getUid()+")'>delete</span></td>"+
+							"<td><span class='op_text' onclick='editRow("+users.get(i).getUid()+",this)'>edit</span>&nbsp;<span class='op_text'><a href='adminViewUser.action?uid="+users.get(i).getUid()+"'>detail</a></span></td>"+
 							"</tr>");
 						}
 					%>
@@ -176,7 +200,7 @@
 				<div id="action_div" align="right">
 					<span class="action_txt" onclick="showField(1)">Add User</span>
 					<span class="action_txt" onclick="showField(2)">BatchUpload</span>
-					<span class="action_txt">Delete</span>
+					<span class="action_txt" onclick='deleteUsers()'>Delete</span>
 				</div>
 			</div>
 			<div id="addUserDiv" style="display:none">

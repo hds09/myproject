@@ -19,6 +19,7 @@ public interface UserDao {
 	public User getUserByAccount(String account);
 	public User getUserById(long id);
 	public List<User> getAllUsers();
+	public void deleteUserById(String id);
 //	public void save(User user);
 //	
 //	

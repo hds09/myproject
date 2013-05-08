@@ -58,5 +58,15 @@ public class JourneyServiceImpl implements JourneyService{
 		// TODO Auto-generated method stub
 		this.journeyDao.updateJourney(journey);
 	}
+	@Override
+	public List<Journey> getAllJourneys() {
+		// TODO Auto-generated method stub
+		return this.journeyDao.getAllJourneys();
+	}
+	@Override
+	public void deleteJourneyById(String id) {
+		// TODO Auto-generated method stub
+		this.journeyDao.deleteJourneyById(id);
+	}
 
 }

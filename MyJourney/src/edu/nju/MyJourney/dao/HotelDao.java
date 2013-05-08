@@ -9,4 +9,5 @@ public void insertHotel(Hotel hotel);
 public Hotel getHotelByName(String name);
 public void updateHotel(Hotel hotel);
 public List<Hotel> getAllHotel();
+public Hotel getHotelById(String id);
 }

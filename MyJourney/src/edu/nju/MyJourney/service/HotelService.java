@@ -5,4 +5,5 @@ import edu.nju.MyJourney.model.Hotel;
 public interface HotelService {
 public void insertHotel(Hotel hotel);
 public void updateHotel(Hotel hotel);
+public Hotel getHotelById(String id);
 }

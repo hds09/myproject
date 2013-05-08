@@ -1,0 +1,308 @@
+body {
+	background-color:#D9D9D9;
+	font-family:Verdana;
+	width:70%;
+	margin-left:15%;
+	margin-right:15%;
+}
+.global_header{
+	padding-left:10px;
+	padding-top:30px;
+	background-color:#FFFFFF;
+	height:80px;
+}
+.header_left{
+	float:left;
+	width:60%;
+	font-size:20px;
+	font-weight:300;
+}
+.header_right{
+	float:left;
+	width:30%;
+	padding-right:20px;
+	font-size:12px;
+	font-weight:bold;
+}
+
+#container{
+	background-color:#FFFFFF;
+	padding-bottom:30px;
+}
+.header_left span{
+	margin-bottom:20px;
+}
+.admin_name{
+	font-size:12px;
+	color:#528CE0;
+}
+.sep{
+	height:2px;
+	background-color:#D9D9D9;
+}
+.logout_lnk{
+	text-decoration:underline;
+	color:#2B81AF;
+}
+.logout_lnk a:visited{
+	text-decoration:underline;
+	color:#2B81AF;
+}
+#left_navi{
+	float:left;
+	width:auto;
+	height:auto;
+	padding-right:10px;
+	padding-top:20px;
+	background-color:#FFFFFF;
+	margin-right:2px;
+}
+#content{
+	float:left;
+	height:auto;
+	margin-top:10px;
+	margin-left:10px;
+}
+.navi{
+	list-style-type: none;
+}
+.navi_li{
+	font-size:12px;
+	list-style-type: none;
+	padding:5px;
+}
+.navi_li_selected{
+	list-style-type: none;
+	font-size:12px;
+	background-color:#565656;
+	padding:5px;
+}
+.navi_li:hover{
+	
+}
+.other_lnk{
+	text-decoration:none;
+}
+#global_footer{
+	clear:both;
+}
+.row th{
+	font-size:12px;
+	font-weight:normal;
+	background-color:#8B795E;
+}
+#user_table{
+	border-color:#CCCCCC;
+}
+.row td{
+	font-size:12px;
+	background-color:#CCCCCC;
+}
+#preAnxt{
+	clear:both;
+}
+.action_txt{
+	font-size:12px;
+	color:#0D3349;
+	text-decoration:underline;
+}
+.action_txt:hover{
+	cursor:pointer;
+}
+#addUserDiv{
+	position:absolute;
+	margin-left:20%;
+	width:30%;
+	height:auto;
+	background-color:#CCCCCC;
+	z-index:10;
+	top:100px;
+	border-radius: 10px;
+	opacity:0.95;
+	padding-bottom:20px;
+	background-color:#D9D9D9;
+	font-size:13px;
+	border:solid 1px;
+}
+#b_addUserDiv{
+	position:absolute;
+	margin-left:20%;
+	width:30%;
+	height:auto;
+	background-color:#CCCCCC;
+	z-index:10;
+	top:100px;
+	border-radius: 10px;
+	opacity:0.95;
+	padding-bottom:20px;
+	background-color:#D9D9D9;
+	font-size:13px;
+	border:solid 1px;
+}
+#addUserDiv span{
+	display:block;
+	padding-left:5px;
+	padding-bottom:5px;
+	font-weight:500;
+}
+#b_addUserDiv span{
+	display:block;
+	padding-left:5px;
+	padding-bottom:5px;
+	font-weight:500;
+}
+.closeDiv {
+	
+}
+.closeDiv span{
+	display:block;
+	padding:4px;
+	text-decoration:underline;
+}
+.closeDiv span:hover{
+	cursor:pointer;
+}
+#addUser{
+	border:solid 1px;
+	padding:10px;
+	margin-right:10px;
+	margin-left:10px;
+	background-color:#BCD5E6;
+}
+#b_addUser{
+	border:solid 1px;
+	padding:10px;
+	margin-right:10px;
+	margin-left:10px;
+	background-color:#BCD5E6;
+}
+#search_user{
+	padding-top:10px;
+	font-size:12px;
+}
+#s_options{
+	padding-top:10px;
+	margin-bottom: 10px;
+}
+.option{
+	display:inline;
+	margin-left:20px;
+}
+.option_word{
+	margin-left:20px;
+}
+.op_text{
+	text-decoration:underline;
+}
+.op_text:hover{
+	cursor:pointer;
+}
+.hiddenDiv{
+	background-color:#0000FF;
+	height:30px;
+}
+#tableCon{
+	float:left;
+}
+
+#j_content{
+	margin-top:30px;
+	margin-left:30px;
+}
+.journey_text{
+	font-size:14px;
+}
+
+.content_row{
+	margin:10px;
+}
+.editNsave{
+	font-size:14px;
+	color:orange;
+	text-decoration:underline;
+}
+.editNsave:hover{
+	font-size:14px;
+	color:black;
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+#members{
+	margin-top:20px;
+	padding-top:20px;
+}
+
+.user_text a{
+	font-size:15px;
+	color:#3A006F;
+}
+
+.user_text a:visited{
+	font-size:15px;
+	color:#3A006F;
+	font-weight:bold;
+
+}
+
+.user_text a:hover{
+	font-size:15px;
+	color:black;
+}
+.m_row{
+	padding-left:50px;
+	padding-top:10px;
+}
+
+.delte_text{
+	background-color:#CCCCCC;
+	font-size:10px;
+	padding-left:2px;
+	padding-right:2px;
+}
+.delte_text:hover{
+	background-color:#CCCCCC;
+	font-size:10px;
+	padding-left:2px;
+	padding-right:2px;
+	cursor:pointer;
+}
+
+#places{
+	margin-top:20px;
+	padding-top:20px;
+}
+.p_row{
+	padding-left:50px;
+	padding-top:10px;
+}
+#p_table{
+	font-size:14px;
+}
+.p_table_tr{
+	background-color:#696969;
+}
+
+.p_row_tr th{
+	font-weight:normal;
+	max-width:100px;
+}
+
+#hotel_profile{
+	padding-left:40%;
+	padding-top:10px;
+}
+
+.edit_t{
+	text-decoration:underline;
+	font-size:14px;
+}
+.edit_t:hover{
+	cursor:pointer;
+	text-decoration:none;
+}
+.c_hotels{
+	margin-left:40px;
+	margin-top:10px;
+	margin-bottom:20px;
+}

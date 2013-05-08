@@ -11,4 +11,6 @@ public interface JourneyDao {
   public Journey getJourneyByUserObj(User user);
   public List<Journey> getJourneyByPage(int start,int length);
   public void updateJourney(Journey journey);
+  public List<Journey> getAllJourneys();
+  public void deleteJourneyById(String id);
 }

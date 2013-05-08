@@ -10,4 +10,6 @@ public City getCityByPoint(String point);
 public City getCityByName(String name);
 public void updateCity(City city);
 public List<City> getCity();
+public void insertCity(City city);
+public City getCityById(String id);
 }

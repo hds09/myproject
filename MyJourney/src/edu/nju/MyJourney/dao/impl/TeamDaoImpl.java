@@ -41,4 +41,9 @@ public void deleteTeam(Team team){
 
 		session.close();
 }
+@Override
+public void kickUserFromTeam(String uid, String tid) {
+	// TODO Auto-generated method stub
+	
+}
 }

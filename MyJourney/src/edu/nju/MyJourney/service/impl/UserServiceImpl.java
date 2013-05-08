@@ -94,4 +94,18 @@ public class UserServiceImpl implements UserService
 		return userDao.getAllUsers();
 	}
 
+
+	@Override
+	public User getUserById(String id) {
+		// TODO Auto-generated method stub
+		return userDao.getUserById(Integer.parseInt(id));
+	}
+
+
+	@Override
+	public void deleteUserById(String id) {
+		// TODO Auto-generated method stub
+		userDao.deleteUserById(id);
+	}
+
 }

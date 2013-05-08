@@ -84,4 +84,25 @@ public class AttractionDaoImpl implements AttractionDao {
 		return attractionlist;
 	}
 
+	@Override
+	public Attraction getAttractionById(String id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		Attraction attr=null;
+		try {
+			Transaction tx=session.beginTransaction();	
+			String hql = "from Attraction a  where a.id="+ id;
+			Query query = session.createQuery(hql);	
+			List list = query.list();
+           if(list.size()!=0){
+        	   attr=(Attraction) list.get(0);
+           }
+           tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return attr;
+	}
+
 }

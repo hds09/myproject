@@ -24,8 +24,8 @@ private City city;
 private String address;
 private String phone;
 private float price = 0.0f;
-private boolean favor;
-private boolean dislike;
+private int favor;
+private int dislike;
 private List<Comment> comments;
 private List<Place> places;
 @Id
@@ -73,19 +73,19 @@ public void setPhone(String phone) {
 }
 
 
-public boolean isFavor() {
+public int getFavor() {
 	return favor;
 }
 
-public void setFavor(boolean favor) {
+public void setFavor(int favor) {
 	this.favor = favor;
 }
 
-public boolean isDislike() {
+public int getDislike() {
 	return dislike;
 }
 
-public void setDislike(boolean dislike) {
+public void setDislike(int dislike) {
 	this.dislike = dislike;
 }
 @OneToMany(mappedBy="hotel", cascade=CascadeType.ALL, fetch=FetchType.LAZY)

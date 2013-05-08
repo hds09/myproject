@@ -97,4 +97,25 @@ public class CityDaoImpl implements CityDao {
 		return city;
 	}
 
+	@Override
+	public City getCityById(String id) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		City city=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from City c where c.cid='"+id+"'";
+			Query query = session.createQuery(hql);	
+			 List list = query.list();
+			 if(list.size()!=0){
+				 city=(City)list.get(0);
+			 }
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return city;
+	}
+
 }

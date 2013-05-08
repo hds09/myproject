@@ -140,7 +140,8 @@
           		<result name="success" type="json"></result>
           </action>
           <action name="admindeleteuser" class="AdminDeleteUserAction" >
-          		<result name="success">/admin/index.jsp</result>
+          		<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
           </action>
           <action name="adminsearchuser" class="AdminSearchUserAction" >
           		<result name="success">/admin/usersearch.jsp</result>
@@ -149,6 +150,80 @@
  		  		<result name="failure">/admin/warning/signinErr.jsp</result>
                <result name="success">/admin/journey_m.jsp</result>
           </action>
+          <action name="adminViewJourney" class="AdminJourneyAction" method="viewJourney" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/journey.jsp</result>
+          </action>
+          <action name="adminViewUser" class="AdminIndexAction" method="viewUser" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/user.jsp</result>
+          </action>
+          <action name="adminViewHotel" class="AdminJourneyAction" method="viewHotel" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/hotel.jsp</result>
+          </action>
+          <action name="adminViewRestaurant" class="AdminJourneyAction" method="viewRestaurant" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/restaurant.jsp</result>
+          </action>
+          <action name="adminViewCity" class="AdminJourneyAction" method="viewCity" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/city.jsp</result>
+          </action>
+          <action name="adminViewAttraction" class="AdminJourneyAction" method="viewAttraction" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/attraction.jsp</result>
+          </action>
+          <action name="adminsearchjourney" class="AdminJourneyAction" method="searchJourney" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/journeysearch.jsp</result>
+          </action>
+          <action name="admindeletejourney" class="AdminJourneyAction" method="deleteJourney">
+          		<result type="redirectAction" name="success">adminJourneyManagement</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action>
+          <action name="admineditjourney" class="AdminJourneyAction" method="editJourney">
+          		<result name="success" type="json"></result>
+          </action>
+           <action name="adminedituser2" class="AdminEditUserAction" method="adminEditUser2">
+          		<result name="success" type="json"></result>
+          </action>
+          <action name="adminkickuser" class="AdminJourneyAction" method="deleteUserFromTeam">
+          		<result name="success" type="json"></result>
+          </action>
+          
+          
+          
+          
+          
+          <action name="citybatchupload" class="CityBatchUploadAction" >
+          		<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action>
+          <action name="hotelbatchupload" class="HotelBatchUploadAction" >
+ 		  		<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action> 
+          <action name="attractionbatchupload" class="AttractionBatchUploadAction" >
+ 		  		<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action>
+          <action name="restbatchupload" class="RestaurantBatchUploadAction" >
+ 		  		<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action>
+          <action name="journeybatchupload" class="JourneyBatchUploadAction" >
+ 		  		<result type="redirectAction" name="success">adminIndex</result>
+               <result name="failure">/admin/warning/signinErr.jsp</result>
+          </action>
+      </package>
+      
+      <package name="staging" namespace="/staging" extends="struts-default">
+           
+ 			<action name="adminIndex" class="AdminIndexAction" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/index.jsp</result>
+          </action> 
       </package>
       <!-- <package name="manager" namespace="/manager" extends="struts-default">
            <action name="index" class="ManagerIndexAction" >

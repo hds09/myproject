@@ -36,5 +36,15 @@ private CityDao cityDao;
 		// TODO Auto-generated method stub
 		return cityDao.getCityByName(name);
 	}
+	@Override
+	public void insertCity(City city) {
+		// TODO Auto-generated method stub
+		cityDao.insertCity(city);
+	}
+	@Override
+	public City getCityById(String id) {
+		// TODO Auto-generated method stub
+		return cityDao.getCityById(id);
+	}
 
 }

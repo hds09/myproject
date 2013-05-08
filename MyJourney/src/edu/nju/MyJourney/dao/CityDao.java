@@ -10,4 +10,5 @@ public void updateCity(City city);
 public List<City> getAllCity();
 public City getCityByName(String name);
 public City getCityByPoint(String point);
+public City getCityById(String id);
 }

@@ -34,6 +34,8 @@
 	</bean>
 	<bean id="AdministratorDao" class="edu.nju.MyJourney.dao.impl.AdministratorDaoImpl">
 	</bean>
+	<bean id="CommentDao" class="edu.nju.MyJourney.dao.impl.CommentDaoImpl">
+	</bean>
 	<bean id="UserService" class="edu.nju.MyJourney.service.impl.UserServiceImpl">
 		<property name="UserDao">
 			<ref bean="UserDao"/>
@@ -72,6 +74,11 @@
 			<ref bean="AttractionDao"/>
 		</property>
 	</bean>	
+	<bean id="CommentService" class="edu.nju.MyJourney.service.impl.CommentServiceImpl">
+		<property name="CommentDao">
+			<ref bean="CommentDao"/>
+		</property>
+	</bean>	
 	<bean id="LoginAction" class="edu.nju.MyJourney.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService"/>
@@ -99,6 +106,33 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>
+	<!-- staging area -->
+	<bean id="CityBatchUploadAction" class="edu.nju.MyJourney.action.CityBatchUploadAction">
+		<property name="CityService">
+			<ref bean="CityService"/>
+		</property>
+	</bean>
+	<bean id="HotelBatchUploadAction" class="edu.nju.MyJourney.action.HotelBatchUploadAction">
+		<property name="HotelService">
+			<ref bean="HotelService"/>
+		</property>
+	</bean>
+	<bean id="AttractionBatchUploadAction" class="edu.nju.MyJourney.action.AttractionBatchUploadAction">
+		<property name="AttractionService">
+			<ref bean="AttractionService"/>
+		</property>
+	</bean>
+	<bean id="RestaurantBatchUploadAction" class="edu.nju.MyJourney.action.RestaurantBatchUploadAction">
+		<property name="RestaurantService">
+			<ref bean="RestaurantService"/>
+		</property>
+	</bean>
+	<bean id="JourneyBatchUploadAction" class="edu.nju.MyJourney.action.JourneyBatchUploadAction">
+		<property name="JourneyService">
+			<ref bean="JourneyService"/>
+		</property>
+	</bean>
+	<!-- end of staging erea -->
 	<bean id="AdminSearchUserAction" class="edu.nju.MyJourney.action.AdminSearchUserAction">
 		
 	</bean>
@@ -106,9 +140,29 @@
 		<property name="UserService">
 			<ref bean="UserService"/>
 		</property>
+		<property name="CommentService">
+			<ref bean="CommentService"/>
+		</property>
 	</bean>
 	<bean id="AdminJourneyAction" class="edu.nju.MyJourney.action.AdminJourneyAction">
-		
+		<property name="JourneyService">
+			<ref bean="JourneyService"/>
+		</property>
+		<property name="HotelService">
+			<ref bean="HotelService"/>
+		</property>
+		<property name="RestaurantService">
+			<ref bean="RestaurantService"/>
+		</property>
+		<property name="CityService">
+			<ref bean="CityService"/>
+		</property>
+		<property name="AttractionService">
+			<ref bean="AttractionService"/>
+		</property>
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
 	</bean>
 	<bean id="IndexAction" class="edu.nju.MyJourney.action.IndexAction">
 		

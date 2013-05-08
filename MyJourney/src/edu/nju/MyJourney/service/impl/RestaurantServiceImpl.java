@@ -22,5 +22,10 @@ public class RestaurantServiceImpl implements RestaurantService {
 		// TODO Auto-generated method stub
 		this.restaurantDao.updateRestaurant(restaurant);
 	}
+	@Override
+	public Restaurant getRestaurantById(String id) {
+		// TODO Auto-generated method stub
+		return restaurantDao.getRestaurantById(id);
+	}
 
 }
