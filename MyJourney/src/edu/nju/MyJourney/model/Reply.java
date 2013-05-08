@@ -9,8 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="replay")
-public class Replay {
+@Table(name="reply")
+public class Reply {
 private long id;
 private String account_from;
 private String account_to;

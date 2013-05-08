@@ -37,7 +37,7 @@ document.getElementById(bg_div).style.display='none';
 			<li><a href="#">酒店</a></li>
 			<li><a href="#">饭店</a></li>
 			<li><a href="makeRoute">旅程</a></li>
-			<li><a href="#">旅图</a></li>
+			<li><a href="/MyJourney/pic/picwall">旅图</a></li>
 			<li><a href="personCenterSelect1">个人中心</a></li>
 			<li class="subscribe"><a href="#"></a></li>
 		</ul>
@@ -81,7 +81,7 @@ document.getElementById(bg_div).style.display='none';
 			</form>
 			</s:if>
 			<s:else>
-			  <h3><font color="white">嘻嘻，O(∩_∩)O欢迎你,</font><font color="red">${account}</font></h3>
+			  <h3><font color="white">嘻嘻，O(∩_∩)O欢迎你,</font><font color="red">${account}</font><a href="/MyJourney/user/logout" style="color:yellow">退出</a></h3>
 				<p>
 					<label for="name"><font color="white"></font></label>
 				

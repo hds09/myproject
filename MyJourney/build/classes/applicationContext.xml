@@ -32,9 +32,13 @@
 	</bean>
 	<bean id="TeamDao" class="edu.nju.MyJourney.dao.impl.TeamDaoImpl">
 	</bean>
+
 	<bean id="AdministratorDao" class="edu.nju.MyJourney.dao.impl.AdministratorDaoImpl">
 	</bean>
 	<bean id="CommentDao" class="edu.nju.MyJourney.dao.impl.CommentDaoImpl">
+	</bean>
+	<bean id="DarenDao" class="edu.nju.MyJourney.dao.impl.DarenDaoImpl">
+
 	</bean>
 	<bean id="UserService" class="edu.nju.MyJourney.service.impl.UserServiceImpl">
 		<property name="UserDao">
@@ -79,6 +83,31 @@
 			<ref bean="CommentDao"/>
 		</property>
 	</bean>	
+
+	<bean id="AlbumService" class="edu.nju.MyJourney.service.impl.AlbumServiceImpl">
+	    <property name="JourneyDao">
+	        <ref bean="JourneyDao"></ref>
+	    </property>
+	</bean>
+	<bean id="DarenService" class="edu.nju.MyJourney.service.impl.DarenServiceImpl">
+	    <property name="DarenDao">
+	        <ref bean="DarenDao"></ref>
+	    </property>
+	</bean>
+	<bean id="WallService" class="edu.nju.MyJourney.service.impl.WallServiceImpl">
+	    <property name="JourneyDao">
+	        <ref bean="JourneyDao"></ref>
+	    </property>
+	</bean>
+	<bean id="HomeService" class="edu.nju.MyJourney.service.impl.HomeServiceImpl">
+	    <property name="UserDao">
+	        <ref bean="UserDao"></ref>
+	    </property>
+	    <property name="JourneyDao">
+	        <ref bean="JourneyDao"></ref>
+	    </property>
+	</bean>
+
 	<bean id="LoginAction" class="edu.nju.MyJourney.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService"/>
@@ -199,6 +228,8 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>	
+	<bean id="LogoutAction" class="edu.nju.MyJourney.action.LogoutAction">	
+	</bean>	
 	<bean id="EditRouteAction" class="edu.nju.MyJourney.action.EditRouteAction">
 		<property name="JourneyService">
 			<ref bean="JourneyService"/>
@@ -216,4 +247,75 @@
 			<ref bean="PlaceService"/>
 		</property>
 	</bean>	
+	<bean id="AlbumAction" class="edu.nju.MyJourney.action.AlbumAction">
+	    <property name="AlbumService">
+	        <ref bean="AlbumService"></ref>
+	    </property>
+	</bean>
+	<bean id="CreateAlbumAction" class="edu.nju.MyJourney.action.CreateAlbumAction">
+	    <property name="PlaceDao">
+	        <ref bean="PlaceDao"></ref>
+	    </property>
+	</bean>
+	<bean id="DarenAction" class="edu.nju.MyJourney.action.DarenAction">
+	    <property name="DarenService">
+	        <ref bean="DarenService"></ref>
+	    </property>
+	    <property name="HomeService">
+	        <ref bean="HomeService"/>
+	    </property>
+	</bean>
+	<bean id="HomeAction" class="edu.nju.MyJourney.action.HomeAction">
+	    <property name="HomeService">
+	        <ref bean="HomeService"></ref>
+	    </property>
+	</bean>
+	<bean id="WallAction" class="edu.nju.MyJourney.action.WallAction"> 
+		<property name="WallService">
+		    <ref bean="WallService"></ref>
+		</property>
+	</bean>
+	<bean id="UserJourneyAction" class="edu.nju.MyJourney.action.UserJourneyAction">
+	    <property name="HomeService">
+	        <ref bean="HomeService"></ref>
+	    </property>
+	</bean>
+	<bean id="CreateHeadPhotoAction" class="edu.nju.MyJourney.action.ajax.CreateHeadPhotoAction">
+	    <property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AccountValidateAction" class="edu.nju.MyJourney.action.ajax.AccountValidateAction">
+	    <property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="PicstreamAction" class="edu.nju.MyJourney.action.ajax.PicstreamAction">
+	    <property name="WallService">
+		    <ref bean="WallService"></ref>
+		</property>
+	</bean>
+	<bean id="UserAttention" class="edu.nju.MyJourney.action.ajax.UserAttention">
+	    <property name="HomeService">
+	        <ref bean="HomeService"></ref>
+	    </property>
+	</bean>
+	<bean id="UserConcerned" class="edu.nju.MyJourney.action.ajax.UserConcerned">
+	    <property name="HomeService">
+	        <ref bean="HomeService"></ref>
+	    </property>
+	</bean>
+	<bean id="UserMessage" class="edu.nju.MyJourney.action.ajax.UserMessage">
+	    <property name="HomeService">
+	        <ref bean="HomeService"></ref>
+	    </property>
+	</bean>
+	<bean id="AddAttentionAction" class="edu.nju.MyJourney.action.ajax.AddAttentionAction">
+	    <property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="PictureUploadAction" class="edu.nju.MyJourney.action.PictureUploadAction">
+	</bean>
+	
 </beans>
