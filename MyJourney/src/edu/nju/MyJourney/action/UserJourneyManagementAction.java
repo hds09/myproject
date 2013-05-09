@@ -7,8 +7,11 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import edu.nju.MyJourney.model.Attraction;
+import edu.nju.MyJourney.model.Comment;
 import edu.nju.MyJourney.model.Hotel;
 import edu.nju.MyJourney.model.Journey;
+import edu.nju.MyJourney.model.Restaurant;
 import edu.nju.MyJourney.model.User;
 import edu.nju.MyJourney.service.*;
 
@@ -19,9 +22,13 @@ public class UserJourneyManagementAction extends BaseAction{
 	private RestaurantService restaurantService;
 	private CityService cityService;
 	private AttractionService attractionService;
+	private CommentService commentService;
 	private String uid;
 	private String jid;
 	private String hid;
+	private String aid;
+	private String rid;
+	private String u_uid;
 	public String execute() throws Exception{
 		ActionContext actionContext = ActionContext.getContext();  
 		Map session = actionContext.getSession();
@@ -40,10 +47,12 @@ public class UserJourneyManagementAction extends BaseAction{
 	
 	public String viewTeam() throws Exception {
 		Journey j=journeyService.getJourneyById(Integer.parseInt(this.jid));
+		List<Comment> comments=commentService.getCommentsByUserId(this.uid);
 		ActionContext actionContext = ActionContext.getContext();  
 		Map session = actionContext.getSession();
 		session.put("targetJ",j );
 		session.put("viewer",this.uid );
+		session.put("comments",comments );
 		return SUCCESS;
 	}
 	
@@ -53,6 +62,27 @@ public class UserJourneyManagementAction extends BaseAction{
 		Map session = actionContext.getSession();
 		session.put("targeth",h );
 		session.put("viewer",this.uid );
+		return SUCCESS;
+	}
+	
+	public String comment() throws Exception{
+		Comment c=new Comment();
+		ActionContext actionContext = ActionContext.getContext();  
+		Map session = actionContext.getSession();
+		this.uid=(String) session.get("viewer");
+		System.out.println("uid: "+uid);
+		System.out.println("jid: "+jid);
+		System.out.println("hid: "+hid);
+		System.out.println("aid: "+aid);
+		User u=userService.getUserById(this.uid);
+		Hotel h=hotelService.getHotelById(this.hid);
+		Attraction a=attractionService.getAttractionById(this.aid);
+		Restaurant r=restaurantService.getRestaurantById(this.rid);
+		c.setUser(u);
+		c.setHotel(h);
+		c.setAttraction(a);
+		c.setRestaurant(r);
+		this.commentService.insertComment(c);
 		return SUCCESS;
 	}
 //	public UserService getUserService() {
@@ -114,6 +144,38 @@ public class UserJourneyManagementAction extends BaseAction{
 
 	public void setHid(String hid) {
 		this.hid = hid;
+	}
+
+//	public CommentService getCommentService() {
+//		return commentService;
+//	}
+
+	public void setCommentService(CommentService commentService) {
+		this.commentService = commentService;
+	}
+
+	public String getAid() {
+		return aid;
+	}
+
+	public void setAid(String aid) {
+		this.aid = aid;
+	}
+
+	public String getRid() {
+		return rid;
+	}
+
+	public void setRid(String rid) {
+		this.rid = rid;
+	}
+
+	public String getU_uid() {
+		return u_uid;
+	}
+
+	public void setU_uid(String u_uid) {
+		this.u_uid = u_uid;
 	}
 
 }

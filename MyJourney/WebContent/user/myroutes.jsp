@@ -195,7 +195,7 @@
 									out.print("<div><span><a href='/MyJourney/user/editRoute?routeId="+team.get(i).getId()+"&selectnum=1'>查看详情</a></span></div>");
 									out.print("</div>");
 									out.print("<div class='my_rate'>");
-									out.print("<div><span><a href='userViewJourney?jid="+team.get(i).getId()+"'>评价</a></span></div>");
+									out.print("<div><span><a href='userViewJourney?jid="+team.get(i).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>评价</a></span></div>");
 									out.print("</div>");
 									out.print("<div class='row_sep'></div>");
 									out.print("</div>");

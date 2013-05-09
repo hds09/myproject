@@ -6,4 +6,5 @@ import edu.nju.MyJourney.model.Comment;
 
 public interface CommentDao {
 	public List<Comment> getCommentsByUserId(String id);
+	public void insertComment(Comment comment);
 }

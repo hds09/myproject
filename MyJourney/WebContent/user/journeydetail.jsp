@@ -16,7 +16,15 @@
 		<script src="../js/jquery.js" type="text/javascript"></script>
 		<script src="../js/jquery-ui-1.10.2.custom.js"></script>
 		<script type="text/javascript">
+			function sNhCF(id){
+				var id='#'+'cfid'+id;
+				$(id).show(400);
+			}
 			
+			function sNhCFc(id){
+				var id='#'+'cfid'+id;
+				$(id).hide(400);
+			}
 		</script>
 		<title>旅程信息</title>
 	</head>
@@ -24,6 +32,8 @@
 		<%
 			Journey j=(Journey)ActionContext.getContext().getSession().get("targetJ");
 			String uid=(String)ActionContext.getContext().getSession().get("viewer");
+			List<Comment> comments=(List<Comment>)ActionContext.getContext().getSession().get("comments");
+			out.print("hello,"+uid);
 		%>
 		<header>
 			<h1>Where You Will Go</h1>
@@ -78,8 +88,45 @@
 											}else{
 												out.print("<span>下午</span>&nbsp;");
 											}
-											out.print("");
+											out.print("<span>所在城市</span>&nbsp;");
+											out.print("<span><B>"+j.getPlaces().get(i).getCity().getName()+"</B></span>&nbsp;");
+											out.print("<span>所在景点</span>&nbsp;");
+											out.print("<span><a class='detail_lnk' href=''>"+j.getPlaces().get(i).getAttraction().getName()+"</a></span>&nbsp;&nbsp;");
+											out.print("<span>所住酒店</span>&nbsp;");
+											out.print("<span><a class='detail_lnk' href=''>"+j.getPlaces().get(i).getHotel().getName()+"</a></span>&nbsp;&nbsp;");
+											out.print("<span>饭店</span>&nbsp;");
+											out.print("<span><a class='detail_lnk' href=''>"+j.getPlaces().get(i).getRestaurant().getName()+"</a></span>&nbsp;&nbsp;");
+											out.print("<span class='eva_t' onclick='sNhCF("+j.getPlaces().get(i).getId()+")'>评价</span>");
+											int csize=comments.size();
+											Comment tmp=null;
+											boolean commentExist=false;
+											String comment=null;
+											for(int k=0;k<csize;k++){
+												tmp=comments.get(k);
+												Attraction tmpa=j.getPlaces().get(i).getAttraction();
+												Hotel tmph=j.getPlaces().get(i).getHotel();
+												Restaurant tmpr=j.getPlaces().get(i).getRestaurant();
+												if(tmp.getAttraction().getId()==tmpa.getId()&&tmp.getHotel().getId()==tmph.getId()&&tmp.getRestaurant().getId()==tmpr.getId()){
+													commentExist=true;
+													comment=tmp.getContext();
+													break;
+												}
+											}
 											out.print("<br/>");
+											out.print("<div class='cfld' style='display:none' id='cfid"+j.getPlaces().get(i).getId()+"'>");
+											out.print("<form action='comment' method='post'>");
+											if(commentExist){
+												out.print("<textarea value='"+comment+"' disabled=true ></textarea>");
+											}else{
+												out.print("<textarea class='cfld_f' style='width: 483px; height: 30px;' name='comment' ></textarea>");
+												out.print("<input type='hidden' name='hid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
+												out.print("<input type='hidden' name='rid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
+												out.print("<input type='hidden' name='aid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
+												out.print("<input type='hidden' name='uid' value='"+uid+"' />");
+												out.print("<div align='right'><span onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span><input type='submit' value='提交'></div>");
+											}
+											out.print("</form>");
+											out.print("</div>");
 										}
 										
 									}

@@ -19,5 +19,10 @@ public class CommentServiceImpl implements CommentService{
 	public void setCommentDao(CommentDao commentDao) {
 		this.commentDao = commentDao;
 	}
+	@Override
+	public void insertComment(Comment comment) {
+		// TODO Auto-generated method stub
+		this.commentDao.insertComment(comment);
+	}
 
 }

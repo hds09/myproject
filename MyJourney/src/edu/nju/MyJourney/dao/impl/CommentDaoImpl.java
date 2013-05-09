@@ -34,5 +34,19 @@ public class CommentDaoImpl implements CommentDao{
 		session.close();
 		return comments;
 	}
+	@Override
+	public void insertComment(Comment c) {
+		// TODO Auto-generated method stub
+		 Session session=sessionFactory.openSession();
+			try {	
+				Transaction tx=session.beginTransaction();
+				session.saveOrUpdate(c);
+				session.save(c);
+		       tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			session.close();
+	}
 
 }

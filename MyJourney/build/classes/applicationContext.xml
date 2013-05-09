@@ -157,6 +157,9 @@
 		<property name="AttractionService">
 			<ref bean="AttractionService"/>
 		</property>
+		<property name="CommentService">
+			<ref bean="CommentService"/>
+		</property>
 	</bean>
 	<!-- staging area -->
 	<bean id="CityBatchUploadAction" class="edu.nju.MyJourney.action.CityBatchUploadAction">

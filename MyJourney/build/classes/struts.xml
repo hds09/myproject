@@ -131,6 +131,10 @@
               <result name="success">/user/hoteldetail.jsp</result>
               <result name="failure">/user/warning/unlogined.jsp</result>
           </action>
+          <action name="comment" class="UserJourneyManagementAction" method="comment">
+              <result type="redirectAction" name="success">userJourneyManagement</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
       </package>
       
       <package name="admin" namespace="/admin" extends="json-default">
