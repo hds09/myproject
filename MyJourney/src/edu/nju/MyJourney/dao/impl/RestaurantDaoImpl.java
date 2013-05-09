@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import edu.nju.MyJourney.dao.RestaurantDao;
+import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Hotel;
 import edu.nju.MyJourney.model.Restaurant;
 
@@ -47,9 +48,21 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	}
 
 	@Override
-	public List<Hotel> getAllRestaurant() {
+	public List<Restaurant> getAllRestaurant() {
 		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionFactory.openSession();
+		List<Restaurant> restlist=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from Restaurant r  ";
+			Query query = session.createQuery(hql);	
+			restlist = query.list();
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return restlist;
 	}
 
 	@Override

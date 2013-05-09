@@ -1,5 +1,7 @@
 package edu.nju.MyJourney.service.impl;
 
+import java.util.List;
+
 import edu.nju.MyJourney.dao.HotelDao;
 import edu.nju.MyJourney.model.Hotel;
 import edu.nju.MyJourney.service.HotelService;
@@ -26,6 +28,11 @@ public class HotelServiceImpl implements HotelService {
 	public Hotel getHotelById(String id) {
 		// TODO Auto-generated method stub
 		return hotelDao.getHotelById(id);
+	}
+	@Override
+	public List<Hotel> getAllHotels() {
+		// TODO Auto-generated method stub
+		return this.hotelDao.getAllHotel();
 	}
 
 }

@@ -202,7 +202,7 @@ body {
 	height:30px;
 }
 #tableCon{
-	float:left;
+	
 }
 
 #j_content{
@@ -305,4 +305,13 @@ body {
 	margin-left:40px;
 	margin-top:10px;
 	margin-bottom:20px;
+}
+#hotels{
+	margin-top:40px;
+}
+#restaurants{
+	margin-top:40px;
+}
+#attractions{
+	margin-top:40px;
 }

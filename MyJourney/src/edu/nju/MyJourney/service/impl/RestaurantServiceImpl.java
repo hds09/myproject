@@ -1,5 +1,7 @@
 package edu.nju.MyJourney.service.impl;
 
+import java.util.List;
+
 import edu.nju.MyJourney.dao.RestaurantDao;
 import edu.nju.MyJourney.model.Restaurant;
 import edu.nju.MyJourney.service.RestaurantService;
@@ -26,6 +28,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 	public Restaurant getRestaurantById(String id) {
 		// TODO Auto-generated method stub
 		return restaurantDao.getRestaurantById(id);
+	}
+	@Override
+	public List<Restaurant> getAllRestaurant() {
+		// TODO Auto-generated method stub
+		return this.restaurantDao.getAllRestaurant();
 	}
 
 }

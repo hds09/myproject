@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import edu.nju.MyJourney.dao.HotelDao;
+import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Hotel;
 import edu.nju.MyJourney.model.Place;
 
@@ -45,7 +46,19 @@ public class HotelDaoImpl implements HotelDao {
 	@Override
 	public List<Hotel> getAllHotel() {
 		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionFactory.openSession();
+		List<Hotel> hotellist=null;
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from Hotel h  ";
+			Query query = session.createQuery(hql);	
+			hotellist = query.list();
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return hotellist;
 	}
 
 	@Override

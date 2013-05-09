@@ -8,4 +8,5 @@ public class SearchPrepareStatement {
 	public int AGEOPTION=0;
 	public int SORTOPTION=0;
 	public String j_type="all";
+	public String range="0";
 }

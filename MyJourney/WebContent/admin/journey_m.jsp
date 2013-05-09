@@ -66,7 +66,7 @@
 				<ul class="navi">
 					<li class="navi_li"><a href="adminIndex.action" class="other_lnk">User Management</a></li>
 					<li class="navi_li_selected">Journey Management</li>
-					<li class="navi_li"><a href="" class="other_lnk">Cities</a></li>
+					<li class="navi_li"><a href="adminCityManagement.action" class="other_lnk">Cities</a></li>
 					<li class="navi_li"><a href="batchjobs.jsp" class="other_lnk">Batch Jobs</a></li>
 				</ul>
 			</div>

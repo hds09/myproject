@@ -9,6 +9,6 @@ public interface RestaurantDao {
 		public void insertRestaurant(Restaurant hotel);
 		public Hotel getRestaurantByName(String name);
 		public void updateRestaurant(Restaurant hotel);
-		public List<Hotel> getAllRestaurant();
+		public List<Restaurant> getAllRestaurant();
 		public Restaurant getRestaurantById(String id);
 }

@@ -9,9 +9,9 @@
 		<script src="../js/jquery.js" type="text/javascript"></script>
 		<script type="text/javascript">
 		var enableEditJ=0;
-		function eNdEditJ(){
+		function eNsComm(){
 			if(enableEditJ==0){
-				var nodes=document.getElementsByClassName('p_input');
+				var nodes=document.getElementsById('p_input');
 				for(var i=0;i<nodes.length;i++){
 					nodes.item(i).disabled=false;
 				}
@@ -133,7 +133,7 @@
 								  "<input type='hidden' value='"+comments.get(i).getId()+"'/>"+
 								  "<input disabled=true id='comm"+comments.get(i).getId()+"' name='comment.context' value='"+comments.get(i).getContext()+"'/>"+
 								"</form>");
-						out.print("<div align='right'><span>edit</span>&nbsp;<span>delete</span></div>");
+						out.print("<div align='right'><span id='edit_c' onclick='eNsComm("+comments.get(i).getId()+")'>edit</span>&nbsp;<span>delete</span></div>");
 						out.print("</div>");
 						out.print("<div class='sep'></div>");
 					}%>

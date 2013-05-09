@@ -1,5 +1,7 @@
 package edu.nju.MyJourney.service.impl;
 
+import java.util.List;
+
 import edu.nju.MyJourney.dao.AttractionDao;
 import edu.nju.MyJourney.model.Attraction;
 import edu.nju.MyJourney.service.AttractionService;
@@ -26,6 +28,11 @@ public class AttractionServiceImpl implements AttractionService {
 	public Attraction getAttractionById(String id) {
 		// TODO Auto-generated method stub
 		return attractionDao.getAttractionById(id);
+	}
+	@Override
+	public List<Attraction> getAllAttraction() {
+		// TODO Auto-generated method stub
+		return this.attractionDao.getAllAttraction();
 	}
 
 }

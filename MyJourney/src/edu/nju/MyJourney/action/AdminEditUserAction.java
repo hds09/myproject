@@ -4,11 +4,13 @@ package edu.nju.MyJourney.action;
 
 
 import edu.nju.MyJourney.model.User;
+import edu.nju.MyJourney.service.CommentService;
 import edu.nju.MyJourney.service.UserService;
 import edu.nju.MyJourney.service.impl.UserServiceImpl;
 
 public class AdminEditUserAction extends BaseAction{
 	private UserService userService;
+	private CommentService commentService;
 	private String account;
 	private String city;
 	private String email;
@@ -86,6 +88,11 @@ public class AdminEditUserAction extends BaseAction{
 		System.out.println(user.getEmail());
 		userService.updateUser(user);
 		this.result="success";
+		return SUCCESS;
+	}
+	
+	public String editUserComment() throws Exception{
+		
 		return SUCCESS;
 	}
 	public String getResult() {
@@ -227,6 +234,14 @@ public class AdminEditUserAction extends BaseAction{
 
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
+	}
+
+//	public CommentService getCommentService() {
+//		return commentService;
+//	}
+
+	public void setCommentService(CommentService commentService) {
+		this.commentService = commentService;
 	}
 
 }

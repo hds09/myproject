@@ -39,7 +39,7 @@
 				<ul class="navi">
 					<li class="navi_li"><a href="adminIndex.action" class="other_lnk">User Management</a></li>
 					<li class="navi_li"><a href="adminJourneyManagement.action" class="other_lnk">Journey Management</a></li>
-					<li class="navi_li"><a href="adminPlaceManagement.action" class="other_lnk">Cities</a></li>
+					<li class="navi_li"><a href="adminCityManagement.action" class="other_lnk">Cities</a></li>
 					<li class="navi_li_selected">Batch Jobs</li>
 				</ul>
 			</div>

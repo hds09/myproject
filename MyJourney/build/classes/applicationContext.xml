@@ -124,6 +124,9 @@
 		<property name="UserService">
 			<ref bean="UserService"/>
 		</property>
+		<property name="CommentService">
+			<ref bean="CommentService"/>
+		</property>
 	</bean>
 	<bean id="AdminDeleteUserAction" class="edu.nju.MyJourney.action.AdminDeleteUserAction">
 		<property name="UserService">
@@ -191,6 +194,20 @@
 		</property>
 		<property name="UserService">
 			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="AdminCityAction" class="edu.nju.MyJourney.action.AdminCityAction">
+		<property name="HotelService">
+			<ref bean="HotelService"/>
+		</property>
+		<property name="RestaurantService">
+			<ref bean="RestaurantService"/>
+		</property>
+		<property name="CityService">
+			<ref bean="CityService"/>
+		</property>
+		<property name="AttractionService">
+			<ref bean="AttractionService"/>
 		</property>
 	</bean>
 	<bean id="IndexAction" class="edu.nju.MyJourney.action.IndexAction">

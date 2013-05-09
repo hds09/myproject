@@ -196,8 +196,14 @@
           <action name="adminkickuser" class="AdminJourneyAction" method="deleteUserFromTeam">
           		<result name="success" type="json"></result>
           </action>
-          
-          
+           <action name="adminCityManagement" class="AdminCityAction" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/city_m.jsp</result>
+          </action>
+          <action name="adminCitySearch" class="AdminCityAction" method="search" >
+ 		  		<result name="failure">/admin/warning/signinErr.jsp</result>
+               <result name="success">/admin/citysearch.jsp</result>
+          </action>
           
           
           

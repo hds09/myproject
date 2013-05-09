@@ -46,20 +46,10 @@
 	</head>
 	<body>
 		<%
-			List<City> cities=null;
-			List<Hotel> hotels=null;
-			List<Attraction> attractions=null;
-			List<Restaurant> restaurants=null;
-			String s_type=(String)ActionContext.getContext().getSession().get("search_type");
-			if(s_type.equals("1")){
-				cities=(List<City>)ActionContext.getContext().getSession().get("search_cities");
-			}else if(s_type.equals("2")){
-				hotels=(List<Hotel>)ActionContext.getContext().getSession().get("search_hotels");
-			}else if(s_type.equals("3")){
-				restaurants=(List<Restaurant>)ActionContext.getContext().getSession().get("search_rests");
-			}else if(s_type.equals("2")){
-				attractions=(List<Attraction>)ActionContext.getContext().getSession().get("search_attrs");
-			}
+			List<City> cities=(List<City>)ActionContext.getContext().getSession().get("cities");
+			List<Hotel> hotels=(List<Hotel>)ActionContext.getContext().getSession().get("hotels");
+			List<Attraction> attractions=(List<Attraction>)ActionContext.getContext().getSession().get("attractions");
+			List<Restaurant> restaurants=(List<Restaurant>)ActionContext.getContext().getSession().get("restaurants");
 			String adminEmail=(String)ActionContext.getContext().getSession().get("email");
 		%>
 		<div id="container">
@@ -84,62 +74,95 @@
 			</div>
 			<div id="content">
 				<div id='cities'>
-					<%
-						if(s_type.equals("1")){
-							out.print("Cities Search Result");
-						}else if(s_type.equals("2")){
-							out.print("Hotels Search Result");
-						}else if(s_type.equals("3")){
-							out.print("Restaurants Search Result");
-						}else if(s_type.equals("4")){
-							out.print("Attractions Search Result");
-						}
-					%>
 					Cities
+					<div id="search_city">
+						<div id="s_options">
+							<form action="adminCitySearch" method="post">
+								<div class="option">
+									<span class="option_text">key word</span>
+									<input type="text" name="keyword" />
+									<input type='hidden' name='s_type' value='1'/>
+								</div>
+								<div class="option">
+									<input type="submit" value="search" />
+								</div>
+							</form>
+						</div>
+					</div>
 					<div id="tableCon">
 						<table id="user_table">
+							<tr class="row">
+								<th>check</th>
+								<th>ID</th>
+								<th>Country</th>
+								<th>Latitude</th>
+								<th>Longitude</th>
+								<th>Name</th>
+								<th>Picture</th>
+								<th>Operations</th>
+							</tr>
 							<%
-							if(s_type.equals("1")){
-								out.print("<tr class='row'>"+
-										"<th>check</th>"+
-										"<th>ID</th>"+
-										"<th>Country</th>"+
-										"<th>Latitude</th>"+
-										"<th>Longitude</th>"+
-										"<th>Name</th>"+
-										"<th>Picture</th>"+
-										"<th>Operations</th>"+
-									"</tr>");
 								if(cities.size()==0){
 									out.print("no rows found");
-								}else{
-									for(int i=0; i<cities.size();i++){
-										out.print("<tr class='row' id='"+"tr"+cities.get(i).getCid()+"'>"+
-										"<td><input type='checkbox' class='row_check' id='city+"+cities.get(i).getCid()+"'/></td>"+
-										"<td class='cityid"+cities.get(i).getCid()+"'>"+cities.get(i).getCid()+"</td>"+
-										"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getCountry()+"</td>"+
-										"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getLat()+"</td>"+
-										"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getLng()+"</td>"+
-										"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getName()+"</td>"+
-										"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getPicture()+"</td>"+
-														
-										"<td><span class='op_text'><a href='adminViewCity.action?cid="+cities.get(i).getCid()+"'>detail</a></span></td>"+
-										"</tr>");
-									}
 								}
-							}else if(s_type.equals("2")){
-								out.print("<tr class='row'>"+
-										"<th>check</th>"+
-										"<th>ID</th>"+
-										"<th>Address</th>"+
-										"<th>Dislike</th>"+
-										"<th>Favor</th>"+
-										"<th>Name</th>"+
-										"<th>Phone</th>"+
-										"<th>Price</th>"+
-										"<th>HotelCity</th>"+
-										"<th>Operations</th>"+
+								for(int i=0; i<cities.size();i++){
+									out.print("<tr class='row' id='"+"tr"+cities.get(i).getCid()+"'>"+
+									"<td><input type='checkbox' class='row_check' id='city+"+cities.get(i).getCid()+"'/></td>"+
+									"<td class='cityid"+cities.get(i).getCid()+"'>"+cities.get(i).getCid()+"</td>"+
+									"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getCountry()+"</td>"+
+									"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getLat()+"</td>"+
+									"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getLng()+"</td>"+
+									"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getName()+"</td>"+
+									"<td class='citytd"+cities.get(i).getCid()+"'>"+cities.get(i).getPicture()+"</td>"+
+													
+									"<td><span class='op_text'><a href='adminViewCity.action?cid="+cities.get(i).getCid()+"'>detail</a></span></td>"+
 									"</tr>");
+								}
+							%>
+						</table>
+						<div id="action_div" align="right">
+							<span class="action_txt" onclick='deleteJourneys()'>Delete</span>
+						</div>
+					</div>
+				</div>
+				<div id='hotels'>
+					Hotels
+					<div id="search_hotel">
+						<div id="s_options">
+							<form action="adminCitySearch" method="post">
+								<div class="option">
+									<span class="option_text">key word</span>
+									<input type="text" name="keyword" />
+									<input type='hidden' name='s_type' value='2'/>
+									&nbsp;Price Range
+									<select name='range'>
+										<option value='0'>All</option>
+										<option value='1'>Below 100</option>
+										<option value='2'>100-200</option>
+										<option value='3'>Above 200</option>
+									</select>
+								</div>
+								<div class="option">
+									<input type="submit" value="search" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="tableCon">
+						<table id="user_table">
+							<tr class="row">
+								<th>check</th>
+								<th>ID</th>
+								<th>Address</th>
+								<th>Dislike</th>
+								<th>Favor</th>
+								<th>Name</th>
+								<th>Phone</th>
+								<th>Price</th>
+								<th>HotelCity</th>
+								<th>Operations</th>
+							</tr>
+							<%
 								if(hotels.size()==0){
 									out.print("no rows found");
 								}
@@ -157,19 +180,53 @@
 									"<td><span class='op_text'><a href='adminViewHotel.action?hid="+hotels.get(i).getId()+"'>detail</a></span></td>"+
 									"</tr>");
 								}
-							}else if(s_type.equals("3")){
-								out.print("<tr class='row'>"+
-										"<th>check</th>"+
-										"<th>ID</th>"+
-										"<th>Address</th>"+
-										"<th>Dislike</th>"+
-										"<th>Favor</th>"+
-										"<th>Name</th>"+
-										"<th>Phone</th>"+
-										"<th>Price</th>"+
-										"<th>RestaurantCity</th>"+
-										"<th>Operations</th>"+
-									"</tr>");
+							%>
+						</table>
+						<div id="action_div" align="right">
+							<span class="action_txt" onclick='deleteJourneys()'>Delete</span>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div id='restaurants'>
+					Restaurants
+					<div id="search_rest">
+						<div id="s_options">
+							<form action="adminCitySearch" method="post">
+								<div class="option">
+									<span class="option_text">key word</span>
+									<input type="text" name="keyword" />
+									<input type='hidden' name='s_type' value='3'/>
+									&nbsp;Price Range
+									<select name='range'>
+										<option value='0'>All</option>
+										<option value='1'>Below 100</option>
+										<option value='2'>100-200</option>
+										<option value='3'>Above 200</option>
+									</select>
+								</div>
+								<div class="option">
+									<input type="submit" value="search" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="tableCon">
+						<table id="user_table">
+							<tr class="row">
+								<th>check</th>
+								<th>ID</th>
+								<th>Address</th>
+								<th>Dislike</th>
+								<th>Favor</th>
+								<th>Name</th>
+								<th>Phone</th>
+								<th>Price</th>
+								<th>RestaurantCity</th>
+								<th>Operations</th>
+							</tr>
+							<%
 								if(restaurants.size()==0){
 									out.print("no rows found");
 								}
@@ -187,18 +244,53 @@
 									"<td><span class='op_text'><a href='adminViewRestaurant.action?rid="+restaurants.get(i).getId()+"'>detail</a></span></td>"+
 									"</tr>");
 								}
-							}else if(s_type.equals("4")){
-								out.print("<tr class='row'>"+
-										"<th>check</th>"+
-										"<th>ID</th>"+
-										"<th>Address</th>"+
-										"<th>Dislike</th>"+
-										"<th>Favor</th>"+
-										"<th>Name</th>"+
-										"<th>Price</th>"+
-										"<th>AttractionCity</th>"+
-										"<th>Operations</th>"+
-									"</tr>");
+							%>
+						</table>
+						<div id="action_div" align="right">
+							<span class="action_txt" onclick='deleteJourneys()'>Delete</span>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div id='attractions'>
+					Restaurants
+					<div id="search_attr">
+						<div id="s_options">
+							<form action="adminCitySearch" method="post">
+								<div class="option">
+									<span class="option_text">key word</span>
+									<input type="text" name="keyword" />
+									<input type='hidden' name='s_type' value='4'/>
+									&nbsp;Price Range
+									<select name='range'>
+										<option value='0'>All</option>
+										<option value='1'>Below 100</option>
+										<option value='2'>100-200</option>
+										<option value='3'>Above 200</option>
+									</select>
+								</div>
+								<div class="option">
+									<input type="submit" value="search" />
+								</div>
+							</form>
+						</div>
+					</div>
+					<div id="tableCon">
+						<table id="user_table">
+							<tr class="row">
+								<th>check</th>
+								<th>ID</th>
+								<th>Address</th>
+								<th>Dislike</th>
+								<th>Favor</th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>AttractionCity</th>
+								<th>Operations</th>
+							</tr>
+							<%
 								if(attractions.size()==0){
 									out.print("no rows found");
 								}
@@ -215,7 +307,6 @@
 									"<td><span class='op_text'><a href='adminViewAttraction.action?aid="+attractions.get(i).getId()+"'>detail</a></span></td>"+
 									"</tr>");
 								}
-							}
 							%>
 						</table>
 						<div id="action_div" align="right">
@@ -223,6 +314,7 @@
 						</div>
 					</div>
 				</div>
+				
 				
 				
 			</div>
