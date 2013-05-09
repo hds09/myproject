@@ -6,6 +6,7 @@ import java.util.List;
 import edu.nju.MyJourney.dao.JourneyDao;
 import edu.nju.MyJourney.model.Journey;
 import edu.nju.MyJourney.model.Place;
+import edu.nju.MyJourney.model.User;
 import edu.nju.MyJourney.service.JourneyService;
 
 public class JourneyServiceImpl implements JourneyService{
@@ -67,6 +68,27 @@ public class JourneyServiceImpl implements JourneyService{
 	public void deleteJourneyById(String id) {
 		// TODO Auto-generated method stub
 		this.journeyDao.deleteJourneyById(id);
+	}
+	@Override
+	public List<Journey> getUserRelatedJourney(String uid) {
+		// TODO Auto-generated method stub
+		Long userid=Long.parseLong(uid);
+		List<Journey> js=this.journeyDao.getAllJourneys();
+		List<Journey> result=new ArrayList<Journey>();
+		for(int i=0;i<js.size();i++){
+			if(js.get(i).getUser().getUid()==userid){
+				result.add(js.get(i));
+			}else if(js.get(i).getState()==1){
+				List<User> tmp=js.get(i).getTeam().getUsers();
+				for(int j=0;j<tmp.size();j++){
+					if(tmp.get(j).getUid()==userid){
+						result.add(js.get(j));
+						break;
+					}
+				}
+			}
+		}
+		return result;
 	}
 
 }

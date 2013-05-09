@@ -119,6 +119,18 @@
               <result name="success">editRoute.jsp</result>
               <result name="failure"></result>
           </action> 
+          <action name="userJourneyManagement" class="UserJourneyManagementAction">
+              <result name="success">/user/myroutes.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action> 
+          <action name="userViewJourney" class="UserJourneyManagementAction" method="viewTeam">
+              <result name="success">/user/journeydetail.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+          <action name="userviewHotel" class="UserJourneyManagementAction" method="viewHotel">
+              <result name="success">/user/hoteldetail.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
       </package>
       
       <package name="admin" namespace="/admin" extends="json-default">

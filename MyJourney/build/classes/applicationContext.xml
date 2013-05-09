@@ -138,6 +138,26 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>
+	<bean id="UserJourneyManagementAction" class="edu.nju.MyJourney.action.UserJourneyManagementAction">
+		<property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+		<property name="JourneyService">
+			<ref bean="JourneyService"/>
+		</property>
+		<property name="HotelService">
+			<ref bean="HotelService"/>
+		</property>
+		<property name="RestaurantService">
+			<ref bean="RestaurantService"/>
+		</property>
+		<property name="CityService">
+			<ref bean="CityService"/>
+		</property>
+		<property name="AttractionService">
+			<ref bean="AttractionService"/>
+		</property>
+	</bean>
 	<!-- staging area -->
 	<bean id="CityBatchUploadAction" class="edu.nju.MyJourney.action.CityBatchUploadAction">
 		<property name="CityService">

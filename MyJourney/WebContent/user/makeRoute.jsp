@@ -26,6 +26,7 @@
 			<li><a href="#">饭店</a></li>
 			<li class="selected"><a href="makeRoute">旅程</a></li>
 			<li><a href="#">旅图</a></li>
+			<li><a href="userJourneyManagement">管理</a></li>
 			<li><a href="personCenterSelect1">个人中心</a></li>
 			<li class="subscribe"><a href="#"></a></li>
 		</ul>

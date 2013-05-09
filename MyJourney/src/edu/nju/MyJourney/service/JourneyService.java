@@ -13,4 +13,5 @@ public List<Place> getAfternoonPlaceByUserId(long id);
 public void updateJourney(Journey journey);
 public List<Journey> getAllJourneys();
 public void deleteJourneyById(String id);
+public List<Journey> getUserRelatedJourney(String uid);
 }

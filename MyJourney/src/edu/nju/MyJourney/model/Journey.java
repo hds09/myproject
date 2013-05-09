@@ -17,6 +17,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 @Entity
@@ -54,7 +56,8 @@ public void setUser(User user) {
 	this.user = user;
 }
 
-@OneToMany(mappedBy="journey",  fetch=FetchType.LAZY)
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="journey")
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {
 	if(places==null){

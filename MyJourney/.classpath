@@ -3,29 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/annotations-api.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/catalina.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/catalina-ant.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/catalina-ha.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/catalina-tribes.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/commons-modeler-2.0.1.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/ecj-3.7.2.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/el-api.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/jasper.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/jasper-el.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/mysql-connector-java-5.1.20.zip"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/mysql-connector-java-5.1.20-bin.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-api.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-coyote.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-dbcp.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-i18n-es.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-i18n-fr.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-i18n-ja.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-jdbc.jar"/>
-	<classpathentry kind="lib" path="D:/tomcat/apache-tomcat-7.0.27/lib/tomcat-util.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="build/classes"/>

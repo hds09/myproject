@@ -11,39 +11,39 @@ function makeActive(index){
 			nodelist.item(i).className="tab_item";
 		}
 	}
+	if(index==1){
+		changeDiv(3);
+	}
 	return false;
 };
 
 
 function changeDiv(index){
 	if(index==1){
+		makeActive(0);
 		document.getElementById('j_result').style.display='block';
 		document.getElementById('team_results').style.display='none';
-		var children=document.getElementById('tab').childNodes;
-		for(var i=0;i<3;i++){
-			children[2*i+1].style.display='block';
-		}
-		for(var j=0;j<3;j++){
-			children[2*j+7].style.display='none';
-		}
+		document.getElementById('all_tj_results').style.display='none';
 		var tmp1=$('.trip_type_selected');
 		var tmp2=$('.trip_type_diselected');
 		tmp1.removeClass().addClass('trip_type_diselected');
 		tmp2.removeClass().addClass('trip_type_selected');
-	}else{
+		var nodelist=document.getElementsByClassName("tab_item");
+		nodelist.item(1).style.display='none';
+	}else if(index==2){
 		document.getElementById('j_result').style.display='none';
 		document.getElementById('team_results').style.display='block';
-		var children=document.getElementById('tab').childNodes;
-		for(var i=0;i<3;i++){
-			children[2*i+1].style.display='none';
-		}
-		for(var j=0;j<3;j++){
-			children[2*j+7].style.display='block';
-		}
+		document.getElementById('all_tj_results').style.display='none';
 		var tmp1=$('.trip_type_selected');
 		var tmp2=$('.trip_type_diselected');
 		tmp1.removeClass().addClass('trip_type_diselected');
 		tmp2.removeClass().addClass('trip_type_selected');
+		var nodelist=document.getElementsByClassName("tab_item");
+		nodelist.item(1).style.display='block';
+	}else{
+		document.getElementById('j_result').style.display='none';
+		document.getElementById('team_results').style.display='none';
+		document.getElementById('all_tj_results').style.display='block';
 	}
 };
 

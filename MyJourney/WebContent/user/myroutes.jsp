@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="edu.nju.MyJourney.model.User" %>
+<%@ page import="edu.nju.MyJourney.model.Journey" %>
+<%@ page import="com.opensymphony.xwork2.ActionContext" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %> 
+;
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -9,72 +16,46 @@
 		<script src="../js/jquery.js" type="text/javascript"></script>
 		<script src="../js/jquery-ui-1.10.2.custom.js"></script>
 		<script type="text/javascript">
-			$(function() {
-				$( "#endDateinput" ).datepicker();
-				$( "#startDateinput" ).datepicker();
-				$( "#s_startDate" ).datepicker();
-				$( "#s_endDate" ).datepicker();
-				$(".star").hover(
-					function(){
-						$(this).css('background-image',"url('../images/sdd09/1.jpg')");
-						$(this).prevAll().css('background-image',"url('../images/sdd09/1.jpg')");
-						$(this).nextAll().css('background-image',"url('../images/sdd09/2.jpg')");
-					}
-				);
-			});
-
+			
 		</script>
 	</head>
 	<body>
+		<%
+			List<Journey> journeys=(List<Journey>)ActionContext.getContext().getSession().get("user_journeys");
+			List<Journey> alljourneys=(List<Journey>)ActionContext.getContext().getSession().get("all_journeys");
+			List<Journey> personal=new ArrayList<Journey>();
+			List<Journey> team=new ArrayList<Journey>();
+			List<Journey> allteam=new ArrayList<Journey>();
+			for(int i=0;i<journeys.size();i++){
+				if(journeys.get(i).getState()==1){
+					team.add(journeys.get(i));
+				}else{
+					personal.add(journeys.get(i));
+				}
+			}
+			for(int i=0;i<alljourneys.size();i++){
+				if(alljourneys.get(i).getState()==1){
+					allteam.add(alljourneys.get(i));
+				}
+			}
+		%>
 		<header>
 			<h1>Where You Will Go</h1>
 		</header>
 		<nav>
 			<ul>
-				<li ><a href="index">首页</a></li>
+				<li><a href="index">首页</a></li>
 				<li><a href="#">酒店</a></li>
 				<li><a href="#">饭店</a></li>
 				<li><a href="makeRoute">旅程</a></li>
-				<li class="selected"><a href="makeRoute">旅程管理</a></li>
-				<li><a href="#">个人中心</a></li>
+				<li><a href="/MyJourney/pic/picwall">旅图</a></li>
+				<li class="selected"><a href="">管理</a></li>
+				<li><a href="personCenterSelect1">个人中心</a></li>
 				<li class="subscribe"><a href="#"></a></li>
 			</ul>
 		</nav>
 		<div id="containAll">
-			<div id="text_div" align="right"><span class="showQuickPublish" onclick="showQP()">快速发布[+]</span></div>
-			<div id="quick_publish_div" style="display:none">
-				<div class="seperator"></div>
-				<div id="quick_publish">
-					<form>
-						<div id="destination">
-							<label class="clabel">目的地</label>
-							<input id="destinationinput" class="ainput"/>
-						</div>
-						<div id="startDate">
-							<label class="clabel">开始时间</label>
-							<input id="startDateinput" class="ainput"/>
-						</div>
-						<div id="endDate">
-							<label class="clabel">结束时间</label>
-							<input id="endDateinput" class="ainput"/>
-						</div>
-						<div id="tripName">
-							<label class="clabel">为旅途起一个名字</label>
-							<input id="tripNameinput" class="ainput"/>
-						</div>
-						<div id="type">
-							<label class="clabel">类型</label>
-							<input type="radio" name="triptype" value="private" checked>个人旅行，不公开
-							<input type="radio" name="triptype" value="public"> 开放为结伴旅行
-						</div>
-						<div id="sbmt" align="right">
-							<input type="submit" class="button" value="发布" />
-							<a href="">取消</a>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div id="text_div2"><span>我的行程</span></div>
+			<div id="text_div"><span>我的行程</span></div>
 			<div class="seperator"></div>
 			<!-- menu-->
 			<div id="cter">
@@ -88,11 +69,7 @@
 					<div id="j_tab">
 						<ul id="tab" class="tabmenu">
 						  <li class="active tab_item" onclick="makeActive(0)"><a>所有</a></li>
-						  <li class="tab_item" onclick="makeActive(1)"><a>已结束</a></li>
-						  <li class="tab_item" onclick="makeActive(2)"><a>近期</a></li>
-						  <li class="active tab_item" onclick="makeActive(3)" style="display:none"><a>所有</a></li>
-						  <li class="tab_item" onclick="makeActive(4)" style="display:none"><a>关于我的</a></li>
-						  <li class="tab_item" onclick="makeActive(5)" style="display:none"><a>搜索结伴</a></li>
+						  <li class="tab_item" onclick="makeActive(1)" style='display:none'><a>关于我的</a></li>
 						</ul>
 					</div>
 					<div id="search_div">
@@ -145,225 +122,140 @@
 						<!--this section should be updated asynchronously according to user clicking on different tabs
 							expected to be implemented by AJAX -->
 						<!--hard-coding data-->
-						<div class="resultRow">
-							<div class="row_sep2"></div>
-							<div class="rrow_content">
-								<div class="journey_title">
-									<span class="title"><a>戈壁行</a></span>
-									<br/>
-									<span class="date">从:2013-04-12</span>
-									<br/>
-									<span class="date">至:2013-04-15</span>
-								</div>
-							</div>
-							<div class="status">
-								<span class="finished">已结束</span>
-								<span class="for_details"><a href="">详情</a></span>
-							</div>
-							<div class="rrow_right" align="center">
-								<span class="record_text">行程记录</span><br/>
-								<span class="record_text">查看相似行程</span>
-							</div>
-							<div class="my_rate" align="center">
-								<div><span class="p_trip_rate" onclick="showhidePField(1)">+展开评论</span></div>
-							</div>
-							<div class="trip_action">
-								
-								<span class="trip_action_text"><a href="">分享</a></span>
-								<span class="trip_action_text"><a href="">删除</a></span>
-							</div>
-							<div id="p_trip_commentField1" class="rate_field" style="display:none">
-								<form>
-									<div class="rateinput">
-										<ul class="stars">
-											<li class="star" onclick="setRate(1)"></li>
-											<li class="star" onclick="setRate(2)"></li>
-											<li class="star" onclick="setRate(3)"></li>
-											<li class="star" onclick="setRate(4)"></li>
-											<li class="star" onclick="setRate(5)"></li>
-											<li class="star" onclick="setRate(6)"></li>
-											<li class="star" onclick="setRate(7)"></li>
-											<li class="star" onclick="setRate(8)"></li>
-											<li class="star" onclick="setRate(9)"></li>
-											<li class="star" onclick="setRate(10)"></li>
-										<ul>
-									</div>
-									<div class="commentinput" align="left">
-										<textarea type="text" class="comments_field"></textarea>
-									</div>
-									<div class="action" align="right">
-										<span class="action_text" onclick="hidePField(1)">取消</span>
-										<span class="action_text" onclick="hidePField(1)">提交</span>
-									</div>
-								</form>
-							</div>
-							<div class="row_sep"></div>
-						</div>
-						
-						
+						<% 
+							int psize=personal.size();
+							for(int i=0;i<psize;i++){
+								out.print("<div class='resultRow'>");
+								out.print("<div class='row_sep2'></div>");
+								out.print("<div class='rrow_content'>");
+								out.print("<div class='journey_title'>");
+								out.print("<span class='title'><a>"+personal.get(i).getJourneyName()+"</a></span><br/>");
+								if(personal.get(i).getPlaces().size()!=0){
+									out.print("<span class='date'>开始于:"+personal.get(i).getPlaces().get(0).getTime()+"</span><br/>");
+								}else{
+									out.print("<span class='date'>无地点信息</span><br/>");
+								}
+								out.print("</div>");
+								out.print("</div>");
+								out.print("<div class='status'>");
+								out.print("<span class='for_details'><a class='detail_tx' href='/MyJourney/user/editRoute?routeId="+personal.get(i).getId()+"&selectnum=1'>行程记录</a></span>");
+								out.print("</div>");
+								out.print("<div class='rrow_right' align='center'>");
+								out.print("<span class='record_text'>查看相似行程</span><br/>");
+								out.print("<span class='record_text'></span>");
+								out.print("</div>");
+								out.print("<div class='my_rate' align='center'>");
+								out.print("<div class='ttt'><span class='p_trip_rate'><a href='userViewJourney?jid="+personal.get(i).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>评价旅途</a></span></div>");
+								out.print("</div>");
+								out.print("<div class='trip_action'>");
+								out.print("<span class='trip_action_text'><a href=''>分享</a></span>");
+								out.print("<span class='trip_action_text'><a href=''>删除</a></span>");
+								out.print("</div>");
+								out.print("<div class='row_sep'></div>");
+								out.print("</div>");
+							}
+							
+						%>
 					</div>
 					<div id="team_results" class="changeableTab" style="display:none">
 						<div id="team_header">
 							           	                                          
 						</div>
 						<div id="team_row">
-							<div class="resultRow">
-								<div class="row_sep2"></div>
-								<div class="rrow_content">
-									<div class="journey_title">
-										<span class="title"><a onclick="openCenterDiv()">黄山三日游</a></span>
-										<br/>
-										<span class="date">从:2013-04-12</span>
-										<br/>
-										<span class="date">至:2013-04-15</span>
-									</div>
-								</div>
-								<div class="status">
-									<span class="finished">已结束</span>
-								</div>
-								<div class="rrow_right">
-									<div class="number" align="center">16</div>
-									<div class="participants" align="center">成员</div>
-								</div>
-								<div class="rrow_rate">
-									<div class="rate" align="center">4.5</div>
-									<div class="participants" align="center">成员评分</div>
-								</div>
-								<div class="my_rate">
-									<div><span onclick="showField(1)">我的评价</span></div>
-								</div>
-								<div id="commentField1" class="rate_field" style="display:none">
-									<form>
-										<div class="rateinput">
-											<ul class="stars">
-												<li class="star" onclick="setRate(1)"></li>
-												<li class="star" onclick="setRate(2)"></li>
-												<li class="star" onclick="setRate(3)"></li>
-												<li class="star" onclick="setRate(4)"></li>
-												<li class="star" onclick="setRate(5)"></li>
-												<li class="star" onclick="setRate(6)"></li>
-												<li class="star" onclick="setRate(7)"></li>
-												<li class="star" onclick="setRate(8)"></li>
-												<li class="star" onclick="setRate(9)"></li>
-												<li class="star" onclick="setRate(10)"></li>
-											<ul>
-										</div>
-										<div class="commentinput" align="left">
-											<textarea type="text" class="comments_field"></textarea>
-										</div>
-										<div class="action" align="right">
-											<span class="action_text" onclick="hideField(1)">取消</span>
-											<span class="action_text" onclick="hideField(1)">提交</span>
-										</div>
-									</form>
-								</div>
-								<div class="row_sep"></div>
-							</div>
-							<div class="resultRow">
-								<div class="row_sep2"></div>
-								<div class="rrow_content">
-									<div class="journey_title">
-										<span class="title"><a onclick="openCenterDiv()">西藏之旅</a></span>
-										<br/>
-										<span class="date">开始时间:2013-04-15</span>
-										<br/>
-									</div>
-								</div>
-								<div class="status">
-									<span class="ongoing">进行中</span>
-								</div>
-								<div class="rrow_right">
-									<div class="number" align="center">28</div>
-									<div class="participants" align="center">成员</div>
-								</div>
-								<div class="rrow_rate">
-									<div class="rate" align="center">4.8</div>
-									<div class="participants" align="center">成员评分</div>
-								</div>
-								<div class="my_rate">
-									<div><span onclick="showField(2)">我的评价</span></div>
-								</div>
-								<div id="commentField2" class="rate_field" style="display:none">
-									<form>
-										<div class="rateinput">
-											<ul class="stars">
-												<li class="star" onclick="setRate(1)"></li>
-												<li class="star" onclick="setRate(2)"></li>
-												<li class="star" onclick="setRate(3)"></li>
-												<li class="star" onclick="setRate(4)"></li>
-												<li class="star" onclick="setRate(5)"></li>
-												<li class="star" onclick="setRate(6)"></li>
-												<li class="star" onclick="setRate(7)"></li>
-												<li class="star" onclick="setRate(8)"></li>
-												<li class="star" onclick="setRate(9)"></li>
-												<li class="star" onclick="setRate(10)"></li>
-											<ul>
-										</div>
-										<div class="commentinput" align="left">
-											<textarea type="text" class="comments_field"></textarea>
-										</div>
-										<div class="action" align="right">
-											<span class="action_text" onclick="hideField(2)">取消</span>
-											<span class="action_text" onclick="hideField(2)">提交</span>
-										</div>
-									</form>
-								</div>
-								<div class="row_sep"></div>
-							</div>
-							<div class="resultRow">
-								<div class="row_sep2"></div>
-								<div class="rrow_content">
-									<div class="journey_title">
-										<span class="title"><a onclick="openCenterDiv()">凤凰古城</a></span>
-										<br/>
-										<span class="date">开始时间:2013-05-15</span>
-										<br/>
-									</div>
-								</div>
-								<div class="status">
-									<span class="notStarted">未开始</span>
-								</div>
-								<div class="rrow_right">
-									<div class="number" align="center">18</div>
-									<div class="participants" align="center">成员</div>
-								</div>
-								<div class="rrow_rate">
-									<div class="rate" align="center">NA</div>
-									<div class="participants" align="center">成员评分</div>
-								</div>
-								<div class="my_rate">
-									<div><span onclick="showField(3)">我的评价</span></div>
-								</div>
-								
-								<div id="commentField3" class="rate_field" style="display:none">
-									<form>
-										<div class="rateinput">
-											<ul class="stars">
-												<li class="star" onclick="setRate(1)"></li>
-												<li class="star" onclick="setRate(2)"></li>
-												<li class="star" onclick="setRate(3)"></li>
-												<li class="star" onclick="setRate(4)"></li>
-												<li class="star" onclick="setRate(5)"></li>
-												<li class="star" onclick="setRate(6)"></li>
-												<li class="star" onclick="setRate(7)"></li>
-												<li class="star" onclick="setRate(8)"></li>
-												<li class="star" onclick="setRate(9)"></li>
-												<li class="star" onclick="setRate(10)"></li>
-											<ul>
-										</div>
-										<div class="commentinput" align="left">
-											<textarea type="text" class="comments_field"></textarea>
-										</div>
-										<div class="action" align="right">
-											<span class="action_text" onclick="hideField(3)">取消</span>
-											<span class="action_text" onclick="hideField(3)">提交</span>
-										</div>
-									</form>
-								</div>
-								<div class="row_sep"></div>
-							</div>
+							<%
+								SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+								String today=sdf.format(new Date());
+								int tsize=team.size();
+								for(int i=0;i<tsize;i++){
+									out.print("<div class='resultRow'>");
+									out.print("<div class='row_sep2'></div>");
+									out.print("<div class='rrow_content'>");
+									out.print("<div class='journey_title'>");
+									out.print("<span class='title'><a onclick='openCenterDiv()'>"+team.get(i).getJourneyName()+"</a></span>");
+									out.print("<br/>");
+									out.print("<span class='date'>从:"+team.get(i).getPlaces().get(0).getTime()+"</span>");
+									out.print("<br/>");
+									out.print("<span class='date'>至:"+team.get(i).getPlaces().get(team.get(i).getPlaces().size()-1).getTime()+"</span>");
+									out.print("</div>");
+									out.print("</div>");
+									out.print("<div class='status'>");
+									if(today.compareTo(team.get(i).getPlaces().get(team.get(i).getPlaces().size()-1).getTime())>0){
+										out.print("<span class='finished'>已结束</span>");
+									}else if(today.compareTo(team.get(i).getPlaces().get(0).getTime())<0){
+										out.print("<span class='notStarted'>未开始</span>");
+									}else{
+										out.print("<span class='ongoing'>进行中</span>");
+									}
+									out.print("</div>");
+									out.print("<div class='rrow_right'>");
+									out.print("<div class='number' align='center'>"+team.get(i).getTeam().getUsers().size()+"</div>");
+									out.print("<div class='participants' align='center'>成员</div>");
+									out.print("</div>");
+									out.print("<div class='my_rate'>");
+									out.print("<div><span><a href='/MyJourney/user/editRoute?routeId="+team.get(i).getId()+"&selectnum=1'>查看详情</a></span></div>");
+									out.print("</div>");
+									out.print("<div class='my_rate'>");
+									out.print("<div><span><a href='userViewJourney?jid="+team.get(i).getId()+"'>评价</a></span></div>");
+									out.print("</div>");
+									out.print("<div class='row_sep'></div>");
+									out.print("</div>");
+								}
+							
+							%>
+						
 						</div>
 					</div>
+					
+					<div id="all_tj_results" class="changeableTab" style="display:none">
+						<div id="team_header">
+							           	                                          
+						</div>
+						<div id="team_row">
+							<%
+								SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
+								String today2=sdf.format(new Date());
+								int atsize=allteam.size();
+								for(int i=0;i<atsize;i++){
+									out.print("<div class='resultRow'>");
+									out.print("<div class='row_sep2'></div>");
+									out.print("<div class='rrow_content'>");
+									out.print("<div class='journey_title'>");
+									out.print("<span class='title'><a onclick='openCenterDiv()'>"+allteam.get(i).getJourneyName()+"</a></span>");
+									out.print("<br/>");
+									out.print("<span class='date'>从:"+allteam.get(i).getPlaces().get(0).getTime()+"</span>");
+									out.print("<br/>");
+									out.print("<span class='date'>至:"+allteam.get(i).getPlaces().get(allteam.get(i).getPlaces().size()-1).getTime()+"</span>");
+									out.print("</div>");
+									out.print("</div>");
+									out.print("<div class='status'>");
+									if(today2.compareTo(allteam.get(i).getPlaces().get(allteam.get(i).getPlaces().size()-1).getTime())>0){
+										out.print("<span class='finished'>已结束</span>");
+									}else if(today2.compareTo(allteam.get(i).getPlaces().get(0).getTime())<0){
+										out.print("<span class='notStarted'>未开始</span>");
+									}else{
+										out.print("<span class='ongoing'>进行中</span>");
+									}
+									out.print("</div>");
+									out.print("<div class='rrow_right'>");
+									out.print("<div class='number' align='center'>"+allteam.get(i).getTeam().getUsers().size()+"</div>");
+									out.print("<div class='participants' align='center'>成员</div>");
+									out.print("</div>");
+									out.print("<div class='my_rate'>");
+									out.print("<div><span><a href='/MyJourney/user/editRoute?routeId="+allteam.get(i).getId()+"&selectnum=1'>查看详情</a></span></div>");
+									out.print("</div>");
+									out.print("<div class='my_rate'>");
+									out.print("<div><span><a href='userViewJourney?jid="+allteam.get(i).getId()+"'>评价</a></span></div>");
+									out.print("</div>");
+									out.print("<div class='row_sep'></div>");
+									out.print("</div>");
+								}
+							
+							%>
+						
+						</div>
+					</div>
+					
+					
 				</div>
 			</div>
 			<div id="text_div3">
@@ -384,6 +276,7 @@
 			</div>
 			<div id="globalFooter">
 			</div>
+			
 			<div id="center_div" style="display:none">
 				<div id="center_div_header" align="right">
 					<span onclick="closeCenterDiv()">关闭</span>
