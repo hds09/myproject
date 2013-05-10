@@ -21,14 +21,15 @@ public class LoginAction extends BaseAction{
 		String result = SUCCESS;
 		System.out.println(account+" and "+password);
 		if(!userService.haveuser(account, password)){
-			result="failure";
+		result="failure";
 		}else{
-			 ActionContext actionContext = ActionContext.getContext();  
-			  Map session = actionContext.getSession();	
-			  this.islogined=true;
-			 session.put("islogined",this.islogined);
-			 session.put("account",this.account);
-			 
+		ActionContext actionContext = ActionContext.getContext();
+		Map session = actionContext.getSession();	
+		this.islogined=true;
+			session.put("islogined",this.islogined);
+			session.put("account",this.account);
+			Long uuid=this.userService.getUserByAccount(this.account).getUid();
+			session.put("Auuid",uuid);
 		}
 		return result;
 	}

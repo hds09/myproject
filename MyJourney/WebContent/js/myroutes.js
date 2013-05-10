@@ -75,12 +75,14 @@ function showPField(index){
 	$(id).show(500);
 	$('.p_trip_rate').text('-收起评论');
 };
-function closeCenterDiv(){
-	$('#center_div').hide(200);
+function closeCenterDiv(id){
+	var id='#center_div'+id;
+	$(id).hide(200);
 };
 
-function openCenterDiv(){
-	$('#center_div').show(200);
+function openCenterDiv(id){
+	var id='#center_div'+id;
+	$(id).show(200);
 };
 
 function showNextPicture(){

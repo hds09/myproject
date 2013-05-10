@@ -44,7 +44,16 @@ public class RestaurantDaoImpl implements RestaurantDao {
 	@Override
 	public void updateRestaurant(Restaurant hotel) {
 		// TODO Auto-generated method stub
-		
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			session.merge(hotel);
+			System.out.println("...................update hotel.........................");
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
 	}
 
 	@Override

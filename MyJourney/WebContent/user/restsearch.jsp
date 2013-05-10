@@ -22,7 +22,7 @@
 	</head>
 	<body>
 		<%
-			List<Restaurant> hotels=(List<Restaurant>)ActionContext.getContext().getSession().get("allRests");
+			List<Restaurant> hotels=(List<Restaurant>)ActionContext.getContext().getSession().get("s_result");
 			List<Restaurant> hots=(List<Restaurant>)ActionContext.getContext().getSession().get("hotRests");
 			Long uid=(Long)ActionContext.getContext().getSession().get("Auuid");
 		%>
@@ -42,7 +42,7 @@
 			</ul>
 		</nav>
 		<div id="containAll">
-			<div id="text_div"><span>饭店列表</span></div>
+			<div id="text_div"><span>饭店列表</span>&nbsp;&nbsp;&nbsp;<span><a class='returnAll' href='Restaurants'>返回所有</a></span></div>
 			<div class="seperator"></div>
 			<!-- menu-->
 				<div id='searchHdiv' align='center'>

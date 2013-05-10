@@ -5,7 +5,7 @@
 <%@ page import="com.opensymphony.xwork2.ActionContext" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %> 
-;
+<%@ page import="edu.nju.MyJourney.helperModel.*" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -23,6 +23,9 @@
 		<%
 			List<Journey> journeys=(List<Journey>)ActionContext.getContext().getSession().get("user_journeys");
 			List<Journey> alljourneys=(List<Journey>)ActionContext.getContext().getSession().get("all_journeys");
+			List<SimilarJourney> sims=(List<SimilarJourney>)ActionContext.getContext().getSession().get("similarJs");
+			List<Journey> interested=(List<Journey>)ActionContext.getContext().getSession().get("user_int");
+			List<User> intUsers=(List<User>)ActionContext.getContext().getSession().get("InUser");
 			List<Journey> personal=new ArrayList<Journey>();
 			List<Journey> team=new ArrayList<Journey>();
 			List<Journey> allteam=new ArrayList<Journey>();
@@ -45,8 +48,8 @@
 		<nav>
 			<ul>
 				<li><a href="index">首页</a></li>
-				<li><a href="#">酒店</a></li>
-				<li><a href="#">饭店</a></li>
+				<li><a href="Hotels">酒店</a></li>
+				<li><a href="Restaurants">饭店</a></li>
 				<li><a href="makeRoute">旅程</a></li>
 				<li><a href="/MyJourney/pic/picwall">旅图</a></li>
 				<li class="selected"><a href="">管理</a></li>
@@ -81,14 +84,6 @@
 								<span class="s_text">旅行名关键字</span>
 								<input class="s_input" />
 							</div>
-							<div id="s_time">
-								<span class="s_text">时间范围</span>
-								<input id="s_startDate" class="s_input" /><span class="s_text"> 至  </span><input id="s_endDate" class="s_input" />
-							</div>
-							<div id="s_cities">
-								<span class="s_text">沿途城市(至多添加5个)</span>
-								<span class="s_text2">添加</span>
-							</div>
 							<div id="s_status">
 								<span class="s_text">状态</span>
 								<select name="status">
@@ -97,21 +92,7 @@
 								<option value="pending"><span class="s_text">未开始</span></option>
 								</select>
 							</div>
-							<div id="s_rate">
-								<span class="s_text" >评分</span>
-								<select name="rate">
-								<option value="finished" class="s_text"><span class="s_text">从低到高</span></option>
-								<option value="ongoing" class="s_text"><span class="s_text">从高到低</span></option>
-								</select>
-							</div>
-							<div class="sep"></div>
-							<div id="s_people">
-								<span class="s_text">参加人数</span>
-								<select name="rate">
-								<option value="finished"><span class="s_text">从低到高</span></option>
-								<option value="ongoing"><span class="s_text">从高到低</span></option>
-								</select>
-							</div>
+							
 							<div id="s_form_submit" align="right">
 								<input type="submit" value="搜索" class="s_sbmt"/>
 							</div>
@@ -141,7 +122,7 @@
 								out.print("<span class='for_details'><a class='detail_tx' href='/MyJourney/user/editRoute?routeId="+personal.get(i).getId()+"&selectnum=1'>行程记录</a></span>");
 								out.print("</div>");
 								out.print("<div class='rrow_right' align='center'>");
-								out.print("<span class='record_text'>查看相似行程</span><br/>");
+								out.print("<span class='record_text' onclick='openCenterDiv("+personal.get(i).getId()+")'>查看相似行程</span><br/>");
 								out.print("<span class='record_text'></span>");
 								out.print("</div>");
 								out.print("<div class='my_rate' align='center'>");
@@ -152,6 +133,29 @@
 								out.print("<span class='trip_action_text'><a href=''>删除</a></span>");
 								out.print("</div>");
 								out.print("<div class='row_sep'></div>");
+								out.print("</div>");
+								out.print("<div class='center_div' id='center_div"+personal.get(i).getId()+"' style='display:none'>");
+								out.print("<div id='center_div_header' align='right'>");
+								out.print("<span onclick='closeCenterDiv("+personal.get(i).getId()+")'>关闭</span>");
+								out.print("</div>");
+								out.print("<span>&nbsp;&nbsp;&nbsp;为您找到的相似旅程</span>");
+								out.print("<div id='sims' align='center'>");
+								List<Journey> tmpss=null;
+								for(int m=0;m<sims.size();m++){
+									if(sims.get(m).getTheJ().getId()==personal.get(i).getId()){
+										tmpss=sims.get(m).getSims();
+										break;
+									}
+								}
+								if(tmpss.size()==0||tmpss==null){
+									out.print("抱歉,未找到相似旅程");
+								}else{
+									for(int l=0;l<tmpss.size();l++){
+										out.print("<a class='simJTitle' href='userViewJourney?jid="+tmpss.get(l).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>"+tmpss.get(l).getJourneyName()+"<a><br/>");
+									}
+								}
+								out.print("</div>");
+								out.print("<br/><br/><span>&nbsp;&nbsp;&nbsp;快去看看他们都干了些什么</span>");
 								out.print("</div>");
 							}
 							
@@ -265,64 +269,62 @@
 			<div id="rec_trip">
 				<div class="rec_text_div"><span class="rec_text">猜您感兴趣的旅程</span></div>
 				<div id="rec_trip_rows">
-					<div class="rec_trip_row">
-						<span class="trip_title"><a href="">西南5日行</a></span>
-						<span class="trip_time">2013/5/1 至 2013/5/3</span>
-					</div>
+					<%
+						int isize=interested.size();
+						for(int i=0;i<isize;i++){
+							out.print("<div class='rec_trip_row'>");
+							out.print("<span class='trip_title'><a class='trip_lnk' href='userViewJourney?jid="+interested.get(i).getId()+"'>"+interested.get(i).getJourneyName()+"</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+							out.print("<span class='trip_time'>"+interested.get(i).getPlaces().get(0).getTime()+"&nbsp;&nbsp;至&nbsp;&nbsp; "+interested.get(i).getPlaces().get(interested.get(i).getPlaces().size()-1).getTime()+"</span>");
+							out.print("</div>");
+						}
+						
+					%>
+					
+						
+						
+					
 				</div>
 			</div>
 			<div id="rec_people">
-				<span>"志同道合"的驴友</span>
-			</div>
-			<div id="globalFooter">
+				<div><span>"志同道合"的驴友</span></div>
+				<%
+					int recsize=intUsers.size();
+					for(int i=0;i<recsize;i++){
+						out.print("<div class='rec_row' align='center'>");
+						out.print("<img src='../images/sdd09/img_holder.jpg' /><br/>");
+						out.print("<a class='people_lnk' href=''>"+intUsers.get(i).getAccount()+"</a>");
+						out.print("</div>");
+					}
+					
+				%>
 			</div>
 			
-			<div id="center_div" style="display:none">
-				<div id="center_div_header" align="right">
-					<span onclick="closeCenterDiv()">关闭</span>
-				</div>
-				<div>
-					<div id="img_slider">
-						<div class="prev">
-							<img src="../images/sdd09/prev.jpg" onclick="showPreviousPicture()"/>
-						</div>
-						<ul id="img_list">
-							<li class="present img"><img src="../images/sdd09/tp1.jpg" class="img1"/></li>
-							<li class="hidden img"><img src="../images/sdd09/tp2.jpg" class="img1"/></li>
-							<li class="hidden img"><img src="../images/sdd09/tp3.jpg" class="img1"/></li>
-						</ul>
-						<div class="next">
-							<img src="../images/sdd09/next.jpg" onclick="showNextPicture()"/>
-						</div>
-						<div class="v_sep"></div>
-					</div>
-					<div id="trip_info">
-						<span class="trip_info_title">黄山三日游</span>
-						<div class="trip_info_details">
-							<div class="text_info">
-								<span class="text_info_text">出发地</span>
-							</div>
-							<div class="rate_info">
-								
-							</div>
-						</div>
-					</div>
-					<div id="team_member_line"><span onclick="showMembers()">展开查看成员列表</span></div>
-					<div id="team_member" style="display:none">
-						<div class="member_row">
-							user1
-						</div>
-						<div class="member_row">
-							user2
-						</div>
-						<div class="member_row">
-							user3
-						</div>
-					</div>
-				</div>
-			</div>
+			
+			
 		</div>
+		<footer>
+			<div>
+				<section id="about">
+					<header>
+						<h3>About</h3>
+					</header>
+					<p> <a href="#">云游网是一个集合网络社交的旅游行程规划网站</a> </br>
+					<a href="#">你的加入会使得世界变得从此不同</a>
+					</p>
+				</section>
+				<section id="blogroll">
+					<header>
+						<h3>Blogroll</h3>
+					</header>
+					<ul>
+						<li><a href="#">NETTUTS+</a></li>
+						<li><a href="#">FreelanceSwitch</a></li>
+						<li><a href="#">In The Woods</a></li>
+						<li><a href="#">Netsetter</a></li>
+						<li><a href="#">PSDTUTS+</a></li>
+					</ul>
+				</section>
+			</div>
+		</footer>
 	</body>
-	<footer>
-	</footer>
 </html>

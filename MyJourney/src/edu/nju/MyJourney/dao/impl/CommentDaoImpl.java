@@ -11,6 +11,8 @@ import org.hibernate.cfg.Configuration;
 import edu.nju.MyJourney.dao.CommentDao;
 import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Comment;
+import edu.nju.MyJourney.model.Hotel;
+import edu.nju.MyJourney.model.Restaurant;
 
 public class CommentDaoImpl implements CommentDao{
 	Configuration config = new Configuration().configure();
@@ -35,18 +37,27 @@ public class CommentDaoImpl implements CommentDao{
 		return comments;
 	}
 	@Override
-	public void insertComment(Comment c) {
+	public void insertComment(Comment comment) {
 		// TODO Auto-generated method stub
 		 Session session=sessionFactory.openSession();
 			try {	
 				Transaction tx=session.beginTransaction();
-				session.saveOrUpdate(c);
-				session.save(c);
+				session.save(comment);
 		       tx.commit();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			session.close();
+	}
+	@Override
+	public List<Comment> getHotelComments(Hotel hotel) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Comment> getRestaurantComments(Restaurant restaurant) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

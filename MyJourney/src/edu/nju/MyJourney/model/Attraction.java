@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.CollectionType;
 import org.hibernate.annotations.Index;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Type;
 import org.hibernate.search.annotations.ContainedIn;
 import org.hibernate.search.annotations.IndexedEmbedded;
@@ -47,7 +49,9 @@ public long getId() {
 public void setId(long id) {
 	this.id = id;
 }
-@OneToMany(mappedBy="attraction", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="attraction", cascade=CascadeType.ALL)
 @OrderBy(value="id ASC")
 public List<Comment> getComments() {
 	return comments;

@@ -18,12 +18,12 @@
 		<script type="text/javascript">
 			
 		</script>
-		<title>饭店列表</title>
+		<title>酒店列表</title>
 	</head>
 	<body>
 		<%
-			List<Restaurant> hotels=(List<Restaurant>)ActionContext.getContext().getSession().get("allRests");
-			List<Restaurant> hots=(List<Restaurant>)ActionContext.getContext().getSession().get("hotRests");
+			List<Hotel> hotels=(List<Hotel>)ActionContext.getContext().getSession().get("s_result");
+			List<Hotel> hots=(List<Hotel>)ActionContext.getContext().getSession().get("hotHotels");
 			Long uid=(Long)ActionContext.getContext().getSession().get("Auuid");
 		%>
 		<header>
@@ -42,11 +42,11 @@
 			</ul>
 		</nav>
 		<div id="containAll">
-			<div id="text_div"><span>饭店列表</span></div>
+			<div id="text_div"><span>酒店列表</span>&nbsp;&nbsp;&nbsp;<span><a class='returnAll' href='Hotels'>返回所有</a></span></div>
 			<div class="seperator"></div>
 			<!-- menu-->
 				<div id='searchHdiv' align='center'>
-					<form action='RestSearch' method='post'>
+					<form action='HotelSearch' method='post'>
 						<input id='search_field' type='text' name='keyword' style='width:300px;height:30px' />
 						<input type='submit' value='搜一下'/>
 					</form>
@@ -77,7 +77,7 @@
 								out.print("<span class='opop'>"+hotels.get(i).getPhone()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
 								out.print("<span class='opop'>价格:</span>&nbsp;");
 								out.print("<span class='opop'>"+hotels.get(i).getPrice()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<a class='seeDetail' href='userviewRestaurant?rid="+hotels.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
+								out.print("<a class='seeDetail' href='userviewHotel?hid="+hots.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
 								out.print("</div>");
 								out.print("<div class='mysep'></div>");
 							}

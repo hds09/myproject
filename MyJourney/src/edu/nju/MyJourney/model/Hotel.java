@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 
 @Entity
 @Table(name="hotel")
@@ -88,7 +91,9 @@ public int getDislike() {
 public void setDislike(int dislike) {
 	this.dislike = dislike;
 }
-@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL)
 @OrderBy(value="id ASC")
 public List<Comment> getComments() {
 	return comments;

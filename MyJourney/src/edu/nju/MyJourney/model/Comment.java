@@ -48,6 +48,7 @@ public User getUser() {
 public void setUser(User user) {
 	this.user = user;
 }
+
 @ManyToOne(cascade=CascadeType.ALL, optional=false)
 @JoinColumn(name="comments_attraction")
 public Attraction getAttraction() {
@@ -57,6 +58,7 @@ public Attraction getAttraction() {
 public void setAttraction(Attraction attraction) {
 	this.attraction = attraction;
 }
+
 @ManyToOne(cascade=CascadeType.ALL, optional=false)
 @JoinColumn(name="comments_hotel")
 public Hotel getHotel() {
@@ -65,6 +67,7 @@ public Hotel getHotel() {
 public void setHotel(Hotel hotel) {
 	this.hotel = hotel;
 }
+
 @ManyToOne(cascade=CascadeType.ALL, optional=false)
 @JoinColumn(name="comments_restaurant")
 public Restaurant getRestaurant() {

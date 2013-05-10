@@ -18,6 +18,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 
@@ -222,7 +224,8 @@ public class User {
 		f.setUser(null);
 		this.message.remove(f);
 	}
-	@OneToMany(mappedBy="user", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="user", cascade=CascadeType.ALL)
 	@OrderBy(value="id ASC")
 	public List<Comment> getComments() {
 		return comments;

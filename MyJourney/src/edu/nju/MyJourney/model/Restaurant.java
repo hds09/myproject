@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 
 @Entity
 @Table(name="restaurant")
@@ -73,8 +76,8 @@ public void setPhone(String phone) {
 }
 
 
-
-@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="restaurant", cascade=CascadeType.ALL)
 @OrderBy(value="id ASC")
 public List<Comment> getComments() {
 	return comments;

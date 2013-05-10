@@ -25,6 +25,22 @@
 				var id='#'+'cfid'+id;
 				$(id).hide(400);
 			}
+			
+			function joinTeam(jid,uid){
+				$.ajax({
+					type:'post',
+					url:'jointeam.action',
+					data:{jid:jid,uid:uid},
+					dataType:"json",  
+					success: function(data){
+						alert('加入成功');
+						location.href="/MyJourney/user/userViewJourney?jid="+jid+"&uid="+uid;
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {   
+	                     
+		            },  
+				});
+			}
 		</script>
 		<title>旅程信息</title>
 	</head>
@@ -33,7 +49,19 @@
 			Journey j=(Journey)ActionContext.getContext().getSession().get("targetJ");
 			String uid=(String)ActionContext.getContext().getSession().get("viewer");
 			List<Comment> comments=(List<Comment>)ActionContext.getContext().getSession().get("comments");
-			out.print("hello,"+uid);
+			boolean joined=false;
+			boolean finished=false;
+			boolean ongoing=false;
+			boolean notstarted=false;
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+			String today=sdf.format(new Date());
+			if(today.compareTo(j.getPlaces().get(j.getPlaces().size()-1).getTime())>0){
+				finished=true;
+			}else if(today.compareTo(j.getPlaces().get(0).getTime())<0){
+				notstarted=true;
+			}else{
+				ongoing=true;
+			}
 		%>
 		<header>
 			<h1>Where You Will Go</h1>
@@ -56,9 +84,35 @@
 			<!-- menu-->
 			<div id="cter">
 				<div id="j_contents">
-					<div id='title_div'>
+					<div id='title_div2'>
 						<span class='x_title'><%out.print(j.getJourneyName());%></span>
-						<div class='seperator2'></div>
+						<%
+							if(j.getState()==1){
+								List<User> mems=j.getTeam().getUsers();
+								for(User user:mems){
+									if(uid.equals(Long.toString(user.getUid()))){
+										joined=true;
+										break;
+									}
+								}
+							}
+						
+							if(finished){
+								out.print("<span class='finished'>已结束</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+							}else if(notstarted){
+								out.print("<span class='notStarted'>未开始</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+								if(joined){
+									out.print("<span class='joined' >已加入</span>");
+								}else{
+									out.print("<span class='not_joined' onclick='joinTeam("+j.getId()+","+uid+")'>立即加入</span>");
+								}
+							}else if(ongoing){
+								out.print("<span class='ongoing'>进行中</span>");
+							}
+							
+						
+						%>
+						
 					</div>
 					<div id='info_div'>
 						<div id='upper'>
@@ -91,11 +145,11 @@
 											out.print("<span>所在城市</span>&nbsp;");
 											out.print("<span><B>"+j.getPlaces().get(i).getCity().getName()+"</B></span>&nbsp;");
 											out.print("<span>所在景点</span>&nbsp;");
-											out.print("<span><a class='detail_lnk' href=''>"+j.getPlaces().get(i).getAttraction().getName()+"</a></span>&nbsp;&nbsp;");
+											out.print("<span><a class='detail_lnk' href='userviewAttraction?aid="+j.getPlaces().get(i).getAttraction().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getAttraction().getName()+"</a></span>&nbsp;&nbsp;");
 											out.print("<span>所住酒店</span>&nbsp;");
-											out.print("<span><a class='detail_lnk' href=''>"+j.getPlaces().get(i).getHotel().getName()+"</a></span>&nbsp;&nbsp;");
+											out.print("<span><a class='detail_lnk' href='userviewHotel?hid="+j.getPlaces().get(i).getHotel().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getHotel().getName()+"</a></span>&nbsp;&nbsp;");
 											out.print("<span>饭店</span>&nbsp;");
-											out.print("<span><a class='detail_lnk' href=''>"+j.getPlaces().get(i).getRestaurant().getName()+"</a></span>&nbsp;&nbsp;");
+											out.print("<span><a class='detail_lnk' href='userviewRestaurant?rid="+j.getPlaces().get(i).getRestaurant().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getRestaurant().getName()+"</a></span>&nbsp;&nbsp;");
 											out.print("<span class='eva_t' onclick='sNhCF("+j.getPlaces().get(i).getId()+")'>评价</span>");
 											int csize=comments.size();
 											Comment tmp=null;
@@ -116,14 +170,14 @@
 											out.print("<div class='cfld' style='display:none' id='cfid"+j.getPlaces().get(i).getId()+"'>");
 											out.print("<form action='comment' method='post'>");
 											if(commentExist){
-												out.print("<textarea value='"+comment+"' disabled=true ></textarea>");
+												out.print("<textarea style='width: 481px; height: 46px;' value='"+comment+"' disabled=true ></textarea>");
 											}else{
-												out.print("<textarea class='cfld_f' style='width: 483px; height: 30px;' name='comment' ></textarea>");
+												out.print("<textarea class='cfld_f' style='width: 481px; height: 46px;' name='commText' ></textarea>");
 												out.print("<input type='hidden' name='hid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
 												out.print("<input type='hidden' name='rid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
 												out.print("<input type='hidden' name='aid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
 												out.print("<input type='hidden' name='uid' value='"+uid+"' />");
-												out.print("<div align='right'><span onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span><input type='submit' value='提交'></div>");
+												out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span><input type='submit' value='提交' /></div>");
 											}
 											out.print("</form>");
 											out.print("</div>");
@@ -146,6 +200,30 @@
 			
 			
 		</div>
+		<footer>
+		<div>
+			<section id="about">
+				<header>
+					<h3>About</h3>
+				</header>
+				<p> <a href="#">云游网是一个集合网络社交的旅游行程规划网站</a> </br>
+				<a href="#">你的加入会使得世界变得从此不同</a>
+				</p>
+			</section>
+			<section id="blogroll">
+				<header>
+					<h3>Blogroll</h3>
+				</header>
+				<ul>
+					<li><a href="#">NETTUTS+</a></li>
+					<li><a href="#">FreelanceSwitch</a></li>
+					<li><a href="#">In The Woods</a></li>
+					<li><a href="#">Netsetter</a></li>
+					<li><a href="#">PSDTUTS+</a></li>
+				</ul>
+			</section>
+		</div>
+	</footer>
 	</body>
 	<footer>
 	</footer>

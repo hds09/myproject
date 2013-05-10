@@ -34,8 +34,8 @@ document.getElementById(bg_div).style.display='none';
 	<nav>
 		<ul>
 			<li class="selected"><a href="#">首页</a></li>
-			<li><a href="#">酒店</a></li>
-			<li><a href="#">饭店</a></li>
+			<li><a href="Hotels">酒店</a></li>
+			<li><a href="Restaurants">饭店</a></li>
 			<li><a href="makeRoute">旅程</a></li>
 			<li><a href="/MyJourney/pic/picwall">旅图</a></li>
 			<li><a href="userJourneyManagement">管理</a></li>

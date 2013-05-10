@@ -14,7 +14,7 @@
      <constant name="struts.multipart.saveDir" value="d:/test" />
      
       <!-- 建立一般会员的package-->
-       <package name="user" namespace="/user"  extends="struts-default">
+       <package name="user" namespace="/user"  extends="json-default">
           <action name="index" class="IndexAction" >
               <result name="success">index.jsp</result>
           </action>
@@ -134,6 +134,36 @@
           <action name="comment" class="UserJourneyManagementAction" method="comment">
               <result type="redirectAction" name="success">userJourneyManagement</result>
               <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+          <action name="userviewRestaurant" class="UserJourneyManagementAction" method="viewRestaurant">
+              <result name="success">/user/restdetail.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+          <action name="userviewAttraction" class="UserJourneyManagementAction" method="viewAttraction">
+              <result name="success">/user/attrdetail.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+           <action name="uservote" class="UserJourneyManagementAction" method="userVote">
+              <result name="success" type="json"></result>
+          </action>
+          <action name="Hotels" class="UserJourneyManagementAction" method="allhotels">
+              <result name="success">/user/hotellist.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+          <action name="Restaurants" class="UserJourneyManagementAction" method="allrests">
+              <result name="success">/user/restaurantlist.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+           <action name="HotelSearch" class="UserJourneyManagementAction" method="userHotelSearch">
+              <result name="success">/user/hotelsearch.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+          <action name="RestSearch" class="UserJourneyManagementAction" method="userRestSearch">
+              <result name="success">/user/restsearch.jsp</result>
+              <result name="failure">/user/warning/unlogined.jsp</result>
+          </action>
+          <action name="jointeam" class="UserJourneyManagementAction" method="joinTeam">
+            	<result name="success" type="json"></result>
           </action>
       </package>
       

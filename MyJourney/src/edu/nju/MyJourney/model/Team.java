@@ -51,6 +51,13 @@ public void setUsers(List<User> users) {
 	this.users = users;
 }
 
+public void removeUsers(User u){
+	if(!this.users.contains(u)){
+		this.users.add(u);
+	}
+}
+
+
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "Jid")
 public Journey getJourney() {
