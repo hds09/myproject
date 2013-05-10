@@ -17,12 +17,7 @@ public class JourneyServiceImpl implements JourneyService{
 		// TODO Auto-generated method stub
 		journeyDao.insertJoueney(journey);
 	}
-	public JourneyDao getJourneyDao() {
-		return journeyDao;
-	}
-	public void setJourneyDao(JourneyDao journeyDao) {
-		this.journeyDao = journeyDao;
-	}
+	
 	@Override
 	public Journey getJourneyById(long id) {
 		// TODO Auto-generated method stub
@@ -58,5 +53,10 @@ public class JourneyServiceImpl implements JourneyService{
 		// TODO Auto-generated method stub
 		this.journeyDao.updateJourney(journey);
 	}
-
+	public JourneyDao getJourneyDao() {
+		return journeyDao;
+	}
+	public void setJourneyDao(JourneyDao journeyDao) {
+		this.journeyDao = journeyDao;
+	}
 }

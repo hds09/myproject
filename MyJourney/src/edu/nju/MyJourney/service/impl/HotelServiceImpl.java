@@ -1,6 +1,7 @@
 package edu.nju.MyJourney.service.impl;
 
 import edu.nju.MyJourney.dao.HotelDao;
+import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Hotel;
 import edu.nju.MyJourney.service.HotelService;
 
@@ -21,6 +22,11 @@ public class HotelServiceImpl implements HotelService {
 	public void updateHotel(Hotel hotel) {
 		// TODO Auto-generated method stub
 		this.hotelDao.updateHotel(hotel);
+	}
+	@Override
+	public Hotel getBestHotel(City city) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

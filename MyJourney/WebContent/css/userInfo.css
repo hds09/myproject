@@ -22,7 +22,16 @@ body {
 	background: #F0F0F0;
 
 }
-
+#button {
+	border-radius: 5px;
+	cursor:pointer;
+	width:40px;
+	height:20px;
+	background:#749a02;
+-webkit-animation-name: greenPulse;
+-webkit-animation-duration: 2s;
+-webkit-animation-iteration-count: infinite;
+}
 h1, h2 {
 	font-size: 28px;
 	line-height: 44px;

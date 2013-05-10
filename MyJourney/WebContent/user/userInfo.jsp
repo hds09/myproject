@@ -133,15 +133,15 @@ function cancelAge(){
 	if((agevalue.value!=null)&&(agevalue.value!="")){
 		tmpvalue=agevalue.value;
 	}
-	ageId.innerHTML="<td width='50px' >年纪:</td> <td width='200px'>"+tmpvalue+"</td> <td width='100px'> <a onclick='changeAge()'>修改</a> </td>";
+	ageId.innerHTML="<td width='50px' >年纪:</td> <td width='270px'>"+tmpvalue+"</td> <td width='100px'> <a onclick='changeAge()'>修改</a> </td>";
 }
 function cancelSex(){
 	var sexId=document.getElementById("sex");
 	var sexvalue=document.getElementById("sexValue");
 	if(sexvalue.value==0){
-	sexId.innerHTML="<td width='50px' >性别:</td> <td width='200px'>女</td> <td width='100px'> <a onclick='changeSex()'>修改</a> </td>";
+	sexId.innerHTML="<td width='50px' >性别:</td> <td width='270px'>女</td> <td width='100px'> <a onclick='changeSex()'>修改</a> </td>";
 	}else{
-	sexId.innerHTML="<td width='50px' >性别:</td> <td width='200px'>男</td> <td width='100px'> <a onclick='changeSex()'>修改</a> </td>";
+	sexId.innerHTML="<td width='50px' >性别:</td> <td width='270px'>男</td> <td width='100px'> <a onclick='changeSex()'>修改</a> </td>";
 	}
 	}
 	
@@ -153,7 +153,7 @@ function cancelPhone(){
 	if((phonevalue.value!=null)&&(phonevalue.value!="")){
 		tmpvalue=phonevalue.value;
 	}
-	phoneId.innerHTML="<td width='50px' >phone:</td> <td width='200px'>"+tmpvalue+"</td> <td width='100px'> <a onclick='changePhone()'>修改</a> </td>";
+	phoneId.innerHTML="<td width='50px' >phone:</td> <td width='270px'>"+tmpvalue+"</td> <td width='100px'> <a onclick='changePhone()'>修改</a> </td>";
 }
 function cancelCity(){
 	var cityId=document.getElementById("city");
@@ -163,7 +163,7 @@ function cancelCity(){
 	if((cityvalue.value!=null)&&(cityvalue.value!="")){
 		tmpvalue=cityvalue.value;
 	}
-	cityId.innerHTML="<td width='50px' >city:</td> <td width='200px'>"+tmpvalue+"</td> <td width='100px'> <a onclick='changeCity()'>修改</a> </td>";
+	cityId.innerHTML="<td width='50px' >city:</td> <td width='270px'>"+tmpvalue+"</td> <td width='100px'> <a onclick='changeCity()'>修改</a> </td>";
 }
 function cancelEmail(){
 	var emailId=document.getElementById("email");
@@ -173,7 +173,7 @@ function cancelEmail(){
 	if((emailvalue.value!=null)&&(emailvalue.value!="")){
 		tmpvalue=emailvalue.value;
 	}
-	emailId.innerHTML="<td width='50px' >email:</td> <td width='200px'>"+tmpvalue+"</td> <td width='50px'> <a onclick='changeEmail()'>修改</a> </td>";
+	emailId.innerHTML="<td width='50px' >email:</td> <td width='270px'>"+tmpvalue+"</td> <td width='50px'> <a onclick='changeEmail()'>修改</a> </td>";
 }
 </script>
 
@@ -296,7 +296,7 @@ function cancelEmail(){
 		     <td width="50px" >
 		          年纪:
 		     </td>
-		     <td width="200px">
+		     <td width="270px">
 		     <s:if test="user.age==null">
 		          未填
 		      </s:if>
@@ -316,7 +316,7 @@ function cancelEmail(){
 		      <td width="50px"  >
 		           性别:
 		     </td>
-		     <td width="200px">
+		     <td width="270px">
 		      <s:if test="user.sex==1">
 		            男
 
@@ -343,7 +343,7 @@ function cancelEmail(){
 		      <td width="50px" >
 		          城市:
 		     </td>
-		     <td width="200px">
+		     <td width="270px">
 		      <s:if test="user.city==null">
 		          未填
 		      </s:if>
@@ -363,7 +363,7 @@ function cancelEmail(){
 		      <td width="50px" >
 		      email:
 		     </td>
-		     <td width="200px">
+		     <td width="270px">
 		     <s:if test="user.email==null">
 		          未填
 		      </s:if>
@@ -382,7 +382,7 @@ function cancelEmail(){
 		      <td width="50px" >
 		      phone:
 		     </td>
-		     <td width="200px">
+		     <td width="270px">
 		     <s:if test="user.phone==null">
 		          未填
 		      </s:if>
@@ -392,6 +392,22 @@ function cancelEmail(){
 		     <td width="100px">
 		      <a onclick="changePhone()">修改</a>
 		     </td>
+		     </tr>
+		     </table>
+		     </form>
+		       <form action="changePhone" method="post">
+		     <table style="margin-left:80px">
+		      <tr id="phone">
+		      <td width="55px" >
+		          头像:
+		     </td>
+		     <td width="190px">
+		      <input type="file" value="" name="headPicture" />
+		    
+		     </td>
+             <td width="100px">
+           <a click="">提交</a>
+             </td>
 		     </tr>
 		     </table>
 		     </form>

@@ -122,15 +122,12 @@ SquareOverlay.prototype.initialize = function (map) {
     var div = document.createElement("div");
     div.style.position = "absolute";
     div.id="over";
-    
- 
     // 可以根据参数设置元素外观  
     div.style.width = this._length-30 + "px";
     div.style.height = this._length + "px";
     div.style.background = this._color;
     div.innerHTML="<div id='"+this._imagename+"'></div><h3 style='text-align:center'>"+this._placename+"</h3>";
     // 将div添加到覆盖物容器中  
-   
     map.getPanes().markerPane.appendChild(div);
     // 保存div实例  
      var imagediv=document.getElementById(this._imagename);
@@ -214,7 +211,7 @@ map.centerAndZoom(beijingPoint, 5);
 map.addControl(new BMap.NavigationControl());  //平移缩放
 map.addControl(new BMap.ScaleControl());  //比例尺
 //map.addControl(new BMap.OverviewMapControl());  //缩略图
- map.enableScrollWheelZoom();   
+map.enableScrollWheelZoom();   
 
 //标注
 

@@ -2,6 +2,7 @@ package edu.nju.MyJourney.service.impl;
 
 import edu.nju.MyJourney.dao.AttractionDao;
 import edu.nju.MyJourney.model.Attraction;
+import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.service.AttractionService;
 
 public class AttractionServiceImpl implements AttractionService {
@@ -21,6 +22,11 @@ public class AttractionServiceImpl implements AttractionService {
 	public void updateAttraction(Attraction attraction) {
 		// TODO Auto-generated method stub
 		this.attractionDao.updateAttraction(attraction);
+	}
+	@Override
+	public Attraction getBestAttraction(City city) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

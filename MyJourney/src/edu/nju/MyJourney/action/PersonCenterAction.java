@@ -38,8 +38,6 @@ public class PersonCenterAction extends BaseAction{
 		    }
 		    session.put("islogined",this.islogined);
 		    this.selectnum=1;
-		// session.put("islogined",this.islogined);
-		 //session.put("account", this.account);
 		return result;
 	}
     public String select2() throws Exception{

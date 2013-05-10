@@ -6,3 +6,4 @@ public interface PlaceService {
 public void updatePlace(Place place);
 public void insertPlace(Place place);
 }
+
