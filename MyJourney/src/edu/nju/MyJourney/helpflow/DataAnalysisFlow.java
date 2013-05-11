@@ -54,10 +54,13 @@ public class DataAnalysisFlow {
 			}
 		}
 		//trim to intended list size
-		List<HotelRankCoef> fin= hRanks.subList(0, size-1);
+		List<HotelRankCoef> fin= hRanks.subList(hRanks.size()-size-1, hRanks.size()-1);
+		System.out.println("fin size: "+fin.size());
 		for(int i=0;i<fin.size();i++){
 			hots.add(fin.get(i).getHotel());
 		}
+		System.out.print("size: "+size);
+		System.out.println("hot hotels size: "+hots.size());
 		return hots;
 	}
 	
@@ -92,10 +95,11 @@ public class DataAnalysisFlow {
 			}
 		}
 		//trim to intended list size
-		List<RestRankCoef> fins=(ArrayList<RestRankCoef>) rRanks.subList(0, size-1);
+		List<RestRankCoef> fins= rRanks.subList(rRanks.size()-size-1, rRanks.size()-1);
 		for(int i=0;i<fins.size();i++){
 			hots.add(fins.get(i).getRest());
 		}
+		System.out.println("hot rest size: "+hots.size());
 		return hots;
 	}
 	
@@ -129,7 +133,7 @@ public class DataAnalysisFlow {
 			}
 		}
 		//trim to intended list size
-		aRanks=(ArrayList<AttrRankCoef>) aRanks.subList(0, size-1);
+		aRanks=(ArrayList<AttrRankCoef>) aRanks.subList(aRanks.size()-size-1, aRanks.size()-1);
 		for(int i=0;i<aRanks.size();i++){
 			hots.add(aRanks.get(i).getAttr());
 		}
@@ -163,8 +167,8 @@ public class DataAnalysisFlow {
 		}
 		//trim to 2
 		if(js.size()>2){
-			sims.add(js.get(0).getJourney());
-			sims.add(js.get(1).getJourney());
+			sims.add(js.get(js.size()-1).getJourney());
+			sims.add(js.get(js.size()-2).getJourney());
 		}else{
 			for(int i=0;i<js.size();i++){
 				sims.add(js.get(i).getJourney());
@@ -213,9 +217,9 @@ public class DataAnalysisFlow {
 		}
 		Collections.sort(js);
 		if(js.size()>3){
-			interests.add(js.get(0).getJourney());
-			interests.add(js.get(1).getJourney());
-			interests.add(js.get(2).getJourney());
+			interests.add(js.get(js.size()-1).getJourney());
+			interests.add(js.get(js.size()-2).getJourney());
+			interests.add(js.get(js.size()-3).getJourney());
 		}else{
 			for(int i=0;i<js.size();i++){
 				interests.add(js.get(i).getJourney());
@@ -301,5 +305,112 @@ public class DataAnalysisFlow {
 			}
 		}
 		return false;
+	}
+	
+	
+	public Restaurant getBestRestaurant(City city){
+		RestaurantDao rdao=new RestaurantDaoImpl();
+		List<Restaurant> rests=rdao.getAllRestaurant();
+		List<Restaurant> cityrs=new ArrayList<Restaurant>();
+		ArrayList<RestRankCoef> rRanks=new ArrayList<RestRankCoef>();
+		//filter the restaurants
+		for(int i=0;i<rests.size();i++){
+			if(rests.get(i).getCity().getCid()==city.getCid()){
+				cityrs.add(rests.get(i));
+			}
+		}
+		System.out.println("cityrs size: "+cityrs.size());
+		if(1==cityrs.size()){
+			return cityrs.get(0);
+		}else if(cityrs!=null && cityrs.size()>1){
+			
+			//rank all the rests based on Rank coefficient
+			for(int i=0;i<cityrs.size();i++){
+				RestRankCoef tmp=new RestRankCoef();
+				tmp.setRest(cityrs.get(i));
+				double coeff=1*tmp.getRest().getFavor()-0.5*tmp.getRest().getDislike();
+				tmp.setCoff(coeff);
+				rRanks.add(tmp);
+			}
+			Collections.sort(rRanks);
+			for(RestRankCoef hrc:rRanks){
+				System.out.println(hrc.getRest().getName());
+				System.out.println(hrc.getCoff());
+			}
+			return rRanks.get(rRanks.size()-1).getRest();
+		}else{
+			return null;
+		}
+		
+	}
+	
+	public Hotel getBestHotel(City city){
+		HotelDao hdao=new HotelDaoImpl();
+		List<Hotel> hotels=hdao.getAllHotel();
+		List<Hotel> cityrs=new ArrayList<Hotel>();
+		ArrayList<HotelRankCoef> hRanks=new ArrayList<HotelRankCoef>();
+		//filter the restaurants
+		for(int i=0;i<hotels.size();i++){
+			if(hotels.get(i).getCity().getCid()==city.getCid()){
+				cityrs.add(hotels.get(i));
+			}
+		}
+		System.out.println("cityrs size: "+cityrs.size());
+		if(1==cityrs.size()){
+			return cityrs.get(0);
+		}else if(cityrs!=null && cityrs.size()>1){
+			
+			//rank all the rests based on Rank coefficient
+			for(int i=0;i<cityrs.size();i++){
+				HotelRankCoef tmp=new HotelRankCoef();
+				tmp.setHotel(cityrs.get(i));
+				double coeff=1*tmp.getHotel().getFavor()-0.5*tmp.getHotel().getDislike();
+				tmp.setCoff(coeff);
+				hRanks.add(tmp);
+			}
+			Collections.sort(hRanks);
+			for(HotelRankCoef hrc:hRanks){
+				System.out.println(hrc.getHotel().getName());
+				System.out.println(hrc.getCoff());
+			}
+			return hRanks.get(hRanks.size()-1).getHotel();
+		}else{
+			return null;
+		}
+		
+	}
+	public Attraction getBestAttraction(City city){
+		AttractionDao adao=new AttractionDaoImpl();
+		List<Attraction> attrs=adao.getAllAttraction();
+		List<Attraction> cityrs=new ArrayList<Attraction>();
+		ArrayList<AttrRankCoef> rRanks=new ArrayList<AttrRankCoef>();
+		//filter the restaurants
+		for(int i=0;i<attrs.size();i++){
+			if(attrs.get(i).getCity().getCid()==city.getCid()){
+				cityrs.add(attrs.get(i));
+			}
+		}
+		System.out.println("cityrs size: "+cityrs.size());
+		if(1==cityrs.size()){
+			return cityrs.get(0);
+		}else if(cityrs!=null && cityrs.size()>1){
+			
+			//rank all the rests based on Rank coefficient
+			for(int i=0;i<cityrs.size();i++){
+				AttrRankCoef tmp=new AttrRankCoef();
+				tmp.setAttr(cityrs.get(i));
+				double coeff=1*tmp.getAttr().getFavor()-0.5*tmp.getAttr().getDislike();
+				tmp.setCoef(coeff);
+				rRanks.add(tmp);
+			}
+			Collections.sort(rRanks);
+			for(AttrRankCoef hrc:rRanks){
+				System.out.println(hrc.getAttr().getName());
+				System.out.println(hrc.getCoef());
+			}
+			return rRanks.get(rRanks.size()-1).getAttr();
+		}else{
+			return null;
+		}
 	}
 }

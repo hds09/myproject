@@ -27,3 +27,25 @@
 	text-decoration: underline;
 	color:#E63F00 ;
 }
+.ind_h_title{
+	font-size:25px;
+	font-weight:bold;
+	color:#921AFF;
+}
+.ind_h_detail{
+	color:#7B7B7B;
+}
+.title_lnk:visted{
+	color:#921AFF;
+}
+
+.title_lnk:hover{
+	text-decoration:none;
+}
+
+.title_lnk{
+	color:#921AFF;
+}
+.dghf{
+	margin-right:30px;
+}

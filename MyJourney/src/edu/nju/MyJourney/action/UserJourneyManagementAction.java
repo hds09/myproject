@@ -143,7 +143,7 @@ public class UserJourneyManagementAction extends BaseAction{
 		List<Hotel> hots=DataAnalysisFlow.GetHotHotels(2);
 		Map session = actionContext.getSession();
 		session.put("allHotels", hotels);
-		session.put("hotHotels", hotels);
+		session.put("hotHotels", hots);
 		return SUCCESS;
 	}
 	

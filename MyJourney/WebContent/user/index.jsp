@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="edu.nju.MyJourney.model.*" %>
+<%@ page import="edu.nju.MyJourney.model.Journey" %>
+<%@ page import="com.opensymphony.xwork2.ActionContext" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %> 
+<%@ page import="edu.nju.MyJourney.helperModel.*" %> 
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +36,12 @@ document.getElementById(bg_div).style.display='none';
 };
 </script>
 	<header>
+		<%
+		    List<Hotel> hotels=(List<Hotel>)ActionContext.getContext().getSession().get("ind_hotH");
+		    List<Restaurant> rests=(List<Restaurant>)ActionContext.getContext().getSession().get("ind_hotR");
+		    List<Attraction> attrs=(List<Attraction>)ActionContext.getContext().getSession().get("ind_hotA");
+			Long uid=(Long)ActionContext.getContext().getSession().get("Auuid");
+		%>
 		<h1>Where You Will Go</h1>
 	</header>
 	<nav>
@@ -54,14 +67,74 @@ document.getElementById(bg_div).style.display='none';
 			<section>
 					<header id="rect">
 						<h2>旅游热点推荐,<font color="red">hot</font></h2>
+						<div class='ind_hots'>
+							<%
+								
+								int asize=attrs.size();
+								for(int i=0;i<asize;i++){
+									out.print("<span class='ind_h_title'><a class='title_lnk' href='userviewAttraction?aid="+attrs.get(i).getId()+"&uid="+uid+"'>"+attrs.get(i).getName()+"</a></span><br/>");
+									out.print("<span class='ind_h_detail'>地址:</span>");
+									out.print("<span class='ind_h_detail'>"+attrs.get(i).getAddress()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>城市:</span>");
+									out.print("<span class='ind_h_detail'>"+attrs.get(i).getCity().getName()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>价格:</span>");
+									out.print("<span class='ind_h_detail'>"+attrs.get(i).getPrice()+"</span>&nbsp;&nbsp;");
+									out.print("<br/><br/>");
+								}
+		
+							
+							%>
+						</div>
 					</header>	
-					<div id="kong"></div>
+					<div id="kong">
+					 
+					</div>
 					<header id="rect">
 						<h2>酒店推荐,<font color="red">hot</font></h2>
+						<div class='ind_hots'>
+							<%
+								out.print("<div class='dghf' align='right'><a href='Hotels'>更多</a></div>");
+								int hsize=hotels.size();
+								for(int i=0;i<hsize;i++){
+									out.print("<span class='ind_h_title'><a class='title_lnk' href='userviewHotel?hid="+hotels.get(i).getId()+"&uid="+uid+"'>"+hotels.get(i).getName()+"</a></span><br/>");
+									out.print("<span class='ind_h_detail'>地址:</span>");
+									out.print("<span class='ind_h_detail'>"+hotels.get(i).getAddress()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>城市:</span>");
+									out.print("<span class='ind_h_detail'>"+hotels.get(i).getCity().getName()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>价格:</span>");
+									out.print("<span class='ind_h_detail'>"+hotels.get(i).getPrice()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>电话:</span>");
+									out.print("<span class='ind_h_detail'>"+hotels.get(i).getPhone()+"</span>&nbsp;&nbsp;");
+									out.print("<br/><br/>");
+								}
+		
+							
+							%>
+						</div>
 					</header>	
 					<div id="kong"></div>
 					<header id="rect">
 						<h2>饭店推荐,<font color="red">hot</font></h2>
+						<div class='ind_hots'>
+							<%
+								out.print("<div class='dghf' align='right'><a href='Restaurants'>更多</a></div>");
+								int rsize=rests.size();
+								for(int i=0;i<rsize;i++){
+									out.print("<span class='ind_h_title'><a class='title_lnk' href='userviewRestaurant?rid="+rests.get(i).getId()+"&uid="+uid+"'>"+rests.get(i).getName()+"</a></span><br/>");
+									out.print("<span class='ind_h_detail'>地址:</span>");
+									out.print("<span class='ind_h_detail'>"+rests.get(i).getAddress()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>城市:</span>");
+									out.print("<span class='ind_h_detail'>"+rests.get(i).getCity().getName()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>价格:</span>");
+									out.print("<span class='ind_h_detail'>"+rests.get(i).getPrice()+"</span>&nbsp;&nbsp;");
+									out.print("<span class='ind_h_detail'>电话:</span>");
+									out.print("<span class='ind_h_detail'>"+rests.get(i).getPhone()+"</span>&nbsp;&nbsp;");
+									out.print("<br/><br/>");
+								}
+		
+							
+							%>
+						</div>
 					</header>	
 			</section>
 		<aside>

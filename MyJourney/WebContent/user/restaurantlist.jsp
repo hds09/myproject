@@ -48,7 +48,7 @@
 				<div id='searchHdiv' align='center'>
 					<form action='RestSearch' method='post'>
 						<input id='search_field' type='text' name='keyword' style='width:300px;height:30px' />
-						<input type='submit' value='搜一下'/>
+						<input id='button' type='submit' value='搜一下'/>
 					</form>
 				</div>
 				<div id='hots'>
@@ -83,7 +83,7 @@
 							}
 						%>
 				</div>
-			
+			<div class='clear_div'></div>
 			<div id="globalFooter">
 			</div>
 			

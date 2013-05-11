@@ -48,7 +48,7 @@
 				<div id='searchHdiv' align='center'>
 					<form action='HotelSearch' method='post'>
 						<input id='search_field' type='text' name='keyword' style='width:300px;height:30px' />
-						<input type='submit' value='搜一下'/>
+						<input id='button' type='submit' value='搜一下'/>
 					</form>
 				</div>
 				<div id='hots'>
@@ -77,12 +77,13 @@
 								out.print("<span class='opop'>"+hotels.get(i).getPhone()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
 								out.print("<span class='opop'>价格:</span>&nbsp;");
 								out.print("<span class='opop'>"+hotels.get(i).getPrice()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<a class='seeDetail' href='userviewHotel?hid="+hots.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
+								out.print("<a class='seeDetail' href='userviewHotel?hid="+hots.get(0).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
 								out.print("</div>");
 								out.print("<div class='mysep'></div>");
 							}
 						%>
 				</div>
+				<div class='clear_div'></div>
 			
 			<div id="globalFooter">
 			</div>

@@ -144,7 +144,7 @@
 					
 				</div>
 			</div>
-			
+			<div class='clear_div'></div>
 			<div id="globalFooter">
 			</div>
 			

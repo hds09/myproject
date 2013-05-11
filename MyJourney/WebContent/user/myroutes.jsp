@@ -57,7 +57,7 @@
 				<li class="subscribe"><a href="#"></a></li>
 			</ul>
 		</nav>
-		<div id="containAll">
+		<div id="containAll2">
 			<div id="text_div"><span>我的行程</span></div>
 			<div class="seperator"></div>
 			<!-- menu-->
@@ -157,6 +157,7 @@
 								out.print("</div>");
 								out.print("<br/><br/><span>&nbsp;&nbsp;&nbsp;快去看看他们都干了些什么</span>");
 								out.print("</div>");
+								
 							}
 							
 						%>
@@ -199,7 +200,7 @@
 									out.print("<div><span><a href='/MyJourney/user/editRoute?routeId="+team.get(i).getId()+"&selectnum=1'>查看详情</a></span></div>");
 									out.print("</div>");
 									out.print("<div class='my_rate'>");
-									out.print("<div><span><a href='userViewJourney?jid="+team.get(i).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>评价</a></span></div>");
+									out.print("<div><span><a href='userViewJourney?jid="+team.get(i).getId()+"&uid="+personal.get(0).getUser().getUid()+"'>评价</a></span></div>");
 									out.print("</div>");
 									out.print("<div class='row_sep'></div>");
 									out.print("</div>");
@@ -217,7 +218,7 @@
 						<div id="team_row">
 							<%
 								SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
-								String today2=sdf.format(new Date());
+								String today2=sdf2.format(new Date());
 								int atsize=allteam.size();
 								for(int i=0;i<atsize;i++){
 									out.print("<div class='resultRow'>");
@@ -298,9 +299,6 @@
 					
 				%>
 			</div>
-			
-			
-			
 		</div>
 		<footer>
 			<div>

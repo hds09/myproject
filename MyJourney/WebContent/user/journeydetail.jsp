@@ -104,7 +104,10 @@
 								if(joined){
 									out.print("<span class='joined' >已加入</span>");
 								}else{
-									out.print("<span class='not_joined' onclick='joinTeam("+j.getId()+","+uid+")'>立即加入</span>");
+									if(j.getState()==1){
+										out.print("<span class='not_joined' onclick='joinTeam("+j.getId()+","+uid+")'>立即加入</span>");
+									}
+									
 								}
 							}else if(ongoing){
 								out.print("<span class='ongoing'>进行中</span>");
@@ -134,7 +137,7 @@
 							<span>旅行经过:</span>&nbsp;<a href='/MyJourney/user/editRoute?routeId=<%out.print(j.getId()); %>'>详情</a>
 							<div id='downer_i'>
 								<%
-									if(j.getPlaces().size()!=0){
+									if(j.getPlaces()!=null&&j.getPlaces().size()!=0){
 										for(int i=0;i<j.getPlaces().size();i++){
 											out.print("<span>"+j.getPlaces().get(i).getTime()+"</span>&nbsp;");
 											if(j.getPlaces().get(i).getHalfday()==0){
@@ -194,7 +197,7 @@
 					
 				</div>
 			</div>
-			
+			<div class='clear_div'></div>
 			<div id="globalFooter">
 			</div>
 			
