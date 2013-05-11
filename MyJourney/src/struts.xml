@@ -115,6 +115,35 @@
               <result name="success">/user/warning/editAfternoonTrafficSuccess.jsp</result>
               <result name="failure">/user/warning/editAfternoonTrafficFailure.jsp</result>
           </action> 
+          <!--推荐    -->
+            <action name="recommendMorningRestaurant" class="EditRouteAction" method="recommendMorningRestaurant">
+              <result name="success">/user/warning/editMorningRestaurantSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningRestaurantFailure.jsp</result>
+          </action> 
+           <action name="recommendMorningHotel" class="EditRouteAction" method="recommendMorningHotel">
+              <result name="success">/user/warning/editMorningHotelSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningHotelFailure.jsp</result>
+          </action> 
+           <action name="recommendMorningAttraction" class="EditRouteAction" method="recommendMorningAttraction">
+              <result name="success">/user/warning/editMorningAttractionSuccess.jsp</result>
+              <result name="failure">/user/warning/editMorningAttractionFailure.jsp</result>
+          </action> 
+         
+          <!--edit afternoon  -->
+        <action name="recommendAfternoonRestaurant" class="EditRouteAction" method="recommendAfternoonRestaurant">
+              <result name="success">/user/warning/editAfternoonRestaurantSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonRestaurantFailure.jsp</result>
+          </action> 
+           <action name="recommendAfternoonHotel" class="EditRouteAction" method="recommendAfternoonHotel">
+              <result name="success">/user/warning/editAfternoonHotelSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonHotelFailure.jsp</result>
+          </action> 
+           <action name="recommendAfternoonAttraction" class="EditRouteAction" method="recommendAfternoonAttraction">
+              <result name="success">/user/warning/editAfternoonAttractionSuccess.jsp</result>
+              <result name="failure">/user/warning/editAfternoonAttractionFailure.jsp</result>
+          </action> 
+         
+        
              <action name="test" class="EditRouteAction" method="test">
               <result name="success">editRoute.jsp</result>
               <result name="failure"></result>

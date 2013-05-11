@@ -273,7 +273,7 @@
 						int isize=interested.size();
 						for(int i=0;i<isize;i++){
 							out.print("<div class='rec_trip_row'>");
-							out.print("<span class='trip_title'><a class='trip_lnk' href='userViewJourney?jid="+interested.get(i).getId()+"'>"+interested.get(i).getJourneyName()+"</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+							out.print("<span class='trip_title'><a class='trip_lnk' href='userViewJourney?jid="+interested.get(i).getId()+"&uid="+personal.get(0).getUser().getUid()+"'>"+interested.get(i).getJourneyName()+"</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 							out.print("<span class='trip_time'>"+interested.get(i).getPlaces().get(0).getTime()+"&nbsp;&nbsp;至&nbsp;&nbsp; "+interested.get(i).getPlaces().get(interested.get(i).getPlaces().size()-1).getTime()+"</span>");
 							out.print("</div>");
 						}

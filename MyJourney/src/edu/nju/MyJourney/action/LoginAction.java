@@ -16,8 +16,6 @@ public class LoginAction extends BaseAction{
 	private User user;
 	@Override
 	public String execute() throws Exception {
-		
-//		user = userService.Login(account, password);
 		String result = SUCCESS;
 		System.out.println(account+" and "+password);
 		if(!userService.haveuser(account, password)){

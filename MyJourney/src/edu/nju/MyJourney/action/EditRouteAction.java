@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import bsh.This;
+
 import com.opensymphony.xwork2.ActionContext;
 
 import edu.nju.MyJourney.model.Attraction;
@@ -38,16 +40,21 @@ public class EditRouteAction extends BaseAction{
 	private int otherDay;
 	private int selectnum;
 	private int length;
-	private Hotel morningHotel;
-	
-	private Restaurant morningRestaurant;
-	private Attraction morningAttraction;
 	private String morningTraffic;
 	private String afternoonTraffic;
+	
+	private Hotel morningHotel;
+	private Restaurant morningRestaurant;
+	private Attraction morningAttraction;
 	private Hotel afternoonHotel;
 	private Restaurant afternoonRestaurant;
 	private Attraction afternoonAttraction;
-
+	private Hotel tmpMorningHotel;
+	private Restaurant tmpMorningRestaurant;
+	private Attraction tmpMorningAttraction;
+	private Hotel tmpAfternoonHotel;
+	private Restaurant tmpAfternoonRestaurant;
+	private Attraction tmpAfternoonAttraction;
     
 	public String execute() throws Exception {
 		String result = SUCCESS;
@@ -55,9 +62,11 @@ public class EditRouteAction extends BaseAction{
 		this.otherDay=this.selectnum+1;
 		dateList=new ArrayList<String>();
 		cities=new ArrayList<City>();
-		morningPlaces=journeyService.getMorningPlaceByUserId(RouteId);
+		morningPlaces=
+				journeyService.getMorningPlaceByUserId(RouteId);
 		this.length=this.morningPlaces.size();
-	    afternoonPlaces=journeyService.getAfternoonPlaceByUserId(RouteId);
+	    afternoonPlaces=
+	    		journeyService.getAfternoonPlaceByUserId(RouteId);
 	    journey=journeyService.getJourneyById(RouteId);
 	    System.out.println(morningPlaces.get(0).getTime());
 	    for(int i=0;i<morningPlaces.size();i++){
@@ -71,7 +80,26 @@ public class EditRouteAction extends BaseAction{
 	    }
 	    startDate=dateList.get(selectnum-1);
 	    this.morningStartPlace=this.morningPlaces.get(selectnum-1);
-	    this.afternoonStartPlace=this.afternoonPlaces.get(selectnum-1);
+	    this.afternoonStartPlace=
+	    this.afternoonPlaces.get(selectnum-1);
+	    this.tmpAfternoonAttraction=
+	            this.attractionService.getBestAttraction(
+	            		this.afternoonStartPlace.getCity());
+	    this.tmpAfternoonHotel=
+	    		this.hotelService.getBestHotel(
+	    				this.afternoonStartPlace.getCity());
+	    this.tmpAfternoonRestaurant=
+	    		this.restaurantService.getBestRestaurant(
+	    				this.afternoonStartPlace.getCity());
+	    this.tmpMorningAttraction=
+	    		this.attractionService.getBestAttraction(
+	    				this.morningStartPlace.getCity());
+	    this.tmpMorningHotel=
+	    		this.hotelService.getBestHotel(
+	    				this.morningStartPlace.getCity());
+	    this.tmpMorningRestaurant=
+	    		this.restaurantService.getBestRestaurant(
+	    				this.morningStartPlace.getCity());
 		return result;
 	}
 	//edit morning
@@ -134,6 +162,60 @@ public class EditRouteAction extends BaseAction{
 	public String editAfternoonTraffic()  throws Exception{
 		String result=SUCCESS;
 		this.afternoonStartPlace.setTraffic(afternoonTraffic);
+        this.placeService.updatePlace(afternoonStartPlace);
+		return result;
+	}
+	public String recommendMorningRestaurant() throws Exception{
+		String result=SUCCESS;
+		this.morningStartPlace.setRestaurant(tmpMorningRestaurant);
+		this.tmpMorningRestaurant.getPlaces().add(morningStartPlace);
+		//this.tmpAfternoonRestaurant.addPlace(morningStartPlace);
+		this.placeService.updatePlace(morningStartPlace);
+		return result;
+	}
+	public String recommendMorningHotel()  throws Exception{
+		String result=SUCCESS;
+		this.morningStartPlace.setHotel(this.tmpMorningHotel);
+		this.tmpAfternoonHotel.getPlaces().add(morningStartPlace);
+		//this.tmpMorningHotel.addPlace(morningStartPlace);
+        this.placeService.updatePlace(morningStartPlace);
+		return result;
+	}
+	public String recommendMorningAttraction()  throws Exception{
+		String result=SUCCESS;
+		
+		this.morningStartPlace.setAttraction(this.tmpMorningAttraction);
+		this.tmpMorningAttraction.getPlaces().add(morningStartPlace);
+		//this.tmpMorningAttraction.addPlace(morningStartPlace);
+        this.placeService.updatePlace(morningStartPlace);
+		return result;
+	}
+
+	//edit afternoon
+	public String recommendAfternoonRestaurant()  throws Exception{
+		String result=SUCCESS;
+
+		this.afternoonStartPlace.setRestaurant(this.tmpAfternoonRestaurant);
+		this.tmpAfternoonRestaurant.getPlaces().add(afternoonStartPlace);
+		//this.tmpAfternoonRestaurant.addPlace(afternoonStartPlace);
+        this.placeService.updatePlace(afternoonStartPlace);
+		return result;
+	}
+	public String recommendAfternoonHotel()  throws Exception{
+		String result=SUCCESS;
+
+		this.afternoonStartPlace.setHotel(this.tmpAfternoonHotel);
+		//this.tmpAfternoonHotel.addPlace(afternoonStartPlace);
+		this.tmpAfternoonHotel.getPlaces().add(afternoonStartPlace);
+        this.placeService.updatePlace(afternoonStartPlace);
+		return result;
+	}
+	public String recommendAfternoonAttraction()  throws Exception{
+		String result=SUCCESS;
+
+		this.afternoonStartPlace.setAttraction(this.tmpAfternoonAttraction);
+		//this.tmpAfternoonAttraction.addPlace(afternoonStartPlace);
+		this.tmpAfternoonAttraction.getPlaces().add(afternoonStartPlace); 
         this.placeService.updatePlace(afternoonStartPlace);
 		return result;
 	}
@@ -299,4 +381,43 @@ public class EditRouteAction extends BaseAction{
 	public void setPlaceService(PlaceService placeService) {
 		this.placeService = placeService;
 	}
+
+	public Restaurant getTmpMorningRestaurant() {
+		return tmpMorningRestaurant;
+	}
+	public void setTmpMorningRestaurant(Restaurant tmpMorningRestaurant) {
+		this.tmpMorningRestaurant = tmpMorningRestaurant;
+	}
+	public Hotel getTmpMorningHotel() {
+		return tmpMorningHotel;
+	}
+	public void setTmpMorningHotel(Hotel tmpMorningHotel) {
+		this.tmpMorningHotel = tmpMorningHotel;
+	}
+	public Attraction getTmpMorningAttraction() {
+		return tmpMorningAttraction;
+	}
+	public void setTmpMorningAttraction(Attraction tmpMorningAttraction) {
+		this.tmpMorningAttraction = tmpMorningAttraction;
+	}
+	public Hotel getTmpAfternoonHotel() {
+		return tmpAfternoonHotel;
+	}
+	public void setTmpAfternoonHotel(Hotel tmpAfternoonHotel) {
+		this.tmpAfternoonHotel = tmpAfternoonHotel;
+	}
+	public Restaurant getTmpAfternoonRestaurant() {
+		return tmpAfternoonRestaurant;
+	}
+	public void setTmpAfternoonRestaurant(Restaurant tmpAfternoonRestaurant) {
+		this.tmpAfternoonRestaurant = tmpAfternoonRestaurant;
+	}
+	public Attraction getTmpAfternoonAttraction() {
+		return tmpAfternoonAttraction;
+	}
+	public void setTmpAfternoonAttraction(Attraction tmpAfternoonAttraction) {
+		this.tmpAfternoonAttraction = tmpAfternoonAttraction;
+	}
+	
+
 }

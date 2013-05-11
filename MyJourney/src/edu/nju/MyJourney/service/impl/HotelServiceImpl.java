@@ -3,6 +3,7 @@ package edu.nju.MyJourney.service.impl;
 import java.util.List;
 
 import edu.nju.MyJourney.dao.HotelDao;
+import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Hotel;
 import edu.nju.MyJourney.service.HotelService;
 
@@ -33,6 +34,10 @@ public class HotelServiceImpl implements HotelService {
 	public List<Hotel> getAllHotels() {
 		// TODO Auto-generated method stub
 		return this.hotelDao.getAllHotel();
+	}
+	public Hotel getBestHotel(City city) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.nju.MyJourney.dao.AttractionDao;
 import edu.nju.MyJourney.model.Attraction;
+import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.service.AttractionService;
 
 public class AttractionServiceImpl implements AttractionService {
@@ -25,6 +26,7 @@ public class AttractionServiceImpl implements AttractionService {
 		this.attractionDao.updateAttraction(attraction);
 	}
 	@Override
+
 	public Attraction getAttractionById(String id) {
 		// TODO Auto-generated method stub
 		return attractionDao.getAttractionById(id);
@@ -33,6 +35,10 @@ public class AttractionServiceImpl implements AttractionService {
 	public List<Attraction> getAllAttraction() {
 		// TODO Auto-generated method stub
 		return this.attractionDao.getAllAttraction();
+	}
+	public Attraction getBestAttraction(City city) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

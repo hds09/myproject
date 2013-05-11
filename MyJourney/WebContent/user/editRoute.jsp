@@ -86,7 +86,8 @@
 			             饭店:<font color="#EE7700">
 			             <s:if test="morningStartPlace.restaurant==null">
 			                        未填
-			             <a style="float:right"  onclick="ShowDiv('morningRescontent','morningRes')">编辑</a></br>
+			             <a style="float:right"  onclick="ShowDiv('morningRescontent','morningRes')">编辑</a>
+			             <a style="float:right;color:red" onclick="ShowDiv('TmorningRescontent','TmorningRes')">推荐</a></br>
 			             </s:if>
 			             <s:else>
 			             <s:property value="morningStartPlace.restaurant.name"/>
@@ -97,7 +98,8 @@
 			             旅馆:<font color="#EE7700">
 			             <s:if test="morningStartPlace.hotel==null">
 			                        未填
-			             <a style="float:right" onclick="ShowDiv('morningHotelcontent','morningHotel')">编辑</a></br>
+			             <a style="float:right" onclick="ShowDiv('morningHotelcontent','morningHotel')">编辑</a>
+			              <a style="float:right;color:red" onclick="ShowDiv('TmorningHotelcontent','TmorningHotel')">推荐</a></br>
 			             </s:if>
 			             <s:else>
 			             <s:property value="morningStartPlace.hotel.name"/>
@@ -108,7 +110,8 @@
 			            景点:<font color="#EE7700">
 			             <s:if test="morningStartPlace.attraction==null">
 			                        未填
-			             <a style="float:right" onclick="ShowDiv('morningAttcontent','morningAtt')">编辑</a></br>
+			             <a style="float:right" onclick="ShowDiv('morningAttcontent','morningAtt')">编辑</a>
+			             <a style="float:right;color:red" onclick="ShowDiv('TmorningAttcontent','TmorningAtt')">推荐</a></br>
 			             </s:if>
 			             <s:else>
 			             <s:property value="morningStartPlace.attraction.name"/>
@@ -139,7 +142,8 @@
 				     饭店:<font color="#EE7700">
 			             <s:if test="afternoonStartPlace.restaurant==null">
 			                        未填
-			              <a style="float:right" onclick="ShowDiv('afternoonRescontent','afternoonRes')">编辑</a></br>           
+			              <a style="float:right" onclick="ShowDiv('afternoonRescontent','afternoonRes')">编辑</a>
+			               <a style="float:right;color:red" onclick="ShowDiv('TafternoonRescontent','TafternoonRes')">推荐</a></br>           
 			             </s:if>
 			             <s:else>
 			             <s:property value="afternoonStartPlace.restaurant.name"/>
@@ -150,7 +154,8 @@
 			             旅馆:<font color="#EE7700">
 			             <s:if test="afternoonStartPlace.hotel==null">
 			                        未填
-			             <a style="float:right" onclick="ShowDiv('afternoonHotelcontent','afternoonHotel')">编辑</a></br>
+			             <a style="float:right" onclick="ShowDiv('afternoonHotelcontent','afternoonHotel')">编辑</a>
+			              <a style="float:right;color:red" onclick="ShowDiv('TafternoonHotelcontent','TafternoonHotel')">推荐</a></br>
 			             </s:if>
 			             <s:else>
 			             <s:property value="afternoonStartPlace.hotel.name"/>
@@ -161,7 +166,8 @@
 			            景点:<font color="#EE7700">
 			             <s:if test="afternoonStartPlace.attraction==null">
 			                        未填
-			             <a style="float:right" onclick="ShowDiv('afternoonAttcontent','afternoonAtt')">编辑</a></br>
+			             <a style="float:right" onclick="ShowDiv('afternoonAttcontent','afternoonAtt')">编辑</a>
+			              <a style="float:right;color:red" onclick="ShowDiv('TafternoonAttcontent','TafternoonAtt')">推荐</a></br>
 			             </s:if>
 			             <s:else>
 			             <s:property value="afternoonStartPlace.attraction.name"/>
@@ -190,7 +196,182 @@
 		</aside>
 	
 	</div>
-	<!-- 弹出内容 -->
+	<!-- 推荐弹出内容 -->
+	        <section id="TmorningRes" class="black_overlay">
+            </section>
+            <section id="TmorningRescontent" class="white_content">
+            <div style="text-align: right; cursor: default; height: 0px;">
+            <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('TmorningRescontent','TmorningRes')">关闭</a>
+            </div>
+               <s:if test="tmpMorningRestaurant==null">
+                    o(╯□╰)o，不好意思，尚无推荐。
+               </s:if>
+              <s:else> 
+				<h3><font color="#EE7700 ">推荐饭店</font></h3>
+				<p>
+					<label for="name"><font color="black">名称:</font></label>
+					<s:property value="tmpMorningRestaurant.name" />
+				</p>
+				<p>
+					<label for="price"><font color="black">价格:</font></label>
+					<s:property value="tmpMorningRestaurant.price" />
+				</p>
+				<p>
+					<label for="phone"><font color="black">电话:</font></label>
+					<s:property value="tmpMorningRestaurant.phone" />
+				</p>
+				<p>
+					<label for="address"><font color="black">地址:</font></label>
+					<s:property value="tmpMorningRestaurant.address" />
+				<p> <a href="/MyJourney/user/recommendMorningRestaurant" style="color:red;font-size: 20px;float:right;text-decoration: none;" >使用推荐</a></p>
+            </s:else> 
+            </section>
+            
+             <section id="TmorningHotel" class="black_overlay">
+            </section>
+            <section id="TmorningHotelcontent" class="white_content">
+            <div style="text-align: right; cursor: default; height: 0px;">
+            <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('TmorningHotelcontent','TmorningHotel')">关闭</a>
+            </div>
+               <s:if test="tmpMorningHotel==null">
+                    o(╯□╰)o，不好意思，尚无推荐。
+               </s:if>
+               <s:else>
+				<h3><font color="#EE7700 ">推荐旅馆</font></h3>
+				<p>
+					<label for="name"><font color="black">名称:</font></label>
+					<s:property value="tmpMorningHotel.name" />
+				</p>
+				<p>
+					<label for="price"><font color="black">价格:</font></label>
+					<s:property value="tmpMorningHotel.price" />
+				</p>
+				<p>
+					<label for="phone"><font color="black">电话:</font></label>
+					<s:property value="tmpMorningHotel.phone" />
+				</p>
+				<p>
+					<label for="address"><font color="black">地址:</font></label>
+					<s:property value="tmpMorningHotel.address" />
+				<p> <a href="/MyJourney/user/recommendMorningHotel" style="color:red;font-size: 25px;float:right;text-decoration: none;" >使用推荐</a></p>
+              </s:else>
+            </section>
+            
+             <section id="TmorningAtt" class="black_overlay">
+            </section>
+            <section id="TmorningAttcontent" class="white_content">
+            <div style="text-align: right; cursor: default; height: 0px;">
+            <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('TmorningAttcontent','TmorningAtt')">关闭</a>
+            </div>
+               <s:if test="tmpMorningAttraction==null">
+                    o(╯□╰)o，不好意思，尚无推荐。
+               </s:if>
+               <s:else>
+				<h3><font color="#EE7700 ">推荐景点</font></h3>
+				<p>
+					<label for="name"><font color="black">名称:</font></label>
+					<s:property value="tmpMorningAttraction.name" />
+				</p>
+				<p>
+					<label for="price"><font color="black">价格:</font></label>
+					<s:property value="tmpMorningAttraction.price" />
+				</p>
+				
+				<p>
+					<label for="address"><font color="black">地址:</font></label>
+					<s:property value="tmpMorningAttraction.address" />
+				<p> <a href="/MyJourney/user/recommendMorningAttraction" style="color:red;font-size: 25px;float:right;text-decoration: none;" >使用推荐</a></p>
+              </s:else>
+            </section>
+            
+             <section id="TafternoonRes" class="black_overlay">
+            </section>
+            <section id="TafternoonRescontent" class="white_content">
+            <div style="text-align: right; cursor: default; height: 0px;">
+            <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('TafternoonRescontent','TafternoonRes')">关闭</a>
+            </div>
+               <s:if test="tmpAfternoonRestaurant==null">
+                    o(╯□╰)o，不好意思，尚无推荐。
+               </s:if>
+               <s:else>
+				<h3><font color="#EE7700 ">推荐饭店</font></h3>
+				<p>
+					<label for="name"><font color="black">名称:</font></label>
+					<s:property value="tmpAfternoonRestaurant.name" />
+				</p>
+				<p>
+					<label for="price"><font color="black">价格:</font></label>
+					<s:property value="tmpAfternoonRestaurant.price" />
+				</p>
+				<p>
+					<label for="phone"><font color="black">电话:</font></label>
+					<s:property value="tmpAfternoonRestaurant.phone" />
+				</p>
+				<p>
+					<label for="address"><font color="black">地址:</font></label>
+					<s:property value="tmpAfternoonRestaurant.address" />
+				<p> <a href="/MyJourney/user/recommendAfternoonRestaurant" style="color:red;font-size: 25px;float:right;text-decoration: none;" >使用推荐</a></p>
+              </s:else>
+            </section>
+            
+             <section id="TafternoonHotel" class="black_overlay">
+            </section>
+            <section id="TafternoonHotelcontent" class="white_content">
+            <div style="text-align: right; cursor: default; height: 0px;">
+            <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('TafternoonHotelcontent','TafternoonHotel')">关闭</a>
+            </div>
+               <s:if test="tmpAfternoonHotel==null">
+                    o(╯□╰)o，不好意思，尚无推荐。
+               </s:if>
+               <s:else>
+				<h3><font color="#EE7700 ">推荐旅馆</font></h3>
+				<p>
+					<label for="name"><font color="black">名称:</font></label>
+					<s:property value="tmpAfternoonHotel.name" />
+				</p>
+				<p>
+					<label for="price"><font color="black">价格:</font></label>
+					<s:property value="tmpAfternoonHotel.price" />
+				</p>
+				<p>
+					<label for="phone"><font color="black">电话:</font></label>
+					<s:property value="tmpAfternoonHotel.phone" />
+				</p>
+				<p>
+					<label for="address"><font color="black">地址:</font></label>
+					<s:property value="tmpAfternoonHotel.address" />
+				<p> <a href="/MyJourney/user/recommendAfternoonHotel" style="color:red;font-size: 25px;float:right;text-decoration: none;" >使用推荐</a></p>
+              </s:else>
+            </section>
+            
+             <section id="TafternoonAtt" class="black_overlay">
+            </section>
+            <section id="TafternoonAttcontent" class="white_content">
+            <div style="text-align: right; cursor: default; height: 0px;">
+            <a id="index_b" style="font-size: 16px; margin-top:0px;margin-right:0px;" onclick="CloseDiv('TafternoonAttcontent','TafternoonAtt')">关闭</a>
+            </div>
+               <s:if test="tmpAfternoonAttraction==null">
+                    o(╯□╰)o，不好意思，尚无推荐。
+               </s:if>
+               <s:else>
+				<h3><font color="#EE7700 ">推荐景点</font></h3>
+				<p>
+					<label for="name"><font color="black">名称:</font></label>
+					<s:property value="tmpAfternoonAttraction.name" />
+				</p>
+				<p>
+					<label for="price"><font color="black">价格:</font></label>
+					<s:property value="tmpAfternoonAttraction.price" />
+				</p>
+				
+				<p>
+					<label for="address"><font color="black">地址:</font></label>
+					<s:property value="tmpAfternoonAttraction.address" />
+				<p> <a href="/MyJourney/user/recommendAfternoonAttraction" style="color:red;font-size: 25px;float:right;text-decoration: none;" >使用推荐</a></p>
+              </s:else>
+            </section>
+             
+	<!-- 编辑弹出内容 -->
            <section id="morningRes" class="black_overlay">
             </section>
             <section id="morningRescontent" class="white_content">
@@ -450,7 +631,7 @@
 		
 				<p>
 					<label for="address"><font color="black">地址:</font></label>
-				    <s:property value="morningStartPlace.restaurant.address" />
+				    <s:property value="morningStartPlace.attraction.address" />
 			</form>
             </section>
               <section id="checkmorningTraffic" class="black_overlay">
@@ -657,7 +838,7 @@ SquareOverlay.prototype.addEventListener = function(event,fun){
 var map = new BMap.Map("map");          // 创建地图实例
 //var point = new BMap.Point(116.404, 39.915);  // 创建点坐标
 var beijingPoint=new BMap.Point(116.404, 39.915);
-var pointList=new Array();
+var pointList=new Array();//new 一个list用来存放point信息
 
 var morningList = document.getElementsByName("morninglist");
 //var morningNameList=document.getElementsByName("morningNamelist");
@@ -681,27 +862,20 @@ var citylength=cityPointList.length;
 	//create(map,new BMap.Point(116.404,39.915),cityPictureList[i].value,cityNameList[i].value);
 	create(map,point,cityPictureList[i].value,cityNameList[i].value);
 } 
-  for(var i=0;i<length;i++){
-	  
-	 var tmpString1=morningList[i].value;
+for(var i=0;i<length;i++){  
+	var tmpString1=morningList[i].value;
 	var morningStringlist=new Array();
 	morningStringlist=tmpString1.split(",");
-	//alert(morningStringlist[0]+","+morningStringlist[1]);
 	var morningpoint=new BMap.Point(morningStringlist[0],morningStringlist[1]);
 	pointList.push(morningpoint);
-	
 	var tmpString2=afternoonList[i].value;
-	//alert(afternoonList[i].value);
 	var afternoonStringlist=new Array();
 	afternoonStringlist=tmpString2.split(",");
-	//alert(afternoonStringlist[0]+","+afternoonStringlist[1]);
 	var afternoonpoint=new BMap.Point(afternoonStringlist[0],afternoonStringlist[1]);
 	pointList.push(afternoonpoint);   
-	
-}  
+}  //将后台传过来的journey信息转换为地图的point，并存入pointlist
 
-var polyline = new BMap.Polyline(pointList,{strokeColor:"red", strokeWeight:6, strokeOpacity:1} );
-//var polyline = new BMap.Polyline([new BMap.Point(104.06,30.67),new BMap.Point(118.1,24.46),new BMap.Point(114.1,22.2)],{strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5} );
+var polyline = new BMap.Polyline(pointList,{strokeColor:"red", strokeWeight:6, strokeOpacity:1} );//创建折线
 map.addOverlay(polyline);  
 //控件
 
