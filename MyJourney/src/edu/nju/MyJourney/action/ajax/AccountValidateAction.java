@@ -15,7 +15,7 @@ public class AccountValidateAction extends BaseAction{
 	public String execute() throws Exception {
 		System.out.println("test ajax "+account);
 		result = "hello" + account;
-		
+		System.out.println(userService);
 		return SUCCESS;
 	}
 

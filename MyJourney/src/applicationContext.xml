@@ -234,7 +234,9 @@
 		</property>
 	</bean>
 	<bean id="IndexAction" class="edu.nju.MyJourney.action.IndexAction">
-		
+		 <property name="DarenService">
+	        <ref bean="DarenService"></ref>
+	    </property>
 	</bean>	
 	<bean id="MakeRouteAction" class="edu.nju.MyJourney.action.MakeRouteAction">
 		<property name="CityService">
@@ -326,6 +328,11 @@
 		</property>
 	</bean>
 	<bean id="AccountValidateAction" class="edu.nju.MyJourney.action.ajax.AccountValidateAction">
+	    <property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
+	<bean id="SignInAction" class="edu.nju.MyJourney.action.ajax.SignInAction">
 	    <property name="UserService">
 			<ref bean="UserService"/>
 		</property>

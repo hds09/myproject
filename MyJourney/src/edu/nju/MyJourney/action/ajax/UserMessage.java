@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.action.ajax;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.nju.MyJourney.action.BaseAction;
@@ -13,7 +14,14 @@ public class UserMessage extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		String result = SUCCESS;
-		messageList = homeService.getMessage(uid);
+		//messageList = homeService.getMessage(uid);
+		messageList = new ArrayList<Reply>();
+		Reply re = new Reply();
+		re.setAccount_from("1");
+		re.setAccount_to("fdp");
+		re.setContext("test");
+		re.setId(1);
+		messageList.add(re);
 		return result;
 	}
 	public HomeService getHomeService() {

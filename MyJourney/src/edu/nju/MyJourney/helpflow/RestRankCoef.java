@@ -9,8 +9,10 @@ public class RestRankCoef implements Comparable<RestRankCoef>{
 	@Override
 	public int compareTo(RestRankCoef o) {
 		// TODO Auto-generated method stub
-		if(this.coff>=o.getCoff()){
+		if(this.coff>o.getCoff()){
 			return 1;
+		}else if(this.coff<o.getCoff()){
+			return -1;
 		}else{
 			return 0;
 		}

@@ -11,9 +11,10 @@
 	@IMPORT "../Album/resource/3.css";
 	@IMPORT "../Album/resource/4.css";
 </style>
-<script src="../js/h.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
 </head>
-<body>
+<body class="bodybg">
 <div class="lvtu_container">
 	<jsp:include page="/module/header.jsp"></jsp:include>
 	<jsp:include page="AlbumContext.jsp"></jsp:include>

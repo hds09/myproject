@@ -23,7 +23,9 @@ public class WallPicture {
 		this.journeyName = j.getJourneyName();
 		this.state = j.getState();
 		try{
-			if(j.getPlaces()!=null && j.getPlaces().size()>0){
+			if(j.getPlaces()!=null && j.getPlaces().size()>0 
+					&& j.getPlaces().get(0).getImages()!=null
+					&&j.getPlaces().get(0).getImages().size()>0){
 				this.image = j.getPlaces().get(0).getImages().get(0);
 			}
 		}catch(Exception e){

@@ -58,7 +58,7 @@ public class PlaceDaoImpl implements PlaceDao {
 		Session session=sessionFactory.openSession();
 		try {	
 			Transaction tx=session.beginTransaction();	
-			session.update(place);
+			session.merge(place);
            tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

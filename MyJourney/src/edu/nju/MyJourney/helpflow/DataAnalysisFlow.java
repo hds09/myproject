@@ -40,6 +40,7 @@ public class DataAnalysisFlow {
 			//enough hotels
 			//rank all the hotels based on Rank coefficient
 			hRanks=new ArrayList<HotelRankCoef>();
+			
 			for(int i=0;i<hotels.size();i++){
 				HotelRankCoef tmp=new HotelRankCoef();
 				tmp.setHotel(hotels.get(i));
@@ -53,14 +54,24 @@ public class DataAnalysisFlow {
 				System.out.println(hrc.getCoff());
 			}
 		}
+		System.out.println("why not printing");
 		//trim to intended list size
-		List<HotelRankCoef> fin= hRanks.subList(hRanks.size()-size-1, hRanks.size()-1);
+		System.out.println("last index: "+hRanks.get(hRanks.size()-1).getCoff());
+		List<HotelRankCoef> fin= hRanks.subList(hRanks.size()-size, hRanks.size());
 		System.out.println("fin size: "+fin.size());
 		for(int i=0;i<fin.size();i++){
 			hots.add(fin.get(i).getHotel());
+			System.out.println("rate: "+fin.get(i).getCoff());
 		}
 		System.out.print("size: "+size);
 		System.out.println("hot hotels size: "+hots.size());
+		//revert to normal descending order
+		ArrayList<Hotel> tmpList=new ArrayList<Hotel>();
+		int sizein=hots.size();
+		for(int i=0;i<hots.size();i++){
+			tmpList.add(hots.get(sizein-i-1));
+		}
+		hots=tmpList;
 		return hots;
 	}
 	
@@ -95,11 +106,17 @@ public class DataAnalysisFlow {
 			}
 		}
 		//trim to intended list size
-		List<RestRankCoef> fins= rRanks.subList(rRanks.size()-size-1, rRanks.size()-1);
+		List<RestRankCoef> fins= rRanks.subList(rRanks.size()-size, rRanks.size());
 		for(int i=0;i<fins.size();i++){
 			hots.add(fins.get(i).getRest());
 		}
 		System.out.println("hot rest size: "+hots.size());
+		ArrayList<Restaurant> tmpList=new ArrayList<Restaurant>();
+		int sizein=hots.size();
+		for(int i=0;i<hots.size();i++){
+			tmpList.add(hots.get(sizein-i-1));
+		}
+		hots=tmpList;
 		return hots;
 	}
 	
@@ -133,7 +150,7 @@ public class DataAnalysisFlow {
 			}
 		}
 		//trim to intended list size
-		aRanks=(ArrayList<AttrRankCoef>) aRanks.subList(aRanks.size()-size-1, aRanks.size()-1);
+		aRanks=(ArrayList<AttrRankCoef>) aRanks.subList(aRanks.size()-size, aRanks.size());
 		for(int i=0;i<aRanks.size();i++){
 			hots.add(aRanks.get(i).getAttr());
 		}

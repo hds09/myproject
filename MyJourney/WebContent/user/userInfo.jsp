@@ -199,6 +199,7 @@ function cancelEmail(){
 		<section id="left">
           <section id="head">
 	          <div id="headimage">
+	          	<img alt="" src="${user.image }" width="50px;" height="50px;" >
 	          </div>
 	          <div id="headright">
 	          <h4>欢迎回来</h4>
@@ -396,18 +397,19 @@ function cancelEmail(){
 		     </tr>
 		     </table>
 		     </form>
-		       <form action="changePhone" method="post">
+		       <form action="/MyJourney/pic/createHeadPhoto" method="post" enctype="multipart/form-data">
 		     <table style="margin-left:80px">
 		      <tr id="phone">
 		      <td width="55px" >
 		          头像:
 		     </td>
 		     <td width="190px">
-		      <input type="file" value="" name="headPicture" />
-		    
+		      		<input type="file" name="photo"/><br>
+		      		<input type="hidden" name="person" value="person">
 		     </td>
              <td width="100px">
-           <a click="">提交</a>
+             <input type="submit" value="修改">
+           <!-- <a click="">提交</a> -->
              </td>
 		     </tr>
 		     </table>
@@ -422,7 +424,9 @@ function cancelEmail(){
 		     <div style="border-bottom: 1px dashed #D26900;">
 		      <h3><font color="#D26900">欢迎来到云游</font></h3>
 		     </div>
-		   
+		 		  <!-- 人人账号绑定TO DO -->
+		 		  <a href="https://graph.renren.com/oauth/authorize?client_id=${client_id }&response_type=code&redirect_uri=${redirect_url }&display=page">
+        <img style="border:0px" src="../sns/RENREN.png"/></a>
 		     </div>
 		     </div>
 		     </s:if>

@@ -20,8 +20,10 @@ public class HotelRankCoef implements Comparable<HotelRankCoef>{
 	@Override
 	public int compareTo(HotelRankCoef hr) {
 		// TODO Auto-generated method stub
-		if(this.coff>=hr.getCoff()){
+		if(this.coff>hr.getCoff()){
 			return 1;
+		}else if(this.coff<hr.getCoff()){
+			return -1;
 		}else{
 			return 0;
 		}

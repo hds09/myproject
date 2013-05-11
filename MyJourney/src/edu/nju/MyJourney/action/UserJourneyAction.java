@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.nju.MyJourney.model.Journey;
@@ -19,7 +20,6 @@ public class UserJourneyAction extends PageAction {
 	public String execute() throws Exception {
 		String result = SUCCESS;
 		if(session().getAttribute("account") ==null){
-			//session().setAttribute("account", "a");
 			return "failure";
 		}
 		String account = (String) session().getAttribute("account");
@@ -46,6 +46,8 @@ public class UserJourneyAction extends PageAction {
 			}
 			if(placeList !=null && placeList.size()>0){
 				pictureList = placeList.get(placeIndex).getImages();
+			}else{
+				pictureList = new ArrayList<Picture>();
 			}
 		}
 		super.execute();

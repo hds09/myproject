@@ -23,7 +23,7 @@
               <result name="failure">/user/warning/registerFailure.jsp</result>
           </action>
           <action name="login" class="LoginAction" >
-              <result name="success">index.jsp</result>
+              <result name="success" type="redirectAction">index</result>
               <result name="failure">/user/warning/loginFailure.jsp</result>
           </action>
            <action name="logout" class="LogoutAction" >
@@ -321,6 +321,9 @@
       </package> -->
        <!-- fdp -->
       <package name="ajax" namespace="/ajax" extends="json-default">
+          <action name="sign" class="SignInAction" >
+ 	          <result type="json"></result>
+ 	      </action>
           <action name="accountValidate" class="AccountValidateAction">
               <result type="json"></result>
           </action>
@@ -331,7 +334,8 @@
        		   </result>
  	      </action>
  	      <action name="addAttention" class="AddAttentionAction">
- 	          <result type="json"></result>
+ 	      	  <result name="notlogin" type="json">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success" type="json">/darenHome/warning/reload.jsp</result>
  	      </action>
  	      <action name="picstream" class="PicstreamAction">
  	          <result type="json"></result>
@@ -347,6 +351,11 @@
  	      </action>
       </package>
       <package name="picture" namespace="/pic" extends="struts-default">
+          <action name="renren" class="edu.nju.MyJourney.action.RenrenAction">
+              <result name="login">/sns/login.jsp</result>
+              <result name="success">/sns/registerSuccess.jsp</result>
+              <result name="failure">/sns/registerFailure.jsp</result>
+          </action>
           <action name="daren" class="DarenAction">
               <result name="success">/famous/daren.jsp</result>
           </action>
@@ -388,6 +397,8 @@
               </interceptor-ref>
               <interceptor-ref name="defaultStack" />
               <result name="success" type="redirectAction">home?darenId=${darenId}</result>
+              <result name="personcenter">/user/warning/createHead.jsp</result>
+              <result name="notlogin">/user/warning/unlogined.jsp</result>
               <result name="failure"></result>
  	      </action>
  	      <action name="page" class="edu.nju.MyJourney.action.PageAction">

@@ -8,11 +8,13 @@
    	<p class="personal_picture fn-pr png24">
    		<a href="javascript:showD()"><img class="qpic fn-pa" src="${daren.image }" width="200" height="200"></a>
    		<div id="uploadDialog" style="display:none">
-			<form action="/MyJourney/pic/createHeadPhoto" method="post" enctype="multipart/form-data">
-				<input type="file" name="photo"/><br>
-				<input value="上传" type="submit"/>
-				<input type="button" value="取消" onclick="hideDialog()"> 
-			</form>
+   			<s:if test="daren.account==#session.account">
+				<form action="/MyJourney/pic/createHeadPhoto" method="post" enctype="multipart/form-data">
+					<input type="file" name="photo"/><br>
+					<input value="上传" type="submit"/>
+					<input type="button" value="取消" onclick="hideDialog()"> 
+				</form>
+			</s:if>
 		</div>
    	</p>
      <h2 class="font-yahei ml5 darkgray fn-enter">${daren.name } </h2>

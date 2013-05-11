@@ -1,10 +1,12 @@
 package edu.nju.MyJourney.action;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import edu.nju.MyJourney.connectRenRen.RenrenConfig;
 import edu.nju.MyJourney.model.Journey;
 import edu.nju.MyJourney.model.User;
 import edu.nju.MyJourney.service.UserService;
@@ -23,6 +25,9 @@ public class PersonCenterAction extends BaseAction{
 	private int sex;
 	private int age;
 	private UserService userService;
+	//人人相关
+	private String client_id;
+	private String redirect_url;
 	
 	public String execute() throws Exception {
 		String result = SUCCESS;
@@ -51,7 +56,8 @@ public class PersonCenterAction extends BaseAction{
     }
     public String select3() throws Exception{
     	String result = SUCCESS;
-    	
+    	client_id = RenrenConfig.apiID;
+		redirect_url = URLEncoder.encode("http://169.254.133.57:8080/MyJourney/pic/renren", "UTF-8");
     	this.selectnum=3;
     	return result;
     }
@@ -208,5 +214,17 @@ public class PersonCenterAction extends BaseAction{
 	}
 	public void setJourneylist(List<Journey> journeylist) {
 		this.journeylist = journeylist;
+	}
+	public String getClient_id() {
+		return client_id;
+	}
+	public void setClient_id(String client_id) {
+		this.client_id = client_id;
+	}
+	public String getRedirect_url() {
+		return redirect_url;
+	}
+	public void setRedirect_url(String redirect_url) {
+		this.redirect_url = redirect_url;
 	}
 }

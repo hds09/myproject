@@ -20,7 +20,8 @@
 		document.getElementById("uploadDialog").style.display = 'none';
 	}
 </script>
-<script src="../js/h.js"></script>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
 </head>
 <body>
 	<jsp:include page="/module/header.jsp"></jsp:include>

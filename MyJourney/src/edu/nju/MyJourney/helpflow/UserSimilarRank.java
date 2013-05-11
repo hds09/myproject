@@ -9,8 +9,10 @@ public class UserSimilarRank implements Comparable<UserSimilarRank>{
 	@Override
 	public int compareTo(UserSimilarRank o) {
 		// TODO Auto-generated method stub
-		if(this.rank>=o.getRank()){
+		if(this.rank>o.getRank()){
 			return 1;
+		}else if(this.rank<o.getRank()){
+			return -1;
 		}else
 			return 0;
 	}

@@ -10,7 +10,9 @@
 	@IMPORT "../css/banner.css";
 	@import "../famous/resource/2.css";
 </style>
-<script src="../js/h.js"></script></head>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+</head>
 </head>
 <body>
 	<jsp:include page="/module/header.jsp"></jsp:include>

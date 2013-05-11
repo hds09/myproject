@@ -31,6 +31,7 @@
 	font-size:25px;
 	font-weight:bold;
 	color:#921AFF;
+	text-decoration: none;
 }
 .ind_h_detail{
 	color:#7B7B7B;
@@ -44,7 +45,8 @@
 }
 
 .title_lnk{
-	color:#921AFF;
+	color:#0069ca;
+		text-decoration: none;
 }
 .dghf{
 	margin-right:30px;

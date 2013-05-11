@@ -51,10 +51,10 @@ public class PictureUploadAction extends BaseAction implements ServletContextAwa
 	 */
 	private String savePicture(File src,String fileName) throws Exception{
 		context = application();
-		File file=new File(context.getRealPath("/")+"upload/"+fileName);
+		File file=new File(context.getRealPath("/")+"upload/pic/"+fileName);
 	    FileUtils.copyFile(src, file);    
 	    System.out.println("正在存储文件"+fileName+"到"+file.getAbsolutePath());
-	    return "upload/"+fileName;
+	    return "/MyJourney/upload/pic/"+fileName;
 	}
 	private static void copy(File src, File dst) {
         try {

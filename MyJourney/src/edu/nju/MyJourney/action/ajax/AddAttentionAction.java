@@ -11,7 +11,7 @@ public class AddAttentionAction extends BaseAction {
 	public String execute() throws Exception {
 		String result = SUCCESS;
 		if(session().getAttribute("account") ==null){
-			return "failure";
+			return "notlogin";
 		}
 		User attention = userService.getUserByAccount(AttentionAccount);
 		String account = (String) session().getAttribute("account");

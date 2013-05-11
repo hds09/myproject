@@ -19,6 +19,9 @@ public class AlbumAction extends PageAction {
 		if(page < 0 ){
 			page = 0;
 		}
+		if(session().getAttribute("account") ==null){
+			return "notlogin";
+		}
 		journey = albumService.getAlbum(albumId);
 		if(journey != null && journey.getPlaces().size()>page){
 			images = journey.getPlaces().get(page).getImages();

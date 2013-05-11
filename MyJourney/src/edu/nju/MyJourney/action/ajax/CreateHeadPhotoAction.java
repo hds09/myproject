@@ -26,6 +26,7 @@ public class CreateHeadPhotoAction extends BaseAction implements ServletContextA
 	private String photoFileName;
 	private ServletContext context;
 	private static final int BUFFER_SIZE = 16 * 1024 ;
+	private String person;
 	@Override
 	public void setServletContext(ServletContext arg0) {
 		// TODO Auto-generated method stub
@@ -34,16 +35,17 @@ public class CreateHeadPhotoAction extends BaseAction implements ServletContextA
 	@Override
 	public String execute() throws Exception {
 		String result = SUCCESS;
-		if(account == null){
-			account = "a";
+		if(session().getAttribute("account") ==null){
+			return "notlogin";
 		}
+		account = (String) session().getAttribute("account");
 		try{
 			String imageFileName = System.currentTimeMillis() + getExtention(photoFileName);
 			photoFileName = savePicture(photo,imageFileName);
 			User user = userService.getUserByAccount(account);
 			if(user != null){
 				darenId = user.getUid();
-				user.setImage(basePath()+"upload/user/"+photoFileName);
+				user.setImage(photoFileName);
 				userService.updateUser(user);
 				addActionMessage("成功");
 			}else{
@@ -55,6 +57,9 @@ public class CreateHeadPhotoAction extends BaseAction implements ServletContextA
 			addActionMessage("失败");
 			result = "failure";
 		}
+		if(person!=null && person.length()>0){
+			return "personcenter";
+		}
 		return result;
 	}
 	/**
@@ -65,7 +70,7 @@ public class CreateHeadPhotoAction extends BaseAction implements ServletContextA
 		File file=new File(context.getRealPath("/")+"upload/user/"+fileName);
 	    FileUtils.copyFile(src, file);    
 	    System.out.println("正在存储文件"+fileName+"到"+file.getAbsolutePath());
-	    return "upload/user/"+fileName;
+	    return "/MyJourney/upload/user/"+fileName;
 	}
 	private static void copy(File src, File dst) {
         try {
@@ -130,5 +135,11 @@ public class CreateHeadPhotoAction extends BaseAction implements ServletContextA
         int pos = fileName.lastIndexOf( "." );
         return fileName.substring(pos);
     }
+	public String getPerson() {
+		return person;
+	}
+	public void setPerson(String person) {
+		this.person = person;
+	}
 	
 }

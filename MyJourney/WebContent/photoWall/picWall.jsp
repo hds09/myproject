@@ -9,9 +9,11 @@
 	@IMPORT "../css/banner.css";
 	@IMPORT "../css/picwall.css";
 </style>
-<script src="../js/h.js"></script></head>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
 </head>
-<body style="background-color:#111">
+</head>
+<body style="background-color: #E0FFFF;">
 	<jsp:include page="/module/header.jsp"></jsp:include>
 	
 	<jsp:include page="picList.jsp"></jsp:include>

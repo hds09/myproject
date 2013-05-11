@@ -15,13 +15,16 @@ public class CreateAlbumAction extends PictureUploadAction {
 	public String execute() throws Exception {
 		String result = SUCCESS;
 		System.out.println("call create album");
+		if(session().getAttribute("account") ==null){
+			return "notlogin";
+		}
 		result = super.execute();
 		System.out.println(result);
 		if(result == "success"){
 			place = placeDao.getPlaceById(placeId);
 			Picture p = new Picture();
 			for(String f:picListFileName){
-				p.setImagepath(basePath()+"upload/"+f);
+				p.setImagepath(f);
 				place.addImages(p);
 				p = new Picture();
 			}

@@ -9,7 +9,7 @@
 	    		   <div class="inner">
 		    		   <div class="qn_nav_indexNav darkgray666 pl15 png24">
 			    		    <ul>
-			    		     <li><a href="index.jsp" target="_top" hidefocus="on">首页<span class="i"></span></a></li>
+			    		     <li><a href="/MyJourney/user/index" target="_top" hidefocus="on">首页<span class="i"></span></a></li>
 			    		     <li><a href="#" target="_top" hidefocus="on">酒店<span class="i"></span></a></li> 
 			    		     <li><a href="#" target="_top" hidefocus="on">饭店<span class="i"></span></a></li> 
 			    		     <li><a href="/MyJourney/pic/picwall" target="_top" hidefocus="on">旅图<span class="i"></span></a></li> 

@@ -17,7 +17,7 @@
 		for(var i in lk){
 		p.push(i + '=' + encodeURIComponent(lk[i]||''));
 		}
-		document.write('<iframe style="position: absolute;top: 10px;left:150px;" scrolling="no" frameborder="0" allowtransparency="true" src="http://www.connect.renren.com/like/v2?'+p.join('&')+'" style="width:'+w+'px;height:'+h+'px;"></iframe>');
+		document.write('<iframe style="position: absolute;top: 10px;left:200px;" scrolling="no" frameborder="0" allowtransparency="true" src="http://www.connect.renren.com/like/v2?'+p.join('&')+'" style="width:'+w+'px;height:'+h+'px;"></iframe>');
 		})();
 	</script>
 	<script type="text/javascript" src="http://widget.renren.com/js/rrshare.js"></script>

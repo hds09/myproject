@@ -1,5 +1,8 @@
 @charset "utf-8";
 body{background-color:#fff;}
+.bodybg{
+	background:url(../upload/image/1.jpg);
+}
 .wrapper{width:1140px;}
 .lvtu_addtravels,.lvtu_downapp{background-image:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/xz/icon.png);}
 .lvtu_addtravels{cursor:pointer;background-position:0 -24px;background-repeat:no-repeat;width:70px;height:30px;line-height:30px;margin-top:20px;padding-left:25px;}
@@ -19,14 +22,13 @@ body{background-color:#fff;}
 .qn_header{margin:0 auto;height:30px;background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_top_line_2_2_2.jpg) #242424 repeat-x;}
 .qn_nav_indexNav{position:absolute;left:0;top:0;background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_home_top.png) -1px 3px no-repeat;}
 .qn_nav_indexNav ul li{float:left;margin:0 10px;}
-.qn_footer{background-color:#161616;}
-.lvtu_nav_bg{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_top_line_2_2_2b.jpg) #161616 repeat-x;height:61px;}
+.qn_footer{background-color:#262626;}
+.lvtu_nav_bg{background: #262626 repeat-x;height:61px;}
 .qn_nav{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_top_line_2_2_2.jpg) #242424 repeat-x;height:30px;line-height:30px;}
 .inner{position:relative;}
 .qn_nav_login{right:0;top:0;}
-.lvtu_nav{margin:0 auto;height:61px;background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_top_line_2_2_2b.jpg) #161616 repeat-x;z-index:9997;}
-.lvtu_logo{width:162px;height:61px;}
-.lvtu_top_line_b{background-image:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_top_line_b_2.jpg);background-repeat:repeat-x;height:10px;}
+.lvtu_nav{margin:0 auto;height:61px;background: #262626 repeat-x;z-index:9997;}
+.lvtu_logo{height:61px;}
 .person{display:block;height:36px;}
 .lvtu_nav_list{left:262px;top:25px;}
 .lvtu_home_nav{width:720px;height:36px;font:15px/1.5 '微软雅黑','YaHei',SimSun;}
@@ -37,7 +39,7 @@ body{background-color:#fff;}
 .lvtu_info_u{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_home_icon_2_2.png) -2px -310px no-repeat;width:16px;height:16px;}
 .lvtu_info_m{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_home_icon_2_2.png) -24px -310px no-repeat;width:16px;height:16px;}
 .lvtu_info_i{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_home_icon_2_2.png) -49px -310px no-repeat;width:16px;height:16px;}
-.person_list{width:120px;top:36px;left:0;background-color:#161616;position:absolute;}
+.person_list{width:120px;top:36px;left:0;background-color:#262626;position:absolute;}
 .person_list p{width:120px;height:25px;margin:0;float:left;border:none;word-wrap:break-word;color:#fff;font-size:12px;line-height:25px;cursor:pointer;}
 .person_current{background-color:#555;}
 .person_hover{background-color:#555;}
@@ -168,11 +170,6 @@ a.mb-scrollButtons.disabled{display:none;}
 .daren-nav{height:35px;background-image:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_daren_06.jpg);background-repeat:repeat-x;}
 .daren-content{background-color:#ededed;}
 .ml26{margin-left:26px;}
-.daren_zs{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_icon_personal_1.png) -2px -171px no-repeat;text-indent:20px;}
-.daren_hd{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_icon_personal_1.png) -2px -196px no-repeat;text-indent:20px;}
-.daren_lp{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_icon_personal_1.png) -2px -220px no-repeat;text-indent:20px;}
-.daren_yx{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_icon_personal_1.png) -2px -244px no-repeat;text-indent:20px;}
-.daren_tj{background:url(http://source.qunar.com/site/images/wap/lvtu/lvtu_icon_personal_1.png) -2px -266px no-repeat;text-indent:20px;}
 .qn_page{margin:0 auto;padding:10px 0;width:979px;}
 .crumb{padding:0 5px;height:24px;line-height:14px;}
 .notfound{margin:170px 0 170px 150px;padding-left:20px;border-left:4px solid #b7e8e4;font:bold 14px/28px SimSun;}
@@ -181,12 +178,12 @@ a.mb-scrollButtons.disabled{display:none;}
 .clr_after{height:1%;}
 .clr_after:after{clear:both;display:block;height:0;visibility:hidden;content:".";}
 #toback{_height:1200px;_width:200px;}
-.lvtu_footer{background-color:#161616;}
+.lvtu_footer{background-color:#262626;}
 .guide_bg{background-color:#000;height:100%;_height:7095px;left:0;top:0;width:100%;z-index:1003;opacity:.6;-ms-filter:"alpha(opacity=60)";filter:alpha(opacity=60);zoom:1;}
 .guide_cot{z-index:1004;}
 .guide_img{right:0;top:50px;z-index:1004;}
 .guide_close{cursor:pointer;width:30px;height:30px;right:50px;top:120px;background:url(http://source.qunar.com/site/images/wap/lvtu/zj/1/icon_pic_details.gif) right bottom no-repeat;}
-.personal_message_tips{right:0;top:60px;_top:61px;background-color:#fff;border:1px #161616 solid;width:158px;padding:10px 0;z-index:9999;zoom:1;}
+.personal_message_tips{right:0;top:60px;_top:61px;background-color:#fff;border:1px #262626 solid;width:158px;padding:10px 0;z-index:9999;zoom:1;}
 .personal_message_tips ul li{padding:0 15px;}
 .personal_message_close{cursor:pointer;width:25px;height:25px;right:0;top:0;background:url(http://source.qunar.com/site/images/wap/lvtu/zj/2/new_icon_2.png) -478px -500px no-repeat;}
 .up_arrows{top:7px;right:5px;width:15px;height:15px;background:url(http://source.qunar.com/site/images/wap/lvtu/zj/2/icon_heart.png) -2px -10px no-repeat;_background:url(http://source.qunar.com/site/images/wap/lvtu/zj/2/icon_heart.gif) -2px -10px no-repeat;}
@@ -200,11 +197,8 @@ a.mb-scrollButtons.disabled{display:none;}
 .login_dialog{padding:5px;width:595px;height:auto;background-color:rgba(0,0,0,0.3);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#30000000,endColorstr=#30000000);_background-color:#333;_filter:alpha(opacity=100);zoom:1;position:absolute;display:none;z-index:9999;}
 .login_dialog .border{border:solid 1px #000;}
 .login_dialog .title{font-size:14px;padding:10px 15px;height:21px;color:#555;position:relative;background-color:#f3f3f3;}
-.login_dialog .title span{background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login.gif) no-repeat -158px -100px;width:20px;height:20px;position:absolute;right:10px;top:10px;cursor:pointer;}
 .login_dialog .content{background-color:#fff;padding:20px 20px 25px 20px;}
 .login_dialog .content .left{float:left;width:260px;border-right:#dfdfdf 1px solid;}
-.login_btn{display:inline;background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login_2.gif) no-repeat 0 0;width:101px;height:30px;border:0;cursor:pointer;}
-.login_btn_hover{display:inline;background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login_2.gif) no-repeat 0 -35px;width:101px;height:30px;border:0;cursor:pointer;}
 .forget{margin-left:5px;}
 .login_txt{width:260px;}
 .ops .checkbox{margin:0;padding:0;width:13px;height:13px;vertical-align:middle;}
@@ -218,10 +212,6 @@ a.mb-scrollButtons.disabled{display:none;}
 .login_slider{width:auto;}
 .login_slider ul{display:block;}
 .login_slider ul li{width:192px;height:40px;margin-bottom:20px;}
-.login_sina{background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login.gif) no-repeat 0 0;width:192px;height:40px;display:block;text-indent:-9999px;}
-.login_qq{background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login.gif) no-repeat 0 -45px;width:192px;height:40px;display:block;text-indent:-9999px;}
-.login_sina_hover{background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login.gif) no-repeat 0 -131px;width:192px;height:40px;display:block;text-indent:-9999px;}
-.login_qq_hover{background:url(http://source.qunar.com/site/images/wap/lvtu/gb/1/ui/icon_login.gif) no-repeat 0 -176px;width:192px;height:40px;display:block;text-indent:-9999px;}
 .login_dialog .bottom{text-align:center;}
 .login_mask{width:100%;height:100%;_height:3000px;background-color:#000;position:absolute;top:0;left:0;opacity:.3;-ms-filter:"alpha(opacity=30)";filter:alpha(opacity=30);zoom:1;display:none;z-index:9998;}
 .login

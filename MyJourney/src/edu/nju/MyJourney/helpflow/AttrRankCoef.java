@@ -20,8 +20,10 @@ public class AttrRankCoef implements Comparable<AttrRankCoef>{
 	@Override
 	public int compareTo(AttrRankCoef o) {
 		// TODO Auto-generated method stub
-		if(this.coef>=o.getCoef()){
+		if(this.coef>o.getCoef()){
 			return 1;
+		}else if(this.coef<o.getCoef()){
+			return -1;
 		}else
 			return 0;
 	}

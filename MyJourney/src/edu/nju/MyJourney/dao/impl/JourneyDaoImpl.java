@@ -179,7 +179,12 @@ public class JourneyDaoImpl implements JourneyDao{
 				for(Place p: j.getPlaces()){
 					Hibernate.initialize(p.getImages());
 				}
-				result.add(new WallPicture().convertFromJourney(j));
+
+				if(j.getPlaces()!=null && j.getPlaces().size()>0 
+						&& j.getPlaces().get(0).getImages()!=null
+						&&j.getPlaces().get(0).getImages().size()>0){
+					result.add(new WallPicture().convertFromJourney(j));
+				}
 			}
 			tx.commit();
 		}catch(Exception e){
@@ -196,7 +201,7 @@ public class JourneyDaoImpl implements JourneyDao{
 		List<Journey> result = new ArrayList<Journey>();
 		try{
 			Transaction tx = session.beginTransaction();
-			String hql = "from Journey j order by id desc where j.user="+user;
+			String hql = "from Journey j order by id desc where j.user="+user.getUid();
 			Query query = session.createQuery(hql);
 			query.setFirstResult(page*pageSize);
 			query.setMaxResults(pageSize);
@@ -222,7 +227,7 @@ public class JourneyDaoImpl implements JourneyDao{
 		int result = 0;
 		try{
 			Transaction tx = session.beginTransaction();
-			String hql = "from Journey j order by id desc where j.user="+user;
+			String hql = "from Journey j order by id desc where j.user="+user.getUid();
 			Query query = session.createQuery(hql);
 			int total = query.list().size();
 			if(total%pageSize == 0){

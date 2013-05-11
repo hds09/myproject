@@ -18,33 +18,26 @@
 	
 </style>
 <script type="text/javascript" src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/h.js"></script>
+<script type="text/javascript" src="../js/login.js"></script>
 <script type="text/javascript">
 	function changePlaceId(id){
 		$("#placeId").value = id;
-	}
-	function addPic(input){
-		
-	}
-	function selectLi(li){
-		
-		
 	}
 	$("li.pl15").click(function(){
 		$(this).addClass("highlight").end().siblings().removeClass("highlight");
 	});
 </script>
 </head>
-<body>
+<body class="bodybg">
 <jsp:include page="/module/header.jsp"></jsp:include>
 <!-- 发表游记的部分 
 <jsp:include page="addPictures.jsp"></jsp:include>-->
-<div class="wrapper fn-bc fn-pr mt20">
+<div class="wrapper fn-bc fn-pr mt20" style="background:rgba(255,255,255,0.7);">
 	<div class="fn-pr">
 		<div class="lvtu_specialadd_title f16 fb darkgray png24">发布新游记</div>
-		<div class="wrapper fn-bc fn-pr mt10" style="border-top:1px solid #ddd;height:560px;">
+		<div class="fn-ohidden wrapper fn-bc fn-pr mt10" style="border-top:1px solid #ddd;">
 			<!-- 左边的nav导航 -->
-			<div class="w300 fn-fl" style="border-right:1px solid #ddd;height:560px;">
+			<div class="w300 fn-fl" style="border-right:1px solid #ddd;">
 				<ul class="f16 fn-ohidden ">
 					<li class="pl15 fb" >我的旅行：</li>
 					<s:iterator value="journeyList" var="journey" status="sta">
@@ -54,7 +47,7 @@
 				</ul>
 			</div>
 			<!-- 右边的图片区域 -->
-			<div class="w800 fn-fl ml20" style="border:1px solid #ddd;heigth:560px;">
+			<div class="w800 fn-fl ml20" style="border:1px solid #ddd;">
 				<div class="w800" style="height:18px;">
 					${journeyList.get(journeyIndex).journeyName}
 					<s:iterator value="placeList" var="place" status="sta">
@@ -68,9 +61,15 @@
 						<input value="上传" type="submit"/>
 					</form>
 				</s:if>
-				<s:iterator value="pictureList" var="image" >
-					<img src="${image.imagepath }" style="width:100px;height:100px;">
-				</s:iterator>
+				<s:iterator value="pictureList" var="image">
+	           		<div class="J-hidden"></div>
+	           		<div class="travels_right_cont fn-pr fn-tc">
+		                <a href="" class="travels_right_img  fn-pr">
+		                	<span class="travels_arrows fn-pa" style="width:782px"></span>
+		            		   <img class="qpic" src="${image.imagepath }" width="782" height="499" alt="">
+		                </a>
+	            	</div>
+	            </s:iterator>
 			</div>
 		</div>
 	</div>

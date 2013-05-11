@@ -7,6 +7,8 @@
 </head>
 <body>
 <script>alert("未登录，请重新登录");
-location.href="/MyJourney/user/index";</script>
+location.reload();
+//location.href="/MyJourney/user/index";
+</script>
 </body>
 </html>

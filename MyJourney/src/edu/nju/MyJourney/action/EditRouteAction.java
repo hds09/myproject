@@ -8,6 +8,7 @@ import bsh.This;
 
 import com.opensymphony.xwork2.ActionContext;
 
+import edu.nju.MyJourney.helpflow.DataAnalysisFlow;
 import edu.nju.MyJourney.model.Attraction;
 import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Hotel;
@@ -82,24 +83,13 @@ public class EditRouteAction extends BaseAction{
 	    this.morningStartPlace=this.morningPlaces.get(selectnum-1);
 	    this.afternoonStartPlace=
 	    this.afternoonPlaces.get(selectnum-1);
-	    this.tmpAfternoonAttraction=
-	            this.attractionService.getBestAttraction(
-	            		this.afternoonStartPlace.getCity());
-	    this.tmpAfternoonHotel=
-	    		this.hotelService.getBestHotel(
-	    				this.afternoonStartPlace.getCity());
-	    this.tmpAfternoonRestaurant=
-	    		this.restaurantService.getBestRestaurant(
-	    				this.afternoonStartPlace.getCity());
-	    this.tmpMorningAttraction=
-	    		this.attractionService.getBestAttraction(
-	    				this.morningStartPlace.getCity());
-	    this.tmpMorningHotel=
-	    		this.hotelService.getBestHotel(
-	    				this.morningStartPlace.getCity());
-	    this.tmpMorningRestaurant=
-	    		this.restaurantService.getBestRestaurant(
-	    				this.morningStartPlace.getCity());
+	    this.tmpAfternoonAttraction=DataAnalysisFlow.GetHotAttractions(1).get(0);
+	    this.tmpAfternoonHotel=DataAnalysisFlow.GetHotHotels(1).get(0);
+	    		
+	    this.tmpAfternoonRestaurant=DataAnalysisFlow.GetHotRestaurants(1).get(0);
+	    this.tmpMorningAttraction=DataAnalysisFlow.GetHotAttractions(1).get(0);
+	    this.tmpMorningHotel=DataAnalysisFlow.GetHotHotels(1).get(0);
+	    this.tmpMorningRestaurant=DataAnalysisFlow.GetHotRestaurants(1).get(0);
 		return result;
 	}
 	//edit morning

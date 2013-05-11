@@ -77,7 +77,7 @@
 								out.print("<span class='opop'>"+hotels.get(i).getPhone()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
 								out.print("<span class='opop'>价格:</span>&nbsp;");
 								out.print("<span class='opop'>"+hotels.get(i).getPrice()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<a class='seeDetail' href='userviewHotel?hid="+hots.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
+								out.print("<a class='seeDetail' href='userviewHotel?hid="+hotels.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
 								out.print("</div>");
 								out.print("<div class='mysep'></div>");
 							}

@@ -174,6 +174,8 @@ public class UserDaoImpl implements UserDao
            if(list.size()!=0){	
         	   user=(User) list.get(0);
         	  Hibernate.initialize(user.getJourney());
+        	  Hibernate.initialize(user.getAttention());
+        	  Hibernate.initialize(user.getConcerned());
            }
 	       tx.commit(); 
 		} catch (Exception e) {

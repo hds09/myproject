@@ -8,9 +8,12 @@ public class JourneySimilarRank implements Comparable<JourneySimilarRank>{
 	@Override
 	public int compareTo(JourneySimilarRank o) {
 		// TODO Auto-generated method stub
-		if(this.rank>=o.rank){
+		if(this.rank>o.rank){
 			return 1;
-		}else
+		}else if(this.rank<o.rank){
+			return -1;
+		}
+		else
 			return 0;
 	}
 	public double getRank() {

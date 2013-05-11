@@ -48,7 +48,7 @@ public class User {
 	private List<Team> team;
 	private List<Reply> message;
 	private List<Comment> comments;
-	
+	private String renrenId;
 	public String getAccount() { 
 		return account;
 	}
@@ -191,6 +191,12 @@ public class User {
 		this.concerned = concerned;
 	}
 	public void addAtterntion(User p){
+		if(p.getConcerned()==null){
+			p.setConcerned(new ArrayList<User>());
+		}
+		if(this.attention == null){
+			this.attention = new ArrayList<User>();
+		}
 		if(!this.attention.contains(p)){
 			this.attention.add(p);
 			p.concerned.add(this);
@@ -244,4 +250,11 @@ public class User {
 		f.setUser(null);
 		this.comments.remove(f);
 	}
+	public String getRenrenId() {
+		return renrenId;
+	}
+	public void setRenrenId(String renrenId) {
+		this.renrenId = renrenId;
+	}
+	
 }

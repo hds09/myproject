@@ -218,6 +218,19 @@ document.getElementById(bg_div).style.display='none';
 			
 			<section id="pioneer"><!-- 达人 -->
 			<h2>达人<font color="red">秀</font></h2>
+			<div style="float:right;font-size: 10px;text-overflow:ellipsis"><a href="/MyJourney/pic/daren">更多</a></div>
+			<s:iterator value="darenList" var="dr">
+				<div style="overflow: hidden;height:60px;width:100%;margin-top: 6px;">
+					<div style="float: left;"><a href="/MyJourney/pic/home?account=${dr.account }"><img alt="${dr.account }" src="${dr.image }" width="67px" height="67px"></a></div>
+					<div style="float: left;margin-left: 20px;">
+						<ul>
+							<li style="width:55px; float: left;"><em style="color:#0069ca;font-size: 16px;font-weight: bold;">${dr.attentionNum }</em><br><span >关注</span></li>         
+							<li style="width:55px; float: left;"><em style="color:#0069ca;font-size: 16px;font-weight: bold;">${dr.concernedNum }</em><br><span >粉丝</span></li>        
+							<li style="width:55px; float: left;"><em style="color:#0069ca;font-size: 16px;font-weight: bold;">${dr.journeyNum }</em><br><span >旅行</span></li>        
+						</ul>
+					</div>
+				</div>
+			</s:iterator>
 			</section>
 		</aside>
 	</div>
