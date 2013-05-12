@@ -28,7 +28,7 @@ public class CreateAlbumAction extends PictureUploadAction {
 				place.addImages(p);
 				p = new Picture();
 			}
-			placeDao.updatePlace(place);
+			placeDao.updatePlaceFdp(place);
 		}
 		return result;
 	}

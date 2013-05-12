@@ -1,5 +1,6 @@
 package edu.nju.MyJourney.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.nju.MyJourney.model.Journey;
@@ -15,6 +16,7 @@ public class AlbumAction extends PageAction {
 	private int albumId;
 	@Override
 	public String execute() throws Exception {
+		images = new ArrayList<Picture>();
 		String result = SUCCESS;
 		if(page < 0 ){
 			page = 0;

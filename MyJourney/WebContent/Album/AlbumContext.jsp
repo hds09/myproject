@@ -78,13 +78,20 @@
             <!--第一条 插入文字/插入图片 不参与循环-->
             <s:iterator value="images" var="image">
            		<div class="J-hidden"></div>
-           		<div id="235357" class="travels_right_cont fn-pr fn-tc">
+           		<div class="travels_right_cont fn-pr fn-tc">
 	                <a href="" class="travels_right_img  fn-pr">
 	                	<span class="travels_arrows fn-pa" style="width:782px"></span>
-	            		   <img class="qpic" src="${image.imagepath }" width="782" height="499" alt="">
+	            		<img class="qpic" src="${image.imagepath }" width="782" height="499">
 	                </a>
             	</div>
             </s:iterator>
+            <s:if test="images.size()==0">
+            	<div class="J-hidden"></div>
+           		<div class="travels_right_cont fn-pr fn-tc">
+                	<span class="travels_arrows fn-pa" style="width:782px"></span>
+            		<img class="qpic" src="/MyJourney/createAlbum/resource/default.jpg" width="782" height="499" alt="请上传图片">
+            	</div>
+            </s:if>
         </div><!--travels_right end-->
     </div><!--travels_main end-->
 </div><!--container end-->

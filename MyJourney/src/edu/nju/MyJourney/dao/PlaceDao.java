@@ -6,4 +6,5 @@ public interface PlaceDao {
   public void insertPlace(Place place);
   public void updatePlace(Place place);
   public Place getPlaceById(long id);
+  public void updatePlaceFdp(Place place);
 }

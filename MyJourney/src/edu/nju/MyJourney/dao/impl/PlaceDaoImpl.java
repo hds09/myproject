@@ -2,6 +2,7 @@ package edu.nju.MyJourney.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -42,6 +43,7 @@ public class PlaceDaoImpl implements PlaceDao {
 			List list = query.list();
            if(list.size()!=0){
         	   place=(Place) list.get(0);
+        	   Hibernate.initialize(place.getImages());
            }
            tx.commit();
 		} catch (Exception e) {
@@ -51,7 +53,7 @@ public class PlaceDaoImpl implements PlaceDao {
 		//System.out.println(account+"登录"+user.getAccount());
 		return place;
 	}
-
+	
 	@Override
 	public void updatePlace(Place place) {
 		// TODO Auto-generated method stub
@@ -65,7 +67,18 @@ public class PlaceDaoImpl implements PlaceDao {
 		}
 		session.close();
 	}
-
+	@Override
+	public void updatePlaceFdp(Place place){
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			session.update(place);
+           tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+	}
 
 
 }

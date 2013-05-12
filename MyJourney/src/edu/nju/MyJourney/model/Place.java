@@ -2,6 +2,7 @@ package edu.nju.MyJourney.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -118,6 +119,9 @@ public void setImages(List<Picture> images) {
 	this.images = images;
 }
 public void addImages(Picture f){
+	if(this.images == null){
+		this.images = new ArrayList<Picture>();
+	}
 	if(! this.images.contains(f)){
 	this.images.add(f);
 	f.setPlace(this);

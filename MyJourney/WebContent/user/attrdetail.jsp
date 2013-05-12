@@ -52,7 +52,7 @@
 									v=parseInt(v)+1;
 									$('.voteDown').text(v);
 								}
-								location.href="/MyJourney/user/userviewAttraction?aid="+asid+"&uid="+uid;
+								location.href="/MyJourney/user/userviewAttraction?aid="+aid+"&uid="+uid;
 							},
 							error : function(XMLHttpRequest, textStatus, errorThrown) {   
 			                     
@@ -69,7 +69,6 @@
 		<%
 			Attraction attr=(Attraction)ActionContext.getContext().getSession().get("targeta");
 			String uid=(String)ActionContext.getContext().getSession().get("viewer");
-			out.print(uid);
 			List<Comment> comments=attr.getComments();
 			String sStr="ratedattr"+attr.getId();
 			String isRated="0";

@@ -18,6 +18,7 @@ public class UserJourneyAction extends PageAction {
 	private long placeId;
 	@Override
 	public String execute() throws Exception {
+		pictureList = new ArrayList<Picture>();
 		String result = SUCCESS;
 		if(session().getAttribute("account") ==null){
 			return "failure";
@@ -32,7 +33,7 @@ public class UserJourneyAction extends PageAction {
 				for(Journey j:journeyList){
 					for(Place p:j.getPlaces()){
 						if(p.getId() == placeId){
-							journeyIndex = journeyList.indexOf(j);
+//							journeyIndex = journeyList.indexOf(j);
 							placeIndex = j.getPlaces().indexOf(p);
 							break;
 						}
