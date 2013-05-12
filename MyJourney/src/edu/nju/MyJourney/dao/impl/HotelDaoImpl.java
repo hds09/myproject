@@ -2,6 +2,7 @@ package edu.nju.MyJourney.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -62,6 +63,9 @@ public class HotelDaoImpl implements HotelDao {
 			String hql = "from Hotel h  ";
 			Query query = session.createQuery(hql);	
 			hotellist = query.list();
+			for(int i=0;i<hotellist.size();i++){
+				Hibernate.initialize(hotellist.get(i).getPlaces());
+			}
 	       tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

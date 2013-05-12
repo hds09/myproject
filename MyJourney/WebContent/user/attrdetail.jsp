@@ -27,33 +27,40 @@
 			}
 			
 			function vote(uid,aid,type,isRated){
-				if(isRated=='1'){
-					
-					alert('您已评价过，感谢您的评价');
+				if(uid==null){
+					alert('您还未登陆!');
+					location.href="index";
 				}else{
-					
-					$.ajax({
-						type:'post',
-						url:'uservote.action',
-						data:{aid:aid,voteType:'attraction',voteFoD:type},
-						dataType:"json",  
-						success: function(data){
-							alert('感谢你的评价');
-							if(type=='1'){
-								var v=$('.voteUp').text();
-								v=parseInt(v)+1;
-								$('.voteUp').text(v);
-							}else{
-								var v=$('.voteDown').text();
-								v=parseInt(v)+1;
-								$('.voteDown').text(v);
-							}
-						},
-						error : function(XMLHttpRequest, textStatus, errorThrown) {   
-		                     
-			            },  
-					});
+					if(isRated=='1'){
+						
+						alert('您已评价过，感谢您的评价');
+					}else{
+						
+						$.ajax({
+							type:'post',
+							url:'uservote.action',
+							data:{aid:aid,voteType:'attraction',voteFoD:type},
+							dataType:"json",  
+							success: function(data){
+								alert('感谢你的评价');
+								if(type=='1'){
+									var v=$('.voteUp').text();
+									v=parseInt(v)+1;
+									$('.voteUp').text(v);
+								}else{
+									var v=$('.voteDown').text();
+									v=parseInt(v)+1;
+									$('.voteDown').text(v);
+								}
+								location.href="/MyJourney/user/userviewAttraction?aid="+asid+"&uid="+uid;
+							},
+							error : function(XMLHttpRequest, textStatus, errorThrown) {   
+			                     
+				            },  
+						});
+					}
 				}
+				
 			}
 		</script>
 		<title>酒店信息</title>
@@ -62,6 +69,7 @@
 		<%
 			Attraction attr=(Attraction)ActionContext.getContext().getSession().get("targeta");
 			String uid=(String)ActionContext.getContext().getSession().get("viewer");
+			out.print(uid);
 			List<Comment> comments=attr.getComments();
 			String sStr="ratedattr"+attr.getId();
 			String isRated="0";

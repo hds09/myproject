@@ -68,6 +68,9 @@ public class RestaurantDaoImpl implements RestaurantDao {
 			String hql = "from Restaurant r  ";
 			Query query = session.createQuery(hql);	
 			restlist = query.list();
+			for(int i=0;i<restlist.size();i++){
+				Hibernate.initialize(restlist.get(i).getPlaces());
+			}
 	       tx.commit();
 		} catch (Exception e) {
 			e.printStackTrace();

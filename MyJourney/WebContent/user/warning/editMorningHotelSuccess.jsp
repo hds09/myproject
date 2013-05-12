@@ -11,7 +11,6 @@
 <script>
 var selectnum=document.getElementById("selectnum");
 alert("编辑成功");
-alert(selectnum.value);
 location.href="/MyJourney/user/editRoute?selectnum="+selectnum.value;
 </script>
 </body>

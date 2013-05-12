@@ -16,7 +16,19 @@
 		<script src="../js/jquery.js" type="text/javascript"></script>
 		<script src="../js/jquery-ui-1.10.2.custom.js"></script>
 		<script type="text/javascript">
-			
+			var currentList=1;
+			function navi(type){
+				var number=$('.hlist').size();
+				if(type==0&&currentList!=1){
+					$('.hlist')[currentList-1].style.display='none';
+					$('.hlist')[currentList-2].style.display='block';
+					currentList=currentList-1;
+				}else if(type==1&&currentList!=number){
+					$('.hlist')[currentList-1].style.display='none';
+					$('.hlist')[currentList].style.display='block';
+					currentList=currentList+1;
+				}
+			}
 		</script>
 		<title>饭店列表</title>
 	</head>
@@ -63,26 +75,50 @@
 						}
 					%>
 				</div>
-				<div id='hlist'>
+				
 						<%
+							
 							int all=hotels.size();
-							for(int i=0;i<all;i++){
-								out.print("<div class='resultRow2'>");
-								out.print("<span class='lTitle'>"+hotels.get(i).getName()+"</span><br/>");
-								out.print("<span class='opop'>所在城市:</span>&nbsp;");
-								out.print("<span class='opop'>"+hotels.get(i).getCity().getName()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<span class='opop'>地址:</span>&nbsp;");
-								out.print("<span class='opop'>"+hotels.get(i).getAddress()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<span class='opop'>电话:</span>&nbsp;");
-								out.print("<span class='opop'>"+hotels.get(i).getPhone()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<span class='opop'>价格:</span>&nbsp;");
-								out.print("<span class='opop'>"+hotels.get(i).getPrice()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								out.print("<a class='seeDetail' href='userviewRestaurant?rid="+hotels.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
+							int panelNum=all/5+1; //panel number
+							int index=0;
+							int i=0;
+							for(int j=0;j<panelNum;j++){
+								if(j==0){
+									out.print("<div class='hlist'>");
+								}else{
+									out.print("<div class='hlist' style='display:none'>");
+								}
+								for(index=0;index<5;index++){
+									if(i==all){
+										break;
+									}
+									out.print("<div class='resultRow2'>");
+									out.print("<span class='lTitle'>"+hotels.get(i).getName()+"</span><br/>");
+									out.print("<span class='opop'>所在城市:</span>&nbsp;");
+									out.print("<span class='opop'>"+hotels.get(i).getCity().getName()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+									out.print("<span class='opop'>地址:</span>&nbsp;");
+									out.print("<span class='opop'>"+hotels.get(i).getAddress()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+									out.print("<span class='opop'>电话:</span>&nbsp;");
+									out.print("<span class='opop'>"+hotels.get(i).getPhone()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+									out.print("<span class='opop'>价格:</span>&nbsp;");
+									out.print("<span class='opop'>"+hotels.get(i).getPrice()+"</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+									out.print("<a class='seeDetail' href='userviewRestaurant?rid="+hotels.get(i).getId()+"&uid="+uid+"'>了解更多</a>&nbsp;&nbsp;&nbsp;&nbsp;");
+									out.print("</div>");
+									out.print("<div class='mysep'></div>");
+									i++;
+								}
+								index=0;
 								out.print("</div>");
-								out.print("<div class='mysep'></div>");
+							}
+							if(all>=6){
+								out.print("<div class='backAndforth' align='right'>");
+								out.print("<span class='textBut' onclick='navi(0)'>上一页</span>&nbsp;&nbsp;&nbsp;<span class='textBut' onclick='navi(1)'>下一页</span>");
+								out.print("</div>");
 							}
 						%>
-				</div>
+			
+				
+			
 			<div class='clear_div'></div>
 			<div id="globalFooter">
 			</div>

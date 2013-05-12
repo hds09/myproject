@@ -800,7 +800,7 @@ background-color: #369;
 	border-radius:2px;
 }
 
-#hlist{
+.hlist{
 	float:left;
 	margin-right:5%;
 	width:600px;
@@ -810,7 +810,8 @@ background-color: #369;
 
 #hots{
 	float:left;
-	width:15%;
+	width:auto;
+	margin-right:20px;
 }
 .resultRow2{
 	background-color:#FFFFFF;
@@ -932,4 +933,23 @@ background-color: #369;
 }
 .clear_div{
 	clear:both;
+}
+.insAdd{
+	color:#FF8000;
+}
+.insAdd:visted{
+	color:#FF8000;
+}
+
+.backAndforth{
+	padding-bottom:20px;
+	padding-right:40px;	
+}
+
+.textBut{
+	text-decoration:underline;
+}
+.textBut:hover{
+	cursor:pointer;
+	color:#FF8000;
 }

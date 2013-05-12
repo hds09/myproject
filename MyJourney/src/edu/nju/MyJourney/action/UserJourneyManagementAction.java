@@ -181,48 +181,45 @@ public class UserJourneyManagementAction extends BaseAction{
 		Map session = actionContext.getSession();
 		if(this.voteType.equals("hotel")){
 			Hotel hotel=this.hotelService.getHotelById(this.hid);
+			String tmp="ratedhotel"+hid;
 			if(this.voteFoD.equals("0")){
 				int newVote=hotel.getDislike()+1;
 				hotel.setDislike(newVote);
-				String tmp="ratedhotel"+hid;
 				System.out.println(tmp);
 				session.put(tmp,"1" );
 			}else{
 				int newVote=hotel.getFavor()+1;
 				hotel.setFavor(newVote);
-				String tmp="ratedhotel"+hid;
 				System.out.println(tmp);
 				session.put(tmp,"1" );
 			}
 			this.hotelService.updateHotel(hotel);
 		}else if(this.voteType.equals("restaurant")){
 			Restaurant r=this.restaurantService.getRestaurantById(this.rid);
+			String tmp="ratedrest"+rid;
 			if(this.voteFoD.equals("0")){
 				int newVote=r.getDislike()+1;
 				r.setDislike(newVote);
-				String tmp="ratedrest"+rid;
 				System.out.println(tmp);
 				session.put(tmp,"1" );
 			}else{
 				int newVote=r.getFavor()+1;
 				r.setFavor(newVote);
-				String tmp="ratedrest"+rid;
 				System.out.println(tmp);
 				session.put(tmp,"1" );
 			}
 			this.restaurantService.updateRestaurant(r);
 		}else if(this.voteType.equals("attraction")){
 			Attraction a=this.attractionService.getAttractionById(this.aid);
+			String tmp="ratedattr"+aid;
 			if(this.voteFoD.equals("0")){
 				int newVote=a.getDislike()+1;
 				a.setDislike(newVote);
-				String tmp="ratedattr"+aid;
 				System.out.println(tmp);
 				session.put(tmp,"1" );
 			}else{
 				int newVote=a.getFavor()+1;
 				a.setFavor(newVote);
-				String tmp="ratedattr"+rid;
 				System.out.println(tmp);
 				session.put(tmp,"1" );
 			}

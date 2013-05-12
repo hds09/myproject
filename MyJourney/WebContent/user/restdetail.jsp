@@ -27,31 +27,38 @@
 			}
 			
 			function vote(uid,rid,type,isRated){
-				if(isRated=='1'){
-					alert('您已评价过，感谢您的评价');			
+				if(uid==null){
+					alert('您还未登陆!');
+					location.href="index";
 				}else{
-					$.ajax({
-						type:'post',
-						url:'uservote.action',
-						data:{rid:rid,voteType:'restaurant',voteFoD:type},
-						dataType:"json",  
-						success: function(data){
-							alert('感谢你的评价');
-							if(type=='1'){
-								var v=$('.voteUp').text();
-								v=parseInt(v)+1;
-								$('.voteUp').text(v);
-							}else{
-								var v=$('.voteDown').text();
-								v=parseInt(v)+1;
-								$('.voteDown').text(v);
-							}
-						},
-						error : function(XMLHttpRequest, textStatus, errorThrown) {   
-		                     
-			            },  
-					});
+					if(isRated=='1'){
+						alert('您已评价过，感谢您的评价');			
+					}else{
+						$.ajax({
+							type:'post',
+							url:'uservote.action',
+							data:{rid:rid,voteType:'restaurant',voteFoD:type},
+							dataType:"json",  
+							success: function(data){
+								alert('感谢你的评价');
+								if(type=='1'){
+									var v=$('.voteUp').text();
+									v=parseInt(v)+1;
+									$('.voteUp').text(v);
+								}else{
+									var v=$('.voteDown').text();
+									v=parseInt(v)+1;
+									$('.voteDown').text(v);
+								}
+								location.href="/MyJourney/user/userviewRestaurant?rid="+rid+"&uid="+uid;
+							},
+							error : function(XMLHttpRequest, textStatus, errorThrown) {   
+			                     
+				            },  
+						});
+					}
 				}
+				
 			}
 		</script>
 		<title>酒店信息</title>

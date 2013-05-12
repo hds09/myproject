@@ -203,7 +203,7 @@ function cancelEmail(){
 	          </div>
 	          <div id="headright">
 	          <h4>欢迎回来</h4>
-	          <a href="#" style="text-decoration: none;color:#484891">hds</a></br>
+	          <a href="#" style="text-decoration: none;color:#484891">${user.name }</a></br>
 	          <a href="#" style="text-decoration: none;">修改资料</a>
 	         </div>
 	         

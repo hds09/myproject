@@ -40,6 +40,7 @@ public class PersonCenterAction extends BaseAction{
 		    }else{
 		    	this.islogined=true;
 		    	this.account=(String)session.get("account");
+		    	 user=userService.getUserByAccount(account);
 		    }
 		    session.put("islogined",this.islogined);
 		    this.selectnum=1;

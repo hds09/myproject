@@ -26,9 +26,11 @@
 			List<SimilarJourney> sims=(List<SimilarJourney>)ActionContext.getContext().getSession().get("similarJs");
 			List<Journey> interested=(List<Journey>)ActionContext.getContext().getSession().get("user_int");
 			List<User> intUsers=(List<User>)ActionContext.getContext().getSession().get("InUser");
+			Long uid=(Long)ActionContext.getContext().getSession().get("Auuid");
 			List<Journey> personal=new ArrayList<Journey>();
 			List<Journey> team=new ArrayList<Journey>();
 			List<Journey> allteam=new ArrayList<Journey>();
+			out.print("my j size: "+journeys.size());
 			for(int i=0;i<journeys.size();i++){
 				if(journeys.get(i).getState()==1){
 					team.add(journeys.get(i));
@@ -75,36 +77,19 @@
 						  <li class="tab_item" onclick="makeActive(1)" style='display:none'><a>关于我的</a></li>
 						</ul>
 					</div>
-					<div id="search_div">
-						<span onclick="sndSearchField()" id="search_text">搜索<img id="s_arrow" src="../images/sdd09/arr_d.jpg" /></span>		
-					</div>
-					<div id="search_field" style="display:none">
-						<form>
-							<div id="s_name">
-								<span class="s_text">旅行名关键字</span>
-								<input class="s_input" />
-							</div>
-							<div id="s_status">
-								<span class="s_text">状态</span>
-								<select name="status">
-								<option value="finished"><span class="s_text">已结束</span></option>
-								<option value="ongoing"><span class="s_text">进行中</span></option>
-								<option value="pending"><span class="s_text">未开始</span></option>
-								</select>
-							</div>
-							
-							<div id="s_form_submit" align="right">
-								<input type="submit" value="搜索" class="s_sbmt"/>
-							</div>
-							<div class="sep"></div>
-						</form>
-					</div>
+					
+					
+					
 					<div id="j_result" class="changeableTab">
 						<!--this section should be updated asynchronously according to user clicking on different tabs
 							expected to be implemented by AJAX -->
 						<!--hard-coding data-->
 						<% 
 							int psize=personal.size();
+							if(psize==0){
+								out.print("您还没有添加或加入任何旅行");
+								out.print("<a href='makeRoute' class='insAdd'>立即去添加</a>");
+							}
 							for(int i=0;i<psize;i++){
 								out.print("<div class='resultRow'>");
 								out.print("<div class='row_sep2'></div>");
@@ -171,6 +156,10 @@
 								SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 								String today=sdf.format(new Date());
 								int tsize=team.size();
+								if(tsize==0){
+									out.print("您还没有添加或加入任何旅行");
+									out.print("&nbsp;&nbsp;&nbsp;<a href='makeRoute' class='insAdd'>立即去添加</a>");
+								}
 								for(int i=0;i<tsize;i++){
 									out.print("<div class='resultRow'>");
 									out.print("<div class='row_sep2'></div>");
@@ -274,7 +263,7 @@
 						int isize=interested.size();
 						for(int i=0;i<isize;i++){
 							out.print("<div class='rec_trip_row'>");
-							out.print("<span class='trip_title'><a class='trip_lnk' href='userViewJourney?jid="+interested.get(i).getId()+"&uid="+personal.get(0).getUser().getUid()+"'>"+interested.get(i).getJourneyName()+"</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+							out.print("<span class='trip_title'><a class='trip_lnk' href='userViewJourney?jid="+interested.get(i).getId()+"&uid="+uid+"'>"+interested.get(i).getJourneyName()+"</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 							out.print("<span class='trip_time'>"+interested.get(i).getPlaces().get(0).getTime()+"&nbsp;&nbsp;至&nbsp;&nbsp; "+interested.get(i).getPlaces().get(interested.get(i).getPlaces().size()-1).getTime()+"</span>");
 							out.print("</div>");
 						}
@@ -292,7 +281,7 @@
 					int recsize=intUsers.size();
 					for(int i=0;i<recsize;i++){
 						out.print("<div class='rec_row' align='center'>");
-						out.print("<img src='../images/sdd09/img_holder.jpg' /><br/>");
+						out.print("<img src='"+intUsers.get(i).getImage()+"' width='50px;' height='50px;'' /><br/>");
 						out.print("<a class='people_lnk' href=''>"+intUsers.get(i).getAccount()+"</a>");
 						out.print("</div>");
 					}

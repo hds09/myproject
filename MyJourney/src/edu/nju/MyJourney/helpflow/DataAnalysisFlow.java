@@ -150,10 +150,17 @@ public class DataAnalysisFlow {
 			}
 		}
 		//trim to intended list size
-		aRanks=(ArrayList<AttrRankCoef>) aRanks.subList(aRanks.size()-size, aRanks.size());
-		for(int i=0;i<aRanks.size();i++){
-			hots.add(aRanks.get(i).getAttr());
+		List<AttrRankCoef> fins= aRanks.subList(aRanks.size()-size, aRanks.size());
+		for(int i=0;i<fins.size();i++){
+			hots.add(fins.get(i).getAttr());
 		}
+		System.out.println("hot attr size: "+hots.size());
+		ArrayList<Attraction> tmpList=new ArrayList<Attraction>();
+		int sizein=hots.size();
+		for(int i=0;i<hots.size();i++){
+			tmpList.add(hots.get(sizein-i-1));
+		}
+		hots=tmpList;
 		return hots;
 	}
 	
