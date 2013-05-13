@@ -351,6 +351,10 @@
  	      </action>
       </package>
       <package name="picture" namespace="/pic" extends="struts-default">
+      	  <action name="addAttention" class="AddAttentionAction">
+ 	      	  <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success" type="redirectAction">daren</result>
+ 	      </action>
           <action name="renren" class="edu.nju.MyJourney.action.RenrenAction">
               <result name="login">/sns/login.jsp</result>
               <result name="success">/sns/registerSuccess.jsp</result>

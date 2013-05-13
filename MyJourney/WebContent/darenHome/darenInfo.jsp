@@ -20,7 +20,7 @@
      <h2 class="font-yahei ml5 darkgray fn-enter">${daren.name } </h2>
      <span id="focus" class="ml5 mt10 fn-block">
      	<s:if test="daren.hasAttention == 1">
-     		<a href="/MyJourney/ajax/addAttention?AttentionAccount=${daren.account }"><p class="personal_attention_add png24"></p></a>
+     		<a href="/MyJourney/pic/addAttention?AttentionAccount=${daren.account }"><p class="personal_attention_add png24"></p></a>
      	</s:if>
 	 </span>
      <ul>

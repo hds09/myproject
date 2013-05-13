@@ -53,8 +53,8 @@ public class DarenAction extends PageAction{
 						d.setHasAttention(1);
 					}
 				}
-				System.out.println(d.getAccount());
-				System.out.println(d.getHasAttention());
+//				System.out.println(d.getAccount());
+//				System.out.println(d.getHasAttention());
 			}
 			pageMax = darenService.getDarensPageMax(pageSize);
 		}

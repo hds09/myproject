@@ -201,7 +201,8 @@ public class JourneyDaoImpl implements JourneyDao{
 		List<Journey> result = new ArrayList<Journey>();
 		try{
 			Transaction tx = session.beginTransaction();
-			String hql = "from Journey j order by id desc where j.user="+user.getUid();
+//			String hql = "from Journey j  where j.user="+user.getUid()+"";
+			String hql = "from Journey j where j.user="+user.getUid()+" order by j.id desc";
 			Query query = session.createQuery(hql);
 			query.setFirstResult(page*pageSize);
 			query.setMaxResults(pageSize);

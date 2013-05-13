@@ -30,7 +30,7 @@ public class RenrenAction extends BaseAction{
 	@Override
 	public String execute() throws Exception {
 		client_id = RenrenConfig.apiID;
-		redirect_url = URLEncoder.encode("http://169.254.133.57:8080/MyJourney/pic/renren", "UTF-8");
+		redirect_url = URLEncoder.encode("http://218.94.159.98:8080/MyJourney/pic/renren", "UTF-8");
 //		redirect_url = URLEncoder.encode("http://www.baidu.com", "UTF-8");
 		System.out.println(code);
 		if(code != null && code.length()>0){
@@ -38,7 +38,7 @@ public class RenrenAction extends BaseAction{
 			Map<String, String> parameters = new HashMap<String, String>();
 			parameters.put("client_id", RenrenConfig.apiID);
 			parameters.put("client_secret", RenrenConfig.apiSecretKey);
-			parameters.put("redirect_uri", "http://169.254.133.57:8080/MyJourney/pic/renren");
+			parameters.put("redirect_uri", "http://218.94.159.98:8080/MyJourney/pic/renren");
 	                              //这个redirect_uri要和之前传给authorization endpoint的值一样
 			parameters.put("grant_type", "authorization_code");
 			parameters.put("code", code);

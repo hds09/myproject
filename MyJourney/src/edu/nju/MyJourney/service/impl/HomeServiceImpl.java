@@ -26,6 +26,7 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public List<Journey> getUserJourney(String account, int page, int pageSize) {
 		User user = userDao.getUserByAccount(account);
+//		System.out.println(user.getUid());
 		if(user != null){
 			return journeyDao.getUserJourney(user, page, pageSize);
 		}else{

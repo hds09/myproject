@@ -8,7 +8,7 @@
 				   <img class="npic" src="${dr.image }" width="150" height="150">
 				</a>
 				<s:if test="#dr.hasAttention==1">
-					<p class="lvtu_daren_attention_add"><a href="/MyJourney/ajax/addAttention?AttentionAccount=${dr.account }"></a></p>
+					<p class="lvtu_daren_attention_add"><a href="/MyJourney/pic/addAttention?AttentionAccount=${dr.account }"></a></p>
 				</s:if>
 			</div>
 			<div class="lvtu_personal_person_r_dr fn-fl ml20">
