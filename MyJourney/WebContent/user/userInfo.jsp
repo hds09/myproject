@@ -183,10 +183,10 @@ function cancelEmail(){
 	<nav>
 		<ul>
 			<li><a href="index">首页</a></li>
-			<li><a href="#">酒店</a></li>
-			<li><a href="#">饭店</a></li>
+			<li><a href="Hotels">酒店</a></li>
+			<li><a href="Restaurants">饭店</a></li>
 			<li><a href="makeRoute">旅程</a></li>
-			<li><a href="#">旅图</a></li>
+			<li><a href="/MyJourney/pic/picwall">旅图</a></li>
 			<li><a href="userJourneyManagement">管理</a></li>
 			<li class="selected"><a href="#">个人中心</a></li>
 			<li class="subscribe"><a href="#"></a></li>

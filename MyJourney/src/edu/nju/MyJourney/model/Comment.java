@@ -39,7 +39,7 @@ public void setContext(String context) {
 	this.context = context;
 }
 
-@ManyToOne(cascade=CascadeType.ALL, optional=false)
+@ManyToOne(cascade=CascadeType.ALL, optional=true)
 @JoinColumn(name="comments_user")
 
 public User getUser() {
@@ -49,7 +49,7 @@ public void setUser(User user) {
 	this.user = user;
 }
 
-@ManyToOne(cascade=CascadeType.ALL, optional=false)
+@ManyToOne(cascade=CascadeType.ALL, optional=true)
 @JoinColumn(name="comments_attraction")
 public Attraction getAttraction() {
 	return attraction;
@@ -59,7 +59,7 @@ public void setAttraction(Attraction attraction) {
 	this.attraction = attraction;
 }
 
-@ManyToOne(cascade=CascadeType.ALL, optional=false)
+@ManyToOne(cascade=CascadeType.ALL, optional=true)
 @JoinColumn(name="comments_hotel")
 public Hotel getHotel() {
 	return hotel;
@@ -68,7 +68,7 @@ public void setHotel(Hotel hotel) {
 	this.hotel = hotel;
 }
 
-@ManyToOne(cascade=CascadeType.ALL, optional=false)
+@ManyToOne(cascade=CascadeType.ALL, optional=true)
 @JoinColumn(name="comments_restaurant")
 public Restaurant getRestaurant() {
 	return restaurant;

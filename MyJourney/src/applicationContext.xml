@@ -364,5 +364,10 @@
 	</bean>
 	<bean id="PictureUploadAction" class="edu.nju.MyJourney.action.PictureUploadAction">
 	</bean>
+	<bean id="RenrenAction" class="edu.nju.MyJourney.action.RenrenAction">
+	    <property name="UserService">
+			<ref bean="UserService"/>
+		</property>
+	</bean>
 	
 </beans>

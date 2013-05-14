@@ -24,13 +24,11 @@ public class RenrenAction extends BaseAction{
 	private String name;
 	private String headurl;
 	private String renrenId;
-	private boolean islogined;
-	private String account;
-	private static final String ip="218.94.159.98";
+	private static final String ip= RenrenConfig.ip;
 	@Override
 	public String execute() throws Exception {
 		client_id = RenrenConfig.apiID;
-		redirect_url = URLEncoder.encode("http://218.94.159.98:8080/MyJourney/pic/renren", "UTF-8");
+		redirect_url = URLEncoder.encode("http://"+ip+"/MyJourney/pic/renren", "UTF-8");
 //		redirect_url = URLEncoder.encode("http://www.baidu.com", "UTF-8");
 		System.out.println(code);
 		if(code != null && code.length()>0){
@@ -38,7 +36,7 @@ public class RenrenAction extends BaseAction{
 			Map<String, String> parameters = new HashMap<String, String>();
 			parameters.put("client_id", RenrenConfig.apiID);
 			parameters.put("client_secret", RenrenConfig.apiSecretKey);
-			parameters.put("redirect_uri", "http://218.94.159.98:8080/MyJourney/pic/renren");
+			parameters.put("redirect_uri", "http://"+ip+"/MyJourney/pic/renren");
 	                              //这个redirect_uri要和之前传给authorization endpoint的值一样
 			parameters.put("grant_type", "authorization_code");
 			parameters.put("code", code);
@@ -59,20 +57,23 @@ public class RenrenAction extends BaseAction{
 					if (currentUser != null) {
 						name = (String) currentUser.get("name");
 						headurl = (String) currentUser.get("headurl");
-						renrenId = (String) currentUser.get("uid");
+						renrenId = String.valueOf(currentUser.get("uid"));
 						System.out.println(name+"       "+headurl+"       "+currentUser.toJSONString());
 						String tmpAccount = (String) session().getAttribute("account");
-						if(tmpAccount != null){
+						if(tmpAccount != null && tmpAccount.length()>0){
 							User loginUser = userService.getUserByAccount(tmpAccount);
 							loginUser.setRenrenId(renrenId);
 							userService.updateUser(loginUser);
 							return "login";
 						}else{
-							User registerUser = new User();
-							registerUser.setAccount(name);
-							registerUser.setPwd(name);
-							registerUser.setImage(headurl);
-							registerUser.setRenrenId(renrenId);
+//							User registerUser = new User();
+//							registerUser.setAccount(name);
+//							registerUser.setPwd(name);
+//							registerUser.setImage(headurl);
+//							registerUser.setRenrenId(renrenId);
+							session().setAttribute("islogined",true);
+							session().setAttribute("account","qa1");
+//							userService.updateUser(registerUser);
 							return "success";
 						}
 					}
@@ -111,6 +112,14 @@ public class RenrenAction extends BaseAction{
 	}
 	public void setHeadurl(String headurl) {
 		this.headurl = headurl;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 	
 	

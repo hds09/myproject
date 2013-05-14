@@ -5,9 +5,12 @@
 <hibernate-configuration>
 <session-factory>
 <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-<property name="connection.url">jdbc:mysql://localhost:3306/myproject?useUnicode=true&amp;characterEncoding=utf-8</property>
+<!-- <property name="connection.url">jdbc:mysql://127.0.0.1:3306/myjourney?useUnicode=true&amp;characterEncoding=utf-8</property>
+ -->
+ <property name="connection.url">jdbc:mysql://localhost:3306/myproject?useUnicode=true&amp;characterEncoding=utf-8</property>
+
 <property name="connection.username">root</property>
-<property name="connection.password">123</property>
+<property name="connection.password">090513</property>
 <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 <property name="show_sql">false</property>
 <property name="hibernate.connection.autocommit">true</property>
@@ -16,7 +19,7 @@
        
          <mapping class="edu.nju.MyJourney.model.Attraction"/> 
          <!-- -->
-        <mapping class="edu.nju.MyJourney.model.User"/>   
+         <mapping class="edu.nju.MyJourney.model.User"/>   
          <mapping class="edu.nju.MyJourney.model.Restaurant"/>  
          <mapping class="edu.nju.MyJourney.model.Hotel"/>  
          <mapping class="edu.nju.MyJourney.model.City"/>  
@@ -24,8 +27,8 @@
          <mapping class="edu.nju.MyJourney.model.Team"/>  
          <mapping class="edu.nju.MyJourney.model.Journey"/>   
          <mapping class="edu.nju.MyJourney.model.Place"/>
-          <mapping class="edu.nju.MyJourney.model.Comment"/>
-            <mapping class="edu.nju.MyJourney.model.Picture"/>
-            <mapping class="edu.nju.MyJourney.model.Administrator"/>
+         <mapping class="edu.nju.MyJourney.model.Comment"/>
+         <mapping class="edu.nju.MyJourney.model.Picture"/>
+         <mapping class="edu.nju.MyJourney.model.Administrator"/>
 </session-factory>
 </hibernate-configuration>

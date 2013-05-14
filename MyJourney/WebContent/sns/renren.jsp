@@ -13,5 +13,9 @@ ${name }
 <img alt="人人头像" src="${headurl }">
  <a href="https://graph.renren.com/oauth/authorize?client_id=${client_id }&response_type=code&redirect_uri=${redirect_url }&display=page">
         <img style="border:0px" src="../sns/RENREN.png"/></a>
+<%--第二个人人登录按钮，测试权限处理 --%>
+<a href="https://graph.renren.com/oauth/authorize?client_id=${client_id }&response_type=code&redirect_uri=${redirect_url }&display=page&scope=read_user_album+read_user_feed">
+<img style="border:0px" src="../sns/RENREN.png"/></a>
+
 </body>
 </html>

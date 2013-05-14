@@ -58,7 +58,7 @@ public class PersonCenterAction extends BaseAction{
     public String select3() throws Exception{
     	String result = SUCCESS;
     	client_id = RenrenConfig.apiID;
-		redirect_url = URLEncoder.encode("http://218.94.159.98:8080/MyJourney/pic/renren", "UTF-8");
+		redirect_url = URLEncoder.encode("http://"+RenrenConfig.ip+"/MyJourney/pic/renren", "UTF-8");
     	this.selectnum=3;
     	return result;
     }

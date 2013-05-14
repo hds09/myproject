@@ -122,17 +122,23 @@ public class UserJourneyManagementAction extends BaseAction{
 		System.out.println("hid: "+hid);
 		System.out.println("aid: "+aid);
 		System.out.println(this.commText);
+		c.setContext(this.commText);
+		this.commentService.insertComment(c);
+		
 		User u=userService.getUserById(this.uid);
 		Hotel h=hotelService.getHotelById(this.hid);
 		Attraction a=attractionService.getAttractionById(this.aid);
 		Restaurant r=restaurantService.getRestaurantById(this.rid);
 		c.setUser(u);
+		u.getComments().add(c);
 		c.setHotel(h);
+		h.getComments().add(c);
 		c.setAttraction(a);
+		h.getComments().add(c);
 		c.setRestaurant(r);
-		c.setContext(this.commText);
-		u.addComments(c);
-		userService.updateUser(u);
+	    r.addComments(c);
+//		u.addComments(c);
+//		userService.updateUser(u);
 //		this.commentService.insertComment(c);
 		return SUCCESS;
 	}

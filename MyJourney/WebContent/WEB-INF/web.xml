@@ -16,7 +16,10 @@
   <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
+<listener>
+    
+    <listener-class>edu.nju.MyJourney.listener.RenrenListener</listener-class>
+</listener>
  <context-param>
   <param-name>contextConfigLocation</param-name>
    <param-value>/WEB-INF/classes/applicationContext.xml</param-value>

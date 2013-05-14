@@ -71,16 +71,19 @@ public class JourneyServiceImpl implements JourneyService{
 		List<Journey> js=this.journeyDao.getAllJourneys();
 		List<Journey> result=new ArrayList<Journey>();
 		for(int i=0;i<js.size();i++){
-			if(js.get(i).getUser().getUid()==userid){
+			if(js.get(i).getUser()!=null && js.get(i).getUser().getUid()==userid){
 				result.add(js.get(i));
 			}else if(js.get(i).getState()==1){
-				List<User> tmp=js.get(i).getTeam().getUsers();
-				for(int j=0;j<tmp.size();j++){
-					if(tmp.get(j).getUid()==userid){
-						result.add(js.get(j));
-						break;
+				if(js.get(i).getTeam()!=null){
+					List<User> tmp=js.get(i).getTeam().getUsers();
+					for(int j=0;j<tmp.size();j++){
+						if(tmp.get(j).getUid()==userid){
+							result.add(js.get(j));
+							break;
+						}
 					}
 				}
+				
 			}
 		}
 		return result;
