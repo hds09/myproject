@@ -55,13 +55,18 @@
 			boolean notstarted=false;
 			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 			String today=sdf.format(new Date());
-			if(today.compareTo(j.getPlaces().get(j.getPlaces().size()-1).getTime())>0){
-				finished=true;
-			}else if(today.compareTo(j.getPlaces().get(0).getTime())<0){
-				notstarted=true;
+			if(j.getPlaces().size()==0){
+				
 			}else{
-				ongoing=true;
+				if(today.compareTo(j.getPlaces().get(j.getPlaces().size()-1).getTime())>0){
+					finished=true;
+				}else if(today.compareTo(j.getPlaces().get(0).getTime())<0){
+					notstarted=true;
+				}else{
+					ongoing=true;
+				}
 			}
+			
 		%>
 		<header>
 			<h1>Where You Will Go</h1>

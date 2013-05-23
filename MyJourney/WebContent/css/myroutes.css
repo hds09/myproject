@@ -942,6 +942,7 @@ background-color: #369;
 }
 
 .backAndforth{
+	clear:both;
 	padding-bottom:20px;
 	padding-right:40px;	
 }
