@@ -2,17 +2,23 @@ var flag=1;
 var quick_publish_hide=0;
 var p_trip_rate=1;
 var show_hide_search_area=1;
+var currDiv=1;
+var currMenu=1;
 function makeActive(index){
-	var nodelist=document.getElementsByClassName("tab_item");
-	for (var i=0;i<nodelist.length;i++){
-		if(i==index){
-			nodelist.item(i).className="active tab_item";
-		}else{
-			nodelist.item(i).className="tab_item";
+	if(currMenu==2){
+		var nodelist=document.getElementsByClassName("tab_item");
+		for (var i=0;i<nodelist.length;i++){
+			if(i==index){
+				nodelist.item(i).className="active tab_item";
+			}else{
+				nodelist.item(i).className="tab_item";
+			}
 		}
-	}
-	if(index==1){
-		changeDiv(3);
+		if(index==0){
+			changeDiv(2);
+		}else{
+			changeDiv(3);
+		}
 	}
 	return false;
 };
@@ -20,7 +26,6 @@ function makeActive(index){
 
 function changeDiv(index){
 	if(index==1){
-		makeActive(0);
 		document.getElementById('j_result').style.display='block';
 		document.getElementById('team_results').style.display='none';
 		document.getElementById('all_tj_results').style.display='none';
@@ -30,20 +35,36 @@ function changeDiv(index){
 		tmp2.removeClass().addClass('trip_type_selected');
 		var nodelist=document.getElementsByClassName("tab_item");
 		nodelist.item(1).style.display='none';
+		nodelist.item(0).className="active tab_item";
+		currDiv=1;
+		currMenu=1;
 	}else if(index==2){
 		document.getElementById('j_result').style.display='none';
 		document.getElementById('team_results').style.display='block';
 		document.getElementById('all_tj_results').style.display='none';
-		var tmp1=$('.trip_type_selected');
-		var tmp2=$('.trip_type_diselected');
-		tmp1.removeClass().addClass('trip_type_diselected');
-		tmp2.removeClass().addClass('trip_type_selected');
+		if(currMenu==1){
+			var tmp1=$('.trip_type_selected');
+			var tmp2=$('.trip_type_diselected');
+			tmp1.removeClass().addClass('trip_type_diselected');
+			tmp2.removeClass().addClass('trip_type_selected');
+		}
+		
 		var nodelist=document.getElementsByClassName("tab_item");
+		nodelist.item(0).className="active tab_item";
+		nodelist.item(1).className="tab_item";
 		nodelist.item(1).style.display='block';
+		currDiv=2;
+		currMenu=2;
 	}else{
 		document.getElementById('j_result').style.display='none';
 		document.getElementById('team_results').style.display='none';
 		document.getElementById('all_tj_results').style.display='block';
+		var nodelist=document.getElementsByClassName("tab_item");
+		nodelist.item(0).className="tab_item";
+		nodelist.item(1).className="active tab_item";
+		nodelist.item(1).style.display='block';
+		currDiv=3;
+		currMenu=2;
 	}
 };
 

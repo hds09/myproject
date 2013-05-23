@@ -130,16 +130,13 @@ public class UserJourneyManagementAction extends BaseAction{
 		Attraction a=attractionService.getAttractionById(this.aid);
 		Restaurant r=restaurantService.getRestaurantById(this.rid);
 		c.setUser(u);
-		u.getComments().add(c);
-		c.setHotel(h);
-		h.getComments().add(c);
 		c.setAttraction(a);
-		h.getComments().add(c);
+		c.setHotel(h);
 		c.setRestaurant(r);
-	    r.addComments(c);
+		c.setContext(commText);
 //		u.addComments(c);
 //		userService.updateUser(u);
-//		this.commentService.insertComment(c);
+		this.commentService.insertComment(c);
 		return SUCCESS;
 	}
 	

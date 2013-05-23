@@ -18,6 +18,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name="place")
@@ -33,6 +35,7 @@ private Journey journey;
 private String traffic;
 private int halfday;
 
+@LazyCollection(LazyCollectionOption.FALSE)
 @ManyToOne( optional=true)
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_hotel")
@@ -43,6 +46,7 @@ public Hotel getHotel() {
 public void setHotel(Hotel hotel) {
 	this.hotel = hotel;
 }
+@LazyCollection(LazyCollectionOption.FALSE)
 @ManyToOne( optional=true)
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_restaurant")
@@ -53,6 +57,7 @@ public Restaurant getRestaurant() {
 public void setRestaurant(Restaurant restaurant) {
 	this.restaurant = restaurant;
 }
+@LazyCollection(LazyCollectionOption.FALSE)
 @ManyToOne(optional=true)
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_Attraction")
@@ -79,7 +84,7 @@ public int getHalfday() {
 public void setHalfday(int halfday) {
 	this.halfday = halfday;
 }
-
+@LazyCollection(LazyCollectionOption.FALSE)
 @ManyToOne( optional=true)
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @JoinColumn(name="place_city")
@@ -108,6 +113,8 @@ public Journey getJourney() {
 public void setJourney(Journey journey) {
 	this.journey = journey;
 }
+
+
 @OneToMany(mappedBy="place",  fetch=FetchType.LAZY)
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 @OrderBy(value="id ASC")

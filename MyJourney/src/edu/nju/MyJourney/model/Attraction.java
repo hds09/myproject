@@ -89,6 +89,7 @@ public void setAddress(String address) {
 	this.address = address;
 }
 
+@LazyCollection(LazyCollectionOption.FALSE)
 @ManyToOne(cascade=CascadeType.ALL, optional=false)
 @JoinColumn(name="attractionOwner")
 public City getCity() {
@@ -106,7 +107,8 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
-@OneToMany(mappedBy="attraction", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="attraction", cascade=CascadeType.ALL)
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {
 	return places;

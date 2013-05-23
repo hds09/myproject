@@ -42,7 +42,8 @@ public class CommentDaoImpl implements CommentDao{
 		 Session session=sessionFactory.openSession();
 			try {	
 				Transaction tx=session.beginTransaction();
-				session.save(comment);
+				session.merge(comment);
+				
 		       tx.commit();
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -126,7 +126,8 @@ public class User {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	@OneToMany(mappedBy="user",  fetch=FetchType.LAZY)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="user")
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@OrderBy(value="id ASC")
 	public List<Journey> getJourney() {
@@ -138,7 +139,9 @@ public class User {
 	public void setJourney(List<Journey> journey) {
 		this.journey = journey;
 	}
-	@ManyToMany(fetch = FetchType.LAZY)   
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany()   
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@JoinTable(name="users_Team", joinColumns={@JoinColumn(name="uid")},  
 	 inverseJoinColumns={@JoinColumn(name="tid")})   
@@ -160,7 +163,9 @@ public class User {
 		p.getUsers().remove(this);
 		this.team.remove(p);
 	}
-	@OneToMany(mappedBy="user",  fetch=FetchType.LAZY)
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy="user")
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@OrderBy(value="id ASC")
 	public List<Reply> getMeassage() {
@@ -172,7 +177,8 @@ public class User {
 	public void setMeassage(List<Reply> meassage) {
 		this.message = meassage;
 	}
-	@ManyToMany(fetch = FetchType.LAZY)   
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@ManyToMany()   
 	@Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE}) 
 	@JoinTable(name="attention_concerned", joinColumns={@JoinColumn(name="attention_uid")},  
 	 inverseJoinColumns={@JoinColumn(name="concern_uid")})  
