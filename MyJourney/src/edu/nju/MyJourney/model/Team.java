@@ -17,6 +17,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 
 @Entity
@@ -36,8 +38,8 @@ public void setTid(long id) {
 	this.tid = id;
 }
 
-
-@ManyToMany(fetch = FetchType.LAZY, mappedBy="team")  
+@LazyCollection(LazyCollectionOption.FALSE)
+@ManyToMany(mappedBy="team")  
 @Cascade(value={org.hibernate.annotations.CascadeType.SAVE_UPDATE})
 public List<User> getUsers() {
 	if(this.users==null){
@@ -57,7 +59,7 @@ public void removeUsers(User u){
 	}
 }
 
-
+@LazyCollection(LazyCollectionOption.FALSE)
 @OneToOne(cascade = CascadeType.ALL)
 @JoinColumn(name = "Jid")
 public Journey getJourney() {

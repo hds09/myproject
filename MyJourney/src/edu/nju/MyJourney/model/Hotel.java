@@ -49,6 +49,8 @@ public String getName() {
 public void setName(String name) {
 	this.name = name;
 }
+
+@LazyCollection(LazyCollectionOption.FALSE)
 @ManyToOne(cascade=CascadeType.ALL, optional=false)
 @JoinColumn(name="hotelOwner")
 public City getCity() {
@@ -113,7 +115,9 @@ public void removeComments(Comment f){
 	f.setHotel(null);
 	this.comments.remove(f);
 }
-@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+
+@LazyCollection(LazyCollectionOption.FALSE)
+@OneToMany(mappedBy="hotel", cascade=CascadeType.ALL)
 @OrderBy(value="id ASC")
 public List<Place> getPlaces() {
 	return places;

@@ -161,8 +161,7 @@
               <result name="failure">/user/warning/unlogined.jsp</result>
           </action>
           <action name="comment" class="UserJourneyManagementAction" method="comment">
-              <result type="redirectAction" name="success">userJourneyManagement</result>
-              <result name="failure">/user/warning/unlogined.jsp</result>
+              <result name="success" type="json"></result>
           </action>
           <action name="userviewRestaurant" class="UserJourneyManagementAction" method="viewRestaurant">
               <result name="success">/user/restdetail.jsp</result>

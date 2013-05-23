@@ -47,6 +47,7 @@ public void setId(long id) {
 }
 @ManyToOne( optional=true)
 
+@LazyCollection(LazyCollectionOption.FALSE)
 @JoinColumn(name="journeyOwner")
 public User getUser() {
 	return user;
