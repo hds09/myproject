@@ -6,4 +6,5 @@ public interface TeamDao {
 	public void deleteTeam(Team team);
 	public void insertTeam(Team team);
 	public void kickUserFromTeam(String uid,String tid);
+	public void updateTeam(Team team);
 }

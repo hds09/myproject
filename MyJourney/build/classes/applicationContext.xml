@@ -48,6 +48,11 @@
 			<ref bean="AdministratorDao"/>
 		</property>
 	</bean>		
+	<bean id="TeamService" class="edu.nju.MyJourney.service.impl.TeamServiceImpl">
+		<property name="TeamDao">
+			<ref bean="TeamDao"/>
+		</property>
+	</bean>		
 	<bean id="CityService" class="edu.nju.MyJourney.service.impl.CityServiceImpl">
 		<property name="CityDao">
 			<ref bean="CityDao"/>
@@ -256,6 +261,10 @@
 		<property name="PlaceService">
 			<ref bean="PlaceService"/>
 		</property>
+		<property name="TeamService">
+			<ref bean="TeamService"/>
+		</property>
+		
 	</bean>	
 	<bean id="ManagerIndexAction" class="edu.nju.MyJourney.action.ManagerIndexAction">
 		

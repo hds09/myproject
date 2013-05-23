@@ -14,10 +14,12 @@ import com.opensymphony.xwork2.ActionContext;
 import edu.nju.MyJourney.model.City;
 import edu.nju.MyJourney.model.Journey;
 import edu.nju.MyJourney.model.Place;
+import edu.nju.MyJourney.model.Team;
 import edu.nju.MyJourney.model.User;
 import edu.nju.MyJourney.service.CityService;
 import edu.nju.MyJourney.service.JourneyService;
 import edu.nju.MyJourney.service.PlaceService;
+import edu.nju.MyJourney.service.TeamService;
 import edu.nju.MyJourney.service.UserService;
 
 public class SubmitRouteAction extends BaseAction{
@@ -31,6 +33,7 @@ public class SubmitRouteAction extends BaseAction{
     private PlaceService placeService;
 	private CityService cityService;
 	private JourneyService journeyService;
+	private TeamService teamService;
 	private int state;
 
 	public String execute() throws Exception {
@@ -80,6 +83,12 @@ public class SubmitRouteAction extends BaseAction{
 	     User user=userService.getUserByAccount(account);
 	     user.addJourney(tmp);
 	     userService.updateUser(user);
+	     journeyService.updateJourney(tmp);
+	     Team team=new Team();
+	     team.setTeamName(this.routeName);
+	     teamService.insertTeam(team);
+	     team.addJourney(tmp);
+	     teamService.updateTeam(team);
 	     journeyService.updateJourney(tmp);
 		return result;
 	}
@@ -174,5 +183,11 @@ public class SubmitRouteAction extends BaseAction{
 	}
 	public void setState(int state) {
 		this.state = state;
+	}
+	public TeamService getTeamService() {
+		return teamService;
+	}
+	public void setTeamService(TeamService teamService) {
+		this.teamService = teamService;
 	}
 }

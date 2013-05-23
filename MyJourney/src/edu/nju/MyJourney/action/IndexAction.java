@@ -20,13 +20,14 @@ public class IndexAction extends BaseAction{
 	private UserService userService;
 	private List<Daren> darenList;
 	public String execute() throws Exception {
-		List<Restaurant> hotRests=DataAnalysisFlow.GetHotRestaurants(3);
-		List<Hotel> hotHotels=DataAnalysisFlow.GetHotHotels(3);
-		List<Attraction> hotAttrs=DataAnalysisFlow.GetHotAttractions(3);
+		
 		String result = SUCCESS;
 		 ActionContext actionContext = ActionContext.getContext();  
 		  Map session = actionContext.getSession();
 		  String tmp=(String)session.get("account");
+		  List<Restaurant> hotRests=DataAnalysisFlow.GetHotRestaurants(3);
+			List<Hotel> hotHotels=DataAnalysisFlow.GetHotHotels(3);
+			List<Attraction> hotAttrs=DataAnalysisFlow.GetHotAttractions(3);
 		    if(tmp==null){
 		    	this.islogined=false;
 		    }else{

@@ -46,4 +46,18 @@ public void kickUserFromTeam(String uid, String tid) {
 	// TODO Auto-generated method stub
 	
 }
+@Override
+public void updateTeam(Team team) {
+	// TODO Auto-generated method stub
+	 Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			session.merge(team);
+	       tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+		session.close();
+}
 }
