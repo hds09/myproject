@@ -5,4 +5,5 @@ import java.util.List;
 import edu.nju.MyJourney.model.Journey;
 public interface AlbumService {
 	public Journey getAlbum(long albumId);
+	public boolean deletePicture(long pictureId);
 }

@@ -18,6 +18,12 @@ public class AlbumServiceImpl implements AlbumService{
 	public void setJourneyDao(JourneyDao journeyDao) {
 		this.journeyDao = journeyDao;
 	}
+	@Override
+	public boolean deletePicture(long pictureId) {
+		//TO DO
+		journeyDao.deletePicture(pictureId);
+		return false;
+	}
 	
 
 }

@@ -24,6 +24,7 @@ public interface UserDao {
 	//fdp
 	public User userInfo(long id);
 	public List<Picture> getUserPicture(int page, int pageSize);
+	public boolean messageLeave(User fromUser, User toUser);
 //	public void save(User user);
 //	
 //	

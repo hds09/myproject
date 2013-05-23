@@ -292,5 +292,10 @@ public class UserDaoImpl implements UserDao
 		}
 		return result;
     }
+	@Override
+	public boolean messageLeave(User fromUser, User toUser) {
+		// TODO 
+		return false;
+	}
 
 }

@@ -29,6 +29,11 @@
 			               		<s:if test="!#sta.last">-></s:if>
 			               	</s:iterator>
 						</p>
+						<p>
+						<s:iterator value="journey.places" var="place" status="sta">
+			               		${place.city.name }
+			               		<s:if test="!#sta.last">-></s:if>
+			               	</s:iterator></p>
 		            </div>
 	            </a>
             </div>

@@ -267,6 +267,11 @@ public class JourneyDaoImpl implements JourneyDao{
 		}
 		return result;
 	}
+	@Override
+	public boolean deletePicture(long pictureId) {
+		// TODO
+		return false;
+	}
 	
 
 }

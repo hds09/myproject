@@ -84,12 +84,14 @@ public class SubmitRouteAction extends BaseAction{
 	     user.addJourney(tmp);
 	     userService.updateUser(user);
 	     journeyService.updateJourney(tmp);
+	     if(state==1){
 	     Team team=new Team();
 	     team.setTeamName(this.routeName);
 	     teamService.insertTeam(team);
 	     team.addJourney(tmp);
 	     teamService.updateTeam(team);
 	     journeyService.updateJourney(tmp);
+	     }
 		return result;
 	}
 	public String addDay(String startDateTmp){

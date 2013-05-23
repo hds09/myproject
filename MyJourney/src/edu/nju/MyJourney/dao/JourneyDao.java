@@ -19,5 +19,6 @@ public interface JourneyDao {
   public int getWallPicturesPageMax(int pageSize);
 	public List<Journey> getUserJourney(User user,int page, int pageSize);
 	public int getUserJourneyPageMax(User user,int pageSize);
+	public boolean deletePicture(long pictureId);
 	
 }
