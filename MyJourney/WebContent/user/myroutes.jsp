@@ -32,6 +32,8 @@
 			List<Journey> personal=new ArrayList<Journey>();
 			List<Journey> team=new ArrayList<Journey>();
 			List<Journey> allteam=new ArrayList<Journey>();
+			//
+			//
 			for(int i=0;i<journeys.size();i++){
 				if(journeys.get(i).getState()==1){
 					team.add(journeys.get(i));
@@ -240,7 +242,7 @@
 					                  out.print("<div><span><a href='/MyJourney/user/editRoute?routeId="+allteam.get(i).getId()+"&selectnum=1'>查看详情</a></span></div>");
 					                  out.print("</div>");
 					                  out.print("<div class='my_rate'>");
-					                  out.print("<div><span><a href='userViewJourney?jid="+allteam.get(i).getId()+"'>评价</a></span></div>");
+					                  out.print("<div><span><a href='userViewJourney?jid="+allteam.get(i).getId()+"&uid="+uid+"'>评价</a></span></div>");
 					                  out.print("</div>");
 					                  out.print("<div class='row_sep'></div>");
 					                  out.print("</div>");

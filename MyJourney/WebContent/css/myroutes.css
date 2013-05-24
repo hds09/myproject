@@ -783,6 +783,8 @@ background-color: #369;
 
 .cspan:hover{
 	cursor:pointer;
+	color:#5F4C0B;
+	text-decoration:underline;
 }
 .voteDown{
 	color:#778899;
@@ -953,4 +955,21 @@ background-color: #369;
 .textBut:hover{
 	cursor:pointer;
 	color:#FF8000;
+}
+
+.cfld_f{
+	padding-top:3px;
+	padding-left:10px;
+	font-size:13px;
+}
+
+.owner{
+	background-color:#F39814;
+	padding:5px;
+	border-radius: 5px;
+}
+
+.lvT:hover{
+	text-decoration:underline;
+	cursor:pointer;
 }

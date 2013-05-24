@@ -193,6 +193,9 @@
           <action name="jointeam" class="UserJourneyManagementAction" method="joinTeam">
             	<result name="success" type="json"></result>
           </action>
+          <action name="leaveteam" class="UserJourneyManagementAction" method="leaveTeam">
+            	<result name="success" type="json"></result>
+          </action>
       </package>
       
       <package name="admin" namespace="/admin" extends="json-default">

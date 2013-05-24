@@ -26,4 +26,16 @@ public class TeamServiceImpl implements TeamService {
 		this.teamDao = teamDao;
 	}
 
+	@Override
+	public void joinTeam(String uid, String tid) {
+		// TODO Auto-generated method stub
+		this.teamDao.joinTeam(uid, tid);
+	}
+
+	@Override
+	public void kickUserFromTeam(String uid, String tid) {
+		// TODO Auto-generated method stub
+		this.teamDao.kickUserFromTeam(uid, tid);
+	}
+
 }
