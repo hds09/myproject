@@ -109,4 +109,9 @@ public class HomeServiceImpl implements HomeService {
 		}
 		return false;
 	}
+	@Override
+	public boolean messageLeave(User fromUser, User toUser) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
