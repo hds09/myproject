@@ -171,6 +171,9 @@
 		<property name="CommentService">
 			<ref bean="CommentService"/>
 		</property>
+		<property name="TeamService">
+			<ref bean="TeamService"/>
+		</property>
 	</bean>
 	<!-- staging area -->
 	<bean id="CityBatchUploadAction" class="edu.nju.MyJourney.action.CityBatchUploadAction">

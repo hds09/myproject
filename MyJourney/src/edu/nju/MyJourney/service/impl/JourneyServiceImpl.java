@@ -69,10 +69,12 @@ public class JourneyServiceImpl implements JourneyService{
 		// TODO Auto-generated method stub
 		Long userid=Long.parseLong(uid);
 		List<Journey> js=this.journeyDao.getAllJourneys();
+		System.out.println(js.size());
 		List<Journey> result=new ArrayList<Journey>();
 		for(int i=0;i<js.size();i++){
-			if(js.get(i).getUser()!=null && js.get(i).getUser().getUid()==userid){
-				result.add(js.get(i));
+			if(js.get(i).getState()==0){
+				if(js.get(i).getUser().getUid()==userid)
+					result.add(js.get(i));
 			}else if(js.get(i).getState()==1){
 				if(js.get(i).getTeam()!=null){
 					List<User> tmp=js.get(i).getTeam().getUsers();

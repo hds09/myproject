@@ -41,6 +41,40 @@
 		            },  
 				});
 			}
+			
+			function comment(index,hid,rid,aid,uid){
+				var id='#'+'commText'+index;
+				var text=$(id).val();
+				$.ajax({
+					type:'post',
+					url:'comment.action',
+					data:{commText:text,hid:hid,rid:rid,aid:aid,uid:uid},
+					dataType:"json",  
+					success: function(data){
+						alert('评价成功');
+						location.reload();
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {   
+	                     
+		            },  
+				});
+				
+			}
+			
+			function leaveTeam(jid,uid){
+				$.ajax({
+					type:'post',
+					url:'leaveteam.action',
+					data:{jid:jid,uid:uid},
+					dataType:"json",  
+					success: function(data){
+						location.reload();
+					},
+					error : function(XMLHttpRequest, textStatus, errorThrown) {   
+	                     
+		            },  
+				});
+			}
 		</script>
 		<title>旅程信息</title>
 	</head>
@@ -107,7 +141,12 @@
 							}else if(notstarted){
 								out.print("<span class='notStarted'>未开始</span>&nbsp;&nbsp;&nbsp;&nbsp;");
 								if(joined){
-									out.print("<span class='joined' >已加入</span>");
+									out.print("<span class='joined' >已加入</span>&nbsp;&nbsp;");
+									if(j.getUser().getUid()==Long.parseLong(uid)){
+										out.print("<span class='owner'>创建者</span>");
+									}else{
+										out.print("<span class='lvT' onclick='leaveTeam("+j.getId()+","+uid+")'>退出队伍</span>");
+									}
 								}else{
 									if(j.getState()==1){
 										out.print("<span class='not_joined' onclick='joinTeam("+j.getId()+","+uid+")'>立即加入</span>");
@@ -178,14 +217,15 @@
 											out.print("<div class='cfld' style='display:none' id='cfid"+j.getPlaces().get(i).getId()+"'>");
 											out.print("<form action='comment' method='post'>");
 											if(commentExist){
-												out.print("<textarea style='width: 481px; height: 46px;' value='"+comment+"' disabled=true ></textarea>");
+												out.print("<textarea class='cfld_f' style='width: 481px; height: 46px;' value='"+comment+"' disabled=true >"+comment+"</textarea>");
+												out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>已评</span></div>");
 											}else{
-												out.print("<textarea class='cfld_f' style='width: 481px; height: 46px;' name='commText' ></textarea>");
+												out.print("<textarea class='cfld_f' id='commText"+i+"' style='width: 481px; height: 46px;'  ></textarea>");
 												out.print("<input type='hidden' name='hid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
-												out.print("<input type='hidden' name='rid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
-												out.print("<input type='hidden' name='aid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
+												out.print("<input type='hidden' name='rid' value='"+j.getPlaces().get(i).getRestaurant().getId()+"' />");
+												out.print("<input type='hidden' name='aid' value='"+j.getPlaces().get(i).getAttraction().getId()+"' />");
 												out.print("<input type='hidden' name='uid' value='"+uid+"' />");
-												out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span><input type='submit' value='提交' /></div>");
+												out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span>&nbsp;|&nbsp;<span class='cspan' onclick='comment("+i+","+j.getPlaces().get(i).getHotel().getId()+","+j.getPlaces().get(i).getRestaurant().getId()+","+j.getPlaces().get(i).getAttraction().getId()+","+uid+")'>提交</span></div>");
 											}
 											out.print("</form>");
 											out.print("</div>");

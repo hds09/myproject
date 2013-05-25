@@ -28,6 +28,7 @@ public class UserJourneyManagementAction extends BaseAction{
 	private CityService cityService;
 	private AttractionService attractionService;
 	private CommentService commentService;
+	private TeamService teamService;
 	private String uid;
 	private String jid;
 	private String hid;
@@ -84,6 +85,7 @@ public class UserJourneyManagementAction extends BaseAction{
 		session.put("targetJ",j );
 		session.put("viewer",this.uid );
 		session.put("comments",comments );
+		System.out.println("user comments size: "+comments.size());
 		return SUCCESS;
 	}
 	
@@ -122,20 +124,28 @@ public class UserJourneyManagementAction extends BaseAction{
 		System.out.println("hid: "+hid);
 		System.out.println("aid: "+aid);
 		System.out.println(this.commText);
-		c.setContext(this.commText);
-		this.commentService.insertComment(c);
 		
 		User u=userService.getUserById(this.uid);
 		Hotel h=hotelService.getHotelById(this.hid);
 		Attraction a=attractionService.getAttractionById(this.aid);
 		Restaurant r=restaurantService.getRestaurantById(this.rid);
+		
 		c.setUser(u);
 		c.setAttraction(a);
+//		a.addComments(c);
 		c.setHotel(h);
+//		h.addComments(c);
 		c.setRestaurant(r);
+//		r.addComments(c);
 		c.setContext(commText);
 //		u.addComments(c);
 //		userService.updateUser(u);
+		System.out.println("after setting ......");
+		//System.out.println("attraction: "+a.getId());
+		System.out.println("hotel: "+h.getId());
+		System.out.println("rest: "+r.getId());
+		System.out.println("uid: "+u.getUid());
+		System.out.println("......");
 		this.commentService.insertComment(c);
 		return SUCCESS;
 	}
@@ -232,14 +242,30 @@ public class UserJourneyManagementAction extends BaseAction{
 	}
 	
 	public String joinTeam() throws Exception{
-		System.out.print("in user join team");
 		System.out.println("uid: "+uid);
 		System.out.println("jid: "+jid);
-		User u=this.userService.getUserById(uid);
 		Journey j=this.journeyService.getJourneyById(Long.parseLong(jid));
-		j.getTeam().getUsers().add(u);
-		this.journeyService.updateJourney(j);
-		return SUCCESS;
+		if(j.getTeam()!=null){
+			String tid=Long.toString(j.getTeam().getTid());
+			this.teamService.joinTeam(uid, tid);
+			return SUCCESS;
+		}else{
+			return "failure";
+		}
+		
+	}
+	
+	public String leaveTeam() throws Exception{
+		System.out.println("uid: "+uid);
+		System.out.println("jid: "+jid);
+		Journey j=this.journeyService.getJourneyById(Long.parseLong(jid));
+		if(j.getTeam()!=null){
+			String tid=Long.toString(j.getTeam().getTid());
+			this.teamService.kickUserFromTeam(uid, tid);
+			return SUCCESS;
+		}else{
+			return "failure";
+		}
 	}
 //	public UserService getUserService() {
 //		return userService;
@@ -356,6 +382,14 @@ public class UserJourneyManagementAction extends BaseAction{
 
 	public void setVoteFoD(String voteFoD) {
 		this.voteFoD = voteFoD;
+	}
+
+//	public TeamService getTeamService() {
+//		return teamService;
+//	}
+
+	public void setTeamService(TeamService teamService) {
+		this.teamService = teamService;
 	}
 
 }

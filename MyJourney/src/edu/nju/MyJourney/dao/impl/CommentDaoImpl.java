@@ -1,5 +1,9 @@
 package edu.nju.MyJourney.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -7,6 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.jdbc.Work;
+import org.springframework.orm.hibernate4.SessionFactoryUtils;
 
 import edu.nju.MyJourney.dao.CommentDao;
 import edu.nju.MyJourney.model.City;
@@ -39,16 +45,19 @@ public class CommentDaoImpl implements CommentDao{
 	@Override
 	public void insertComment(Comment comment) {
 		// TODO Auto-generated method stub
-		 Session session=sessionFactory.openSession();
-			try {	
-				Transaction tx=session.beginTransaction();
-				session.merge(comment);
-				
-		       tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
+		Session session=sessionFactory.openSession();
+		final String update="insert into comment(context,comments_attraction,comments_hotel,comments_restaurant,comments_user) values ('"+comment.getContext()+"',"+comment.getAttraction().getId()+","+comment.getHotel().getId()+","+comment.getRestaurant().getId()+","+comment.getUser().getUid()+")";
+		System.out.println(update);
+		Work work=new Work(){
+			@Override
+			public void execute(Connection connection) throws SQLException {
+				   PreparedStatement stmt=connection
+				   .prepareStatement(update);
+				   stmt.executeUpdate();
 			}
-			session.close();
+	   };
+	   session.doWork(work);
+	   session.close();
 	}
 	@Override
 	public List<Comment> getHotelComments(Hotel hotel) {

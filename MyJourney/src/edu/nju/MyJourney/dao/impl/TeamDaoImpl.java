@@ -1,11 +1,15 @@
 package edu.nju.MyJourney.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.jdbc.Work;
 
 import edu.nju.MyJourney.dao.TeamDao;
 import edu.nju.MyJourney.model.Team;
@@ -44,7 +48,19 @@ public void deleteTeam(Team team){
 @Override
 public void kickUserFromTeam(String uid, String tid) {
 	// TODO Auto-generated method stub
-	
+	Session session=sessionFactory.openSession();
+	final String update="delete from users_team where uid="+uid+" and tid="+tid+"";
+	System.out.println(update);
+	Work work=new Work(){
+		@Override
+		public void execute(Connection connection) throws SQLException {
+			   PreparedStatement stmt=connection
+			   .prepareStatement(update);
+			   stmt.executeUpdate();
+		}
+   };
+   session.doWork(work);
+   session.close();
 }
 @Override
 public void updateTeam(Team team) {
@@ -59,5 +75,22 @@ public void updateTeam(Team team) {
 		}
 	
 		session.close();
+}
+@Override
+public void joinTeam(String uid, String tid) {
+	// TODO Auto-generated method stub
+	Session session=sessionFactory.openSession();
+	final String update="insert into users_team values("+uid+","+tid+")";
+	System.out.println(update);
+	Work work=new Work(){
+		@Override
+		public void execute(Connection connection) throws SQLException {
+			   PreparedStatement stmt=connection
+			   .prepareStatement(update);
+			   stmt.executeUpdate();
+		}
+   };
+   session.doWork(work);
+   session.close();
 }
 }
