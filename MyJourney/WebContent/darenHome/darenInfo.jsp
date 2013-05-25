@@ -24,11 +24,11 @@
      	</s:if>
 	 </span>
      <ul>
-      <li>${daren.meassageNum } 条留言</li>
-      <li><span class="personal_total"><a href="">${daren.journeyNum } 篇游记</a></span></li>
+      <li><span class="personal_total"><a href="#">${daren.meassageNum } 条留言</a></span></li>
+      <li><span class="personal_total"><a href="#">${daren.journeyNum } 篇游记</a></span></li>
       <li>${daren.teamNum } 次团队旅行</li>
-      <li class="personal_total"><a href=""><span id="focusNum"> ${daren.attentionNum }</span> 关注</a>，
-      <a href=""><span id="fans">${daren.concernedNum }</span> 粉丝 </a> </li>
+      <li class="personal_total"><a href="#"><span id="focusNum"> ${daren.attentionNum }</span> 关注</a>，
+      <a href="#"><span id="fans">${daren.concernedNum }</span> 粉丝 </a> </li>
      </ul>
 </div>
 <!--personal_sidebar end-->

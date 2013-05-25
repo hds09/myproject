@@ -24,9 +24,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 @Entity
 @Table(name="journey")
 public class Journey {
-private static final int UNSTART=1;
+private static final int UNSTART=0;
 private static final int UNDERWAY=1;
-private static final int ENDED=1;
+private static final int ENDED=2;
 private long id;
 private User user;
 private String journeyName;

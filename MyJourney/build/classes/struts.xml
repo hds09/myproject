@@ -339,15 +339,6 @@
  	      <action name="picstream" class="PicstreamAction">
  	          <result type="json"></result>
  	      </action> 
- 	      <action name="attention" class="UserAttention">
- 	          <result type="json"></result>
- 	      </action>
- 	      <action name="concerned" class="UserConcerned">
- 	          <result type="json"></result>
- 	      </action>
- 	      <action name="message" class="UserMessage">
- 	          <result type="json"></result>
- 	      </action>
       </package>
       <package name="picture" namespace="/pic" extends="struts-default">
       	  <action name="addAttention" class="AddAttentionAction">
@@ -369,6 +360,7 @@
  	          <result name="success">/photoWall/picWall.jsp</result>
  	      </action>
  	      <action name="home" class="HomeAction">
+ 	          <result name="notlogin">/module/notLogin.jsp</result>
  	          <result name="success">/darenHome/darenHome.jsp</result>
  	      </action>
           <action name="upload" class="PictureUploadAction">
@@ -406,6 +398,30 @@
  	      </action>
  	      <action name="page" class="edu.nju.MyJourney.action.PageAction">
  	          <result name="success">../module/bottomIndex.jsp</result>
+ 	      </action>
+ 	      <action name="reply" class="ReplyAction">
+ 	           <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success"></result>
+ 	      </action>
+ 	      <action name="cancelattention" class="CancelAttentionAction">
+ 	           <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success"></result>
+ 	      </action>
+ 	      <action name="deletepicture" class="DeletePictureAction">
+ 	           <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success"></result>
+ 	      </action>
+ 	          <action name="attention" class="UserAttention">
+ 	               <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success"></result>
+ 	      </action>
+ 	      <action name="concerned" class="UserConcerned">
+ 	           <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success"></result>
+ 	      </action>
+ 	      <action name="message" class="UserMessage">
+ 	           <result name="notlogin">/darenHome/warning/notlogin.jsp</result>
+ 	          <result name="success"></result>
  	      </action>
       </package>
    

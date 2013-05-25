@@ -23,92 +23,92 @@ public class TestData {
 	public static void main(String[] args) {
 //		CityDao cityDao = new CityDaoImpl();
 //		PlaceDao placeDao = new PlaceDaoImpl();
-		UserDao userDao = new UserDaoImpl();
-		userDao.deleteUserById("8");
-		userDao.deleteUserById("9");
-		userDao.deleteUserById("10");
-		userDao.deleteUserById("11");
+//		UserDao userDao = new UserDaoImpl();
+//		userDao.deleteUserById("8");
+//		userDao.deleteUserById("9");
+//		userDao.deleteUserById("10");
+//		userDao.deleteUserById("11");
 //		JourneyDao journeyDao = new JourneyDaoImpl();
 //		Picture picture = new Picture();
 //		Place place = new Place();
 //		User user = new User();
 //		Journey journey = new Journey();
 //		
-////		City beijing=new City();
-////		CityDao citydao=new CityDaoImpl();
-////		beijing.setCountry("中国");
-////		beijing.setLat("116.404");
-////		beijing.setLng("39.915");
-////		beijing.setName("北京");
-////		beijing.setPicture("BeiJing");
-////		
-////		City chengdu =new City();
-////		chengdu.setCountry("中国");
-////		chengdu.setLat("104.06");
-////		chengdu.setLng("30.67");
-////		chengdu.setName("成都");
-////		chengdu.setPicture("ChengDu");
-////		
-////		City hangzhou =new City();
-////		hangzhou.setCountry("中国");
-////		hangzhou.setLat("120.19");
-////		hangzhou.setLng("30.26");
-////		hangzhou.setName("杭州");
-////		hangzhou.setPicture("HangZhou");
-////		
-////		City lijiang=new City();
-////		lijiang.setCountry("中国");
-////		lijiang.setLat("100.25");
-////		lijiang.setLng("26.86");
-////		lijiang.setName("丽江");
-////		lijiang.setPicture("LiJiang");
-////		
-////		City shanghai=new City();
-////		shanghai.setCountry("中国");
-////		shanghai.setLat("121.29");
-////		shanghai.setLng("31.14");
-////		shanghai.setName("上海");
-////		shanghai.setPicture("ShangHai");
-////		
-////		City xiamen=new City();
-////		xiamen.setCountry("中国");
-////		xiamen.setLat("118.1");
-////		xiamen.setLng("24.46");
-////		xiamen.setName("厦门");
-////		xiamen.setPicture("XiaMen");
-////		
-////		City xianggang=new City();
-////		xianggang.setCountry("中国");
-////		xianggang.setLat("114.1");
-////		xianggang.setLng("22.2");
-////		xianggang.setName("香港");
-////		xianggang.setPicture("XiangGang");
-////		
-////		City taibei=new City();
-////		taibei.setCountry("中国");
-////		taibei.setLat("121.30");
-////		taibei.setLng("25.03");
-////		taibei.setName("台北");
-////		taibei.setPicture("TaiBei");
-////		
-////		City sanya=new City();
-////		sanya.setCountry("中国");
-////		sanya.setLat("109.31");
-////		sanya.setLng("18.14");
-////		sanya.setName("三亚");
-////		sanya.setPicture("SanYa");
-////		citydao.insertCity(sanya);
-////		citydao.insertCity(taibei);
-////		citydao.insertCity(xianggang);
-////		citydao.insertCity(xiamen);
-////		citydao.insertCity(shanghai);
-////		citydao.insertCity(lijiang);
-////		citydao.insertCity(chengdu);
-////		citydao.insertCity(beijing);
-////		citydao.insertCity(hangzhou);
-////		
-////		
-////		City citys[] = {sanya,taibei,xianggang,xiamen,shanghai,lijiang,chengdu,hangzhou};
+//		City beijing=new City();
+//		CityDao citydao=new CityDaoImpl();
+//		beijing.setCountry("中国");
+//		beijing.setLat("116.404");
+//		beijing.setLng("39.915");
+//		beijing.setName("北京");
+//		beijing.setPicture("BeiJing");
+//		
+//		City chengdu =new City();
+//		chengdu.setCountry("中国");
+//		chengdu.setLat("104.06");
+//		chengdu.setLng("30.67");
+//		chengdu.setName("成都");
+//		chengdu.setPicture("ChengDu");
+//		
+//		City hangzhou =new City();
+//		hangzhou.setCountry("中国");
+//		hangzhou.setLat("120.19");
+//		hangzhou.setLng("30.26");
+//		hangzhou.setName("杭州");
+//		hangzhou.setPicture("HangZhou");
+//		
+//		City lijiang=new City();
+//		lijiang.setCountry("中国");
+//		lijiang.setLat("100.25");
+//		lijiang.setLng("26.86");
+//		lijiang.setName("丽江");
+//		lijiang.setPicture("LiJiang");
+//		
+//		City shanghai=new City();
+//		shanghai.setCountry("中国");
+//		shanghai.setLat("121.29");
+//		shanghai.setLng("31.14");
+//		shanghai.setName("上海");
+//		shanghai.setPicture("ShangHai");
+//		
+//		City xiamen=new City();
+//		xiamen.setCountry("中国");
+//		xiamen.setLat("118.1");
+//		xiamen.setLng("24.46");
+//		xiamen.setName("厦门");
+//		xiamen.setPicture("XiaMen");
+//		
+//		City xianggang=new City();
+//		xianggang.setCountry("中国");
+//		xianggang.setLat("114.1");
+//		xianggang.setLng("22.2");
+//		xianggang.setName("香港");
+//		xianggang.setPicture("XiangGang");
+//		
+//		City taibei=new City();
+//		taibei.setCountry("中国");
+//		taibei.setLat("121.30");
+//		taibei.setLng("25.03");
+//		taibei.setName("台北");
+//		taibei.setPicture("TaiBei");
+//		
+//		City sanya=new City();
+//		sanya.setCountry("中国");
+//		sanya.setLat("109.31");
+//		sanya.setLng("18.14");
+//		sanya.setName("三亚");
+//		sanya.setPicture("SanYa");
+//		citydao.insertCity(sanya);
+//		citydao.insertCity(taibei);
+//		citydao.insertCity(xianggang);
+//		citydao.insertCity(xiamen);
+//		citydao.insertCity(shanghai);
+//		citydao.insertCity(lijiang);
+//		citydao.insertCity(chengdu);
+//		citydao.insertCity(beijing);
+//		citydao.insertCity(hangzhou);
+//		
+//		
+//		City citys[] = {sanya,taibei,xianggang,xiamen,shanghai,lijiang,chengdu,hangzhou};
 //		List<City> citys = new ArrayList<City>();
 //		for(int i=1;i<10;i++){
 //			City c = cityDao.getCityById(String.valueOf(i));
@@ -192,8 +192,8 @@ public class TestData {
 //			}
 //			journey = new Journey();
 //		}
-//		
-//		
+		
+		
 		
 		
 	}

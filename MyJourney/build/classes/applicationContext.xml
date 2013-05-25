@@ -38,7 +38,8 @@
 	<bean id="CommentDao" class="edu.nju.MyJourney.dao.impl.CommentDaoImpl">
 	</bean>
 	<bean id="DarenDao" class="edu.nju.MyJourney.dao.impl.DarenDaoImpl">
-
+	</bean>
+	<bean id="ReplyDao" class="edu.nju.MyJourney.dao.impl.ReplyDaoImpl">
 	</bean>
 	<bean id="UserService" class="edu.nju.MyJourney.service.impl.UserServiceImpl">
 		<property name="UserDao">
@@ -110,6 +111,11 @@
 	    </property>
 	    <property name="JourneyDao">
 	        <ref bean="JourneyDao"></ref>
+	    </property>
+	</bean>
+	<bean id="ReplyService" class="edu.nju.MyJourney.service.impl.ReplyServiceImpl">
+	    <property name="ReplyDao">
+	        <ref bean="ReplyDao"></ref>
 	    </property>
 	</bean>
 
@@ -378,5 +384,22 @@
 			<ref bean="UserService"/>
 		</property>
 	</bean>
-	
+	<bean id="ReplyAction" class="edu.nju.MyJourney.action.ajax.ReplyAction">
+	    <property name="UserService">
+	        <ref bean="UserService"></ref>
+	    </property>
+	    <property name="ReplyService">
+	        <ref bean="ReplyService"></ref>
+	    </property>
+	</bean>
+	<bean id="CancelAttentionAction" class="edu.nju.MyJourney.action.ajax.CancelAttentionAction">
+	    <property name="UserService">
+	        <ref bean="UserService"></ref>
+	    </property>
+	</bean>
+	<bean id="DeletePictureAction" class="edu.nju.MyJourney.action.ajax.DeletePictureAction">
+	    <property name="AlbumService">
+	        <ref bean="AlbumService"></ref>
+	    </property>
+	</bean>
 </beans>

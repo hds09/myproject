@@ -17,5 +17,5 @@ public interface HomeService {
 	public List<Daren> getAttention(long uid);
 	public List<Daren> getConcerned(long uid);
 	public List<Reply> getMessage(long uid);
-	public boolean messageLeave(User fromUser,User toUser);
+	
 }

@@ -11,5 +11,17 @@ public class DeletePictureAction extends BaseAction{
 		albumService.deletePicture(pictureId);
 		return SUCCESS;
 	}
+	public AlbumService getAlbumService() {
+		return albumService;
+	}
+	public void setAlbumService(AlbumService albumService) {
+		this.albumService = albumService;
+	}
+	public long getPictureId() {
+		return pictureId;
+	}
+	public void setPictureId(long pictureId) {
+		this.pictureId = pictureId;
+	}
 	
 }

@@ -1,5 +1,7 @@
 package edu.nju.MyJourney.dao;
 
-public interface ReplayDao {
+import edu.nju.MyJourney.model.Reply;
 
+public interface ReplayDao {
+	public boolean insertReply(Reply reply);
 }

@@ -14,6 +14,7 @@ import edu.nju.MyJourney.dao.JourneyDao;
 import edu.nju.MyJourney.dao.UserDao;
 import edu.nju.MyJourney.helperModel.WallPicture;
 import edu.nju.MyJourney.model.Journey;
+import edu.nju.MyJourney.model.Picture;
 import edu.nju.MyJourney.model.Place;
 import edu.nju.MyJourney.model.User;
 
@@ -234,7 +235,7 @@ public class JourneyDaoImpl implements JourneyDao{
 			if(total%pageSize == 0){
 				result = total/pageSize;
 			}else{
-				result = total/pageSize+1;
+				result = total/pageSize;
 			}
 			tx.commit();
 		}catch(Exception e){
@@ -257,7 +258,7 @@ public class JourneyDaoImpl implements JourneyDao{
 			if(total%pageSize == 0){
 				result = total/pageSize;
 			}else{
-				result = total/pageSize+1;
+				result = total/pageSize;
 			}
 			tx.commit();
 		}catch(Exception e){
@@ -269,8 +270,26 @@ public class JourneyDaoImpl implements JourneyDao{
 	}
 	@Override
 	public boolean deletePicture(long pictureId) {
-		// TODO
-		return false;
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from Picture p where p.id="+pictureId;
+			Query query = session.createQuery(hql);
+			List<Picture> pictureList = query.list();
+			if(pictureList.size()>0){
+				for(Picture p:pictureList){
+					if(p.getId() == pictureId){
+						session.delete(p);
+					}
+				}
+			}
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		session.close();
+		return true;
 	}
 	
 

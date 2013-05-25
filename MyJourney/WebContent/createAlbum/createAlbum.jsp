@@ -67,7 +67,6 @@
 </script>
 </head>
 <body class="bodybg">
-${placeId }
 <jsp:include page="/module/header.jsp"></jsp:include>
 <!-- 发表游记的部分 
 <jsp:include page="addPictures.jsp"></jsp:include>-->

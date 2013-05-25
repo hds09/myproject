@@ -19,8 +19,8 @@ public class HomeAction extends PageAction{
 	@Override
 	public String execute() throws Exception {
 		String result = SUCCESS;
-		if(session().getAttribute("account") ==null){
-			//return "notlogin";
+		if(session().getAttribute("account") == null && account == ""){
+			return "notlogin";
 		}
 		darenId = homeService.getUserByAccount(account).getUid();
 		daren = homeService.DarenInfo(darenId);

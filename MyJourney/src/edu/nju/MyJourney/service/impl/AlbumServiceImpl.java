@@ -20,7 +20,6 @@ public class AlbumServiceImpl implements AlbumService{
 	}
 	@Override
 	public boolean deletePicture(long pictureId) {
-		//TO DO
 		journeyDao.deletePicture(pictureId);
 		return false;
 	}
