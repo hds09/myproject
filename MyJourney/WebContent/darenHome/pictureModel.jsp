@@ -16,14 +16,15 @@
 			</s:else>
 		</span>
     </div>
-    <div class="ml20 fn-fl font-yahei darkgray">
+    <div class="ml80 fn-fl font-yahei darkgray">
+    	<span>旅行路线：</span>
 		<s:iterator value="#journey.places" var="place" status="sta">
 	   		<span>
 	   		${place.city.name }	<s:if test="!#sta.last">-></s:if>
 	   		</span>
 	   	</s:iterator>
     </div>
-    <s:if test="journey.places.size()>0">
+    <%-- <s:if test="journey.places.size()>0">
 	   	<div class="personal_pic_status fn-pr fn-bc">
 	        <span class="time fn-tc fn-pa png24">
 	            <em class="time_day font-tahoma darkgray fn-block">${journey.places.get(0).time.getDay() }</em>
@@ -40,14 +41,14 @@
 			               	</s:iterator>
 						</p>
 						<p>
-						<%-- <s:iterator value="journey.places" var="place" status="sta">
+						<s:iterator value="journey.places" var="place" status="sta">
 			               		${place.city.name }
 			               		<s:if test="!#sta.last">-></s:if>
-			               	</s:iterator></p> --%>
+			               	</s:iterator></p>
 		            </div>
 	            </a>
             </div>
 	    </div>
-    </s:if>
+    </s:if> --%>
 </div>
      

@@ -12,9 +12,9 @@
 	            <ul>
 	                <li id="index" class="fn-tc"><a href="/MyJourney/user/index">首页</a>
 					<img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
-	                <li id="daren" class="fn-tc"><a href="">酒店</a>
+	                <li id="daren" class="fn-tc"><a href="/MyJourney/user/Hotels">酒店</a>
 	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
-	                <li id="iphone" class="fn-tc"><a href="">饭店</a>
+	                <li id="iphone" class="fn-tc"><a href="/MyJourney/user/Restaurants">饭店</a>
 	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
 	                <li id="daren" class="fn-tc"><a href="/MyJourney/pic/daren">达人</a>
 	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>

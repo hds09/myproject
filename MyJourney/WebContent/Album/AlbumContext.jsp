@@ -36,17 +36,20 @@
 	</script>
 		</div>
    		<div class="font-tahoma f12 darkgray666 ml30 mt5 fn-clearfix z-index99">
-    		<div class="userName mr10 fn-fl textarea_lineH"><em class="darkgray999">by</em> <a href="">${journey.user.name }</a></div>
+    		<div class="userName mr10 fn-fl textarea_lineH"><em class="darkgray999">by</em> <a href="#">${journey.user.name }</a></div>
 			<div class="f12 fn-fl textarea_lineH mr10">共${journey.places.size() }个地方</div>
 			<div class="album_textarea_is fn-pr fn-fl">
 				<div id="maddressName" class="fn-clearfix">
 					<span class="textarea_lineH fn-fl">状态：</span>
 					<span class="J-destination textarea_lineH fn-fl">
-						<s:if test="journey.state==0">
-							已经结束
-						</s:if>
-						<s:else>
+						<s:if test="#journey.state==1">
 							进行中
+						</s:if>
+						<s:elseif test="#journey.state==0">
+							未开始
+						</s:elseif>
+						<s:else>
+							已结束
 						</s:else>
 					</span>
 				</div>
@@ -63,7 +66,7 @@
 				<div class="shortcut-nav fn-pa" style="top: 0px;">
 				<ul>
 					<s:iterator value="journey.places" var="pl" status="i">
-	               		<li><a class="line_gray" href="album?albumId=${journey.id }&page=${i.index}" title="">${journey.journeyName }</a></li>
+	               		<li><a class="line_gray" href="album?albumId=${journey.id }&page=${i.index}" title="">${pl.city.name }</a></li>
 					</s:iterator>
 				</ul>
 				</div>
@@ -73,7 +76,7 @@
     	<div class="travels_right fn-fr mr30 mt15 fn-pr">
         	<div class="travels_right_day fn-pa png24"></div>
             <!--第几天标题-->
-            <div class="travels_right_day_t fn-pa font-yahei darkgray666">第${page+1 }个地方 : ${place.time.toLocaleString }</div>
+            <div class="travels_right_day_t fn-pa font-yahei darkgray666">第${page+1 }个地方 </div>
             <div style="height:37px;"></div>
             <!--第一条 插入文字/插入图片 不参与循环-->
             <s:iterator value="images" var="image">

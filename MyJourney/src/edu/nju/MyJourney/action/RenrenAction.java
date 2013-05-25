@@ -14,10 +14,12 @@ import com.renren.api.client.utils.HttpURLUtils;
 
 import edu.nju.MyJourney.connectRenRen.RenrenConfig;
 import edu.nju.MyJourney.model.User;
+import edu.nju.MyJourney.service.RenrenService;
 import edu.nju.MyJourney.service.UserService;
 
 public class RenrenAction extends BaseAction{
 	private UserService userService;
+	private RenrenService renrenService;
 	private String client_id;
 	private String redirect_url;
 	private String code;
@@ -66,14 +68,13 @@ public class RenrenAction extends BaseAction{
 							userService.updateUser(loginUser);
 							return "login";
 						}else{
-//							User registerUser = new User();
-//							registerUser.setAccount(name);
-//							registerUser.setPwd(name);
-//							registerUser.setImage(headurl);
-//							registerUser.setRenrenId(renrenId);
-							session().setAttribute("islogined",true);
-							session().setAttribute("account","qa1");
-//							userService.updateUser(registerUser);
+							User renrenUser = renrenService.renrenLogin(renrenId);
+							if(renrenUser==null){
+								return "failure";
+							}else{
+								session().setAttribute("islogined",true);
+								session().setAttribute("account",renrenUser.getAccount());
+							}
 							return "success";
 						}
 					}
@@ -120,6 +121,14 @@ public class RenrenAction extends BaseAction{
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public RenrenService getRenrenService() {
+		return renrenService;
+	}
+
+	public void setRenrenService(RenrenService renrenService) {
+		this.renrenService = renrenService;
 	}
 	
 	

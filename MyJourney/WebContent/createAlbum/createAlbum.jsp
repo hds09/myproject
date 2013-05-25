@@ -72,11 +72,11 @@
 <jsp:include page="addPictures.jsp"></jsp:include>-->
 <div class="wrapper fn-bc fn-pr mt20" style="background:rgba(255,255,255,0.7);">
 	<div class="fn-pr">
-		<div class="lvtu_specialadd_title f16 fb darkgray png24">发布新游记</div>
+		<div class="lvtu_specialadd_title f16 fb darkgray png24 ml10">发布新游记</div>
 		<div class="fn-ohidden wrapper fn-bc fn-pr mt10" style="border-top:1px solid #ddd;">
 			<!-- 左边的nav导航 -->
 			<div class="w300 fn-fl" style="border-right:1px solid #ddd;">
-				<ul class="f16 fn-ohidden ">
+				<ul class="f16 fn-ohidden ml10">
 					<li class="pl15 fb" >我的旅行：</li>
 					<s:iterator value="journeyList" var="journey" status="sta">
 						<li class="pl15" ><a href="/MyJourney/pic/userJourney?journeyIndex=${sta.index }">${journey.journeyName}</a>
@@ -93,7 +93,7 @@
 								-><a href="/MyJourney/pic/userJourney?placeId=${place.id }">${place.city.name }</a>
 							</s:if>
 					</s:iterator>
-					<img width="40px" height="40px" alt="添加图片" src="/MyJourney/createAlbum/resource/addpic.jpg" onclick="showD()" style="float:right;margin-right: 20px;">
+					<img width="33px" height="33px" alt="添加图片" src="/MyJourney/createAlbum/resource/addpic.jpg" onclick="showD()" style="float:right;margin-right: 20px;box-shadow:1px #ef3;cursor: pointer;">	
 				</div>
 				<%-- <s:if test="placeList.size()>0">
 					<form action="/MyJourney/pic/createAlbum"  method="post" enctype="multipart/form-data">
@@ -108,6 +108,7 @@
 		                <a href="" class="travels_right_img  fn-pr">
 		                	<span class="travels_arrows fn-pa" style="width:782px"></span>
 		            		<img class="qpic" src="${image.imagepath }" width="782" height="499">
+		            		
 		                </a>
 	            	</div>
 	            </s:iterator>

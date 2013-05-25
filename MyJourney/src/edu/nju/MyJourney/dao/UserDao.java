@@ -25,6 +25,7 @@ public interface UserDao {
 	public User userInfo(long id);
 	public List<Picture> getUserPicture(int page, int pageSize);
 	public boolean messageLeave(User fromUser, User toUser);
+	public User renrenLogin(String uid);
 //	public void save(User user);
 //	
 //	

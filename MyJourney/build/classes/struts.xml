@@ -357,6 +357,7 @@
               <result name="success">/famous/daren.jsp</result>
           </action>
           <action name="album" class="AlbumAction">
+              <result name="notlogin">/module/notLogin.jsp</result>
               <result name="success">/Album/index.jsp</result>
           </action>
  	      <action name="picwall" class="WallAction">
@@ -376,6 +377,7 @@
               <result name="failure">/user/picturesUpload.jsp</result>
           </action>
           <action name="userJourney" class="UserJourneyAction">
+              <result name="create">/createAlbum/warning/NoJourney.jsp</result>
               <result name="success">/createAlbum/createAlbum.jsp</result>
               <result name="failure">/module/notLogin.jsp</result>
           </action>

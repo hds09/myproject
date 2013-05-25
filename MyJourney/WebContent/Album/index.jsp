@@ -18,7 +18,7 @@
 <div class="lvtu_container">
 	<jsp:include page="/module/header.jsp"></jsp:include>
 	<jsp:include page="AlbumContext.jsp"></jsp:include>
-	<jsp:include page="/module/bottomIndex.jsp"></jsp:include>
+	
 	<jsp:include page="/module/footer.jsp"></jsp:include>
 </div>
 </body>

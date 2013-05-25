@@ -209,46 +209,7 @@
 							           	                                          
 						</div>
 						<div id="team_row">
-							<%
-				                SimpleDateFormat sdf2=new SimpleDateFormat("yyyy-MM-dd");
-				                String today2=sdf2.format(new Date());
-				               	int atsize=allteam.size();
-				                for(int i=0;i<atsize;i++){
-					                  out.print("<div class='resultRow'>");
-					                  out.print("<div class='row_sep2'></div>");
-					                  out.print("<div class='rrow_content'>");
-					                  out.print("<div class='journey_title'>");
-					                  out.print("<span class='title'><a onclick='openCenterDiv()'>"+allteam.get(i).getJourneyName()+"</a></span>");
-					                  out.print("<br/>");
-					                  out.print("<span class='date'>从:"+allteam.get(i).getPlaces().get(0).getTime()+"</span>");
-					                  out.print("<br/>");
-					                  out.print("<span class='date'>至:"+allteam.get(i).getPlaces().get(allteam.get(i).getPlaces().size()-1).getTime()+"</span>");
-					                  out.print("</div>");
-					                  out.print("</div>");
-					                  out.print("<div class='status'>");
-					                  if(today2.compareTo(allteam.get(i).getPlaces().get(allteam.get(i).getPlaces().size()-1).getTime())>0){
-					                    out.print("<span class='finished'>已结束</span>");
-					                  }else if(today2.compareTo(allteam.get(i).getPlaces().get(0).getTime())<0){
-					                    out.print("<span class='notStarted'>未开始</span>");
-					                  }else{
-					                    out.print("<span class='ongoing'>进行中</span>");
-					                  }
-					                  out.print("</div>");
-					                  out.print("<div class='rrow_right'>");
-					                  out.print("<div class='number' align='center'>"+allteam.get(i).getTeam().getUsers().size()+"</div>");
-					                  out.print("<div class='participants' align='center'>成员</div>");
-					                  out.print("</div>");
-					                  out.print("<div class='my_rate'>");
-					                  out.print("<div><span><a href='/MyJourney/user/editRoute?routeId="+allteam.get(i).getId()+"&selectnum=1'>查看详情</a></span></div>");
-					                  out.print("</div>");
-					                  out.print("<div class='my_rate'>");
-					                  out.print("<div><span><a href='userViewJourney?jid="+allteam.get(i).getId()+"&uid="+uid+"'>评价</a></span></div>");
-					                  out.print("</div>");
-					                  out.print("<div class='row_sep'></div>");
-					                  out.print("</div>");
-				                }
-				               
-				              %>
+							
 						
 						</div>
 					</div>

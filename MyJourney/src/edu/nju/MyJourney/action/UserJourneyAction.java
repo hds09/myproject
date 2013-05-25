@@ -25,6 +25,9 @@ public class UserJourneyAction extends PageAction {
 		}
 		String account = (String) session().getAttribute("account");
 		journeyList = homeService.getUserJourney(account, 0, Integer.MAX_VALUE);
+		if(journeyList.size()==0){
+			return "create";
+		}
 		if(journeyIndex < 0 && journeyIndex>=journeyList.size()){
 			journeyIndex = 0;
 		}

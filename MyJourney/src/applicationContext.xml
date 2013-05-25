@@ -118,7 +118,12 @@
 	        <ref bean="ReplyDao"></ref>
 	    </property>
 	</bean>
-
+	<bean id="RenrenService" class="edu.nju.MyJourney.service.impl.RenrenServiceImpl">
+	    <property name="UserDao">
+	        <ref bean="UserDao"></ref>
+	    </property>
+	</bean>
+ 
 	<bean id="LoginAction" class="edu.nju.MyJourney.action.LoginAction">
 		<property name="UserService">
 			<ref bean="UserService"/>

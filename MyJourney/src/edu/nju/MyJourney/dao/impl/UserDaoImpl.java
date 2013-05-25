@@ -297,5 +297,27 @@ public class UserDaoImpl implements UserDao
 		// TODO 
 		return false;
 	}
+	@Override
+	public User renrenLogin(String uid) {
+		Session session=sessionFactory.openSession();
+		User user=null;
+		try {
+			
+			Transaction tx=session.beginTransaction();	
+			String hql = "from User a  where a.renrenId="+uid;
+			Query query = session.createQuery(hql);	
+			List list = query.list();
+           if(list.size()!=0){
+        	   user=(User) list.get(0);
+       		   System.out.println("通过人人登录"+uid+"  "+user.getAccount());
+           }
+           tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return user;
+	}
 
 }

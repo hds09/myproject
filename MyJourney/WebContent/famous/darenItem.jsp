@@ -4,7 +4,7 @@
 	<div class="lvtu_daren_intro_l fn-fl">
 		<div class="lvtu_daren_person p10 fn-ohidden">
 			<div id="focus89435" class="lvtu_personal_person_l fn-fl">
-				<a href="home?darenId=${dr.uid }" title="${dr.name }">
+				<a href="home?account=${dr.account }" title="${dr.name }">
 				   <img class="npic" src="${dr.image }" width="150" height="150">
 				</a>
 				<s:if test="#dr.hasAttention==1">
@@ -12,7 +12,7 @@
 				</s:if>
 			</div>
 			<div class="lvtu_personal_person_r_dr fn-fl ml20">
-				<a href="home?darenId=${dr.uid }" title="${dr.name }">
+				<a href="home?account=${dr.account }" title="${dr.name }">
 				   <h3 class="black f16 fb fn-enter">${dr.name }</h3>
 				</a>
 				<p class="mt10">
@@ -35,7 +35,7 @@
 	          <!--图片列表集 循环-->
 		          	<s:iterator value="#dr.pictureList" var="picture">
 			              <li class="daren_list_item">
-				              <a href="album?albumId=${picture.journeyId }">
+				              <a href="/MyJourney/album?albumId=${picture.journeyId }">
 				             		 <img class="npic" src="${picture.image.imagepath }"  width="130" height="130" >
 				              </a>
 			              </li>

@@ -8,12 +8,13 @@ import edu.nju.MyJourney.model.Picture;
 import edu.nju.MyJourney.model.Place;
 import edu.nju.MyJourney.service.AlbumService;
 
-public class AlbumAction extends PageAction {
+public class AlbumAction extends BaseAction {
 	private AlbumService albumService;
 	private List<Picture> images;
 	private Journey journey;
 	private Place place;
 	private int albumId;
+	private int page;
 	@Override
 	public String execute() throws Exception {
 		images = new ArrayList<Picture>();
@@ -21,16 +22,14 @@ public class AlbumAction extends PageAction {
 		if(page < 0 ){
 			page = 0;
 		}
-		if(session().getAttribute("account") ==null){
-			return "notlogin";
-		}
+//		if(session().getAttribute("account") ==null){
+//			return "notlogin";
+//		}
 		journey = albumService.getAlbum(albumId);
 		if(journey != null && journey.getPlaces().size()>page){
 			images = journey.getPlaces().get(page).getImages();
 			place = journey.getPlaces().get(page);
-			pageMax = journey.getPlaces().size();
 		}
-		super.execute();
 		return result;
 	}
 	public AlbumService getAlbumService() {
@@ -62,6 +61,12 @@ public class AlbumAction extends PageAction {
 	}
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
 	}
 	
 }

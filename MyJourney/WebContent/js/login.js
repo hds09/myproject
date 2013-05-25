@@ -1,10 +1,9 @@
  function logon(){
-	 $.post('/MyJourney/ajax/sign',{account:'fdp',password:"fdp"},function(data){
-		 //alert(data.result);
-		 if(data.result=="success"){
-			 location.reload();
-		 }
-	   },'json');
+	 var a = $("#name").val();
+	 var p = $("#password").val();
+	 $.post('/MyJourney/ajax/sign',{account:a,password:p},function(data){
+	   },'json').complete(function(){location.reload()});
+	 hideLogin();
  }
  function showLogin(){document.getElementById('loginDiv').style.display='block';}
  function hideLogin(){document.getElementById('loginDiv').style.display='none';}
