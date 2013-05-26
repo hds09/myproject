@@ -843,7 +843,7 @@ background-color: #369;
 }
 
 .seeDetail:hover{
-	color:#CCCCCC;
+	color:yellow;
 	text-decoration:underline;
 }
 

@@ -91,6 +91,11 @@ public class SubmitRouteAction extends BaseAction{
 	     team.addJourney(tmp);
 	     teamService.updateTeam(team);
 	     journeyService.updateJourney(tmp);
+	     
+	     team.getUsers().add(user);
+	     user.getTeam().add(team);
+	     teamService.updateTeam(team);
+	     userService.updateUser(user);
 	     }
 		return result;
 	}

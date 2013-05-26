@@ -135,7 +135,6 @@
 									}
 								}
 							}
-						
 							if(finished){
 								out.print("<span class='finished'>已结束</span>&nbsp;&nbsp;&nbsp;&nbsp;");
 							}else if(notstarted){
@@ -181,7 +180,7 @@
 							<span>旅行经过:</span>&nbsp;<a href='/MyJourney/user/editRoute?routeId=<%out.print(j.getId()); %>'>详情</a>
 							<div id='downer_i'>
 								<%
-									if(j.getPlaces()!=null&&j.getPlaces().size()!=0){
+									if(j.getPlaces().size()!=0){
 										for(int i=0;i<j.getPlaces().size();i++){
 											out.print("<span>"+j.getPlaces().get(i).getTime()+"</span>&nbsp;");
 											if(j.getPlaces().get(i).getHalfday()==0){
@@ -191,12 +190,22 @@
 											}
 											out.print("<span>所在城市</span>&nbsp;");
 											out.print("<span><B>"+j.getPlaces().get(i).getCity().getName()+"</B></span>&nbsp;");
-											out.print("<span>所在景点</span>&nbsp;");
-											out.print("<span><a class='detail_lnk' href='userviewAttraction?aid="+j.getPlaces().get(i).getAttraction().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getAttraction().getName()+"</a></span>&nbsp;&nbsp;");
-											out.print("<span>所住酒店</span>&nbsp;");
-											out.print("<span><a class='detail_lnk' href='userviewHotel?hid="+j.getPlaces().get(i).getHotel().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getHotel().getName()+"</a></span>&nbsp;&nbsp;");
-											out.print("<span>饭店</span>&nbsp;");
-											out.print("<span><a class='detail_lnk' href='userviewRestaurant?rid="+j.getPlaces().get(i).getRestaurant().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getRestaurant().getName()+"</a></span>&nbsp;&nbsp;");
+											//
+											if(j.getPlaces().get(i).getAttraction()!=null){
+												out.print("<span>所在景点</span>&nbsp;");
+												out.print("<span><a class='detail_lnk' href='userviewAttraction?aid="+j.getPlaces().get(i).getAttraction().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getAttraction().getName()+"</a></span>&nbsp;&nbsp;");
+											}
+											if(j.getPlaces().get(i).getHotel()!=null){
+												out.print("<span>所住酒店</span>&nbsp;");
+												out.print("<span><a class='detail_lnk' href='userviewHotel?hid="+j.getPlaces().get(i).getHotel().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getHotel().getName()+"</a></span>&nbsp;&nbsp;");
+											}
+											if(j.getPlaces().get(i).getRestaurant()!=null){
+												out.print("<span>饭店</span>&nbsp;");
+												out.print("<span><a class='detail_lnk' href='userviewRestaurant?rid="+j.getPlaces().get(i).getRestaurant().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getRestaurant().getName()+"</a></span>&nbsp;&nbsp;");
+											}
+											
+											//
+											
 											out.print("<span class='eva_t' onclick='sNhCF("+j.getPlaces().get(i).getId()+")'>评价</span>");
 											int csize=comments.size();
 											Comment tmp=null;

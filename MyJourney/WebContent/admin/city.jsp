@@ -85,7 +85,7 @@
 					<%
 						int hsize=h.getHotels().size();
 						for(int i=0;i<hsize;i++){
-							out.print("<a href='adminViewHotel.action?hid="+h.getHotels().get(i).getId()+"'>"+h.getHotels().get(i).getName()+"</a>");
+							out.print("<a href='adminViewHotel.action?hid="+h.getHotels().get(i).getId()+"'>"+h.getHotels().get(i).getName()+"</a>&nbsp;&nbsp;");
 						}
 					%>
 				</div>
@@ -94,7 +94,7 @@
 					<%
 						int rsize=h.getRestaurants().size();
 						for(int i=0;i<rsize;i++){
-							out.print("<a href='adminViewRestaurant.action?rid="+h.getRestaurants().get(i).getId()+"'>"+h.getRestaurants().get(i).getName()+"</a>");
+							out.print("<a href='adminViewRestaurant.action?rid="+h.getRestaurants().get(i).getId()+"'>"+h.getRestaurants().get(i).getName()+"</a>&nbsp;&nbsp;");
 						}
 					%>
 				</div>
@@ -103,7 +103,7 @@
 					<%
 						int asize=h.getAttractions().size();
 						for(int i=0;i<asize;i++){
-							out.print("<a href='adminViewAttraction.action?aid="+h.getAttractions().get(i).getId()+"'>"+h.getAttractions().get(i).getName()+"</a>");
+							out.print("<a href='adminViewAttraction.action?aid="+h.getAttractions().get(i).getId()+"'>"+h.getAttractions().get(i).getName()+"</a>&nbsp;&nbsp;       ");
 						}
 					%>
 				</div>
