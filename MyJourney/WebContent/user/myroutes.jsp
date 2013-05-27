@@ -29,6 +29,7 @@
 			List<Journey> interested=(List<Journey>)ActionContext.getContext().getSession().get("user_int");
 			List<User> intUsers=(List<User>)ActionContext.getContext().getSession().get("InUser");
 			Long uid=(Long)ActionContext.getContext().getSession().get("Auuid");
+			String account=(String)ActionContext.getContext().getSession().get("account");
 			List<Journey> personal=new ArrayList<Journey>();
 			List<Journey> team=new ArrayList<Journey>();
 			List<Journey> allteam=new ArrayList<Journey>();
@@ -41,6 +42,7 @@
 					personal.add(journeys.get(i));
 				}
 			}
+			
 			for(int i=0;i<alljourneys.size();i++){
 				if(alljourneys.get(i).getState()==1){
 					allteam.add(alljourneys.get(i));
@@ -117,8 +119,7 @@
 								out.print("<div class='ttt'><span class='p_trip_rate'><a href='userViewJourney?jid="+personal.get(i).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>评价旅途</a></span></div>");
 								out.print("</div>");
 								out.print("<div class='trip_action'>");
-								out.print("<span class='trip_action_text'><a href=''>分享</a></span>");
-								out.print("<span class='trip_action_text'><a href=''>删除</a></span>");
+								
 								out.print("</div>");
 								out.print("<div class='row_sep'></div>");
 								out.print("</div>");

@@ -810,6 +810,14 @@ background-color: #369;
 	margin-left:30px;
 }
 
+#hlist{
+	float:left;
+	margin-right:5%;
+	width:600px;
+	margin-bottom:30px;
+	margin-left:30px;
+}
+
 #hots{
 	float:left;
 	width:auto;

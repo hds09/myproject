@@ -70,7 +70,15 @@ public class RenrenAction extends BaseAction{
 						}else{
 							User renrenUser = renrenService.renrenLogin(renrenId);
 							if(renrenUser==null){
-								return "failure";
+								User registerUser = new User();
+								registerUser.setAccount(name);
+								registerUser.setPwd("123456");
+								registerUser.setImage(headurl);
+								registerUser.setRenrenId(renrenId);
+								userService.insertUser(registerUser);
+								session().setAttribute("islogined",true);
+								session().setAttribute("account",name);
+								return "renrenRegister";
 							}else{
 								session().setAttribute("islogined",true);
 								session().setAttribute("account",renrenUser.getAccount());

@@ -12,13 +12,9 @@
 	            <ul>
 	                <li id="index" class="fn-tc"><a href="/MyJourney/user/index">首页</a>
 					<img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
-	                <li id="daren" class="fn-tc"><a href="/MyJourney/user/Hotels">酒店</a>
-	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
-	                <li id="iphone" class="fn-tc"><a href="/MyJourney/user/Restaurants">饭店</a>
-	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
+					<li id="picwall" class="fn-tc"><a href="/MyJourney/pic/picwall">旅图</a>
+					<img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
 	                <li id="daren" class="fn-tc"><a href="/MyJourney/pic/daren">达人</a>
-	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
-	                <li id="daren" class="fn-tc"><a href="/MyJourney/user/makeRoute">旅程规划</a>
 	                <img src="../module/resource/lvtu_line_2_2_2.gif" class="fn-abs-right"></li>
 					<li id="persons" class="fn-tc">
 					<a class="person" href="/MyJourney/pic/home?account=${session.account }">我的旅图</a>

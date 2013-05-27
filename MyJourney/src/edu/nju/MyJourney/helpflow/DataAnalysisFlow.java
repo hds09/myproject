@@ -169,11 +169,37 @@ public class DataAnalysisFlow {
 	
 	public static ArrayList<Journey> GetSimilarJourneys(String jid){
 		JourneyDao jdao=new JourneyDaoImpl();
-		List<Journey> journeys=jdao.getAllJourneys();
+		List<Journey> tjourneys=jdao.getAllJourneys();
+		List<Journey> journeys=new ArrayList<Journey>();
+		ArrayList<Journey> sims=new ArrayList<Journey>();
 		Journey theJ=jdao.getJourneyById(Integer.parseInt(jid));
 		List<Place> places=theJ.getPlaces();
-		ArrayList<Journey> sims=new ArrayList<Journey>();
+		Long uid=theJ.getUser().getUid();
+		//
+		for(int i=0;i<tjourneys.size();i++){
+			if(tjourneys.get(i).getState()==0){
+				if(tjourneys.get(i).getUser().getUid()!=uid){
+					journeys.add(tjourneys.get(i));
+				}
+			}else{
+				if(tjourneys.get(i).getTeam()!=null){
+					List<User> mm=tjourneys.get(i).getTeam().getUsers();
+					boolean inTheTeam=false;
+					for(int j=0;j<mm.size();j++){
+						if(mm.get(j).getUid()==uid){
+							inTheTeam=true;
+							break;
+						}
+					}
+					if(!inTheTeam){
+						journeys.add(tjourneys.get(i));
+					}
+				}
+			}
+		}
+		
 		journeys.remove(theJ);
+		//
 		ArrayList<JourneySimilarRank> js=new ArrayList<JourneySimilarRank>();
 		for(int i=0;i<journeys.size();i++){
 			Journey tmpJ=journeys.get(i);
@@ -253,9 +279,16 @@ public class DataAnalysisFlow {
 	}
 	public static ArrayList<User> FindSimilarUsers(String uid){
 		UserDao udao=new UserDaoImpl();
-		List<User> users=udao.getAllUsers();
+		List<User> tusers=udao.getAllUsers();
+		List<User> users=new ArrayList<User>();
+		System.out.println("before deleting this User: "+tusers.size());
 		User thisUser=udao.getUserById(Long.parseLong(uid));
-		users.remove(thisUser);
+		for(int i=0;i<tusers.size();i++){
+			if(tusers.get(i).getUid()!=Long.parseLong(uid)){
+				users.add(tusers.get(i));
+			}
+		}
+		System.out.println("after deleting this User: "+users.size());
 		ArrayList<User> res=new ArrayList<User>();
 		for(int i=0;i<users.size();i++){
 			if(users.get(i).getCity()!=null&&users.get(i).getCity().equals(thisUser.getCity())){

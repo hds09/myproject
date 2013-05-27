@@ -1,6 +1,8 @@
 package edu.nju.MyJourney.action;
 import java.util.List;
 
+import net.sf.oval.constraint.Length;
+
 import edu.nju.MyJourney.helperModel.Daren;
 import edu.nju.MyJourney.model.Journey;
 import edu.nju.MyJourney.service.HomeService;
@@ -19,7 +21,7 @@ public class HomeAction extends PageAction{
 	@Override
 	public String execute() throws Exception {
 		String result = SUCCESS;
-		if(session().getAttribute("account") == null && account == ""&&homeService.getUserByAccount(account)==null){
+		if(session().getAttribute("account") == null && account.length() == 0&&homeService.getUserByAccount(account)==null){
 			return "notlogin";
 		}
 		darenId = homeService.getUserByAccount(account).getUid();

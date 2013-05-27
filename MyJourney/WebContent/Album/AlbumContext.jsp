@@ -9,15 +9,15 @@
 		(function(){
 		var p = [], w=210, h=65,
 		lk = {
-		url:''||location.href, /*喜欢的URL(不含如分页等无关参数)*/
+		url:location.href, /*喜欢的URL(不含如分页等无关参数)*/
 		title:'云游', /*喜欢标题(可选)*/
 		description:'云游网', /*喜欢简介(可选)*/
-		image:'http://localhost:8080/images/yunyou.jpg' /*喜欢相关图片的路径(可选)*/
+		image:'http://169.254.133.57:8080/MyJourney/images/yunyou.jpg' /*喜欢相关图片的路径(可选)*/
 		};
 		for(var i in lk){
 		p.push(i + '=' + encodeURIComponent(lk[i]||''));
 		}
-		document.write('<iframe style="position: absolute;top: 10px;left:200px;" scrolling="no" frameborder="0" allowtransparency="true" src="http://www.connect.renren.com/like/v2?'+p.join('&')+'" style="width:'+w+'px;height:'+h+'px;"></iframe>');
+		document.write('<iframe style="position: absolute;top: 10px;right:80px;" scrolling="no" frameborder="0" allowtransparency="true" src="http://www.connect.renren.com/like/v2?'+p.join('&')+'" style="width:'+w+'px;height:'+h+'px;"></iframe>');
 		})();
 	</script>
 	<script type="text/javascript" src="http://widget.renren.com/js/rrshare.js"></script>
@@ -25,9 +25,9 @@
 	<script type="text/javascript">
 		function shareClick() {
 			var rrShareParam = {
-				resourceUrl : 'http://localhost:8080${path}${page}',	//分享的资源Url
+				resourceUrl : 'http://169.254.133.57:8080/MyJourney/pic/album?albumId=${journey.id}',	//分享的资源Url
 				srcUrl : '',	//分享的资源来源Url,默认为header中的Referer,如果分享失败可以调整此值为resourceUrl试试
-				pic : 'http://localhost:8080/images/yunyou.jpg',		//分享的主题图片Url
+				pic : 'http://169.254.133.57:8080/MyJourney/images/yunyou.jpg',		//分享的主题图片Url
 				title : '云游网',		//分享的标题
 				description : '最潮的旅游规划分享站'	//分享的详细描述
 			};
@@ -76,7 +76,7 @@
     	<div class="travels_right fn-fr mr30 mt15 fn-pr">
         	<div class="travels_right_day fn-pa png24"></div>
             <!--第几天标题-->
-            <div class="travels_right_day_t fn-pa font-yahei darkgray666">第${page+1 }个地方 </div>
+            <div class="travels_right_day_t fn-pa font-yahei darkgray666">第${page+1 }个地方 :${place.city.name }</div>
             <div style="height:37px;"></div>
             <!--第一条 插入文字/插入图片 不参与循环-->
             <s:iterator value="images" var="image">

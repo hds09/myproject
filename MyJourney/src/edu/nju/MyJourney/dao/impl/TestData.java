@@ -124,6 +124,47 @@ public class TestData {
 //		
 //		
 //		//用户
+//		user.setAccount("aaa");
+//		user.setAge(24);
+//		user.setCity("南京");
+//		user.setEmail("fdp@software.com");
+//		user.setImage("/MyJourney/upload/user/4.png");
+//		user.setName("东升");
+//		user.setPhone("123456789");
+//		user.setPwd("aaa");
+//		user.setSex(User.MAN);
+//		userDao.insertUser(user);
+//		user.setAccount("bbb");
+//		user.setAge(24);
+//		user.setCity("南京");
+//		user.setEmail("fdp@software.com");
+//		user.setImage("/MyJourney/upload/user/2.png");
+//		user.setName("didi");
+//		user.setPhone("123456789");
+//		user.setPwd("bbb");
+//		user.setSex(User.MAN);
+//		userDao.insertUser(user);
+//		user.setAccount("ccc");
+//		user.setAge(24);
+//		user.setCity("南京");
+//		user.setEmail("fdp@software.com");
+//		user.setImage("/MyJourney/upload/user/3.png");
+//		user.setName("东升");
+//		user.setPhone("123456789");
+//		user.setPwd("ccc");
+//		user.setSex(User.MAN);
+//		userDao.insertUser(user);
+//		user.setAccount("ddd");
+//		user.setAge(24);
+//		user.setCity("南京");
+//		user.setEmail("fdp@software.com");
+//		user.setImage("/MyJourney/upload/user/5.png");
+//		user.setName("谆谆");
+//		user.setPhone("123456789");
+//		user.setPwd("ddd");
+//		user.setSex(User.MAN);
+//		userDao.insertUser(user);
+		
 //		user.setAccount("fdp");
 //		user.setAge(24);
 //		user.setCity("南京");
@@ -146,7 +187,7 @@ public class TestData {
 //			for(int k=0;k<9;k++){
 //				place.setCity(citys.get(new Random().nextInt(8)+1));
 //				place.setHalfday(i%2);
-//				place.setTime(String.valueOf(System.currentTimeMillis()));
+//				place.setTime("2013-05-11");
 //				place.setTraffic("公交97路");
 //				List<Picture> pictureList = new ArrayList<Picture>();
 //				for(int l=1;l<74;l++){

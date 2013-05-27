@@ -12,9 +12,10 @@
 			    		     <li><a href="/MyJourney/user/index" target="_top" hidefocus="on">首页<span class="i"></span></a></li>
 			    		     <li><a href="/MyJourney/user/Hotels" target="_top" hidefocus="on">酒店<span class="i"></span></a></li> 
 			    		     <li><a href="/MyJourney/user/Restaurants" target="_top" hidefocus="on">饭店<span class="i"></span></a></li> 
-			    		     <li><a href="/MyJourney/pic/picwall" target="_top" hidefocus="on">旅图<span class="i"></span></a></li> 
-			    		     <li><a href="/MyJourney/pic/daren" target="_top" hidefocus="on">达人<span class="i"></span></a></li> 
 			    		     <li><a href="/MyJourney/user/makeRoute" target="_top" hidefocus="on">旅程<span class="i"></span></a></li>
+			    		     <li><a href="/MyJourney/pic/picwall" target="_top" hidefocus="on">旅图<span class="i"></span></a></li> 
+			    		     <li><a href="/MyJourney/user/userJourneyManagement" target="_top" hidefocus="on">管理<span class="i"></span></a></li> 
+			    		     <li><a href="/MyJourney/user/personCenterSelect1" target="_top" hidefocus="on">个人中心<span class="i"></span></a></li> 
 			    		    </ul> 
 		    		   </div> 
 		    		   

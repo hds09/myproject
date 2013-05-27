@@ -35,7 +35,7 @@
 	          <!--图片列表集 循环-->
 		          	<s:iterator value="#dr.pictureList" var="picture">
 			              <li class="daren_list_item">
-				              <a href="/MyJourney/album?albumId=${picture.journeyId }">
+				              <a href="/MyJourney/pic/album?albumId=${picture.journeyId }">
 				             		 <img class="npic" src="${picture.image.imagepath }"  width="130" height="130" >
 				              </a>
 			              </li>

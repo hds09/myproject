@@ -312,7 +312,7 @@
 			<ref bean="PlaceService"/>
 		</property>
 	</bean>	
-	<bean id="AlbumAction" class="edu.nju.MyJourney.action.AlbumAction">
+	<bean id="AlbumAction" class="edu.nju.MyJourney.action.AlbumAction" scope="prototype">
 	    <property name="AlbumService">
 	        <ref bean="AlbumService"></ref>
 	    </property>
@@ -330,7 +330,7 @@
 	        <ref bean="HomeService"/>
 	    </property>
 	</bean>
-	<bean id="HomeAction" class="edu.nju.MyJourney.action.HomeAction">
+	<bean id="HomeAction" class="edu.nju.MyJourney.action.HomeAction" scope="prototype">
 	    <property name="HomeService">
 	        <ref bean="HomeService"></ref>
 	    </property>
@@ -340,12 +340,12 @@
 		    <ref bean="WallService"></ref>
 		</property>
 	</bean>
-	<bean id="UserJourneyAction" class="edu.nju.MyJourney.action.UserJourneyAction">
+	<bean id="UserJourneyAction" class="edu.nju.MyJourney.action.UserJourneyAction" scope="prototype">
 	    <property name="HomeService">
 	        <ref bean="HomeService"></ref>
 	    </property>
 	</bean>
-	<bean id="CreateHeadPhotoAction" class="edu.nju.MyJourney.action.ajax.CreateHeadPhotoAction">
+	<bean id="CreateHeadPhotoAction" class="edu.nju.MyJourney.action.ajax.CreateHeadPhotoAction" scope="prototype">
 	    <property name="UserService">
 			<ref bean="UserService"/>
 		</property>
@@ -380,16 +380,19 @@
 	        <ref bean="HomeService"></ref>
 	    </property>
 	</bean>
-	<bean id="AddAttentionAction" class="edu.nju.MyJourney.action.ajax.AddAttentionAction">
+	<bean id="AddAttentionAction" class="edu.nju.MyJourney.action.ajax.AddAttentionAction" scope="prototype">
 	    <property name="UserService">
 			<ref bean="UserService"/>
 		</property>
 	</bean>
 	<bean id="PictureUploadAction" class="edu.nju.MyJourney.action.PictureUploadAction">
 	</bean>
-	<bean id="RenrenAction" class="edu.nju.MyJourney.action.RenrenAction">
+	<bean id="RenrenAction" class="edu.nju.MyJourney.action.RenrenAction" scope="prototype">
 	    <property name="UserService">
 			<ref bean="UserService"/>
+		</property>
+		<property name="RenrenService">
+		    <ref bean="RenrenService"></ref>
 		</property>
 	</bean>
 	<bean id="ReplyAction" class="edu.nju.MyJourney.action.ajax.ReplyAction">

@@ -77,21 +77,12 @@ public class JourneyServiceImpl implements JourneyService{
 					result.add(js.get(i));
 			}else if(js.get(i).getState()==1){
 				if(js.get(i).getTeam()!=null){
-					if(js.get(i).getUser().getUid()==userid){
-						result.add(js.get(i));
-						continue;
-					}
-					List<User> tmp=js.get(i).getTeam().getUsers();
-					for(int j=0;j<tmp.size();j++){
-						if(tmp.get(j).getUid()==userid){
-							result.add(js.get(j));
+					List<User> teamM=js.get(i).getTeam().getUsers();
+					for(int j=0;j<teamM.size();j++){
+						if(teamM.get(j).getUid()==userid){
+							result.add(js.get(i));
 							break;
 						}
-					}
-				}else{
-					if(js.get(i).getUser().getUid()==userid){
-						result.add(js.get(i));
-						continue;
 					}
 				}
 				

@@ -25,10 +25,14 @@ public class AlbumAction extends BaseAction {
 //		if(session().getAttribute("account") ==null){
 //			return "notlogin";
 //		}
+		System.out.println(albumService);
 		journey = albumService.getAlbum(albumId);
 		if(journey != null && journey.getPlaces().size()>page){
 			images = journey.getPlaces().get(page).getImages();
 			place = journey.getPlaces().get(page);
+			page = journey.getPlaces().indexOf(place);
+		}else{
+			page=0;
 		}
 		return result;
 	}

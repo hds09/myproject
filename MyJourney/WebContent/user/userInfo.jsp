@@ -425,8 +425,13 @@ function cancelEmail(){
 		      <h3><font color="#D26900">欢迎来到云游</font></h3>
 		     </div>
 		 		  <!-- 人人账号绑定TO DO -->
-		 		  <a href="https://graph.renren.com/oauth/authorize?client_id=${client_id }&response_type=code&redirect_uri=${redirect_url }&display=page">
-        <img style="border:0px" src="../sns/RENREN.png"/></a>
+		 		  <s:if test="user.renrenId==null">
+			 		  <a href="https://graph.renren.com/oauth/authorize?client_id=${client_id }&response_type=code&redirect_uri=${redirect_url }&display=page">
+	        <img style="border:0px" src="../sns/RENREN.png"/></a>
+       			 </s:if>
+       			 <s:else>
+       			 	已经绑定，绑定ID为${user.renrenId }
+       			 </s:else>
 		     </div>
 		     </div>
 		     </s:if>
