@@ -51,7 +51,7 @@
 			<section  id="plan">
                <div id="planhead">
                <h3>行程名称:<input type="text" value="" name="routeName" id="routeName" width="100px"/></h3>
-               <h3>行程性质:<input type="radio" value="0" name="state" id="state" checked="checked"/>个人<input type="radio" value="1" name="state" id="state" />组队</h3>
+               <h3>行程性质:<input type="radio" value="1" name="state" id="state" checked="checked"/>个人<input type="radio" value="1" name="state" id="state2" />组队</h3>
                <h3>起始日期:<input name="Date" id="startDate" type="date"  onblur="setchange()"></h3>
 		        <h3 style="margin-left:119px;font-size: 20px;font-family: monospace;">第<font color="red">1</font>天<a id="a_css" onclick="addDay()">加一天</a></h3>
                 </div>
@@ -396,10 +396,10 @@ function addDay(){
 	 var routeName=document.getElementById("routeName");
 	 var state=document.getElementById("state");
 	 var statehtml="";
-	 if(state.value==1){
-		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state' checked='checked'/>组队</h3>";
+	 if(!state.checked){
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state2' checked='checked'/>组队</h3>";
 	 }else{
-		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3>";
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state2' />组队</h3>";
 	 }
 	// var plancontait=document.getElementById("plancontait");
 	
@@ -428,10 +428,10 @@ function preDay(){
 	 var tmpString=changeDateFormat(yester.getFullYear(),yester.getMonth()+1,yester.getDate());
 	 var state=document.getElementById("state");
 	 var statehtml="";
-	 if(state.value==1){
-		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state' checked='checked'/>组队</h3>";
+	 if(!state.checked){
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state2' checked='checked'/>组队</h3>";
 	 }else{
-		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3>";
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state2' />组队</h3>";
 	 }
 	morningList[day]=morning.value;
 	afternoonList[day]=afternoon.value;
@@ -461,10 +461,10 @@ function otherDay(){
 	 var routeName=document.getElementById("routeName");
 	 var state=document.getElementById("state");
 	 var statehtml="";
-	 if(state.value==1){
-		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state' checked='checked'/>组队</h3>";
+	 if(!state.checked){
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' />个人<input type='radio' value='1' name='state' id='state2' checked='checked'/>组队</h3>";
 	 }else{
-		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state' />组队</h3>";
+		 statehtml="<h3>行程性质:<input type='radio' value='0' name='state' id='state' checked='checked'/>个人<input type='radio' value='1' name='state' id='state2' />组队</h3>";
 	 }
 	 var tmp=day-1;
 	 morningList[tmp]=morning.value;

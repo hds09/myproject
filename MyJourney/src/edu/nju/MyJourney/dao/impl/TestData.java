@@ -1,6 +1,10 @@
 package edu.nju.MyJourney.dao.impl;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -258,7 +262,23 @@ public class TestData {
 	
 	
 	
-	
+	public String addDay(String startDateTmp){
+		DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
+	    Date date=null;
+		try {
+			date = (Date) fmt.parse(startDateTmp);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    String[] tmp=this.addDay(date).toLocaleString().split(" ");
+	    startDateTmp=tmp[0];
+	    return startDateTmp;
+	}
+	public Date addDay(Date date){
+		Date tomo = new   Date((date.getTime()/1000+86400*1)*1000);
+		return tomo;
+	}
 	
 	
 	

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>云游网</title>
 <style type="text/css">
 	@IMPORT "../css/common.css";
 	@IMPORT "../css/banner.css";

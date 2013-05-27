@@ -317,7 +317,7 @@
 	        <ref bean="AlbumService"></ref>
 	    </property>
 	</bean>
-	<bean id="CreateAlbumAction" class="edu.nju.MyJourney.action.CreateAlbumAction">
+	<bean id="CreateAlbumAction" class="edu.nju.MyJourney.action.CreateAlbumAction" scope="prototype">
 	    <property name="PlaceDao">
 	        <ref bean="PlaceDao"></ref>
 	    </property>

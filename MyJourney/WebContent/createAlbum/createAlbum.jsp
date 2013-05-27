@@ -11,7 +11,7 @@
 	
 	.highlight
 	{
-		background-color: rgba(a,3,8,0.8);
+		background-color: rgba(1,3,8,0.8);
 	}
 		
 	.black_overlay{
@@ -54,7 +54,7 @@
 	function changePlaceId(id){
 		$("#placeId").value = id;
 	}
-	$("li.pl15").click(function(){
+	$(".pl15 > li").click(function(){
 		$(this).addClass("highlight").end().siblings().removeClass("highlight");
 	});
 	
@@ -90,7 +90,7 @@
 					${journeyList.get(journeyIndex).journeyName}
 					<s:iterator value="placeList" var="place" status="sta">
 							<s:if test="#place.city != null">
-								-><a href="/MyJourney/pic/userJourney?placeId=${place.id }">${place.city.name }</a>
+								-><a href="/MyJourney/pic/userJourney?journeyIndex=${journeyIndex }&placeId=${place.id }">${place.city.name }</a>
 							</s:if>
 					</s:iterator>
 					<img width="33px" height="33px" alt="添加图片" src="/MyJourney/createAlbum/resource/addpic.jpg" onclick="showD()" style="float:right;margin-right: 20px;box-shadow:1px #ef3;cursor: pointer;">	
