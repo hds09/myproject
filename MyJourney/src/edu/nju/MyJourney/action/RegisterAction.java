@@ -26,6 +26,8 @@ public class RegisterAction extends BaseAction{
 			  Map session = actionContext.getSession();		  
 			 session.put("islogined",this.islogined);
 			 session.put("account",this.account);
+			 Long uuid=this.userService.getUserByAccount(this.account).getUid();
+			session.put("Auuid",uuid);
 			result="success";
 			}else{
 				this.islogined=false;

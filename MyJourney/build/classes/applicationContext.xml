@@ -335,7 +335,7 @@
 	        <ref bean="HomeService"></ref>
 	    </property>
 	</bean>
-	<bean id="WallAction" class="edu.nju.MyJourney.action.WallAction"> 
+	<bean id="WallAction" class="edu.nju.MyJourney.action.WallAction" scope="prototype"> 
 		<property name="WallService">
 		    <ref bean="WallService"></ref>
 		</property>

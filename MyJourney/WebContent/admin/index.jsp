@@ -159,7 +159,7 @@
 						</form>
 					</div>
 				</div>
-				<table id="user_table">
+				<table id="user_table" >
 					<tr class="row">
 						<th>check</th>
 						<th>User ID</th>
@@ -167,7 +167,6 @@
 						<th>Age</th>
 						<th>City</th>
 						<th>Email</th>
-						<th>Image</th>
 						<th>Name</th>
 						<th>Phone</th>
 						<th>Password</th>
@@ -186,7 +185,6 @@
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getAge()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getCity()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getEmail()+"</td>"+
-							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getImage()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getName()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getPhone()+"</td>"+
 							"<td class='td"+users.get(i).getUid()+"'>"+users.get(i).getPwd()+"</td>"+

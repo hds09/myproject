@@ -9,10 +9,6 @@
 	@IMPORT "../css/common.css";
 	@IMPORT "../css/banner.css";
 	
-	.highlight
-	{
-		background-color: rgba(1,3,8,0.8);
-	}
 		
 	.black_overlay{
 	display: none;
@@ -79,8 +75,14 @@
 				<ul class="f16 fn-ohidden ml10">
 					<li class="pl15 fb" >我的旅行：</li>
 					<s:iterator value="journeyList" var="journey" status="sta">
-						<li class="pl15" ><a href="/MyJourney/pic/userJourney?journeyIndex=${sta.index }">${journey.journeyName}</a>
-						</li>
+						<s:if test="#sta.index==journeyIndex">
+							<li class="pl15 hili" ><a href="/MyJourney/pic/userJourney?journeyIndex=${sta.index }">${journey.journeyName}</a>
+							</li>
+						</s:if>
+						<s:else>
+							<li class="pl15" ><a href="/MyJourney/pic/userJourney?journeyIndex=${sta.index }">${journey.journeyName}</a>
+							</li>
+						</s:else>
 					</s:iterator>
 				</ul>
 			</div>
@@ -131,6 +133,7 @@
 		<span>共有图片:${pictureList.size() }</span>
 		<form style="margin-top:20px;" action="/MyJourney/pic/createAlbum"  method="post" enctype="multipart/form-data">
 			<input id="placeId" name="placeId" type="hidden" value="${placeList.get(placeIndex).id }"/>
+			<input id="journeyIndex" name="journeyIndex" type="hidden" value="${journeyIndex}">
 			<input class="f16 fb" type="file" name="picList"/>
 			<input class="f16 fb" value="添加图片" type="submit"/>
 		</form>

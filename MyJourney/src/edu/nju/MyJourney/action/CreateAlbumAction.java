@@ -10,10 +10,12 @@ import edu.nju.MyJourney.model.User;
 public class CreateAlbumAction extends PictureUploadAction {
 	private PlaceDao placeDao;
 	private long placeId;
+	private int journeyIndex;
 	private Place place;
 	@Override
 	public String execute() throws Exception {
 		String result = SUCCESS;
+		System.out.print("journeyIndex"+journeyIndex);
 		System.out.println("call create album");
 		if(session().getAttribute("account") ==null){
 			return "notlogin";
@@ -49,6 +51,12 @@ public class CreateAlbumAction extends PictureUploadAction {
 	}
 	public void setPlace(Place place) {
 		this.place = place;
+	}
+	public int getJourneyIndex() {
+		return journeyIndex;
+	}
+	public void setJourneyIndex(int journeyIndex) {
+		this.journeyIndex = journeyIndex;
 	}
 	
 }

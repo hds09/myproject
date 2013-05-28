@@ -108,8 +108,8 @@
 		<nav>
 			<ul>
 				<li><a href="index">首页</a></li>
-				<li><a href="#">酒店</a></li>
-				<li><a href="#">饭店</a></li>
+				<li><a href="Hotels">酒店</a></li>
+				<li><a href="Restaurants">饭店</a></li>
 				<li><a href="makeRoute">旅程</a></li>
 				<li><a href="/MyJourney/pic/picwall">旅图</a></li>
 				<li class="selected"><a href="">管理</a></li>
@@ -126,35 +126,40 @@
 					<div id='title_div2'>
 						<span class='x_title'><%out.print(j.getJourneyName());%></span>
 						<%
-							if(j.getState()==1){
-								List<User> mems=j.getTeam().getUsers();
-								for(User user:mems){
-									if(uid.equals(Long.toString(user.getUid()))){
-										joined=true;
-										break;
+							if(j.getTeam()==null){
+								
+							}else{
+								if(j.getState()==1){
+									List<User> mems=j.getTeam().getUsers();
+									for(User user:mems){
+										if(uid.equals(Long.toString(user.getUid()))){
+											joined=true;
+											break;
+										}
 									}
 								}
-							}
-							if(finished){
-								out.print("<span class='finished'>已结束</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-							}else if(notstarted){
-								out.print("<span class='notStarted'>未开始</span>&nbsp;&nbsp;&nbsp;&nbsp;");
-								if(joined){
-									out.print("<span class='joined' >已加入</span>&nbsp;&nbsp;");
-									if(j.getUser().getUid()==Long.parseLong(uid)){
-										out.print("<span class='owner'>创建者</span>");
+								if(finished){
+									out.print("<span class='finished'>已结束</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+								}else if(notstarted){
+									out.print("<span class='notStarted'>未开始</span>&nbsp;&nbsp;&nbsp;&nbsp;");
+									if(joined){
+										out.print("<span class='joined' >已加入</span>&nbsp;&nbsp;");
+										if(j.getUser().getUid()==Long.parseLong(uid)){
+											out.print("<span class='owner'>创建者</span>");
+										}else{
+											out.print("<span class='lvT' onclick='leaveTeam("+j.getId()+","+uid+")'>退出队伍</span>");
+										}
 									}else{
-										out.print("<span class='lvT' onclick='leaveTeam("+j.getId()+","+uid+")'>退出队伍</span>");
+										if(j.getState()==1){
+											out.print("<span class='not_joined' onclick='joinTeam("+j.getId()+","+uid+")'>立即加入</span>");
+										}
+										
 									}
-								}else{
-									if(j.getState()==1){
-										out.print("<span class='not_joined' onclick='joinTeam("+j.getId()+","+uid+")'>立即加入</span>");
-									}
-									
+								}else if(ongoing){
+									out.print("<span class='ongoing'>进行中</span>");
 								}
-							}else if(ongoing){
-								out.print("<span class='ongoing'>进行中</span>");
 							}
+							
 							
 						
 						%>
@@ -203,41 +208,42 @@
 												out.print("<span>饭店</span>&nbsp;");
 												out.print("<span><a class='detail_lnk' href='userviewRestaurant?rid="+j.getPlaces().get(i).getRestaurant().getId()+"&uid="+uid+"'>"+j.getPlaces().get(i).getRestaurant().getName()+"</a></span>&nbsp;&nbsp;");
 											}
-											
+											out.print("<br/>");
 											//
 											
-											out.print("<span class='eva_t' onclick='sNhCF("+j.getPlaces().get(i).getId()+")'>评价</span>");
-											int csize=comments.size();
-											Comment tmp=null;
-											boolean commentExist=false;
-											String comment=null;
-											for(int k=0;k<csize;k++){
-												tmp=comments.get(k);
-												Attraction tmpa=j.getPlaces().get(i).getAttraction();
-												Hotel tmph=j.getPlaces().get(i).getHotel();
-												Restaurant tmpr=j.getPlaces().get(i).getRestaurant();
-												if(tmp.getAttraction().getId()==tmpa.getId()&&tmp.getHotel().getId()==tmph.getId()&&tmp.getRestaurant().getId()==tmpr.getId()){
-													commentExist=true;
-													comment=tmp.getContext();
-													break;
-												}
-											}
-											out.print("<br/>");
-											out.print("<div class='cfld' style='display:none' id='cfid"+j.getPlaces().get(i).getId()+"'>");
-											out.print("<form action='comment' method='post'>");
-											if(commentExist){
-												out.print("<textarea class='cfld_f' style='width: 481px; height: 46px;' value='"+comment+"' disabled=true >"+comment+"</textarea>");
-												out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>已评</span></div>");
-											}else{
-												out.print("<textarea class='cfld_f' id='commText"+i+"' style='width: 481px; height: 46px;'  ></textarea>");
-												out.print("<input type='hidden' name='hid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
-												out.print("<input type='hidden' name='rid' value='"+j.getPlaces().get(i).getRestaurant().getId()+"' />");
-												out.print("<input type='hidden' name='aid' value='"+j.getPlaces().get(i).getAttraction().getId()+"' />");
-												out.print("<input type='hidden' name='uid' value='"+uid+"' />");
-												out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span>&nbsp;|&nbsp;<span class='cspan' onclick='comment("+i+","+j.getPlaces().get(i).getHotel().getId()+","+j.getPlaces().get(i).getRestaurant().getId()+","+j.getPlaces().get(i).getAttraction().getId()+","+uid+")'>提交</span></div>");
-											}
-											out.print("</form>");
-											out.print("</div>");
+											//out.print("<span class='eva_t' onclick='sNhCF("+j.getPlaces().get(i).getId()+")'>评价</span>");
+											//int csize=comments.size();
+											//Comment tmp=null;
+											//boolean commentExist=false;
+											//String comment=null;
+											//for(int k=0;k<csize;k++){
+												//tmp=comments.get(k);
+												//Attraction tmpa=j.getPlaces().get(i).getAttraction();
+												//Hotel tmph=j.getPlaces().get(i).getHotel();
+												//Restaurant tmpr=j.getPlaces().get(i).getRestaurant();
+												//if(tmp.getAttraction().getId()==tmpa.getId()&&tmp.getHotel().getId()==tmph.getId()&&tmp.getRestaurant().getId()==tmpr.getId()){
+													//commentExist=true;
+													//comment=tmp.getContext();
+													//break;
+												//}
+											//}
+											//
+											
+											//out.print("<div class='cfld' style='display:none' id='cfid"+j.getPlaces().get(i).getId()+"'>");
+											//out.print("<form action='comment' method='post'>");
+											//if(commentExist){
+												//out.print("<textarea class='cfld_f' style='width: 481px; height: 46px;' value='"+comment+"' disabled=true >"+comment+"</textarea>");
+												//out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>已评</span></div>");
+											//}else{
+												//out.print("<textarea class='cfld_f' id='commText"+i+"' style='width: 481px; height: 46px;'  ></textarea>");
+												//out.print("<input type='hidden' name='hid' value='"+j.getPlaces().get(i).getHotel().getId()+"' />");
+												//out.print("<input type='hidden' name='rid' value='"+j.getPlaces().get(i).getRestaurant().getId()+"' />");
+												//out.print("<input type='hidden' name='aid' value='"+j.getPlaces().get(i).getAttraction().getId()+"' />");
+												//out.print("<input type='hidden' name='uid' value='"+uid+"' />");
+												//out.print("<div align='center'><span class='cspan' onclick='sNhCFc("+j.getPlaces().get(i).getId()+")'>取消</span>&nbsp;|&nbsp;<span class='cspan' onclick='comment("+i+","+j.getPlaces().get(i).getHotel().getId()+","+j.getPlaces().get(i).getRestaurant().getId()+","+j.getPlaces().get(i).getAttraction().getId()+","+uid+")'>提交</span></div>");
+											//}
+											//out.print("</form>");
+											//out.print("</div>");
 										}
 										
 									}

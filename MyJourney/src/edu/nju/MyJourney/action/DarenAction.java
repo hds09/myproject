@@ -19,7 +19,7 @@ import edu.nju.MyJourney.service.HomeService;
  * 获取达人列表
  */
 public class DarenAction extends PageAction{
-	private static final int pageSize = 20;
+	private static final int pageSize = 10;
 	private DarenService darenService;
 	private HomeService homeService;
 	private List<Daren> darenList;
@@ -38,10 +38,12 @@ public class DarenAction extends PageAction{
 				picList = new ArrayList<WallPicture>();
 				journeyList = new ArrayList<Journey>();
 				journeyList = homeService.getUserJourney(d.getAccount(), 0, 4);
+				
 				for(Journey j:journeyList){
 					picList.add(new WallPicture().convertFromJourney(j));
 				}
 				d.setPictureList(picList);
+				
 				//判断是否已经关注
 				if(session().getAttribute("account") !=null){
 					String loginAccount = (String) session().getAttribute("account");
@@ -53,8 +55,6 @@ public class DarenAction extends PageAction{
 						d.setHasAttention(1);
 					}
 				}
-//				System.out.println(d.getAccount());
-//				System.out.println(d.getHasAttention());
 			}
 			pageMax = darenService.getDarensPageMax(pageSize);
 		}

@@ -48,7 +48,7 @@ public class UserJourneyAction extends PageAction {
 			if(placeIndex<0 && placeIndex>=placeList.size()){
 				placeIndex = 0;
 			}
-			if(placeList !=null && placeList.size()>0){
+			if(placeList !=null && placeList.size()>0 ){
 				pictureList = placeList.get(placeIndex).getImages();
 			}else{
 				pictureList = new ArrayList<Picture>();

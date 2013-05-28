@@ -164,6 +164,26 @@ public class JourneyDaoImpl implements JourneyDao{
 		List<WallPicture> result = new ArrayList<WallPicture>();
 		try{
 			Transaction tx = session.beginTransaction();
+//			String hql = "from Place p";
+//			Query query = session.createQuery(hql);
+//			query.setFirstResult(page*pageSize);
+//			query.setMaxResults(pageSize);
+//			List<Place> placeList = query.list();
+//			for(Place p:placeList){
+//				Hibernate.initialize(p.getJourney());
+//				Hibernate.initialize(p.getImages());
+//				Hibernate.initialize(p.getJourney().getUser());
+//				if(p.getImages()!=null && p.getImages().size()>0){
+//					WallPicture wp = new WallPicture();
+//					wp.setImage(p.getImages().get(0));
+//					wp.setJourneyId(p.getJourney().getId());
+//					wp.setJourneyName(p.getJourney().getJourneyName());
+//					wp.setState(p.getJourney().getState());
+//					wp.setUserAccount(p.getJourney().getUser().getAccount());
+//					wp.setUserName(p.getJourney().getUser().getName());
+//					result.add(wp);
+//				}
+//			}
 			String hql = "from Journey order by id desc";
 			Query query = session.createQuery(hql);
 			query.setFirstResult(page*pageSize);
@@ -186,6 +206,9 @@ public class JourneyDaoImpl implements JourneyDao{
 						&&j.getPlaces().get(0).getImages().size()>0){
 					result.add(new WallPicture().convertFromJourney(j));
 				}
+			}
+			if(result.size()<pageSize){
+				result.addAll((getWallPictures(page+1, pageSize)).subList(0, pageSize-result.size()));
 			}
 			tx.commit();
 		}catch(Exception e){

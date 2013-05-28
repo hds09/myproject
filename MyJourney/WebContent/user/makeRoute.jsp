@@ -51,7 +51,7 @@
 			<section  id="plan">
                <div id="planhead">
                <h3>行程名称:<input type="text" value="" name="routeName" id="routeName" width="100px"/></h3>
-               <h3>行程性质:<input type="radio" value="1" name="state" id="state" checked="checked"/>个人<input type="radio" value="1" name="state" id="state2" />组队</h3>
+               <h3>行程性质:<input type="radio" value="0" name="state" id="state" checked="checked"/>个人<input type="radio" value="1" name="state" id="state2" />组队</h3>
                <h3>起始日期:<input name="Date" id="startDate" type="date"  onblur="setchange()"></h3>
 		        <h3 style="margin-left:119px;font-size: 20px;font-family: monospace;">第<font color="red">1</font>天<a id="a_css" onclick="addDay()">加一天</a></h3>
                 </div>

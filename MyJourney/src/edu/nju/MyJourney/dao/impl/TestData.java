@@ -25,19 +25,19 @@ import edu.nju.MyJourney.model.User;
  */
 public class TestData {
 	public static void main(String[] args) {
-//		CityDao cityDao = new CityDaoImpl();
-//		PlaceDao placeDao = new PlaceDaoImpl();
-//		UserDao userDao = new UserDaoImpl();
-//		userDao.deleteUserById("8");
-//		userDao.deleteUserById("9");
-//		userDao.deleteUserById("10");
-//		userDao.deleteUserById("11");
-//		JourneyDao journeyDao = new JourneyDaoImpl();
-//		Picture picture = new Picture();
-//		Place place = new Place();
-//		User user = new User();
-//		Journey journey = new Journey();
-//		
+		CityDao cityDao = new CityDaoImpl();
+		PlaceDao placeDao = new PlaceDaoImpl();
+		UserDao userDao = new UserDaoImpl();
+		userDao.deleteUserById("8");
+		userDao.deleteUserById("9");
+		userDao.deleteUserById("10");
+		userDao.deleteUserById("11");
+		JourneyDao journeyDao = new JourneyDaoImpl();
+		Picture picture = new Picture();
+		Place place = new Place();
+		User user = new User();
+		Journey journey = new Journey();
+		
 //		City beijing=new City();
 //		CityDao citydao=new CityDaoImpl();
 //		beijing.setCountry("中国");
@@ -125,64 +125,64 @@ public class TestData {
 //			imagePaths.add("/MyJourney/upload/pic/"+i+".jpg");
 //			System.out.println("第"+i+"个  ："+imagePaths.get(i-1));
 //		}
-//		
-//		
-//		//用户
-//		user.setAccount("aaa");
+		
+		
+		//用户
+//		user.setAccount("eee");
 //		user.setAge(24);
 //		user.setCity("南京");
 //		user.setEmail("fdp@software.com");
 //		user.setImage("/MyJourney/upload/user/4.png");
 //		user.setName("东升");
 //		user.setPhone("123456789");
-//		user.setPwd("aaa");
+//		user.setPwd("eee");
 //		user.setSex(User.MAN);
 //		userDao.insertUser(user);
-//		user.setAccount("bbb");
+//		user.setAccount("fff");
 //		user.setAge(24);
 //		user.setCity("南京");
 //		user.setEmail("fdp@software.com");
 //		user.setImage("/MyJourney/upload/user/2.png");
 //		user.setName("didi");
 //		user.setPhone("123456789");
-//		user.setPwd("bbb");
+//		user.setPwd("fff");
 //		user.setSex(User.MAN);
 //		userDao.insertUser(user);
-//		user.setAccount("ccc");
+//		user.setAccount("ggg");
 //		user.setAge(24);
 //		user.setCity("南京");
 //		user.setEmail("fdp@software.com");
 //		user.setImage("/MyJourney/upload/user/3.png");
 //		user.setName("东升");
 //		user.setPhone("123456789");
-//		user.setPwd("ccc");
+//		user.setPwd("ggg");
 //		user.setSex(User.MAN);
 //		userDao.insertUser(user);
-//		user.setAccount("ddd");
+//		user.setAccount("hhh");
 //		user.setAge(24);
 //		user.setCity("南京");
 //		user.setEmail("fdp@software.com");
 //		user.setImage("/MyJourney/upload/user/5.png");
 //		user.setName("谆谆");
 //		user.setPhone("123456789");
-//		user.setPwd("ddd");
+//		user.setPwd("hhh");
 //		user.setSex(User.MAN);
 //		userDao.insertUser(user);
-		
-//		user.setAccount("fdp");
+//		user.setAccount("iii");
 //		user.setAge(24);
 //		user.setCity("南京");
 //		user.setEmail("fdp@software.com");
 //		user.setImage("/MyJourney/upload/user/1.png");
 //		user.setName("大鹏");
 //		user.setPhone("123456789");
-//		user.setPwd("fdp");
+//		user.setPwd("iii");
 //		user.setSex(User.MAN);
 //		userDao.insertUser(user);
-//		//添加旅行
+		//添加旅行
 //		Journey journeys[] = new Journey[16];
 //		String journeyName[] = {"三亚游","台北游","香港游","厦门游","上海游","丽江游","成都游","杭州游"
 //				,"北京游","南京游","长江游","苏州游","扬州游","周庄游","武汉游","重庆游",};
+//		String placeTime = "2013-05-11";
 //		for(int i=0;i<16;i++){
 //			journey.setJourneyName(journeyName[i]);
 //			journey.setState(new Random().nextInt(2));
@@ -191,7 +191,8 @@ public class TestData {
 //			for(int k=0;k<9;k++){
 //				place.setCity(citys.get(new Random().nextInt(8)+1));
 //				place.setHalfday(i%2);
-//				place.setTime("2013-05-11");
+//				place.setTime(placeTime);
+//				placeTime = TestData.addDay(placeTime);
 //				place.setTraffic("公交97路");
 //				List<Picture> pictureList = new ArrayList<Picture>();
 //				for(int l=1;l<74;l++){
@@ -238,8 +239,56 @@ public class TestData {
 //			journey = new Journey();
 //		}
 		
-		
-		
+//		List<User> userList = userDao.getAllUsers();
+//		for(User u:userList){
+//			System.out.println(u.getAccount());
+//		}
+		int picIndex=1;
+//		int journeyIndex =1;
+//		String journeyName="旅行测试";
+//		for(User u:userList){
+//			for(int i=0;i<4;i++){
+//				journey = new Journey();
+//				journey.setJourneyName(journeyName + journeyIndex);
+//				journey.setUser(u);
+//				journey.setState(1);
+//				journeyIndex++;
+//				journeyDao.insertJoueney(journey);
+//				
+//				place = new Place();
+//				place.setCity(citys.get(new Random().nextInt(8)+1));
+//				place.setTime(placeTime);
+//				placeTime = addDay(placeTime);
+//				place.setHalfday(i%2);
+//				place.setJourney(journey);
+//				placeDao.insertPlace(place);
+//				
+				picture = new Picture();
+				picture.setImagepath("/MyJourney/upload/pic/"+picIndex+".jpg");
+				picture.setPlace(place);
+				picIndex++;
+//				picture.setContext("旅行照片");
+//				place.addImages(picture);
+//				placeDao.updatePlace(place);
+//			}
+//		}
+	    PictureDaoImpl picDao = new PictureDaoImpl();
+	    for(Picture p:picDao.getAllPicture()){
+	    	System.out.println(p.getImagepath());
+	    }
+//		List<Place> placeList = new ArrayList<Place>();
+//		for(int i=154;i<244;i++){
+//			place = placeDao.getPlaceById(i);
+//			picture = new Picture();
+//			picture.setImagepath("/MyJourney/upload/pic/"+picIndex+".jpg");
+//			picture.setPlace(place);
+//			List<Picture> picList = new ArrayList<Picture>();
+//			if(picIndex>73){
+//				picIndex =1;
+//			}
+//			picIndex++;
+//			picDao.insert(picture);
+//		}
 		
 	}
 	
@@ -262,7 +311,7 @@ public class TestData {
 	
 	
 	
-	public String addDay(String startDateTmp){
+	public static String addDay(String startDateTmp){
 		DateFormat fmt =new SimpleDateFormat("yyyy-MM-dd");
 	    Date date=null;
 		try {
@@ -271,11 +320,11 @@ public class TestData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    String[] tmp=this.addDay(date).toLocaleString().split(" ");
+	    String[] tmp= addDay(date).toLocaleString().split(" ");
 	    startDateTmp=tmp[0];
 	    return startDateTmp;
 	}
-	public Date addDay(Date date){
+	public static Date addDay(Date date){
 		Date tomo = new   Date((date.getTime()/1000+86400*1)*1000);
 		return tomo;
 	}

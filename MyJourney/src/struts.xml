@@ -388,7 +388,7 @@
                   <param name="maximumSize">1024000</param>
               </interceptor-ref>
               <interceptor-ref name="defaultStack" />
-              <result name="success" type="redirectAction">userJourney?placeId=${placeId}</result>
+              <result name="success" type="redirectAction">userJourney?journeyIndex=${journeyIndex}&amp;placeId=${placeId}</result>
               <result name="failure">/createAlbum/createAlbum.jsp</result>
  	      </action>
  	      <action name="createHeadPhoto" class="CreateHeadPhotoAction">

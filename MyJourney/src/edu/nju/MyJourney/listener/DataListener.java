@@ -26,7 +26,7 @@ import edu.nju.MyJourney.service.WallService;
  * @author softwware
  *
  */
-public class DarenListener  implements ServletContextListener,ServletContextAttributeListener{
+public class DataListener  implements ServletContextListener,ServletContextAttributeListener{
 	private DarenService darenService;
 	private List<Daren> darenList;
 	private WallService wallService;

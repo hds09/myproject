@@ -37,7 +37,9 @@ public class DarenDaoImpl implements DarenDao {
 			System.out.println("用户列表有"+userList.size());
 			if(userList.size() != 0){
 				for(User u: userList){
-					result.add(new Daren().convertFromUser(u));
+					if(new Daren().convertFromUser(u).getJourneyNum()>3){
+						result.add(new Daren().convertFromUser(u));
+					}
 				}
 			}
 	        tx.commit();

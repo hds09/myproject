@@ -83,13 +83,13 @@ public class EditRouteAction extends BaseAction{
 	    this.morningStartPlace=this.morningPlaces.get(selectnum-1);
 	    this.afternoonStartPlace=
 	    this.afternoonPlaces.get(selectnum-1);
-	    this.tmpAfternoonAttraction=DataAnalysisFlow.GetHotAttractions(1).get(0);
-	    this.tmpAfternoonHotel=DataAnalysisFlow.GetHotHotels(1).get(0);
+	    this.tmpAfternoonAttraction=DataAnalysisFlow.getBestAttraction(this.afternoonStartPlace.getCity());
+	    this.tmpAfternoonHotel=DataAnalysisFlow.getBestHotel(this.afternoonStartPlace.getCity());
 	    		
-	    this.tmpAfternoonRestaurant=DataAnalysisFlow.GetHotRestaurants(1).get(0);
-	    this.tmpMorningAttraction=DataAnalysisFlow.GetHotAttractions(1).get(0);
-	    this.tmpMorningHotel=DataAnalysisFlow.GetHotHotels(1).get(0);
-	    this.tmpMorningRestaurant=DataAnalysisFlow.GetHotRestaurants(1).get(0);
+	    this.tmpAfternoonRestaurant=DataAnalysisFlow.getBestRestaurant(this.afternoonStartPlace.getCity());
+	    this.tmpMorningAttraction=DataAnalysisFlow.getBestAttraction(this.morningStartPlace.getCity());
+	    this.tmpMorningHotel=DataAnalysisFlow.getBestHotel(this.morningStartPlace.getCity());
+	    this.tmpMorningRestaurant=DataAnalysisFlow.getBestRestaurant(this.morningStartPlace.getCity());
 		return result;
 	}
 	//edit morning

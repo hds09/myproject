@@ -26,8 +26,13 @@ import edu.nju.MyJourney.service.JourneyService;
 import edu.nju.MyJourney.service.impl.JourneyServiceImpl;
 
 public class DataAnalysisFlow {
+	private static HotelDao hdao =new HotelDaoImpl();
+	private static RestaurantDao rdao=new RestaurantDaoImpl();
+	private static AttractionDao adao=new AttractionDaoImpl();
+	private static UserDao udao=new UserDaoImpl();
+	private static JourneyDao jdao=new JourneyDaoImpl();
 	public static ArrayList<Hotel> GetHotHotels(int size){
-		HotelDao hdao=new HotelDaoImpl();
+	
 		List<Hotel> hotels=hdao.getAllHotel();
 		ArrayList<Hotel> hots=new ArrayList<Hotel>();
 		ArrayList<HotelRankCoef> hRanks=new ArrayList<HotelRankCoef>();
@@ -79,7 +84,7 @@ public class DataAnalysisFlow {
 	
 	
 	public static ArrayList<Restaurant> GetHotRestaurants(int size){
-		RestaurantDao rdao=new RestaurantDaoImpl();
+		
 		List<Restaurant> rests=rdao.getAllRestaurant();
 		ArrayList<Restaurant> hots=new ArrayList<Restaurant>();
 		ArrayList<RestRankCoef> rRanks=new ArrayList<RestRankCoef>();
@@ -123,8 +128,8 @@ public class DataAnalysisFlow {
 	
 	
 	public static ArrayList<Attraction> GetHotAttractions(int size){
-		AttractionDao rdao=new AttractionDaoImpl();
-		List<Attraction> attrs=rdao.getAllAttraction();
+		
+		List<Attraction> attrs=adao.getAllAttraction();
 		ArrayList<Attraction> hots=new ArrayList<Attraction>();
 		ArrayList<AttrRankCoef> aRanks=new ArrayList<AttrRankCoef>();
 		//if not enough attrs in db
@@ -168,7 +173,7 @@ public class DataAnalysisFlow {
 	
 	
 	public static ArrayList<Journey> GetSimilarJourneys(String jid){
-		JourneyDao jdao=new JourneyDaoImpl();
+		
 		List<Journey> tjourneys=jdao.getAllJourneys();
 		List<Journey> journeys=new ArrayList<Journey>();
 		ArrayList<Journey> sims=new ArrayList<Journey>();
@@ -230,32 +235,40 @@ public class DataAnalysisFlow {
 	
 	public static ArrayList<Journey> GetUserInterestedJourneys(String uid){
 		System.out.println("uid: "+uid);
-		JourneyDao jdao=new JourneyDaoImpl();
-		List<Journey> all=jdao.getAllJourneys();
+		List<Journey> all2=jdao.getAllJourneys();
+		List<Journey> all=new ArrayList<Journey>();
 		ArrayList<JourneySimilarRank> js=new ArrayList<JourneySimilarRank>();
 		ArrayList<Journey> interests=new ArrayList<Journey>();
 		
 		//get rid of userjourney from all
 		Long userid=Long.parseLong(uid);
 		List<Journey> userrelated=new ArrayList<Journey>();
-		for(int i=0;i<js.size();i++){
-			if(all.get(i).getUser().getUid()==userid){
-				userrelated.add(all.get(i));
-			}else if(all.get(i).getState()==1){
-				List<User> tmp=all.get(i).getTeam().getUsers();
-				for(int j=0;j<tmp.size();j++){
-					if(tmp.get(j).getUid()==userid){
-						userrelated.add(all.get(j));
-						break;
+		for(int i=0;i<all2.size();i++){
+			if(all2.get(i).getUser().getUid()==userid){
+				userrelated.add(all2.get(i));
+			}else if(all2.get(i).getState()==1){
+				if(all2.get(i).getTeam()!=null){
+					List<User> tmp=all2.get(i).getTeam().getUsers();
+					for(int j=0;j<tmp.size();j++){
+						if(tmp.get(j).getUid()==userid){
+							userrelated.add(all2.get(j));
+							break;
+						}
 					}
 				}
+				
 			}
 		}
 		
 		//
-		for(int i=0;i<userrelated.size();i++){
-			if(WithinJourneyList(userrelated.get(i),all)){
-				all.remove(userrelated.get(i));
+//		for(int i=0;i<userrelated.size();i++){
+//			if(WithinJourneyList(userrelated.get(i),all)){
+//				all.remove(userrelated.get(i));
+//			}
+//		}
+		for(int i=0;i<all2.size();i++){
+			if(!WithinJourneyList(all2.get(i),userrelated)){
+				all.add(all2.get(i));
 			}
 		}
 		for(int i=0;i<all.size();i++){
@@ -278,7 +291,7 @@ public class DataAnalysisFlow {
 		return interests;
 	}
 	public static ArrayList<User> FindSimilarUsers(String uid){
-		UserDao udao=new UserDaoImpl();
+		
 		List<User> tusers=udao.getAllUsers();
 		List<User> users=new ArrayList<User>();
 		System.out.println("before deleting this User: "+tusers.size());
@@ -289,6 +302,7 @@ public class DataAnalysisFlow {
 			}
 		}
 		System.out.println("after deleting this User: "+users.size());
+		
 		ArrayList<User> res=new ArrayList<User>();
 		for(int i=0;i<users.size();i++){
 			if(users.get(i).getCity()!=null&&users.get(i).getCity().equals(thisUser.getCity())){
@@ -296,8 +310,8 @@ public class DataAnalysisFlow {
 			}
 		}
 		if(res.size()<3){
+			int j=0;
 			while(res.size()<3){
-				int j=0;
 				res.add(users.get(j));
 				j++;
 			}
@@ -341,7 +355,7 @@ public class DataAnalysisFlow {
 		for(int i=0;i<userJ.size();i++){
 			List<Place> up=userJ.get(i).getPlaces();
 			for(int j=0;j<up.size();j++){
-				String ucName=up.get(i).getCity().getName();
+				String ucName=up.get(j).getCity().getName();
 				if(!ucities.contains(ucName)){
 					ucities.add(ucName);
 				}
@@ -365,8 +379,8 @@ public class DataAnalysisFlow {
 	}
 	
 	
-	public Restaurant getBestRestaurant(City city){
-		RestaurantDao rdao=new RestaurantDaoImpl();
+	public static Restaurant getBestRestaurant(City city){
+		
 		List<Restaurant> rests=rdao.getAllRestaurant();
 		List<Restaurant> cityrs=new ArrayList<Restaurant>();
 		ArrayList<RestRankCoef> rRanks=new ArrayList<RestRankCoef>();
@@ -401,8 +415,8 @@ public class DataAnalysisFlow {
 		
 	}
 	
-	public Hotel getBestHotel(City city){
-		HotelDao hdao=new HotelDaoImpl();
+	public static Hotel getBestHotel(City city){
+		
 		List<Hotel> hotels=hdao.getAllHotel();
 		List<Hotel> cityrs=new ArrayList<Hotel>();
 		ArrayList<HotelRankCoef> hRanks=new ArrayList<HotelRankCoef>();
@@ -436,8 +450,8 @@ public class DataAnalysisFlow {
 		}
 		
 	}
-	public Attraction getBestAttraction(City city){
-		AttractionDao adao=new AttractionDaoImpl();
+	public static Attraction getBestAttraction(City city){
+		
 		List<Attraction> attrs=adao.getAllAttraction();
 		List<Attraction> cityrs=new ArrayList<Attraction>();
 		ArrayList<AttrRankCoef> rRanks=new ArrayList<AttrRankCoef>();

@@ -66,7 +66,12 @@
 				<div class="shortcut-nav fn-pa" style="top: 0px;">
 				<ul>
 					<s:iterator value="journey.places" var="pl" status="i">
-	               		<li><a class="line_gray" href="album?albumId=${journey.id }&page=${i.index}" title="">${pl.city.name }</a></li>
+						<s:if test="#i.index == page">
+							<li><a class="line_gray hili" href="album?albumId=${journey.id }&page=${i.index}" title="">${pl.city.name }</a></li>
+						</s:if>
+						<s:else>
+	               			<li><a class="line_gray" href="album?albumId=${journey.id }&page=${i.index}" title="">${pl.city.name }</a></li>
+	               		</s:else>
 					</s:iterator>
 				</ul>
 				</div>

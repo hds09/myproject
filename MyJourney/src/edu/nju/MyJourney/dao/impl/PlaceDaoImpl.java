@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import edu.nju.MyJourney.dao.PlaceDao;
+import edu.nju.MyJourney.model.Journey;
 import edu.nju.MyJourney.model.Place;
 import edu.nju.MyJourney.model.User;
 
@@ -78,6 +79,23 @@ public class PlaceDaoImpl implements PlaceDao {
 			e.printStackTrace();
 		}
 		session.close();
+	}
+
+	@Override
+	public List<Place> getAllPlace() {
+		List<Place> placeList=null;
+		Session session=sessionFactory.openSession();
+		try {	
+			Transaction tx=session.beginTransaction();	
+			String hql = "from Place";
+			Query query = session.createQuery(hql);	
+			placeList = query.list();
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		session.close();
+		return placeList;
 	}
 
 
