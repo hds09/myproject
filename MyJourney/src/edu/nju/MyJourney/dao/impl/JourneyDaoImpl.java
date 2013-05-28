@@ -133,7 +133,7 @@ public class JourneyDaoImpl implements JourneyDao{
 		Session session=sessionFactory.openSession();
 		try {	
 			Transaction tx=session.beginTransaction();	
-			String hql = "from Journey";
+			String hql = "from Journey order by id desc";
 			Query query = session.createQuery(hql);	
 			journeys = query.list();
 			tx.commit();

@@ -29,6 +29,34 @@
 					currentList=currentList+1;
 				}
 			}
+			var currentList2=1;
+			function navi2(type){
+				var number=$('.p_row').size();
+				if(type==0&&currentList2!=1){
+					$('.p_row')[currentList2-1].style.display='none';
+					$('.p_row')[currentList2-2].style.display='block';
+					currentList2=currentList2-1;
+				}else if(type==1&&currentList2!=number){
+					$('.p_row')[currentList2-1].style.display='none';
+					$('.p_row')[currentList2].style.display='block';
+					currentList2=currentList2+1;
+				}
+			}
+			
+			
+			var currentList3=1;
+			function navi3(type){
+				var number=$('.p_row').size();
+				if(type==0&&currentList3!=1){
+					$('.p_row')[currentList3-1].style.display='none';
+					$('.p_row')[currentList3-2].style.display='block';
+					currentList3=currentList3-1;
+				}else if(type==1&&currentList3!=number){
+					$('.p_row')[currentList3-1].style.display='none';
+					$('.p_row')[currentList3].style.display='block';
+					currentList3=currentList3+1;
+				}
+			}
 		</script>
 		<title>旅行管理
 		</title>
@@ -102,63 +130,89 @@
 						<!--hard-coding data-->
 						<% 
 							int psize=personal.size();
+							int panelNum2=psize/5+1; //panel number
+							int index2=0;
+							int p=0;
 							if(psize==0){
 								out.print("您还没有添加或加入任何旅行");
 								out.print("<a href='makeRoute' class='insAdd'>立即去添加</a>");
 							}
-							for(int i=0;i<psize;i++){
-								out.print("<div class='resultRow'>");
-								out.print("<div class='row_sep2'></div>");
-								out.print("<div class='rrow_content'>");
-								out.print("<div class='journey_title'>");
-								out.print("<span class='title'>"+personal.get(i).getJourneyName()+"</span><br/>");
-								if(personal.get(i).getPlaces().size()!=0){
-									out.print("<span class='date'>开始于:"+personal.get(i).getPlaces().get(0).getTime()+"</span><br/>");
+							for(int j=0;j<panelNum2;j++){
+								if(j==0){
+									out.print("<div class='p_row'>");
 								}else{
-									out.print("<span class='date'>无地点信息</span><br/>");
+									out.print("<div class='p_row' style='display:none'>");
 								}
-								out.print("</div>");
-								out.print("</div>");
-								out.print("<div class='status'>");
-								out.print("<span class='for_details'><a class='detail_tx' href='/MyJourney/user/editRoute?routeId="+personal.get(i).getId()+"&selectnum=1'>编辑</a></span>");
-								out.print("</div>");
-								out.print("<div class='rrow_right' align='center'>");
-								out.print("<span class='record_text' onclick='openCenterDiv("+personal.get(i).getId()+")'>查看相似行程</span><br/>");
-								out.print("<span class='record_text'></span>");
-								out.print("</div>");
-								out.print("<div class='my_rate' align='center'>");
-								out.print("<div class='ttt'><span class='p_trip_rate'><a href='userViewJourney?jid="+personal.get(i).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>查看详情</a></span></div>");
-								out.print("</div>");
-								out.print("<div class='trip_action'>");
-								
-								out.print("</div>");
-								out.print("<div class='row_sep'></div>");
-								out.print("</div>");
-								out.print("<div class='center_div' id='center_div"+personal.get(i).getId()+"' style='display:none'>");
-								out.print("<div id='center_div_header' align='right'>");
-								out.print("<span onclick='closeCenterDiv("+personal.get(i).getId()+")'>关闭</span>");
-								out.print("</div>");
-								out.print("<span>&nbsp;&nbsp;&nbsp;为您找到的相似旅程</span>");
-								out.print("<div id='sims' align='center'>");
-								List<Journey> tmpss=null;
-								for(int m=0;m<sims.size();m++){
-									if(sims.get(m).getTheJ().getId()==personal.get(i).getId()){
-										tmpss=sims.get(m).getSims();
+								for(index2=0;index2<5;index2++){
+									if(p==psize){
 										break;
 									}
-								}
-								if(tmpss.size()==0||tmpss==null){
-									out.print("抱歉,未找到相似旅程");
-								}else{
-									for(int l=0;l<tmpss.size();l++){
-										out.print("<a class='simJTitle' href='userViewJourney?jid="+tmpss.get(l).getId()+"&uid="+personal.get(i).getUser().getUid()+"'>"+tmpss.get(l).getJourneyName()+"<a><br/>");
+									out.print("<div class='resultRow'>");
+									out.print("<div class='row_sep2'></div>");
+									out.print("<div class='rrow_content'>");
+									out.print("<div class='journey_title'>");
+									out.print("<span class='title'>"+personal.get(p).getJourneyName()+"</span><br/>");
+									if(personal.get(p).getPlaces().size()!=0){
+										out.print("<span class='date'>开始于:"+personal.get(p).getPlaces().get(0).getTime()+"</span><br/>");
+									}else{
+										out.print("<span class='date'>无地点信息</span><br/>");
 									}
+									out.print("</div>");
+									out.print("</div>");
+									out.print("<div class='status'>");
+									out.print("<span class='for_details'><a class='detail_tx' href='/MyJourney/user/editRoute?routeId="+personal.get(p).getId()+"&selectnum=1'>编辑</a></span>");
+									out.print("</div>");
+									out.print("<div class='rrow_right' align='center'>");
+									out.print("<span class='record_text' onclick='openCenterDiv("+personal.get(p).getId()+")'>查看相似行程</span><br/>");
+									out.print("<span class='record_text'></span>");
+									out.print("</div>");
+									out.print("<div class='my_rate' align='center'>");
+									out.print("<div class='ttt'><span class='p_trip_rate'><a href='userViewJourney?jid="+personal.get(p).getId()+"&uid="+personal.get(p).getUser().getUid()+"'>查看详情</a></span></div>");
+									out.print("</div>");
+									out.print("<div class='trip_action'>");
+									
+									out.print("</div>");
+									out.print("<div class='row_sep'></div>");
+									out.print("</div>");
+									out.print("<div class='center_div' id='center_div"+personal.get(p).getId()+"' style='display:none'>");
+									out.print("<div id='center_div_header' align='right'>");
+									out.print("<span onclick='closeCenterDiv("+personal.get(p).getId()+")'>关闭</span>");
+									out.print("</div>");
+									out.print("<span>&nbsp;&nbsp;&nbsp;为您找到的相似旅程</span>");
+									out.print("<div id='sims' align='center'>");
+									List<Journey> tmpss=null;
+									for(int m=0;m<sims.size();m++){
+										if(sims.get(m).getTheJ().getId()==personal.get(p).getId()){
+											tmpss=sims.get(m).getSims();
+											break;
+										}
+									}
+									if(tmpss.size()==0||tmpss==null){
+										out.print("抱歉,未找到相似旅程");
+									}else{
+										for(int l=0;l<tmpss.size();l++){
+											out.print("<a class='simJTitle' href='userViewJourney?jid="+tmpss.get(l).getId()+"&uid="+personal.get(p).getUser().getUid()+"'>"+tmpss.get(l).getJourneyName()+"<a><br/>");
+										}
+									}
+									out.print("</div>");
+									out.print("<br/><br/><span>&nbsp;&nbsp;&nbsp;快去看看他们都干了些什么</span>");
+									out.print("</div>");
+									p++;
+									
 								}
+								index2=0;
+								//
 								out.print("</div>");
-								out.print("<br/><br/><span>&nbsp;&nbsp;&nbsp;快去看看他们都干了些什么</span>");
-								out.print("</div>");
-								
 							}
+							if(psize>=6){
+								out.print("<div class='backAndforth' align='right'>");
+								out.print("<span class='textBut' onclick='navi2(0)'>上一页</span>&nbsp;&nbsp;&nbsp;<span class='textBut' onclick='navi2(1)'>下一页</span>");
+								out.print("</div>");
+							}
+							//
+							
+							//	
+							
 							
 						%>
 					</div>

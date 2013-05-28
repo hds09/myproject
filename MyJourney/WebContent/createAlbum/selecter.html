@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<style type="text/css">
+	.hili{background-color: rgba(50,160,130,0.5);}
+</style>
+</head>
+<body>
+	<ul>
+		<li class="pl5">AAAA</li>
+		<li class="pl5">BBBB</li>
+		<li class="pl5">CCCC</li>
+		<li class="pl5">DDDD</li>
+		<li class="pl5">EEEE</li>
+	</ul>
+	<div id="" class="pl5"></div>
+	<script type="text/javascript">
+		$("li.pl5").click(function(){
+			$(this).addClass("hili").siblings().removeClass("hili");
+		});
+	</script>
+</body>
+</html>
